@@ -81,7 +81,7 @@ msgstr "📜 Istoricul nucleelor instalate"
 
 #: kernel_installer_gui/widgets/history_view.py:54
 msgid "No kernels installed yet"
-msgstr "Nu existā nuclee instalate încă"
+msgstr "Nu există nuclee instalate încă"
 
 #: kernel_installer_gui/widgets/history_view.py:79
 msgid "Current kernel"
@@ -288,112 +288,112 @@ msgid "Warning: Error updating bootloader"
 msgstr "Avertisment: Eroare la actualizarea bootloader-ului"
 
 #: kernel_installer_gui/core/kernel.py:414
-#: kernel_installer_gui/app/main_window.py:378
+#: kernel_installer_gui/app/main_window.py:379
 msgid "Installation complete!"
 msgstr "Instalare finalizată!"
 
 #: kernel_installer_gui/app/application.py:273
-#: kernel_installer_gui/app/main_window.py:50
+#: kernel_installer_gui/app/main_window.py:51
 msgid "Kernel Installer"
 msgstr "Instalator de Kernel"
 
-#: kernel_installer_gui/app/application.py:299
+#: kernel_installer_gui/app/application.py:298
 msgid "Clean build files?"
 msgstr "Curățați fișierele de construcție?"
 
-#: kernel_installer_gui/app/application.py:311
+#: kernel_installer_gui/app/application.py:310
 msgid "Build files deleted."
 msgstr "Fișierele de construcție au fost șterse."
 
-#: kernel_installer_gui/app/application.py:313
+#: kernel_installer_gui/app/application.py:312
 msgid "Error cleaning files."
 msgstr "Eroare la curățarea fișierelor."
 
-#: kernel_installer_gui/app/main_window.py:51
+#: kernel_installer_gui/app/main_window.py:52
 msgid "by Sergi Perich & Alexia Michelle"
 msgstr "de Sergi Perich și Alexia Michelle"
 
-#: kernel_installer_gui/app/main_window.py:67
+#: kernel_installer_gui/app/main_window.py:68
 msgid "Refresh versions (F5)"
 msgstr "Actualizează versiunile (F5)"
 
-#: kernel_installer_gui/app/main_window.py:68
+#: kernel_installer_gui/app/main_window.py:69
 msgid "Clean build files"
 msgstr "Curăță fișierele de construcție"
 
-#: kernel_installer_gui/app/main_window.py:69
+#: kernel_installer_gui/app/main_window.py:70
 msgid "About"
 msgstr "Despre"
 
-#: kernel_installer_gui/app/main_window.py:70
+#: kernel_installer_gui/app/main_window.py:71
 msgid "Quit (Ctrl+Q)"
 msgstr "Ieșire (Ctrl+Q)"
 
-#: kernel_installer_gui/app/main_window.py:107
+#: kernel_installer_gui/app/main_window.py:108
 msgid "Kernel name (suffix)"
 msgstr "Numele nucleului (sufix)"
 
-#: kernel_installer_gui/app/main_window.py:115
+#: kernel_installer_gui/app/main_window.py:116
 msgid "E.g.: gaming, server, my-kernel"
 msgstr "Ex: gaming, server, nucleul-meu"
 
-#: kernel_installer_gui/app/main_window.py:116
+#: kernel_installer_gui/app/main_window.py:117
 msgid "This name will be added to the kernel, e.g.: 6.18.7-custom-gaming"
 msgstr "Acest nume va fi adăugat la nucleu, ex: 6.18.7-custom-gaming"
 
-#: kernel_installer_gui/app/main_window.py:121
+#: kernel_installer_gui/app/main_window.py:122
 msgid "Result: 6.x.x-custom-gaming (combined with profile)"
 msgstr "Rezultat: 6.x.x-custom-gaming (combinat cu profil)"
 
-#: kernel_installer_gui/app/main_window.py:140
+#: kernel_installer_gui/app/main_window.py:141
 msgid "Distribution:"
 msgstr "Distribuție:"
 
-#: kernel_installer_gui/app/main_window.py:145
+#: kernel_installer_gui/app/main_window.py:146
 msgid "Detecting..."
 msgstr "Detectare..."
 
-#: kernel_installer_gui/app/main_window.py:152
+#: kernel_installer_gui/app/main_window.py:153
 msgid "Current kernel:"
 msgstr "Nucleul actual:"
 
-#: kernel_installer_gui/app/main_window.py:169
+#: kernel_installer_gui/app/main_window.py:170
 msgid "Bootloader:"
 msgstr "Încărcător de pornire:"
 
-#: kernel_installer_gui/app/main_window.py:181
+#: kernel_installer_gui/app/main_window.py:182
 msgid "Initramfs:"
 msgstr "Initramfs:"
 
-#: kernel_installer_gui/app/main_window.py:194
+#: kernel_installer_gui/app/main_window.py:195
 msgid "📥 Download and install kernel"
 msgstr "📥 Descărcați și instalați nucleul"
 
-#: kernel_installer_gui/app/main_window.py:216
+#: kernel_installer_gui/app/main_window.py:217
 msgid "Cancel"
 msgstr "Anulează"
 
-#: kernel_installer_gui/app/main_window.py:222
+#: kernel_installer_gui/app/main_window.py:223
 msgid "Done"
 msgstr "Gata"
 
-#: kernel_installer_gui/app/main_window.py:266
+#: kernel_installer_gui/app/main_window.py:267
 msgid "Unsupported distribution"
 msgstr "Distribuție neacceptată"
 
-#: kernel_installer_gui/app/main_window.py:281
+#: kernel_installer_gui/app/main_window.py:282
 msgid "Please select a kernel version."
 msgstr "Vă rugăm să selectați o versiune de nucleu."
 
-#: kernel_installer_gui/app/main_window.py:316
+#: kernel_installer_gui/app/main_window.py:317
 msgid "Install kernel?"
 msgstr "Instalați nucleul?"
 
-#: kernel_installer_gui/app/main_window.py:399
+#: kernel_installer_gui/app/main_window.py:400
 msgid "Error"
 msgstr "Eroare"
 
-#: kernel_installer_gui/app/main_window.py:425
+#: kernel_installer_gui/app/main_window.py:426
 #, python-format
 msgid "Result: %s"
 msgstr "Rezultat: %s"

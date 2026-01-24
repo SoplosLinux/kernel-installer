@@ -81,7 +81,7 @@ msgstr "📜 История установленных ядер"
 
 #: kernel_installer_gui/widgets/history_view.py:54
 msgid "No kernels installed yet"
-msgstr "Ядра еще не установлены"
+msgstr "Ядра aún no instalados"
 
 #: kernel_installer_gui/widgets/history_view.py:79
 msgid "Current kernel"
@@ -288,112 +288,112 @@ msgid "Warning: Error updating bootloader"
 msgstr "Предупреждение: ошибка обновления загрузчика"
 
 #: kernel_installer_gui/core/kernel.py:414
-#: kernel_installer_gui/app/main_window.py:378
+#: kernel_installer_gui/app/main_window.py:379
 msgid "Installation complete!"
 msgstr "Установка завершена!"
 
 #: kernel_installer_gui/app/application.py:273
-#: kernel_installer_gui/app/main_window.py:50
+#: kernel_installer_gui/app/main_window.py:51
 msgid "Kernel Installer"
 msgstr "Установщик ядра"
 
-#: kernel_installer_gui/app/application.py:299
+#: kernel_installer_gui/app/application.py:298
 msgid "Clean build files?"
 msgstr "Очистить файлы сборки?"
 
-#: kernel_installer_gui/app/application.py:311
+#: kernel_installer_gui/app/application.py:310
 msgid "Build files deleted."
 msgstr "Файлы сборки удалены."
 
-#: kernel_installer_gui/app/application.py:313
+#: kernel_installer_gui/app/application.py:312
 msgid "Error cleaning files."
 msgstr "Ошибка при очистке файлов."
 
-#: kernel_installer_gui/app/main_window.py:51
+#: kernel_installer_gui/app/main_window.py:52
 msgid "by Sergi Perich & Alexia Michelle"
 msgstr "Сержи Перич и Алексия Мишель"
 
-#: kernel_installer_gui/app/main_window.py:67
-msgid "Refresh versions (F5)"
-msgstr "Обновить версии (F5)"
-
 #: kernel_installer_gui/app/main_window.py:68
+msgid "Refresh versions (F5)"
+msgstr "Обновить versiones (F5)"
+
+#: kernel_installer_gui/app/main_window.py:69
 msgid "Clean build files"
 msgstr "Очистить файлы сборки"
 
-#: kernel_installer_gui/app/main_window.py:69
+#: kernel_installer_gui/app/main_window.py:70
 msgid "About"
 msgstr "О программе"
 
-#: kernel_installer_gui/app/main_window.py:70
+#: kernel_installer_gui/app/main_window.py:71
 msgid "Quit (Ctrl+Q)"
 msgstr "Выход (Ctrl+Q)"
 
-#: kernel_installer_gui/app/main_window.py:107
+#: kernel_installer_gui/app/main_window.py:108
 msgid "Kernel name (suffix)"
 msgstr "Имя ядра (суффикс)"
 
-#: kernel_installer_gui/app/main_window.py:115
+#: kernel_installer_gui/app/main_window.py:116
 msgid "E.g.: gaming, server, my-kernel"
 msgstr "Пример: gaming, server, my-kernel"
 
-#: kernel_installer_gui/app/main_window.py:116
+#: kernel_installer_gui/app/main_window.py:117
 msgid "This name will be added to the kernel, e.g.: 6.18.7-custom-gaming"
 msgstr "Это имя будет добавлено к ядро, например: 6.18.7-custom-gaming"
 
-#: kernel_installer_gui/app/main_window.py:121
+#: kernel_installer_gui/app/main_window.py:122
 msgid "Result: 6.x.x-custom-gaming (combined with profile)"
 msgstr "Результат: 6.x.x-custom-gaming (вместе с профилем)"
 
-#: kernel_installer_gui/app/main_window.py:140
+#: kernel_installer_gui/app/main_window.py:141
 msgid "Distribution:"
 msgstr "Дистрибутив:"
 
-#: kernel_installer_gui/app/main_window.py:145
+#: kernel_installer_gui/app/main_window.py:146
 msgid "Detecting..."
 msgstr "Определение..."
 
-#: kernel_installer_gui/app/main_window.py:152
+#: kernel_installer_gui/app/main_window.py:153
 msgid "Current kernel:"
 msgstr "Текущее ядро:"
 
-#: kernel_installer_gui/app/main_window.py:169
+#: kernel_installer_gui/app/main_window.py:170
 msgid "Bootloader:"
 msgstr "Загрузчик:"
 
-#: kernel_installer_gui/app/main_window.py:181
+#: kernel_installer_gui/app/main_window.py:182
 msgid "Initramfs:"
 msgstr "Initramfs:"
 
-#: kernel_installer_gui/app/main_window.py:194
+#: kernel_installer_gui/app/main_window.py:195
 msgid "📥 Download and install kernel"
 msgstr "📥 Скачать и установить ядро"
 
-#: kernel_installer_gui/app/main_window.py:216
+#: kernel_installer_gui/app/main_window.py:217
 msgid "Cancel"
 msgstr "Отмена"
 
-#: kernel_installer_gui/app/main_window.py:222
+#: kernel_installer_gui/app/main_window.py:223
 msgid "Done"
 msgstr "Готово"
 
-#: kernel_installer_gui/app/main_window.py:266
+#: kernel_installer_gui/app/main_window.py:267
 msgid "Unsupported distribution"
 msgstr "Неподдерживаемый дистрибутив"
 
-#: kernel_installer_gui/app/main_window.py:281
+#: kernel_installer_gui/app/main_window.py:282
 msgid "Please select a kernel version."
 msgstr "Пожалуйста, выберите версию ядра."
 
-#: kernel_installer_gui/app/main_window.py:316
+#: kernel_installer_gui/app/main_window.py:317
 msgid "Install kernel?"
 msgstr "Установить ядро?"
 
-#: kernel_installer_gui/app/main_window.py:399
+#: kernel_installer_gui/app/main_window.py:400
 msgid "Error"
 msgstr "Ошибка"
 
-#: kernel_installer_gui/app/main_window.py:425
+#: kernel_installer_gui/app/main_window.py:426
 #, python-format
 msgid "Result: %s"
 msgstr "Результат: %s"

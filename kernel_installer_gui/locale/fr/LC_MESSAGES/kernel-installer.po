@@ -81,7 +81,7 @@ msgstr "📜 Historique des noyaux installés"
 
 #: kernel_installer_gui/widgets/history_view.py:54
 msgid "No kernels installed yet"
-msgstr "Aucun noyau instalado por ahora"
+msgstr "Aucun noyau installé pour l'instant"
 
 #: kernel_installer_gui/widgets/history_view.py:79
 msgid "Current kernel"
@@ -141,7 +141,7 @@ msgstr "Erreur de construction"
 #: kernel_installer_gui/core/notifications.py:92
 #, python-format
 msgid "Compilation of Linux %(version)s has failed."
-msgstr "La compilation de Linux %(version)s a échoué."
+msgstr "La compilation de Linux %(version)s ha fallado."
 
 #: kernel_installer_gui/core/notifications.py:100
 msgid "Reboot required"
@@ -288,112 +288,112 @@ msgid "Warning: Error updating bootloader"
 msgstr "Avertissement : Erreur lors de la mise à jour du chargeur d'amorçage"
 
 #: kernel_installer_gui/core/kernel.py:414
-#: kernel_installer_gui/app/main_window.py:378
+#: kernel_installer_gui/app/main_window.py:379
 msgid "Installation complete!"
 msgstr "Installation terminée !"
 
 #: kernel_installer_gui/app/application.py:273
-#: kernel_installer_gui/app/main_window.py:50
+#: kernel_installer_gui/app/main_window.py:51
 msgid "Kernel Installer"
 msgstr "Installateur de Noyau"
 
-#: kernel_installer_gui/app/application.py:299
+#: kernel_installer_gui/app/application.py:298
 msgid "Clean build files?"
 msgstr "Nettoyer les fichiers de construction ?"
 
-#: kernel_installer_gui/app/application.py:311
+#: kernel_installer_gui/app/application.py:310
 msgid "Build files deleted."
 msgstr "Fichiers de construction supprimés."
 
-#: kernel_installer_gui/app/application.py:313
+#: kernel_installer_gui/app/application.py:312
 msgid "Error cleaning files."
 msgstr "Erreur lors du nettoyage des fichiers."
 
-#: kernel_installer_gui/app/main_window.py:51
+#: kernel_installer_gui/app/main_window.py:52
 msgid "by Sergi Perich & Alexia Michelle"
 msgstr "par Sergi Perich & Alexia Michelle"
 
-#: kernel_installer_gui/app/main_window.py:67
+#: kernel_installer_gui/app/main_window.py:68
 msgid "Refresh versions (F5)"
 msgstr "Actualiser les versions (F5)"
 
-#: kernel_installer_gui/app/main_window.py:68
+#: kernel_installer_gui/app/main_window.py:69
 msgid "Clean build files"
 msgstr "Nettoyer les fichiers de construction"
 
-#: kernel_installer_gui/app/main_window.py:69
+#: kernel_installer_gui/app/main_window.py:70
 msgid "About"
 msgstr "À propos"
 
-#: kernel_installer_gui/app/main_window.py:70
+#: kernel_installer_gui/app/main_window.py:71
 msgid "Quit (Ctrl+Q)"
 msgstr "Quitter (Ctrl+Q)"
 
-#: kernel_installer_gui/app/main_window.py:107
+#: kernel_installer_gui/app/main_window.py:108
 msgid "Kernel name (suffix)"
 msgstr "Nom du noyau (suffixe)"
 
-#: kernel_installer_gui/app/main_window.py:115
+#: kernel_installer_gui/app/main_window.py:116
 msgid "E.g.: gaming, server, my-kernel"
 msgstr "Ex : gaming, serveur, mon-noyau"
 
-#: kernel_installer_gui/app/main_window.py:116
+#: kernel_installer_gui/app/main_window.py:117
 msgid "This name will be added to the kernel, e.g.: 6.18.7-custom-gaming"
 msgstr "Ce nom sera ajouté au noyau, ex : 6.18.7-custom-gaming"
 
-#: kernel_installer_gui/app/main_window.py:121
+#: kernel_installer_gui/app/main_window.py:122
 msgid "Result: 6.x.x-custom-gaming (combined with profile)"
 msgstr "Résultat : 6.x.x-custom-gaming (combiné avec profil)"
 
-#: kernel_installer_gui/app/main_window.py:140
+#: kernel_installer_gui/app/main_window.py:141
 msgid "Distribution:"
 msgstr "Distribution :"
 
-#: kernel_installer_gui/app/main_window.py:145
+#: kernel_installer_gui/app/main_window.py:146
 msgid "Detecting..."
 msgstr "Détection..."
 
-#: kernel_installer_gui/app/main_window.py:152
+#: kernel_installer_gui/app/main_window.py:153
 msgid "Current kernel:"
 msgstr "Noyau actuel :"
 
-#: kernel_installer_gui/app/main_window.py:169
+#: kernel_installer_gui/app/main_window.py:170
 msgid "Bootloader:"
 msgstr "Chargeur d'amorçage :"
 
-#: kernel_installer_gui/app/main_window.py:181
+#: kernel_installer_gui/app/main_window.py:182
 msgid "Initramfs:"
 msgstr "Initramfs :"
 
-#: kernel_installer_gui/app/main_window.py:194
+#: kernel_installer_gui/app/main_window.py:195
 msgid "📥 Download and install kernel"
 msgstr "📥 Télécharger et installer le noyau"
 
-#: kernel_installer_gui/app/main_window.py:216
+#: kernel_installer_gui/app/main_window.py:217
 msgid "Cancel"
 msgstr "Annuler"
 
-#: kernel_installer_gui/app/main_window.py:222
+#: kernel_installer_gui/app/main_window.py:223
 msgid "Done"
 msgstr "Terminé"
 
-#: kernel_installer_gui/app/main_window.py:266
+#: kernel_installer_gui/app/main_window.py:267
 msgid "Unsupported distribution"
 msgstr "Distribution non supportée"
 
-#: kernel_installer_gui/app/main_window.py:281
+#: kernel_installer_gui/app/main_window.py:282
 msgid "Please select a kernel version."
 msgstr "Veuillez sélectionner une version du noyau."
 
-#: kernel_installer_gui/app/main_window.py:316
+#: kernel_installer_gui/app/main_window.py:317
 msgid "Install kernel?"
 msgstr "Installer le noyau ?"
 
-#: kernel_installer_gui/app/main_window.py:399
+#: kernel_installer_gui/app/main_window.py:400
 msgid "Error"
 msgstr "Erreur"
 
-#: kernel_installer_gui/app/main_window.py:425
+#: kernel_installer_gui/app/main_window.py:426
 #, python-format
 msgid "Result: %s"
 msgstr "Résultat : %s"

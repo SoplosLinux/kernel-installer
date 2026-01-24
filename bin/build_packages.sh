@@ -19,7 +19,9 @@ mkdir -p "$DEB_ROOT/usr/bin"
 mkdir -p "$DEB_ROOT/usr/share/kernel-installer"
 mkdir -p "$DEB_ROOT/usr/share/applications"
 mkdir -p "$DEB_ROOT/usr/share/metainfo"
-mkdir -p "$DEB_ROOT/usr/share/icons/hicolor/scalable/apps"
+mkdir -p "$DEB_ROOT/usr/share/icons/hicolor/48x48/apps"
+mkdir -p "$DEB_ROOT/usr/share/icons/hicolor/128x128/apps"
+mkdir -p "$DEB_ROOT/usr/share/icons/hicolor/256x256/apps"
 
 cp packaging/debian/control "$DEB_ROOT/DEBIAN/"
 cp bin/kernel-installer "$DEB_ROOT/usr/bin/kernel-installer"
@@ -27,7 +29,9 @@ chmod +x "$DEB_ROOT/usr/bin/kernel-installer"
 cp -r kernel_installer_gui "$DEB_ROOT/usr/share/kernel-installer/"
 cp kernel_installer_gui/data/kernel-installer.desktop "$DEB_ROOT/usr/share/applications/"
 cp kernel_installer_gui/data/io.github.alexiarstein.kernelinstall.metainfo.xml "$DEB_ROOT/usr/share/metainfo/"
-cp kernel_installer_gui/assets/icons/kernel-installer.png "$DEB_ROOT/usr/share/icons/hicolor/scalable/apps/"
+cp kernel_installer_gui/assets/icons/kernel-installer-48.png "$DEB_ROOT/usr/share/icons/hicolor/48x48/apps/kernel-installer.png"
+cp kernel_installer_gui/assets/icons/kernel-installer-128.png "$DEB_ROOT/usr/share/icons/hicolor/128x128/apps/kernel-installer.png"
+cp kernel_installer_gui/assets/icons/kernel-installer-256.png "$DEB_ROOT/usr/share/icons/hicolor/256x256/apps/kernel-installer.png"
 
 if command -v dpkg-deb &> /dev/null; then
     dpkg-deb --build "$DEB_ROOT" "${APP_NAME}_${VERSION}_all.deb"
@@ -40,6 +44,7 @@ fi
 echo "🔹 Creating source tarball for RPM and Arch..."
 tar -czf "$BUILD_DIR/${APP_NAME}-${VERSION}.tar.gz" \
     --exclude="build_packages" \
+    --exclude="releases" \
     --exclude=".git" \
     --exclude="__pycache__" \
     .

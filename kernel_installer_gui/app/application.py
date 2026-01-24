@@ -273,8 +273,7 @@ progressbar trough {
         about.set_program_name(_("Kernel Installer"))
         about.set_version("1.0.0")
         about.set_comments(
-            _("A graphical interface for downloading, compiling and installing\n"
-            "the Linux kernel with optimized profiles.")
+            _("A graphical interface for downloading, compiling and installing the Linux kernel with optimized profiles.")
         )
         about.set_authors([
             "Sergi Perich <info@soploslinux.com>",
@@ -282,9 +281,9 @@ progressbar trough {
         ])
         about.set_copyright("© 2025 Sergi Perich & Alexia Michelle")
         about.set_license_type(Gtk.License.GPL_3_0)
-        about.set_website("https://github.com/alexiarstein/kernelinstall")
+        about.set_website("https://github.com/SoplosLinux/kernell-installer")
         about.set_website_label("GitHub")
-        about.set_logo_icon_name("system-software-install")
+        about.set_logo_icon_name("kernel-installer")
         
         about.run()
         about.destroy()

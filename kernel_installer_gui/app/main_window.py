@@ -28,6 +28,7 @@ class KernelInstallerWindow(Gtk.ApplicationWindow):
         self.set_title("Kernel Installer")
         self.set_default_size(700, 600)
         self.set_position(Gtk.WindowPosition.CENTER)
+        self.set_icon_name("kernel-installer")
         
         # Initialize managers
         self._kernel_manager = KernelManager()
@@ -52,7 +53,7 @@ class KernelInstallerWindow(Gtk.ApplicationWindow):
         
         # App icon
         try:
-            icon = Gtk.Image.new_from_icon_name("system-software-install", Gtk.IconSize.LARGE_TOOLBAR)
+            icon = Gtk.Image.new_from_icon_name("kernel-installer", Gtk.IconSize.LARGE_TOOLBAR)
             header.pack_start(icon)
         except Exception:
             pass

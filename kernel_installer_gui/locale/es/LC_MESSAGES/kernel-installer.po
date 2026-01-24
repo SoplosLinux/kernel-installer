@@ -288,112 +288,112 @@ msgid "Warning: Error updating bootloader"
 msgstr "Advertencia: Error actualizando bootloader"
 
 #: kernel_installer_gui/core/kernel.py:414
-#: kernel_installer_gui/app/main_window.py:378
+#: kernel_installer_gui/app/main_window.py:379
 msgid "Installation complete!"
 msgstr "¡Instalación completada!"
 
 #: kernel_installer_gui/app/application.py:273
-#: kernel_installer_gui/app/main_window.py:50
+#: kernel_installer_gui/app/main_window.py:51
 msgid "Kernel Installer"
 msgstr "Instalador de Kernel"
 
-#: kernel_installer_gui/app/application.py:299
+#: kernel_installer_gui/app/application.py:298
 msgid "Clean build files?"
 msgstr "¿Limpiar archivos de compilación?"
 
-#: kernel_installer_gui/app/application.py:311
+#: kernel_installer_gui/app/application.py:310
 msgid "Build files deleted."
 msgstr "Archivos de compilación eliminados."
 
-#: kernel_installer_gui/app/application.py:313
+#: kernel_installer_gui/app/application.py:312
 msgid "Error cleaning files."
 msgstr "Error al limpiar archivos."
 
-#: kernel_installer_gui/app/main_window.py:51
+#: kernel_installer_gui/app/main_window.py:52
 msgid "by Sergi Perich & Alexia Michelle"
 msgstr "por Sergi Perich y Alexia Michelle"
 
-#: kernel_installer_gui/app/main_window.py:67
+#: kernel_installer_gui/app/main_window.py:68
 msgid "Refresh versions (F5)"
 msgstr "Actualizar versiones (F5)"
 
-#: kernel_installer_gui/app/main_window.py:68
+#: kernel_installer_gui/app/main_window.py:69
 msgid "Clean build files"
 msgstr "Limpiar archivos de compilación"
 
-#: kernel_installer_gui/app/main_window.py:69
+#: kernel_installer_gui/app/main_window.py:70
 msgid "About"
 msgstr "Acerca de"
 
-#: kernel_installer_gui/app/main_window.py:70
+#: kernel_installer_gui/app/main_window.py:71
 msgid "Quit (Ctrl+Q)"
 msgstr "Salir (Ctrl+Q)"
 
-#: kernel_installer_gui/app/main_window.py:107
+#: kernel_installer_gui/app/main_window.py:108
 msgid "Kernel name (suffix)"
 msgstr "Nombre del kernel (sufijo)"
 
-#: kernel_installer_gui/app/main_window.py:115
+#: kernel_installer_gui/app/main_window.py:116
 msgid "E.g.: gaming, server, my-kernel"
 msgstr "Ej: gaming, servidor, mi-kernel"
 
-#: kernel_installer_gui/app/main_window.py:116
+#: kernel_installer_gui/app/main_window.py:117
 msgid "This name will be added to the kernel, e.g.: 6.18.7-custom-gaming"
 msgstr "Este nombre se añadirá al kernel, ej: 6.18.7-custom-gaming"
 
-#: kernel_installer_gui/app/main_window.py:121
+#: kernel_installer_gui/app/main_window.py:122
 msgid "Result: 6.x.x-custom-gaming (combined with profile)"
 msgstr "Resultado: 6.x.x-custom-gaming (combinado con perfil)"
 
-#: kernel_installer_gui/app/main_window.py:140
+#: kernel_installer_gui/app/main_window.py:141
 msgid "Distribution:"
 msgstr "Distribución:"
 
-#: kernel_installer_gui/app/main_window.py:145
+#: kernel_installer_gui/app/main_window.py:146
 msgid "Detecting..."
 msgstr "Detectando..."
 
-#: kernel_installer_gui/app/main_window.py:152
+#: kernel_installer_gui/app/main_window.py:153
 msgid "Current kernel:"
 msgstr "Kernel actual:"
 
-#: kernel_installer_gui/app/main_window.py:169
+#: kernel_installer_gui/app/main_window.py:170
 msgid "Bootloader:"
 msgstr "Cargador de arranque:"
 
-#: kernel_installer_gui/app/main_window.py:181
+#: kernel_installer_gui/app/main_window.py:182
 msgid "Initramfs:"
 msgstr "Initramfs:"
 
-#: kernel_installer_gui/app/main_window.py:194
+#: kernel_installer_gui/app/main_window.py:195
 msgid "📥 Download and install kernel"
 msgstr "📥 Descargar e instalar kernel"
 
-#: kernel_installer_gui/app/main_window.py:216
+#: kernel_installer_gui/app/main_window.py:217
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: kernel_installer_gui/app/main_window.py:222
+#: kernel_installer_gui/app/main_window.py:223
 msgid "Done"
 msgstr "Hecho"
 
-#: kernel_installer_gui/app/main_window.py:266
+#: kernel_installer_gui/app/main_window.py:267
 msgid "Unsupported distribution"
 msgstr "Distribución no soportada"
 
-#: kernel_installer_gui/app/main_window.py:281
+#: kernel_installer_gui/app/main_window.py:282
 msgid "Please select a kernel version."
 msgstr "Por favor, selecciona una versión del kernel."
 
-#: kernel_installer_gui/app/main_window.py:316
+#: kernel_installer_gui/app/main_window.py:317
 msgid "Install kernel?"
 msgstr "¿Instalar kernel?"
 
-#: kernel_installer_gui/app/main_window.py:399
+#: kernel_installer_gui/app/main_window.py:400
 msgid "Error"
 msgstr "Error"
 
-#: kernel_installer_gui/app/main_window.py:425
+#: kernel_installer_gui/app/main_window.py:426
 #, python-format
 msgid "Result: %s"
 msgstr "Resultado: %s"
