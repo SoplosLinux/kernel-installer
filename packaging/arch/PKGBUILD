@@ -6,7 +6,7 @@ pkgdesc="Graphical interface for downloading, compiling and installing Linux ker
 arch=('any')
 url="https://github.com/SoplosLinux/kernell-installer"
 license=('GPL3')
-depends=('python-gobject' 'gtk3' 'wget' 'binutils' 'flex' 'bison' 'make' 'gcc' 'bc' 'rsync' 'kmod' 'dwarves' 'cpio' 'linux-api-headers' 'pkgconf' 'ncurses' 'gettext')
+depends=('python-gobject' 'gtk3' 'wget' 'binutils' 'flex' 'bison' 'make' 'gcc' 'bc' 'rsync' 'kmod' 'dwarves' 'cpio' 'linux-api-headers' 'pkgconf' 'ncurses' 'gettext' 'fakeroot')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/SoplosLinux/kernell-installer/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 

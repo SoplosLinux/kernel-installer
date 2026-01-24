@@ -28,6 +28,7 @@ Requires:       make
 Requires:       gcc
 Requires:       gcc-c++
 Requires:       gettext
+Requires:       fakeroot
 
 %description
 Kernel Installer GUI allows users to easily manage Linux kernel versions,
