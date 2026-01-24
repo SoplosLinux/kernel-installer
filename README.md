@@ -44,15 +44,37 @@ sudo dnf install python3-gobject gtk3
 sudo pacman -S python-gobject gtk3
 ```
 
-## Usage
+## 📦 Installation
 
-```bash
-# From source directory
-./bin/kernel-installer
+### Option 1: Native Packages (Recommended)
 
-# Or using Python
-python3 main.py
-```
+- **Debian/Ubuntu/Mint**: [Download .deb](https://github.com/SoplosLinux/kernell-installer/releases)
+  ```bash
+  sudo dpkg -i kernel-installer_1.0.0_all.deb
+  sudo apt install -f
+  ```
+- **Arch Linux/Manjaro**:
+  ```bash
+  cd packaging/arch
+  makepkg -si
+  ```
+- **Fedora/RHEL**:
+  ```bash
+  rpmbuild -ba packaging/rpm/kernel-installer.spec
+  sudo dnf install ~/rpmbuild/RPMS/noarch/kernel-installer-*.rpm
+  ```
+
+### Option 2: From Source
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/SoplosLinux/kernell-installer.git
+   ```
+2. Install dependencies (see Requirements)
+3. Run the program:
+   ```bash
+   python3 main.py
+   ```
 
 ## Keyboard Shortcuts
 
@@ -67,4 +89,4 @@ GPL-3.0 - See [LICENSE](LICENSE)
 
 ## Links
 
-- [GitHub Repository](https://github.com/alexiarstein/kernelinstall)
+- [GitHub Repository](https://github.com/SoplosLinux/kernell-installer)

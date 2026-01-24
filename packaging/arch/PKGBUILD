@@ -1,0 +1,25 @@
+# Maintainer: Sergi Perich <info@soploslinux.com>
+pkgname=kernel-installer
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Graphical interface for downloading, compiling and installing Linux kernels"
+arch=('any')
+url="https://github.com/SoplosLinux/kernell-installer"
+license=('GPL3')
+depends=('python-gobject' 'gtk3' 'wget' 'binutils')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/SoplosLinux/kernell-installer/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('SKIP')
+
+package() {
+  mkdir -p "$pkgdir/usr/bin"
+  mkdir -p "$pkgdir/usr/share/kernel-installer"
+  mkdir -p "$pkgdir/usr/share/applications"
+  mkdir -p "$pkgdir/usr/share/metainfo"
+  mkdir -p "$pkgdir/usr/share/icons/hicolor/scalable/apps"
+
+  cp "$srcdir/main.py" "$pkgdir/usr/bin/kernel-installer-gui"
+  cp -r "$srcdir/kernel_installer_gui/"* "$pkgdir/usr/share/kernel-installer/"
+  cp "$srcdir/kernel_installer_gui/data/kernel-installer.desktop" "$pkgdir/usr/share/applications/"
+  cp "$srcdir/kernel_installer_gui/data/io.github.alexiarstein.kernelinstall.metainfo.xml" "$pkgdir/usr/share/metainfo/"
+  cp "$srcdir/kernel_installer_gui/assets/icons/kernel-installer.png" "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
+}
