@@ -20,6 +20,7 @@ Requires:       rsync
 Requires:       kmod
 Requires:       dwarves
 Requires:       cpio
+Requires:       kernel-headers
 Requires:       make
 Requires:       gcc
 Requires:       gcc-c++
