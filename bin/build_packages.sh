@@ -22,6 +22,8 @@ mkdir -p "$DEB_ROOT/usr/share/metainfo"
 mkdir -p "$DEB_ROOT/usr/share/icons/hicolor/48x48/apps"
 mkdir -p "$DEB_ROOT/usr/share/icons/hicolor/128x128/apps"
 mkdir -p "$DEB_ROOT/usr/share/icons/hicolor/256x256/apps"
+mkdir -p "$DEB_ROOT/usr/share/man/man1"
+mkdir -p "$DEB_ROOT/usr/share/doc/$APP_NAME"
 
 cp packaging/debian/control "$DEB_ROOT/DEBIAN/"
 cp bin/kernel-installer "$DEB_ROOT/usr/bin/kernel-installer"
@@ -32,6 +34,11 @@ cp kernel_installer_gui/data/io.github.alexiarstein.kernelinstall.metainfo.xml "
 cp kernel_installer_gui/assets/icons/kernel-installer-48.png "$DEB_ROOT/usr/share/icons/hicolor/48x48/apps/kernel-installer.png"
 cp kernel_installer_gui/assets/icons/kernel-installer-128.png "$DEB_ROOT/usr/share/icons/hicolor/128x128/apps/kernel-installer.png"
 cp kernel_installer_gui/assets/icons/kernel-installer-256.png "$DEB_ROOT/usr/share/icons/hicolor/256x256/apps/kernel-installer.png"
+
+# Documentation
+cp kernel_installer_gui/data/kernel-installer.1 "$DEB_ROOT/usr/share/man/man1/"
+gzip -9f "$DEB_ROOT/usr/share/man/man1/kernel-installer.1"
+cp kernel_installer_gui/data/copyright "$DEB_ROOT/usr/share/doc/$APP_NAME/"
 
 if command -v dpkg-deb &> /dev/null; then
     dpkg-deb --build "$DEB_ROOT" "${APP_NAME}_${VERSION}_all.deb"
