@@ -1,6 +1,6 @@
 """
 Kernel Installer GUI Package.
-Copyright (C) 2025 Sergi Perich & Alexia Michelle
+Copyright (C) 2026 Sergi Perich & Alexia Michelle
 
 A GTK3 frontend for downloading, compiling and installing
 the latest Linux kernel with optimized profiles.
