@@ -59,6 +59,8 @@ venv/
 
 # Kernel build artifacts
 kernel_build/
+build_packages/
+releases/
 *.deb
 *.rpm
 *.pkg.tar.zst

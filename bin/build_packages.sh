@@ -1,5 +1,6 @@
 #!/bin/bash
-# Master Package Builder for Kernel Installer GUI
+# Package Builder for Kernel Installer GUI
+# Copyright (C) 2025 Sergi Perich & Alexia Michelle
 
 APP_NAME="kernel-installer"
 VERSION="1.0.0"
@@ -44,42 +45,8 @@ if command -v dpkg-deb &> /dev/null; then
     dpkg-deb --build "$DEB_ROOT" "${APP_NAME}_${VERSION}_all.deb"
     echo "✅ DEB package created."
 else
-    echo "⚠️  dpkg-deb not found. Skipping .deb creation (folder structure kept in $DEB_ROOT)."
-fi
-
-# --- 2. Archive for others ---
-echo "🔹 Creating source tarball for RPM and Arch..."
-tar -czf "$BUILD_DIR/${APP_NAME}-${VERSION}.tar.gz" \
-    --exclude="build_packages" \
-    --exclude="releases" \
-    --exclude=".git" \
-    --exclude="__pycache__" \
-    .
-
-echo "✅ Source tarball created."
-
-# --- 3. Organized Releases ---
-echo "🔹 Organizing releases..."
-mkdir -p releases
-
-# Move new DEB to releases (overwrite if exists)
-if [ -f "${APP_NAME}_${VERSION}_all.deb" ]; then
-    mv -f "${APP_NAME}_${VERSION}_all.deb" releases/
-fi
-
-# Copy source tarball to releases
-if [ -f "$BUILD_DIR/${APP_NAME}-${VERSION}.tar.gz" ]; then
-    cp -f "$BUILD_DIR/${APP_NAME}-${VERSION}.tar.gz" releases/
+    echo "⚠️  dpkg-deb not found. Folder structure kept in $DEB_ROOT."
 fi
 
 echo ""
-echo "✅ Current contents of 'releases/' directory:"
-ls -lh releases/
-
-echo ""
-echo "--- Build Status ---"
-echo "DEB: Updated"
-echo "Tarball: Updated"
-echo "RPM/Arch: Instructions available in packaging/ folder"
-echo ""
-echo "Note: This script now preserves other files in 'releases/' (additive)."
+echo "Done! The output package is in the current directory."
