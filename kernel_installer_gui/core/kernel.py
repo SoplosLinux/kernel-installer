@@ -289,21 +289,31 @@ class KernelManager:
         run_command(f"./scripts/config --set-str LOCALVERSION \"{full_tag}\"", cwd=source_dir)
         
         # 4. Disable system trusted keys that cause build failure on Debian/Ubuntu
-        # when the host certificates are not available in the build directory.
+        # Force it with sed first, then scripts/config to be extra sure
+        run_command("sed -i 's/CONFIG_SYSTEM_TRUSTED_KEYS=.*/CONFIG_SYSTEM_TRUSTED_KEYS=\"\"/' .config", cwd=source_dir)
+        run_command("sed -i 's/CONFIG_SYSTEM_REVOCATION_KEYS=.*/CONFIG_SYSTEM_REVOCATION_KEYS=\"\"/' .config", cwd=source_dir)
         run_command("./scripts/config --set-str SYSTEM_TRUSTED_KEYS \"\"", cwd=source_dir)
         run_command("./scripts/config --set-str SYSTEM_REVOCATION_KEYS \"\"", cwd=source_dir)
         
-        # 5. Disable DEBUG_INFO_BTF to avoid pahole errors and speed up build
+        # 5. Disable DEBUG_INFO_BTF to avoid pahole errors
+        run_command("sed -i 's/CONFIG_DEBUG_INFO_BTF=y/CONFIG_DEBUG_INFO_BTF=n/' .config", cwd=source_dir)
         run_command("./scripts/config --disable DEBUG_INFO_BTF", cwd=source_dir)
         
-        # 6. Additional flags for stability
+        # 6. Disable module signing to avoid cert issues
         run_command("./scripts/config --disable MODULE_SIG", cwd=source_dir)
+        
+        # Verbose verification for debugging
+        print("\n--- DEBUG: Kernel Config Patch State ---", file=sys.stderr)
+        for flag in ['CONFIG_SYSTEM_TRUSTED_KEYS', 'CONFIG_SYSTEM_REVOCATION_KEYS', 'CONFIG_DEBUG_INFO_BTF', 'CONFIG_MODULE_SIG']:
+            check = run_command(f"grep {flag} .config", cwd=source_dir)
+            print(f"DEBUG: {check.stdout.strip() or flag + ' is NOT SET'}", file=sys.stderr)
+        print("---------------------------------------\n", file=sys.stderr)
         
         self._report_progress(_("Running make olddefconfig..."), 28)
         
-        # Run olddefconfig (non-interactive, accepts defaults for new options)
+        # Run olddefconfig (non-interactive)
         cmd = 'make olddefconfig'
-        result = run_command(cmd, cwd=source_dir)
+        result = run_command_with_callback(cmd, cwd=source_dir)
         
         self._report_progress(_("Configuration complete."), 30)
         return True
@@ -343,18 +353,18 @@ class KernelManager:
         if distro_info.family in (DistroFamily.DEBIAN, DistroFamily.UBUNTU):
             # Build .deb packages
             self._report_progress(_("Generating .deb packages..."), 32)
-            cmd = f'LC_ALL=C stdbuf -oL -eL fakeroot make -j{cpu_count} bindeb-pkg'
+            cmd = f'LC_ALL=C fakeroot make -j{cpu_count} bindeb-pkg'
         elif distro_info.family == DistroFamily.FEDORA:
             # Build RPM packages
             self._report_progress(_("Generating RPM packages..."), 32)
-            cmd = f'LC_ALL=C stdbuf -oL -eL make -j{cpu_count} rpm-pkg'
+            cmd = f'LC_ALL=C make -j{cpu_count} rpm-pkg'
         elif distro_info.family == DistroFamily.ARCH:
             # Arch uses direct installation
             self._report_progress(_("Compiling for direct installation..."), 32)
-            cmd = f'LC_ALL=C stdbuf -oL -eL make -j{cpu_count}'
+            cmd = f'LC_ALL=C make -j{cpu_count}'
         else:
             # Fallback: generic make
-            cmd = f'LC_ALL=C stdbuf -oL -eL make -j{cpu_count}'
+            cmd = f'LC_ALL=C make -j{cpu_count}'
         
         exit_code = run_command_with_callback(cmd, cwd=source_dir, line_callback=line_callback)
         
