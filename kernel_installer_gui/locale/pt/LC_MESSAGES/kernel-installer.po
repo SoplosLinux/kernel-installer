@@ -5,396 +5,303 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: pt\n"
 
-#: kernel_installer_gui/widgets/profile_selector.py:68
-msgid "Select kernel profile"
-msgstr "Selecionar perfil do kernel"
-
-#: kernel_installer_gui/widgets/version_picker.py:33
-msgid "Kernel version"
-msgstr "Versão do kernel"
-
-#: kernel_installer_gui/widgets/version_picker.py:51
-msgid "Check for updates"
-msgstr "Procurar atualizaciones"
-
-#: kernel_installer_gui/widgets/version_picker.py:93
-msgid "<span foreground='orange'>⚠ Experimental version (RC)</span>"
-msgstr "<span foreground='orange'>⚠ Versão experimental (RC)</span>"
-
-#: kernel_installer_gui/widgets/version_picker.py:95
-msgid "<b>✓ Latest stable version</b>"
-msgstr "<b>✓ Última versión estável</b>"
-
-#: kernel_installer_gui/widgets/version_picker.py:97
-msgid "Long-term support version (LTS)"
-msgstr "Versão de suporte de longo prazo (LTS)"
-
-#: kernel_installer_gui/widgets/version_picker.py:99
-msgid "Stable version"
-msgstr "Versão estável"
-
-#: kernel_installer_gui/widgets/version_picker.py:130
-msgid " (RC - Experimental)"
-msgstr " (RC - Experimental)"
-
-#: kernel_installer_gui/widgets/version_picker.py:132
-msgid " (Latest)"
-msgstr " (Mais recente)"
-
-#: kernel_installer_gui/widgets/version_picker.py:134
-msgid " (LTS)"
-msgstr " (LTS)"
-
-#: kernel_installer_gui/widgets/build_progress.py:62
-msgid "SYSTEM LOAD"
-msgstr ""
-
-#: kernel_installer_gui/widgets/build_progress.py:84
-msgid "Load average:"
-msgstr ""
-
-#: kernel_installer_gui/widgets/build_progress.py:101
-#, python-format
-msgid "Cores: %d"
-msgstr ""
-
-#: kernel_installer_gui/widgets/build_progress.py:117
-msgid "Ready to build"
-msgstr ""
-
-#: kernel_installer_gui/widgets/build_progress.py:181
-#, python-format
-msgid "Time: %(h)02d:%(m)02d:%(s)02d"
-msgstr ""
-
-#: kernel_installer_gui/widgets/build_progress.py:220
-msgid "Build completed successfully!"
-msgstr ""
-
-#: kernel_installer_gui/widgets/build_progress.py:224
-msgid "Build failed"
-msgstr ""
-
-#: kernel_installer_gui/widgets/history_view.py:25
-msgid "📜 Installed kernels history"
-msgstr "📜 Histórico de kernels instalados"
-
-#: kernel_installer_gui/widgets/history_view.py:54
-msgid "No kernels installed yet"
-msgstr "Nenhum kernel instalado ainda"
-
-#: kernel_installer_gui/widgets/history_view.py:79
-msgid "Current kernel"
-msgstr "Kernel atual"
-
-#: kernel_installer_gui/core/distro.py:363
-#: kernel_installer_gui/core/distro.py:365
-#: kernel_installer_gui/core/distro.py:374
-#: kernel_installer_gui/core/distro.py:376
-msgid "Unknown"
-msgstr "Desconhecido"
-
-#: kernel_installer_gui/core/profiles.py:81
 msgid "Gaming"
 msgstr "Jogos"
 
-#: kernel_installer_gui/core/profiles.py:130
+msgid "Optimized for games with low input latency, high CPU performance and better GPU management. Ideal for gamers and streaming."
+msgstr "Otimizado para jogos com baixa latencia de entrada, alto desempenho de CPU e melhor gestão de GPU. Ideal para jogadores e streaming."
+
 msgid "Audio/Video"
 msgstr "Áudio/Vídeo"
 
-#: kernel_installer_gui/core/profiles.py:179
+msgid "Low-latency kernel for audio and video production. Optimized for DAWs, video editing and professional streaming. Uses real-time preemption for ultra-low latency."
+msgstr "Kernel de baixa latency para produção de áudio e vídeo. Otimizado para DAWs, edição de vídeo e streaming profesional. Utiliza preemissão em tempo real para latência ultra-baixa."
+
 msgid "Minimal / Office"
 msgstr "Mínimo / Escritório"
 
-#: kernel_installer_gui/core/notifications.py:65
-msgid "New kernel version available"
-msgstr ""
+msgid "Lightweight kernel for office work, web browsing and general use. No unnecessary modules, low resource consumption. Ideal for older hardware or virtual machines."
+msgstr "Kernel leve para tarefas de escritório, navegação web e uso general. Sem módulos desnecessários, baixo consumo de recursos. Ideal para hardware mais antigo ou máquinas virtuais."
 
-#: kernel_installer_gui/core/notifications.py:66
-#, python-format
-msgid "Linux %(version)s is available for download."
-msgstr ""
-
-#: kernel_installer_gui/core/notifications.py:74
-msgid "Download complete"
-msgstr ""
-
-#: kernel_installer_gui/core/notifications.py:75
-#, python-format
-msgid "Linux %(version)s has been downloaded successfully."
-msgstr ""
-
-#: kernel_installer_gui/core/notifications.py:84
-msgid "Build complete"
-msgstr ""
-
-#: kernel_installer_gui/core/notifications.py:85
-#, python-format
-msgid "Linux %(version)s has been compiled and installed successfully."
-msgstr ""
-
-#: kernel_installer_gui/core/notifications.py:91
-#: kernel_installer_gui/core/kernel.py:319
-msgid "Build error"
-msgstr ""
-
-#: kernel_installer_gui/core/notifications.py:92
-#, python-format
-msgid "Compilation of Linux %(version)s has failed."
-msgstr ""
-
-#: kernel_installer_gui/core/notifications.py:100
-msgid "Reboot required"
-msgstr ""
-
-#: kernel_installer_gui/core/notifications.py:101
-msgid "Reboot the system to use the new kernel."
-msgstr ""
-
-#: kernel_installer_gui/core/kernel.py:184
-#, python-format
-msgid "Preparing download for Linux %(version)s..."
-msgstr ""
-
-#: kernel_installer_gui/core/kernel.py:188
-msgid "Error: Could not create build directory"
-msgstr ""
-
-#: kernel_installer_gui/core/kernel.py:195
-#, python-format
-msgid "Downloading linux-%(version)s.tar.xz..."
-msgstr ""
-
-#: kernel_installer_gui/core/kernel.py:202
-#, python-format
-msgid "Download error: %(error)s"
-msgstr ""
-
-#: kernel_installer_gui/core/kernel.py:205
-msgid "Download complete. Extracting..."
-msgstr ""
-
-#: kernel_installer_gui/core/kernel.py:212
-#, python-format
-msgid "Extraction error: %(error)s"
-msgstr ""
-
-#: kernel_installer_gui/core/kernel.py:215
-msgid "Extraction complete."
-msgstr ""
-
-#: kernel_installer_gui/core/kernel.py:233
-msgid "Copying current kernel configuration..."
-msgstr ""
-
-#: kernel_installer_gui/core/kernel.py:244
-#, python-format
-msgid "Applying profile: %(profile)s..."
-msgstr ""
-
-#: kernel_installer_gui/core/kernel.py:250
-#, python-format
-msgid "Warning applying profile: %(error)s"
-msgstr ""
-
-#: kernel_installer_gui/core/kernel.py:259
-msgid "Running make oldconfig..."
-msgstr ""
-
-#: kernel_installer_gui/core/kernel.py:265
-msgid "Configuration complete."
-msgstr ""
-
-#: kernel_installer_gui/core/kernel.py:281
-#, python-format
-msgid "Compiling kernel with %(cores)d cores..."
-msgstr ""
-
-#: kernel_installer_gui/core/kernel.py:302
-msgid "Generating .deb packages..."
-msgstr ""
-
-#: kernel_installer_gui/core/kernel.py:306
-msgid "Generating RPM packages..."
-msgstr ""
-
-#: kernel_installer_gui/core/kernel.py:310
-msgid "Compiling for direct installation..."
-msgstr ""
-
-#: kernel_installer_gui/core/kernel.py:324
-msgid "Compiling modules..."
-msgstr ""
-
-#: kernel_installer_gui/core/kernel.py:328
-msgid "Error compiling modules"
-msgstr ""
-
-#: kernel_installer_gui/core/kernel.py:331
-msgid "Build complete."
-msgstr ""
-
-#: kernel_installer_gui/core/kernel.py:345
-#: kernel_installer_gui/core/kernel.py:387
-msgid "Installing kernel..."
-msgstr ""
-
-#: kernel_installer_gui/core/kernel.py:354
-msgid "Installing .deb packages..."
-msgstr ""
-
-#: kernel_installer_gui/core/kernel.py:359
-#, python-format
-msgid "Installation error: %(error)s"
-msgstr ""
-
-#: kernel_installer_gui/core/kernel.py:368
-msgid "Installing RPM packages..."
-msgstr ""
-
-#: kernel_installer_gui/core/kernel.py:374
-#, python-format
-msgid "RPM installation error: %(error)s"
-msgstr ""
-
-#: kernel_installer_gui/core/kernel.py:379
-msgid "Installing modules..."
-msgstr ""
-
-#: kernel_installer_gui/core/kernel.py:384
-#, python-format
-msgid "Module installation error: %(error)s"
-msgstr ""
-
-#: kernel_installer_gui/core/kernel.py:392
-#, python-format
-msgid "Kernel installation error: %(error)s"
-msgstr ""
-
-#: kernel_installer_gui/core/kernel.py:396
-msgid "Regenerating initramfs..."
-msgstr ""
-
-#: kernel_installer_gui/core/kernel.py:401
-msgid "Warning: Error regenerating initramfs"
-msgstr ""
-
-#: kernel_installer_gui/core/kernel.py:404
-msgid "Updating bootloader..."
-msgstr ""
-
-#: kernel_installer_gui/core/kernel.py:409
-msgid "Warning: Error updating bootloader"
-msgstr ""
-
-#: kernel_installer_gui/core/kernel.py:414
-#: kernel_installer_gui/app/main_window.py:374
-msgid "Installation complete!"
-msgstr ""
-
-#: kernel_installer_gui/app/application.py:273
-#: kernel_installer_gui/app/main_window.py:51
 msgid "Kernel Installer"
 msgstr "Instalador de Kernel"
 
-#: kernel_installer_gui/app/application.py:298
-msgid "Clean build files?"
-msgstr ""
-
-#: kernel_installer_gui/app/application.py:310
-msgid "Build files deleted."
-msgstr ""
-
-#: kernel_installer_gui/app/application.py:312
-msgid "Error cleaning files."
-msgstr ""
-
-#: kernel_installer_gui/app/main_window.py:52
 msgid "by Sergi Perich & Alexia Michelle"
 msgstr "por Sergi Perich & Alexia Michelle"
 
-#: kernel_installer_gui/app/main_window.py:63
-msgid "Refresh versions (F5)"
-msgstr "Atualizar versões (F5)"
+msgid "Select kernel profile"
+msgstr "Selecionar perfil do kernel"
 
-#: kernel_installer_gui/app/main_window.py:64
-msgid "Clean build files"
-msgstr "Limpar ficheiros de compilação"
+msgid "Kernel version"
+msgstr "Versão do kernel"
 
-#: kernel_installer_gui/app/main_window.py:65
-msgid "About"
-msgstr "Sobre"
+msgid "Check for updates"
+msgstr "Procurar atualizações"
 
-#: kernel_installer_gui/app/main_window.py:66
-msgid "Quit (Ctrl+Q)"
-msgstr "Sair (Ctrl+Q)"
+msgid "<b>✓ Latest stable version</b>"
+msgstr "<b>✓ Última versión estável</b>"
 
-#: kernel_installer_gui/app/main_window.py:103
+msgid "Long-term support version (LTS)"
+msgstr "Versão de suporte de longo prazo (LTS)"
+
+msgid "Stable version"
+msgstr "Versão estável"
+
+msgid "<span foreground='orange'>⚠ Experimental version (RC)</span>"
+msgstr "<span foreground='orange'>⚠ Versão experimental (RC)</span>"
+
+msgid " (RC - Experimental)"
+msgstr " (RC - Experimental)"
+
+msgid " (Latest)"
+msgstr " (Mais recente)"
+
+msgid " (LTS)"
+msgstr " (LTS)"
+
 msgid "Kernel name (suffix)"
 msgstr "Nome do kernel (sufixo)"
 
-#: kernel_installer_gui/app/main_window.py:111
 msgid "E.g.: gaming, server, my-kernel"
 msgstr "Ex: gaming, servidor, meu-kernel"
 
-#: kernel_installer_gui/app/main_window.py:112
 msgid "This name will be added to the kernel, e.g.: 6.18.7-custom-gaming"
 msgstr "Este nome será adicionado ao kernel, ex: 6.18.7-custom-gaming"
 
-#: kernel_installer_gui/app/main_window.py:117
 msgid "Result: 6.x.x-custom-gaming (combined with profile)"
 msgstr "Resultado: 6.x.x-custom-gaming (combinado com perfil)"
 
-#: kernel_installer_gui/app/main_window.py:136
+msgid "Result: %s"
+msgstr "Resultado: %s"
+
 msgid "Distribution:"
 msgstr "Distribuição:"
 
-#: kernel_installer_gui/app/main_window.py:141
 msgid "Detecting..."
 msgstr "Detetando..."
 
-#: kernel_installer_gui/app/main_window.py:148
 msgid "Current kernel:"
 msgstr "Kernel actual:"
 
-#: kernel_installer_gui/app/main_window.py:165
 msgid "Bootloader:"
 msgstr "Carregador de arranque:"
 
-#: kernel_installer_gui/app/main_window.py:177
 msgid "Initramfs:"
 msgstr "Initramfs:"
 
-#: kernel_installer_gui/app/main_window.py:190
 msgid "📥 Download and install kernel"
 msgstr "📥 Descarregar e instalar o kernel"
 
-#: kernel_installer_gui/app/main_window.py:212
+msgid "📜 Installed kernels history"
+msgstr "📜 Histórico de kernels instalados"
+
+msgid "No kernels installed yet"
+msgstr "Nenhum kernel instalado ainda"
+
+msgid "Current kernel"
+msgstr "Kernel atual"
+
+msgid "SYSTEM LOAD"
+msgstr "CARGA DO SISTEMA"
+
+msgid "Load average:"
+msgstr "Média de carga:"
+
+msgid "Cores: %d"
+msgstr "Núcleos: %d"
+
+msgid "Ready to build"
+msgstr "Pronto para compilar"
+
+msgid "Time: %(h)02d:%(m)02d:%(s)02d"
+msgstr "Tempo: %(h)02d:%(m)02d:%(s)02d"
+
+msgid "Build completed successfully!"
+msgstr "Compilação concluída com sucesso!"
+
+msgid "Build failed"
+msgstr "Falha na compilação"
+
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: kernel_installer_gui/app/main_window.py:218
 msgid "Done"
 msgstr "Concluído"
 
-#: kernel_installer_gui/app/main_window.py:262
-msgid "Unsupported distribution"
-msgstr ""
+msgid "Preparing download for Linux %(version)s..."
+msgstr "A preparar a descarga de Linux %(version)s..."
 
-#: kernel_installer_gui/app/main_window.py:277
-msgid "Please select a kernel version."
-msgstr ""
+msgid "Error: Could not create build directory"
+msgstr "Erro: Não foi posible crear o diretório de compilação"
 
-#: kernel_installer_gui/app/main_window.py:312
-msgid "Install kernel?"
-msgstr ""
+msgid "Downloading linux-%(version)s.tar.xz..."
+msgstr "A descarregar linux-%(version)s.tar.xz..."
 
-#: kernel_installer_gui/app/main_window.py:395
+msgid "Download error: %(error)s"
+msgstr "Erro na descarga: %(error)s"
+
+msgid "Download complete. Extracting..."
+msgstr "Download concluído. A extrair..."
+
+msgid "Extraction error: %(error)s"
+msgstr "Erro na extração: %(error)s"
+
+msgid "Extraction complete."
+msgstr "Extração concluída."
+
+msgid "Copying current kernel configuration..."
+msgstr "A copiar a configuração atual do kernel..."
+
+msgid "Applying profile: %(profile)s..."
+msgstr "A aplicar perfil: %(profile)s..."
+
+msgid "Warning applying profile: %(error)s"
+msgstr "Aviso ao aplicar perfil: %(error)s"
+
+msgid "Running make oldconfig..."
+msgstr "A ejecutar make oldconfig..."
+
+msgid "Configuration complete."
+msgstr "Configuração concluída."
+
+msgid "Compiling kernel with %(cores)d cores..."
+msgstr "A compilar kernel com %(cores)d núcleos..."
+
+msgid "Generating .deb packages..."
+msgstr "A gerar pacotes .deb..."
+
+msgid "Generating RPM packages..."
+msgstr "A gerar pacotes RPM..."
+
+msgid "Compiling for direct installation..."
+msgstr "A compilar para instalação direta..."
+
+msgid "Compiling modules..."
+msgstr "A compilar módulos..."
+
+msgid "Error compiling modules"
+msgstr "Erro ao compilar módulos"
+
+msgid "Build complete."
+msgstr "Compilação concluída."
+
+msgid "Installing kernel..."
+msgstr "A instalar kernel..."
+
+msgid "Installing .deb packages..."
+msgstr "A instalar pacotes .deb..."
+
+msgid "Installation error: %(error)s"
+msgstr "Erro na instalação: %(error)s"
+
+msgid "Installing RPM packages..."
+msgstr "A instalar pacotes RPM..."
+
+msgid "RPM installation error: %(error)s"
+msgstr "Erro na instalación RPM: %(error)s"
+
+msgid "Installing modules..."
+msgstr "A instalar módulos..."
+
+msgid "Module installation error: %(error)s"
+msgstr "Erro na instalação de módulos: %(error)s"
+
+msgid "Kernel installation error: %(error)s"
+msgstr "Erro na instalación do kernel: %(error)s"
+
+msgid "Regenerating initramfs..."
+msgstr "A regenerar initramfs..."
+
+msgid "Warning: Error regenerating initramfs"
+msgstr "Aviso: Erro ao regenerar initramfs"
+
+msgid "Updating bootloader..."
+msgstr "A actualizar o gestor de arranque..."
+
+msgid "Warning: Error updating bootloader"
+msgstr "Aviso: Erro ao actualizar o gestor de arranque"
+
+msgid "Installation complete!"
+msgstr "Instalação concluída!"
+
+msgid "The kernel has been installed successfully.\n\nDo you want to reboot now to use the new kernel?"
+msgstr "O kernel foi instalado com sucesso.\n\nDeseja reiniciar agora para usar o novo kernel?"
+
+msgid "New kernel version available"
+msgstr "Nova versão do kernel disponible"
+
+msgid "Linux %(version)s is available for download."
+msgstr "O Linux %(version)s está disponible para descarregar."
+
+msgid "Download complete"
+msgstr "Download concluído"
+
+msgid "Linux %(version)s has been downloaded successfully."
+msgstr "O Linux %(version)s foi descarregado com sucesso."
+
+msgid "Build complete"
+msgstr "Compilação concluída"
+
+msgid "Linux %(version)s has been compiled and installed successfully."
+msgstr "O Linux %(version)s foi compilado e instalado con éxito."
+
+msgid "Build error"
+msgstr "Erro de compilação"
+
+msgid "Compilation of Linux %(version)s has failed."
+msgstr "A compilação de Linux %(version)s falhou."
+
+msgid "Reboot required"
+msgstr "Reinício necesario"
+
+msgid "Reboot the system to use the new kernel."
+msgstr "Reinicie o sistema para utilizar o novo kernel."
+
+msgid "Refresh versions (F5)"
+msgstr "Atualizar versões (F5)"
+
+msgid "Clean build files"
+msgstr "Limpar ficheiros de compilação"
+
+msgid "About"
+msgstr "Sobre"
+
+msgid "Quit (Ctrl+Q)"
+msgstr "Sair (Ctrl+Q)"
+
+msgid "A graphical interface for downloading, compiling and installing the Linux kernel with optimized profiles."
+msgstr "Uma interface gráfica para descarregar, compilar e instalar o kernel Linux com perfis otimizados."
+
+msgid "Clean build files?"
+msgstr "Limpar ficheiros de compilação?"
+
+msgid "All temporary files in ~/kernel_build will be deleted.\nThis will free up disk space."
+msgstr "Todos os ficheiros temporários em ~/kernel_build serán eliminados.\nIsto libertará espacio en disco."
+
+msgid "Build files deleted."
+msgstr "Ficheiros de compilação eliminados."
+
+msgid "Error cleaning files."
+msgstr "Erro ao limpiar ficheiros."
+
 msgid "Error"
-msgstr ""
+msgstr "Erro"
 
-#: kernel_installer_gui/app/main_window.py:421
-#, python-format
-msgid "Result: %s"
-msgstr "Resultado: %s"
+msgid "Unsupported distribution"
+msgstr "Distribuição não soportada"
+
+msgid "%(distro)s is not officially supported. The program might not work correctly."
+msgstr "%(distro)s não é oficialmente suportado. O programa pode não funcionar correctamente."
+
+msgid "Please select a kernel version."
+msgstr "Por favor, selecione uma versão do kernel."
+
+msgid "Install kernel?"
+msgstr "Instalar kernel?"
+
+msgid "You are about to download, compile and install:\n\n• Version: Linux %(version)s\n• Profile: %(profile)s\n\nThis process may take several hours."
+msgstr "Está prestes a descarregar, compilar e instalar:\n\n• Versão: Linux %(version)s\n• Perfil: %(profile)s\n\nEste proceso pode demorar várias horas."
+
+msgid "Unknown"
+msgstr "Desconhecido"
 
