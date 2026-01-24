@@ -1,7 +1,8 @@
 from dataclasses import dataclass, field
 from enum import Enum, auto
 from typing import Dict, List
-from ..locale.i18n import _
+# Standard gettext marker for string extraction without immediate translation
+def _(s): return s
 
 
 class ProfileType(Enum):

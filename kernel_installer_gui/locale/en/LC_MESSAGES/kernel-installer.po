@@ -94,15 +94,15 @@ msgstr "Current kernel"
 msgid "Unknown"
 msgstr "Unknown"
 
-#: kernel_installer_gui/core/profiles.py:80
+#: kernel_installer_gui/core/profiles.py:81
 msgid "Gaming"
 msgstr "Gaming"
 
-#: kernel_installer_gui/core/profiles.py:129
+#: kernel_installer_gui/core/profiles.py:130
 msgid "Audio/Video"
 msgstr "Audio/Video"
 
-#: kernel_installer_gui/core/profiles.py:178
+#: kernel_installer_gui/core/profiles.py:179
 msgid "Minimal / Office"
 msgstr "Minimal / Office"
 
@@ -367,7 +367,7 @@ msgstr "Initramfs:"
 
 #: kernel_installer_gui/app/main_window.py:190
 msgid "📥 Download and install kernel"
-msgstr "�� Download and install kernel"
+msgstr "📥 Download and install kernel"
 
 #: kernel_installer_gui/app/main_window.py:212
 msgid "Cancel"

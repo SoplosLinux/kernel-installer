@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Kernel Installer GUI - Launcher
-Copyright (C) 2025 Sergi Perich <info@soploslinux.com>
+Copyright (C) 2026 Sergi Perich <info@soploslinux.com>
 
 Run this script to start the Kernel Installer GUI.
 """

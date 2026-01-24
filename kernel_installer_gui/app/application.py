@@ -279,7 +279,7 @@ progressbar trough {
             "Sergi Perich <info@soploslinux.com>",
             "Alexia Michelle <alexia@goldendoglinux.org>"
         ])
-        about.set_copyright("© 2025 Sergi Perich & Alexia Michelle")
+        about.set_copyright("© 2026 Sergi Perich & Alexia Michelle")
         about.set_license_type(Gtk.License.GPL_3_0)
         about.set_website("https://github.com/SoplosLinux/kernell-installer")
         about.set_website_label("GitHub")

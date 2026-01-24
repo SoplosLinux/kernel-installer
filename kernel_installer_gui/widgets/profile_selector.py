@@ -36,7 +36,7 @@ class ProfileCard(Gtk.RadioButton):
         box.pack_start(icon, False, False, 0)
         
         # Name
-        name_label = Gtk.Label(label=profile.name)
+        name_label = Gtk.Label(label=_(profile.name))
         name_label.get_style_context().add_class('profile-name')
         name_label.set_halign(Gtk.Align.CENTER)
         box.pack_start(name_label, False, False, 0)
