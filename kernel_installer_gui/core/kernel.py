@@ -283,6 +283,11 @@ class KernelManager:
         cmd = f"sed -i 's/^CONFIG_LOCALVERSION=.*/CONFIG_LOCALVERSION=\"{full_tag}\"/' .config"
         run_command(cmd, cwd=source_dir)
         
+        # Disable system trusted keys that cause build failure on Debian
+        # (they require canonical certs that aren't in the source tree)
+        run_command("./scripts/config --set-str SYSTEM_TRUSTED_KEYS \"\"", cwd=source_dir)
+        run_command("./scripts/config --set-str SYSTEM_REVOCATION_KEYS \"\"", cwd=source_dir)
+        
         self._report_progress(_("Running make oldconfig..."), 28)
         
         # Run oldconfig to handle new options
