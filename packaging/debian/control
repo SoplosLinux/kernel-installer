@@ -3,11 +3,11 @@ Version: 1.0.0
 Section: utils
 Priority: optional
 Architecture: all
-Depends: python3, python3-gi, gir1.2-gtk-3.0, wget, binutils, coreutils, build-essential, flex, bison, libssl-dev, libelf-dev, bc, fakeroot, rsync, kmod, dwarves, cpio, linux-libc-dev, libncurses-dev
+Depends: python3, python3-gi, gir1.2-gtk-3.0, wget, binutils, coreutils, build-essential, flex, bison, libssl-dev, libelf-dev, bc, fakeroot, rsync, kmod, dwarves, cpio, linux-libc-dev, libncurses-dev, libncursesw5-dev, pkg-config, gettext
 Maintainer: Sergi Perich <info@soploslinux.com>
 Description: Kernel Installer GUI for Linux
-  Graphical interface for downloading, compiling and installing Linux kernels.
-  .
-  Kernel Installer GUI allows users to easily manage Linux kernel versions,
-  apply optimization profiles (Gaming, Audio/Video, Office) and install them
-  safely in Debian, Ubuntu, Fedora and Arch Linux.
+ Graphical interface for downloading, compiling and installing Linux kernels.
+ .
+ Kernel Installer GUI allows users to easily manage Linux kernel versions,
+ apply optimization profiles (Gaming, Audio/Video, Office) and install them
+ safely in Debian, Ubuntu, Fedora and Arch Linux.

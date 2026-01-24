@@ -16,14 +16,18 @@ Requires:       flex
 Requires:       bison
 Requires:       openssl-devel
 Requires:       elfutils-libelf-devel
+Requires:       bc
 Requires:       rsync
 Requires:       kmod
 Requires:       dwarves
 Requires:       cpio
 Requires:       kernel-headers
+Requires:       pkgconfig
+Requires:       ncurses-devel
 Requires:       make
 Requires:       gcc
 Requires:       gcc-c++
+Requires:       gettext
 
 %description
 Kernel Installer GUI allows users to easily manage Linux kernel versions,
