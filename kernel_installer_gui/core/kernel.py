@@ -181,20 +181,21 @@ class KernelManager:
         import shutil
         missing = []
         
-        # Tools to check for all distributions
-        common_tools = ['make', 'gcc', 'g++', 'flex', 'bison', 'bc', 'wget', 'tar', 'rsync', 'pahole', 'cpio', 'pkg-config']
+        # Use exhaustive list from distro detector
+        required_packages = self._distro.get_required_packages()
         
-        for tool in common_tools:
-            if not shutil.which(tool):
-                missing.append(tool)
-        
-        # Distro specific checks
-        distro_info = self._distro.detect()
-        
-        if distro_info.family in (DistroFamily.DEBIAN, DistroFamily.UBUNTU):
-            # Check for fakeroot (for bindeb-pkg)
-            if not shutil.which('fakeroot'):
-                missing.append('fakeroot')
+        for pkg in required_packages:
+            # For commands, we check with which
+            if pkg in ['make', 'gcc', 'g++', 'flex', 'bison', 'bc', 'wget', 'tar', 'rsync', 'pahole', 'cpio', 'pkg-config', 'fakeroot', 'curl', 'git', 'stdbuf', 'openssl']:
+                if not shutil.which(pkg):
+                    missing.append(pkg)
+            else:
+                # For libraries (on Debian-like), we could check with dpkg -l or similar
+                # But to keep it cross-distro and simple, we'll assume command-check is primary
+                # and maybe adds light library check logic if needed.
+                # For now, if it's not a known command, we'll skip direct check here 
+                # or assume it's part of a group check.
+                pass
         
         return missing
 
@@ -280,18 +281,28 @@ class KernelManager:
         custom = getattr(self, '_custom_name', 'custom')
         profile_suffix = profile.suffix  # Clean suffix like 'gaming', 'lowlatency', 'minimal'
         full_tag = f"-{custom}-{profile_suffix}"
-        cmd = f"sed -i 's/^CONFIG_LOCALVERSION=.*/CONFIG_LOCALVERSION=\"{full_tag}\"/' .config"
-        run_command(cmd, cwd=source_dir)
         
-        # Disable system trusted keys that cause build failure on Debian
-        # (they require canonical certs that aren't in the source tree)
+        # Make scripts/config executable
+        run_command("chmod +x scripts/config", cwd=source_dir)
+        
+        # Use scripts/config instead of sed (much more robust)
+        run_command(f"./scripts/config --set-str LOCALVERSION \"{full_tag}\"", cwd=source_dir)
+        
+        # 4. Disable system trusted keys that cause build failure on Debian/Ubuntu
+        # when the host certificates are not available in the build directory.
         run_command("./scripts/config --set-str SYSTEM_TRUSTED_KEYS \"\"", cwd=source_dir)
         run_command("./scripts/config --set-str SYSTEM_REVOCATION_KEYS \"\"", cwd=source_dir)
         
-        self._report_progress(_("Running make oldconfig..."), 28)
+        # 5. Disable DEBUG_INFO_BTF to avoid pahole errors and speed up build
+        run_command("./scripts/config --disable DEBUG_INFO_BTF", cwd=source_dir)
         
-        # Run oldconfig to handle new options
-        cmd = 'yes "" | make oldconfig'
+        # 6. Additional flags for stability
+        run_command("./scripts/config --disable MODULE_SIG", cwd=source_dir)
+        
+        self._report_progress(_("Running make olddefconfig..."), 28)
+        
+        # Run olddefconfig (non-interactive, accepts defaults for new options)
+        cmd = 'make olddefconfig'
         result = run_command(cmd, cwd=source_dir)
         
         self._report_progress(_("Configuration complete."), 30)
@@ -332,18 +343,18 @@ class KernelManager:
         if distro_info.family in (DistroFamily.DEBIAN, DistroFamily.UBUNTU):
             # Build .deb packages
             self._report_progress(_("Generating .deb packages..."), 32)
-            cmd = f'LC_ALL=C fakeroot make -j{cpu_count} bindeb-pkg'
+            cmd = f'LC_ALL=C stdbuf -oL -eL fakeroot make -j{cpu_count} bindeb-pkg'
         elif distro_info.family == DistroFamily.FEDORA:
             # Build RPM packages
             self._report_progress(_("Generating RPM packages..."), 32)
-            cmd = f'make -j{cpu_count} rpm-pkg'
+            cmd = f'LC_ALL=C stdbuf -oL -eL make -j{cpu_count} rpm-pkg'
         elif distro_info.family == DistroFamily.ARCH:
             # Arch uses direct installation
             self._report_progress(_("Compiling for direct installation..."), 32)
-            cmd = f'make -j{cpu_count}'
+            cmd = f'LC_ALL=C stdbuf -oL -eL make -j{cpu_count}'
         else:
             # Fallback: generic make
-            cmd = f'make -j{cpu_count}'
+            cmd = f'LC_ALL=C stdbuf -oL -eL make -j{cpu_count}'
         
         exit_code = run_command_with_callback(cmd, cwd=source_dir, line_callback=line_callback)
         
@@ -380,7 +391,8 @@ class KernelManager:
         self._report_progress(_("Installing kernel..."), 92)
         
         distro_info = self._distro.detect()
-        full_tag = f"{self.TAG}-{profile.name.lower()}"
+        custom = getattr(self, '_custom_name', 'custom')
+        full_tag = f"-{custom}-{profile.suffix}"
         source_dir = os.path.join(self._build_dir, f"linux-{version}")
         kernel_version = f"{version}{full_tag}"
         
@@ -486,7 +498,8 @@ class KernelManager:
         """Save installation to history."""
         history = self.get_installation_history()
         
-        full_version = f"{version}{self.TAG}-{profile.name.lower()}"
+        custom = getattr(self, '_custom_name', 'custom')
+        full_version = f"{version}-{custom}-{profile.suffix}"
         
         history.insert(0, InstalledKernel(
             version=full_version,

@@ -29,6 +29,13 @@ Requires:       gcc
 Requires:       gcc-c++
 Requires:       gettext
 Requires:       fakeroot
+Requires:       newt
+Requires:       git
+Requires:       tar
+Requires:       xz
+Requires:       curl
+Requires:       openssl
+Requires:       coreutils
 
 %description
 Kernel Installer GUI allows users to easily manage Linux kernel versions,

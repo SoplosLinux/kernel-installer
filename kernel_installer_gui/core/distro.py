@@ -279,6 +279,44 @@ class DistroDetector:
         else:
             return 'apt'  # Default fallback
     
+    def get_required_packages(self) -> list[str]:
+        """
+        Get exhaustive list of required packages for building kernels
+        based on the detected distribution family.
+        """
+        info = self.detect()
+        
+        # Family-based dependency mapping
+        deps = {
+            DistroFamily.DEBIAN: [
+                'build-essential', 'libncurses-dev', 'pkg-config', 'libncursesw5-dev', 
+                'bison', 'flex', 'libssl-dev', 'libelf-dev', 'bc', 'wget', 'tar', 
+                'xz-utils', 'gettext', 'libc6-dev', 'fakeroot', 'curl', 'git', 
+                'debhelper', 'libdw-dev', 'rsync', 'locales', 'dwarves', 'kmod', 
+                'cpio'
+            ],
+            DistroFamily.UBUNTU: [
+                'build-essential', 'libncurses-dev', 'pkg-config', 'libncursesw5-dev', 
+                'bison', 'flex', 'libssl-dev', 'libelf-dev', 'bc', 'wget', 'tar', 
+                'xz-utils', 'gettext', 'fakeroot', 'curl', 'git', 'debhelper', 
+                'libdw-dev', 'rsync', 'locales', 'dwarves', 'kmod', 'cpio', 
+                'mokutil', 'openssl'
+            ],
+            DistroFamily.FEDORA: [
+                'gcc', 'make', 'ncurses-devel', 'bison', 'flex', 'openssl-devel', 
+                'elfutils-libelf-devel', 'rpm-build', 'newt', 'curl', 'git', 
+                'wget', 'tar', 'xz', 'dwarves', 'pkgconfig', 'bc', 'rsync', 
+                'kmod', 'cpio'
+            ],
+            DistroFamily.ARCH: [
+                'base-devel', 'bc', 'rsync', 'wget', 'tar', 'xz', 'libelf', 
+                'pahole', 'kmod', 'cpio', 'openssl', 'ncurses'
+            ]
+        }
+        
+        # Soplos Linux and GoldenDog are handled via DEBIAN family
+        return deps.get(info.family, deps[DistroFamily.DEBIAN])
+
     def get_install_command(self, packages: list[str]) -> str:
         """Get the command to install packages."""
         info = self.detect()
