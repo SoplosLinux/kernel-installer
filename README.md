@@ -1,60 +1,70 @@
-# kernelinstall
-Downloads, configures, compiles and installs the latest stable kernel from kernel.org
+# Kernel Installer
 
-## Running it:
+A graphical interface for downloading, compiling, and installing the Linux kernel with optimized profiles.
 
- * 1 Clone the repository
- * 2 ```cd kernelinstall```
- * 3 ```./kernel-installer```
+![Kernel Installer Icon](kernel_installer_gui/assets/icons/kernel-installer-128.png)
 
-## Compiling it:
+## Authors
 
- * 1 Clone the repository
- * 2 ```cd kernelinstall```
- * 3 run the following:```bash compilar.sh```
+- **Sergi Perich** <info@soploslinux.com>
+- **Alexia Michelle** <alexia@goldendoglinux.org>
 
-**Note:** compilar.sh only works for debian and ubuntu-based distros for now. If you want to compile it on other distros, you will need to do it manually.
-```cd kernelinstall; make && sudo make install```
+## Features
 
-## Supported Distros:
+- Download kernels directly from kernel.org (stable, LTS, RC)
+- Optimized profiles: Gaming, Audio/Video, Minimal
+- Multi-distro support: Debian, Ubuntu, Fedora, Arch
+- Auto-detection of bootloader (GRUB, systemd-boot, rEFInd)
+- Auto-detection of initramfs tool (dracut, initramfs-tools, mkinitcpio)
+- Custom kernel naming
+- i18n support (English, Spanish, French, Portuguese, German, Italian, Romanian, Russian)
+- Desktop notifications
 
- * Debian 13
- * Debian 12
- * MX Linux
- * Linux Mint LMDE
- * Linux Mint
- * Ubuntu
- * ElementaryOS
- * PopOS!
+## Requirements
 
-## What's New?
+- Python 3.10+
+- GTK 3.0
+- PyGObject
 
-Read the changelog [https://cdn.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.17.8](https://cdn.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.17.8)
+### Debian/Ubuntu
 
-## Questions, reporting problems, etc.
+```bash
+sudo apt install python3-gi python3-gi-cairo gir1.2-gtk-3.0 gir1.2-notify-0.7
+```
 
-Read answered existing questions, bug reports and or create your own at [Issues](https://github.com/alexiarstein/kernelinstall/issues?q=is%3Aissue) section of the repository.
+### Fedora
 
-## Language Support
+```bash
+sudo dnf install python3-gobject gtk3
+```
 
- * English
- * Spanish
- * Italian (Experimental)
+### Arch
 
+```bash
+sudo pacman -S python-gobject gtk3
+```
 
-This is a simple tool that fetches the latest stable kernel release from [kernel.org](https://kernel.org)
-configures it for debian, compiles and installs it.
+## Usage
 
-For now it only supports debian or ubuntu based distros. Support for fedora, RHEL, RockyLinux, Almalinux and Oracle will be ready soon.
+```bash
+# From source directory
+./bin/kernel-installer
 
--- Alexia.
+# Or using Python
+python3 main.py
+```
 
-## DONATE / DONAR AL PROYECTO
+## Keyboard Shortcuts
 
-Si deseas apoyar estos desarrollos libres e independientes y querés regalarme un cafecito podés hacer una donación privada con el siguiente QR. 
+| Shortcut | Action           |
+| -------- | ---------------- |
+| Ctrl+Q   | Quit             |
+| F5       | Refresh versions |
 
-![QR Binance](https://github.com/alexiarstein/kernelinstall.github.io/blob/main/IMG_3213.png)
+## License
 
-Como las donaciones son anónimas (no se quien dona que cosa ni veo tu información personal) podés abrir un issue en el proyecto arriba con titulo donación y lo agrego a la lista de donors (Opcional)
+GPL-3.0 - See [LICENSE](LICENSE)
 
+## Links
 
+- [GitHub Repository](https://github.com/alexiarstein/kernelinstall)

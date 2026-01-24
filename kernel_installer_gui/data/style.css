@@ -1,0 +1,112 @@
+/* Kernel Installer GUI Styles */
+/* Uses GTK3 theme variables for automatic light/dark adaptation */
+
+/* Profile Cards */
+.profile-card {
+  padding: 12px;
+  border-radius: 12px;
+  border: 2px solid alpha(@theme_fg_color, 0.1);
+  background: alpha(@theme_bg_color, 0.5);
+  transition: all 200ms ease;
+  min-width: 160px;
+}
+
+.profile-card:hover {
+  border-color: alpha(@theme_selected_bg_color, 0.5);
+  background: alpha(@theme_selected_bg_color, 0.1);
+}
+
+.profile-card:checked {
+  border-color: @theme_selected_bg_color;
+  background: alpha(@theme_selected_bg_color, 0.15);
+  box-shadow: 0 0 0 3px alpha(@theme_selected_bg_color, 0.2);
+}
+
+.profile-name {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.profile-description {
+  font-size: 0.9em;
+  opacity: 0.8;
+}
+
+/* Section Headers */
+.section-header {
+  font-weight: bold;
+  font-size: 1.05em;
+  opacity: 0.9;
+}
+
+/* Install Button */
+.install-button {
+  padding: 12px 24px;
+  font-size: 1.1em;
+  font-weight: bold;
+  border-radius: 8px;
+}
+
+/* History List */
+.history-list {
+  background: transparent;
+}
+
+.history-list row {
+  border-radius: 6px;
+  margin: 2px 0;
+}
+
+.history-list row:hover {
+  background: alpha(@theme_fg_color, 0.05);
+}
+
+.current-kernel {
+  font-weight: bold;
+}
+
+.profile-badge {
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.85em;
+  background: alpha(@theme_selected_bg_color, 0.2);
+}
+
+/* Load Indicator */
+.load-percentage {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+/* Level Bar Colors */
+levelbar block.low {
+  background-color: #4caf50;
+}
+
+levelbar block.high {
+  background-color: #ff9800;
+}
+
+levelbar block.full {
+  background-color: #f44336;
+}
+
+/* Dim Labels */
+.dim-label {
+  opacity: 0.7;
+  font-size: 0.9em;
+}
+
+/* Error Text */
+.error {
+  color: #f44336;
+}
+
+/* Progress Bar */
+progressbar progress {
+  border-radius: 4px;
+}
+
+progressbar trough {
+  border-radius: 4px;
+}
