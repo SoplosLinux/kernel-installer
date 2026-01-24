@@ -5,7 +5,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: pt\n"
 
-#: kernel_installer_gui/widgets/profile_selector.py:74
+#: kernel_installer_gui/widgets/profile_selector.py:68
 msgid "Select kernel profile"
 msgstr "Selecionar perfil do kernel"
 
@@ -113,7 +113,7 @@ msgstr "Nova versão do kernel disponible"
 #: kernel_installer_gui/core/notifications.py:66
 #, python-format
 msgid "Linux %(version)s is available for download."
-msgstr "O Linux %(version)s está disponível para descarregar."
+msgstr "O Linux %(version)s está disponible para descarregar."
 
 #: kernel_installer_gui/core/notifications.py:74
 msgid "Download complete"
@@ -145,7 +145,7 @@ msgstr "A compilação de Linux %(version)s falhou."
 
 #: kernel_installer_gui/core/notifications.py:100
 msgid "Reboot required"
-msgstr "Reinício necessário"
+msgstr "Reinício necesario"
 
 #: kernel_installer_gui/core/notifications.py:101
 msgid "Reboot the system to use the new kernel."
@@ -220,7 +220,7 @@ msgstr "A gerar pacotes RPM..."
 
 #: kernel_installer_gui/core/kernel.py:310
 msgid "Compiling for direct installation..."
-msgstr "A compilar para instalação direta..."
+msgstr "A compilar para instalação directa..."
 
 #: kernel_installer_gui/core/kernel.py:324
 msgid "Compiling modules..."
@@ -246,7 +246,7 @@ msgstr "A instalar pacotes .deb..."
 #: kernel_installer_gui/core/kernel.py:359
 #, python-format
 msgid "Installation error: %(error)s"
-msgstr "Erro na instalação: %(error)s"
+msgstr "Erro na instalación: %(error)s"
 
 #: kernel_installer_gui/core/kernel.py:368
 msgid "Installing RPM packages..."
@@ -269,7 +269,7 @@ msgstr "Erro na instalação de módulos: %(error)s"
 #: kernel_installer_gui/core/kernel.py:392
 #, python-format
 msgid "Kernel installation error: %(error)s"
-msgstr "Erro na instalación do kernel: %(error)s"
+msgstr "Erro na instalação do kernel: %(error)s"
 
 #: kernel_installer_gui/core/kernel.py:396
 msgid "Regenerating initramfs..."
@@ -288,7 +288,7 @@ msgid "Warning: Error updating bootloader"
 msgstr "Aviso: Erro ao actualizar o gestor de arranque"
 
 #: kernel_installer_gui/core/kernel.py:414
-#: kernel_installer_gui/app/main_window.py:379
+#: kernel_installer_gui/app/main_window.py:374
 msgid "Installation complete!"
 msgstr "Instalação concluída!"
 
@@ -313,87 +313,87 @@ msgstr "Erro ao limpiar ficheiros."
 msgid "by Sergi Perich & Alexia Michelle"
 msgstr "por Sergi Perich & Alexia Michelle"
 
-#: kernel_installer_gui/app/main_window.py:68
+#: kernel_installer_gui/app/main_window.py:63
 msgid "Refresh versions (F5)"
 msgstr "Atualizar versões (F5)"
 
-#: kernel_installer_gui/app/main_window.py:69
+#: kernel_installer_gui/app/main_window.py:64
 msgid "Clean build files"
 msgstr "Limpar ficheiros de compilação"
 
-#: kernel_installer_gui/app/main_window.py:70
+#: kernel_installer_gui/app/main_window.py:65
 msgid "About"
 msgstr "Sobre"
 
-#: kernel_installer_gui/app/main_window.py:71
+#: kernel_installer_gui/app/main_window.py:66
 msgid "Quit (Ctrl+Q)"
 msgstr "Sair (Ctrl+Q)"
 
-#: kernel_installer_gui/app/main_window.py:108
+#: kernel_installer_gui/app/main_window.py:103
 msgid "Kernel name (suffix)"
 msgstr "Nome do kernel (sufixo)"
 
-#: kernel_installer_gui/app/main_window.py:116
+#: kernel_installer_gui/app/main_window.py:111
 msgid "E.g.: gaming, server, my-kernel"
 msgstr "Ex: gaming, servidor, meu-kernel"
 
-#: kernel_installer_gui/app/main_window.py:117
+#: kernel_installer_gui/app/main_window.py:112
 msgid "This name will be added to the kernel, e.g.: 6.18.7-custom-gaming"
-msgstr "Este nome será adicionado ao kernel, ex: 6.18.7-custom-gaming"
+msgstr "Este nombre será adicionado ao kernel, ex: 6.18.7-custom-gaming"
 
-#: kernel_installer_gui/app/main_window.py:122
+#: kernel_installer_gui/app/main_window.py:117
 msgid "Result: 6.x.x-custom-gaming (combined with profile)"
-msgstr "Resultado: 6.x.x-custom-gaming (combinado con perfil)"
+msgstr "Resultado: 6.x.x-custom-gaming (combinado com perfil)"
 
-#: kernel_installer_gui/app/main_window.py:141
+#: kernel_installer_gui/app/main_window.py:136
 msgid "Distribution:"
 msgstr "Distribuição:"
 
-#: kernel_installer_gui/app/main_window.py:146
+#: kernel_installer_gui/app/main_window.py:141
 msgid "Detecting..."
 msgstr "Detetando..."
 
-#: kernel_installer_gui/app/main_window.py:153
+#: kernel_installer_gui/app/main_window.py:148
 msgid "Current kernel:"
-msgstr "Kernel atual:"
+msgstr "Kernel actual:"
 
-#: kernel_installer_gui/app/main_window.py:170
+#: kernel_installer_gui/app/main_window.py:165
 msgid "Bootloader:"
 msgstr "Carregador de arranque:"
 
-#: kernel_installer_gui/app/main_window.py:182
+#: kernel_installer_gui/app/main_window.py:177
 msgid "Initramfs:"
 msgstr "Initramfs:"
 
-#: kernel_installer_gui/app/main_window.py:195
+#: kernel_installer_gui/app/main_window.py:190
 msgid "📥 Download and install kernel"
 msgstr "📥 Descarregar e instalar o kernel"
 
-#: kernel_installer_gui/app/main_window.py:217
+#: kernel_installer_gui/app/main_window.py:212
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: kernel_installer_gui/app/main_window.py:223
+#: kernel_installer_gui/app/main_window.py:218
 msgid "Done"
 msgstr "Concluído"
 
-#: kernel_installer_gui/app/main_window.py:267
+#: kernel_installer_gui/app/main_window.py:262
 msgid "Unsupported distribution"
-msgstr "Distribuição não suportada"
+msgstr "Distribuição não soportada"
 
-#: kernel_installer_gui/app/main_window.py:282
+#: kernel_installer_gui/app/main_window.py:277
 msgid "Please select a kernel version."
 msgstr "Por favor, selecione uma versão do kernel."
 
-#: kernel_installer_gui/app/main_window.py:317
+#: kernel_installer_gui/app/main_window.py:312
 msgid "Install kernel?"
 msgstr "Instalar kernel?"
 
-#: kernel_installer_gui/app/main_window.py:400
+#: kernel_installer_gui/app/main_window.py:395
 msgid "Error"
 msgstr "Erro"
 
-#: kernel_installer_gui/app/main_window.py:426
+#: kernel_installer_gui/app/main_window.py:421
 #, python-format
 msgid "Result: %s"
 msgstr "Resultado: %s"
