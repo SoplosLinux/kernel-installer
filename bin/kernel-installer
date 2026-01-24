@@ -14,6 +14,7 @@ if [ -d "$PACKAGE_DIR" ]; then
     exec python3 -m kernel_installer_gui "$@"
 elif [ -d "/usr/share/kernel-installer" ]; then
     # Installed system-wide
+    export PYTHONPATH="/usr/share/kernel-installer:$PYTHONPATH"
     exec python3 -m kernel_installer_gui "$@"
 elif [ -d "$HOME/.local/share/kernel-installer" ]; then
     # Installed for user

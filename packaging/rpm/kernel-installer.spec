@@ -25,14 +25,15 @@ mkdir -p %{buildroot}%{_datadir}/applications
 mkdir -p %{buildroot}%{_datadir}/metainfo
 mkdir -p %{buildroot}%{_datadir}/icons/hicolor/scalable/apps
 
-cp main.py %{buildroot}%{_bindir}/kernel-installer-gui
-cp -r kernel_installer_gui/* %{buildroot}%{_datadir}/kernel-installer/
+cp bin/kernel-installer %{buildroot}%{_bindir}/kernel-installer
+chmod +x %{buildroot}%{_bindir}/kernel-installer
+cp -r kernel_installer_gui/ %{buildroot}%{_datadir}/kernel-installer/
 cp kernel_installer_gui/data/kernel-installer.desktop %{buildroot}%{_datadir}/applications/
 cp kernel_installer_gui/data/io.github.alexiarstein.kernelinstall.metainfo.xml %{buildroot}%{_datadir}/metainfo/
 cp kernel_installer_gui/assets/icons/kernel-installer.png %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/
 
 %files
-%{_bindir}/kernel-installer-gui
+%{_bindir}/kernel-installer
 %{_datadir}/kernel-installer/
 %{_datadir}/applications/kernel-installer.desktop
 %{_datadir}/metainfo/io.github.alexiarstein.kernelinstall.metainfo.xml
