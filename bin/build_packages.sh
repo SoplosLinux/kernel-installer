@@ -58,7 +58,19 @@ tar -czf "$BUILD_DIR/${APP_NAME}-${VERSION}.tar.gz" \
 
 echo "✅ Source tarball created."
 
-# --- 3. RPM and Arch instructions ---
+# --- 3. Organized Releases ---
+echo "🔹 Organizing releases..."
+mkdir -p releases
+rm -rf releases/*
+
+# Copy packages to releases
+[ -f "${APP_NAME}_${VERSION}_all.deb" ] && mv "${APP_NAME}_${VERSION}_all.deb" releases/
+[ -f "$BUILD_DIR/${APP_NAME}-${VERSION}.tar.gz" ] && cp "$BUILD_DIR/${APP_NAME}-${VERSION}.tar.gz" releases/
+
+echo ""
+echo "✅ All packages are located in 'releases/' directory:"
+ls -lh releases/
+
 echo ""
 echo "--- Build Info ---"
 echo "RPM: Use 'rpmbuild -ba packaging/rpm/kernel-installer.spec' (needs rpm-build tools)"
