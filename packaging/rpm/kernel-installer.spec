@@ -16,7 +16,10 @@ Requires:       flex
 Requires:       bison
 Requires:       openssl-devel
 Requires:       elfutils-libelf-devel
-Requires:       bc
+Requires:       rsync
+Requires:       kmod
+Requires:       dwarves
+Requires:       cpio
 Requires:       make
 Requires:       gcc
 Requires:       gcc-c++

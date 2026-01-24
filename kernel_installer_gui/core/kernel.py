@@ -182,7 +182,7 @@ class KernelManager:
         missing = []
         
         # Tools to check for all distributions
-        common_tools = ['make', 'gcc', 'g++', 'flex', 'bison', 'bc', 'wget', 'tar']
+        common_tools = ['make', 'gcc', 'g++', 'flex', 'bison', 'bc', 'wget', 'tar', 'rsync', 'pahole', 'cpio']
         
         for tool in common_tools:
             if not shutil.which(tool):

@@ -3,7 +3,7 @@ Version: 1.0.0
 Section: utils
 Priority: optional
 Architecture: all
-Depends: python3, python3-gi, gir1.2-gtk-3.0, gir1.2-adw-1, wget, binutils, coreutils, build-essential, flex, bison, libssl-dev, libelf-dev, bc, fakeroot
+Depends: python3, python3-gi, gir1.2-gtk-3.0, wget, binutils, coreutils, build-essential, flex, bison, libssl-dev, libelf-dev, bc, fakeroot, rsync, kmod, dwarves, cpio
 Maintainer: Sergi Perich <info@soploslinux.com>
 Description: Kernel Installer GUI for Linux
   Graphical interface for downloading, compiling and installing Linux kernels.

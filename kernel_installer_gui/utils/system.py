@@ -51,6 +51,7 @@ def run_command_with_callback(cmd: str, cwd: str = None,
     Returns:
         Exit code of the command
     """
+    import sys
     process = subprocess.Popen(
         cmd,
         shell=True,
@@ -61,9 +62,12 @@ def run_command_with_callback(cmd: str, cwd: str = None,
         bufsize=1
     )
     
-    if line_callback:
-        for line in iter(process.stdout.readline, ''):
-            line_callback(line.rstrip('\n'))
+    for line in iter(process.stdout.readline, ''):
+        line = line.rstrip('\n')
+        # Print to terminal so user can see what's happening
+        print(line, file=sys.stderr, flush=True)
+        if line_callback:
+            line_callback(line)
     
     process.wait()
     return process.returncode
