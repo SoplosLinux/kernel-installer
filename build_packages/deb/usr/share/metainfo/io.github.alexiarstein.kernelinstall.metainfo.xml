@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.github.alexiarstein.kernelinstall</id>
+  
+  <name>Kernel Installer</name>
+  <name xml:lang="es">Instalador de Kernel</name>
+  
+  <summary>Download, compile and install the latest Linux kernel</summary>
+  <summary xml:lang="es">Descarga, compila e instala el kernel Linux más reciente</summary>
+  <summary xml:lang="fr">Télécharger, compiler et installer le dernier noyau Linux</summary>
+  <summary xml:lang="pt">Descarregar, compilar e instalar o último kernel Linux</summary>
+  <summary xml:lang="de">Den neuesten Linux-Kernel herunterladen, kompilieren und installieren</summary>
+  <summary xml:lang="it">Scarica, compila e installa l'ultimo kernel Linux</summary>
+  <summary xml:lang="ro">Descărcați, compilați și instalați cel mai recent nucleu Linux</summary>
+  <summary xml:lang="ru">Скачивание, компиляция и установка последней версии ядра Linux</summary>
+  
+  <developer id="io.github.alexiarstein">
+    <name>Alexia Michelle &amp; Sergi Perich</name>
+  </developer>
+  
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  
+  <description>
+    <p>
+      Kernel Installer is a graphical tool that simplifies the process of downloading,
+      compiling, and installing custom Linux kernels from kernel.org.
+    </p>
+    <p xml:lang="es">
+      Kernel Installer es una herramienta gráfica que simplifica el proceso de descargar,
+      compilar e instalar kernels Linux personalizados desde kernel.org.
+    </p>
+    <p xml:lang="fr">
+      Kernel Installer est un outil graphique qui simplifie le processus de téléchargement,
+      de compilation et d'installation de noyaux Linux personnalisés à partir de kernel.org.
+    </p>
+    <p xml:lang="pt">
+      O Kernel Installer é uma ferramenta gráfica que simplifica o processo de descarregar,
+      compilar e instalar kernels Linux personalizados a partir do kernel.org.
+    </p>
+    <p xml:lang="de">
+      Kernel Installer ist ein grafisches Tool, das den Prozess des Herunterladens,
+      Kompilierens und Installierens von angepassten Linux-Kerneln von kernel.org vereinfacht.
+    </p>
+    <p xml:lang="it">
+      Kernel Installer è uno strumento grafico che semplifica il processo di download,
+      compilazione e installazione di kernel Linux personalizzati da kernel.org.
+    </p>
+    <p xml:lang="ro">
+      Kernel Installer este un instrument grafic care simplifică procesul de descărcare,
+      compilare și instalare a nucleelor Linux personalizate de pe kernel.org.
+    </p>
+    <p xml:lang="ru">
+      Kernel Installer — это графический инструмент, упрощающий процесс загрузки,
+      компиляции и установки пользовательских ядер Linux с сайта kernel.org.
+    </p>
+
+  
+  <launchable type="desktop-id">kernel-installer.desktop</launchable>
+  
+  <url type="homepage">https://github.com/alexiarstein/kernelinstall</url>
+  <url type="bugtracker">https://github.com/alexiarstein/kernelinstall/issues</url>
+  <url type="vcs-browser">https://github.com/alexiarstein/kernelinstall</url>
+  
+  <categories>
+    <category>System</category>
+    <category>Settings</category>
+  </categories>
+  
+  <keywords>
+    <keyword>kernel</keyword>
+    <keyword>linux</keyword>
+    <keyword>compile</keyword>
+    <keyword>install</keyword>
+    <keyword>update</keyword>
+    <keyword>build</keyword>
+  </keywords>
+  <keywords xml:lang="es">
+    <keyword>kernel</keyword>
+    <keyword>linux</keyword>
+    <keyword>compilar</keyword>
+    <keyword>instalar</keyword>
+    <keyword>actualizar</keyword>
+    <keyword>construir</keyword>
+  </keywords>
+  
+  <provides>
+    <binary>kernel-installer-gui</binary>
+    <binary>kernel-installer</binary>
+  </provides>
+  
+  <requires>
+    <display_length compare="ge">768</display_length>
+  </requires>
+  
+  <supports>
+    <control>pointing</control>
+    <control>keyboard</control>
+  </supports>
+  
+  <branding>
+    <color type="primary" scheme_preference="light">#3584e4</color>
+    <color type="primary" scheme_preference="dark">#1a5fb4</color>
+  </branding>
+  
+  <releases>
+    <release version="1.0.0" date="2025-01-24">
+      <description>
+        <p>Initial release of Kernel Installer GUI</p>
+        <ul>
+          <li>GTK3 graphical interface</li>
+          <li>Kernel profiles: Gaming, Audio/Video, Minimal</li>
+          <li>Support for Debian, Ubuntu, Fedora, and Arch Linux</li>
+          <li>Bootloader detection (GRUB2, systemd-boot, rEFInd, LILO, Syslinux)</li>
+          <li>Initramfs detection (initramfs-tools, dracut, mkinitcpio)</li>
+          <li>All kernel versions from kernel.org</li>
+          <li>Custom kernel naming</li>
+          <li>i18n support (English, Spanish)</li>
+          <li>Desktop notifications</li>
+          <li>Installation history tracking</li>
+        </ul>
+      </description>
+    </release>
+  </releases>
+  
+  <content_rating type="oars-1.1" />
+  
+</component>

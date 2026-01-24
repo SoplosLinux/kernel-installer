@@ -12,6 +12,14 @@ Requires:       python3-gobject
 Requires:       gtk3
 Requires:       wget
 Requires:       binutils
+Requires:       flex
+Requires:       bison
+Requires:       openssl-devel
+Requires:       elfutils-libelf-devel
+Requires:       bc
+Requires:       make
+Requires:       gcc
+Requires:       gcc-c++
 
 %description
 Kernel Installer GUI allows users to easily manage Linux kernel versions,
