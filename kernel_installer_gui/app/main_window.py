@@ -51,12 +51,7 @@ class KernelInstallerWindow(Gtk.ApplicationWindow):
         header.set_title(_("Kernel Installer"))
         header.set_subtitle(_("by Sergi Perich & Alexia Michelle"))
         
-        # App icon
-        try:
-            icon = Gtk.Image.new_from_icon_name("kernel-installer", Gtk.IconSize.LARGE_TOOLBAR)
-            header.pack_start(icon)
-        except Exception:
-            pass
+        # App icon managed by window icon setting
         
         # Menu button
         menu_btn = Gtk.MenuButton()
