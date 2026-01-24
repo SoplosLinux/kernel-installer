@@ -61,19 +61,25 @@ echo "✅ Source tarball created."
 # --- 3. Organized Releases ---
 echo "🔹 Organizing releases..."
 mkdir -p releases
-rm -rf releases/*
 
-# Copy packages to releases
-[ -f "${APP_NAME}_${VERSION}_all.deb" ] && mv "${APP_NAME}_${VERSION}_all.deb" releases/
-[ -f "$BUILD_DIR/${APP_NAME}-${VERSION}.tar.gz" ] && cp "$BUILD_DIR/${APP_NAME}-${VERSION}.tar.gz" releases/
+# Move new DEB to releases (overwrite if exists)
+if [ -f "${APP_NAME}_${VERSION}_all.deb" ]; then
+    mv -f "${APP_NAME}_${VERSION}_all.deb" releases/
+fi
+
+# Copy source tarball to releases
+if [ -f "$BUILD_DIR/${APP_NAME}-${VERSION}.tar.gz" ]; then
+    cp -f "$BUILD_DIR/${APP_NAME}-${VERSION}.tar.gz" releases/
+fi
 
 echo ""
-echo "✅ All packages are located in 'releases/' directory:"
+echo "✅ Current contents of 'releases/' directory:"
 ls -lh releases/
 
 echo ""
-echo "--- Build Info ---"
-echo "RPM: Use 'rpmbuild -ba packaging/rpm/kernel-installer.spec' (needs rpm-build tools)"
-echo "Arch: Use 'cd packaging/arch && makepkg -si' (needs base-devel)"
+echo "--- Build Status ---"
+echo "DEB: Updated"
+echo "Tarball: Updated"
+echo "RPM/Arch: Instructions available in packaging/ folder"
 echo ""
-echo "All packaging files are ready in 'packaging/' directory."
+echo "Note: This script now preserves other files in 'releases/' (additive)."
