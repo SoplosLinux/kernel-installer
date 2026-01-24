@@ -232,12 +232,25 @@ class KernelManager:
         
         self._report_progress(_("Download complete. Extracting..."), 15)
         
-        # Extract
+        source_dir = os.path.join(self._build_dir, f"linux-{version}")
+        
+        # 1. Clean old sources to ensure a fresh extraction
+        if os.path.exists(source_dir):
+            self._report_progress(_("Removing old source directory..."), 16)
+            shutil.rmtree(source_dir)
+            
+        # 2. Extract
+        self._report_progress(_("Extracting linux-%(version)s...") % {'version': version}, 17)
         cmd = f'tar -xf "{tarball}"'
         result = run_command(cmd, cwd=self._build_dir)
         
         if result.returncode != 0:
             self._report_progress(_("Extraction error: %(error)s") % {'error': result.stderr}, -1)
+            return False
+            
+        # 3. Verify extraction
+        if not os.path.exists(os.path.join(source_dir, "Makefile")):
+            self._report_progress(_("Error: Extraction failed (Makefile not found in %s)") % source_dir, -1)
             return False
         
         self._report_progress(_("Extraction complete."), 20)
@@ -353,18 +366,19 @@ class KernelManager:
         if distro_info.family in (DistroFamily.DEBIAN, DistroFamily.UBUNTU):
             # Build .deb packages
             self._report_progress(_("Generating .deb packages..."), 32)
-            cmd = f'LC_ALL=C fakeroot make -j{cpu_count} bindeb-pkg'
+            # Ensure we have a clean environment and use standard bindeb-pkg
+            cmd = f'make -j{cpu_count} bindeb-pkg'
         elif distro_info.family == DistroFamily.FEDORA:
             # Build RPM packages
             self._report_progress(_("Generating RPM packages..."), 32)
-            cmd = f'LC_ALL=C make -j{cpu_count} rpm-pkg'
+            cmd = f'make -j{cpu_count} rpm-pkg'
         elif distro_info.family == DistroFamily.ARCH:
             # Arch uses direct installation
             self._report_progress(_("Compiling for direct installation..."), 32)
-            cmd = f'LC_ALL=C make -j{cpu_count}'
+            cmd = f'make -j{cpu_count}'
         else:
             # Fallback: generic make
-            cmd = f'LC_ALL=C make -j{cpu_count}'
+            cmd = f'make -j{cpu_count}'
         
         exit_code = run_command_with_callback(cmd, cwd=source_dir, line_callback=line_callback)
         

@@ -21,10 +21,14 @@ class KernelInstallerApp(Gtk.Application):
     
     APP_ID = "org.soploslinux.kernelinstaller"
     
-    def __init__(self):
+    def __init__(self, force_new=False):
+        flags = Gio.ApplicationFlags.FLAGS_NONE
+        if force_new:
+            flags |= Gio.ApplicationFlags.NON_UNIQUE
+            
         super().__init__(
             application_id=self.APP_ID,
-            flags=Gio.ApplicationFlags.FLAGS_NONE
+            flags=flags
         )
         
         self._window = None
