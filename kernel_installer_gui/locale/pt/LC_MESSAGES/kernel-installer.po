@@ -220,7 +220,7 @@ msgstr "A gerar pacotes RPM..."
 
 #: kernel_installer_gui/core/kernel.py:310
 msgid "Compiling for direct installation..."
-msgstr "A compilar para instalação directa..."
+msgstr "A compilar para instalação direta..."
 
 #: kernel_installer_gui/core/kernel.py:324
 msgid "Compiling modules..."
@@ -246,7 +246,7 @@ msgstr "A instalar pacotes .deb..."
 #: kernel_installer_gui/core/kernel.py:359
 #, python-format
 msgid "Installation error: %(error)s"
-msgstr "Erro na instalación: %(error)s"
+msgstr "Erro na instalação: %(error)s"
 
 #: kernel_installer_gui/core/kernel.py:368
 msgid "Installing RPM packages..."
@@ -339,7 +339,7 @@ msgstr "Ex: gaming, servidor, meu-kernel"
 
 #: kernel_installer_gui/app/main_window.py:112
 msgid "This name will be added to the kernel, e.g.: 6.18.7-custom-gaming"
-msgstr "Este nombre será adicionado ao kernel, ex: 6.18.7-custom-gaming"
+msgstr "Este nome será adicionado ao kernel, ex: 6.18.7-custom-gaming"
 
 #: kernel_installer_gui/app/main_window.py:117
 msgid "Result: 6.x.x-custom-gaming (combined with profile)"

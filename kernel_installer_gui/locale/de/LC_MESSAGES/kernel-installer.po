@@ -208,7 +208,7 @@ msgstr "Konfiguration abgeschlossen."
 #: kernel_installer_gui/core/kernel.py:281
 #, python-format
 msgid "Compiling kernel with %(cores)d cores..."
-msgstr "Kernel wird mit %(cores)d Kernen kompiliert..."
+msgstr "Kernel wird con %(cores)d Kernen kompiliert..."
 
 #: kernel_installer_gui/core/kernel.py:302
 msgid "Generating .deb packages..."
@@ -315,7 +315,7 @@ msgstr "von Sergi Perich & Alexia Michelle"
 
 #: kernel_installer_gui/app/main_window.py:63
 msgid "Refresh versions (F5)"
-msgstr "Versionen aktualisieren (F5)"
+msgstr "Versionen actualizar (F5)"
 
 #: kernel_installer_gui/app/main_window.py:64
 msgid "Clean build files"

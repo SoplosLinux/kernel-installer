@@ -4,6 +4,10 @@ A graphical interface for downloading, compiling, and installing the Linux kerne
 
 ![Kernel Installer Icon](kernel_installer_gui/assets/icons/kernel-installer-128.png)
 
+## Preview
+
+![Kernel Installer Screenshot](kernel_installer_gui/assets/screenshots/screenshot01.png)
+
 ## Authors
 
 - **Sergi Perich** <info@soploslinux.com>

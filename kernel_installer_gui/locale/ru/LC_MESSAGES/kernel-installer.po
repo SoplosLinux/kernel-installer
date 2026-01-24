@@ -149,7 +149,7 @@ msgstr "Требуется перезагрузка"
 
 #: kernel_installer_gui/core/notifications.py:101
 msgid "Reboot the system to use the new kernel."
-msgstr "Перезагрузите систему, чтобы использовать новое ядро."
+msgstr "Перезагрузите систему, чтобы использовать новое ядро?"
 
 #: kernel_installer_gui/core/kernel.py:184
 #, python-format
@@ -343,7 +343,7 @@ msgstr "Это имя будет добавлено к ядро, наприме�
 
 #: kernel_installer_gui/app/main_window.py:117
 msgid "Result: 6.x.x-custom-gaming (combined with profile)"
-msgstr "Результат: 6.x.x-custom-gaming (вместе с профилем)"
+msgstr "Результат: 6.x.x-custom-gaming (вмеste con el perfil)"
 
 #: kernel_installer_gui/app/main_window.py:136
 msgid "Distribution:"

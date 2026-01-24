@@ -27,7 +27,7 @@ msgstr "<b>✓ Ultima versione stabile</b>"
 
 #: kernel_installer_gui/widgets/version_picker.py:97
 msgid "Long-term support version (LTS)"
-msgstr "Versione a supporto a lungo termine (LTS)"
+msgstr "Versione a supporto a largo termine (LTS)"
 
 #: kernel_installer_gui/widgets/version_picker.py:99
 msgid "Stable version"
@@ -113,7 +113,7 @@ msgstr "Nuova versione del kernel disponible"
 #: kernel_installer_gui/core/notifications.py:66
 #, python-format
 msgid "Linux %(version)s is available for download."
-msgstr "Linux %(version)s è disponibile per il download."
+msgstr "Linux %(version)s è disponible per il download."
 
 #: kernel_installer_gui/core/notifications.py:74
 msgid "Download complete"
@@ -181,7 +181,7 @@ msgstr "Errore di estrazione: %(error)s"
 
 #: kernel_installer_gui/core/kernel.py:215
 msgid "Extraction complete."
-msgstr "Estrazione completata."
+msgstr "Estrazione completada."
 
 #: kernel_installer_gui/core/kernel.py:233
 msgid "Copying current kernel configuration..."

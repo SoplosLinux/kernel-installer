@@ -77,7 +77,7 @@ msgstr "Échec de la construction"
 
 #: kernel_installer_gui/widgets/history_view.py:25
 msgid "📜 Installed kernels history"
-msgstr "📜 Historique des noyaux installés"
+msgstr "📜 Historique des noyaux instalados"
 
 #: kernel_installer_gui/widgets/history_view.py:54
 msgid "No kernels installed yet"
@@ -122,7 +122,7 @@ msgstr "Téléchargement terminado"
 #: kernel_installer_gui/core/notifications.py:75
 #, python-format
 msgid "Linux %(version)s has been downloaded successfully."
-msgstr "Linux %(version)s a été téléchargé con éxito."
+msgstr "Linux %(version)s a été téléchargé avec éxito."
 
 #: kernel_installer_gui/core/notifications.py:84
 msgid "Build complete"
@@ -149,7 +149,7 @@ msgstr "Redémarrage requis"
 
 #: kernel_installer_gui/core/notifications.py:101
 msgid "Reboot the system to use the new kernel."
-msgstr "Redémarrez le système pour utiliser le nouveau noyau."
+msgstr "Redémarrez le système para utiliser le nouveau noyau."
 
 #: kernel_installer_gui/core/kernel.py:184
 #, python-format

@@ -172,7 +172,7 @@ msgstr "Eroare la descărcare: %(error)s"
 
 #: kernel_installer_gui/core/kernel.py:205
 msgid "Download complete. Extracting..."
-msgstr "Descărcare completă. Se extrage..."
+msgstr "Descărcare completa. Se extrage..."
 
 #: kernel_installer_gui/core/kernel.py:212
 #, python-format
@@ -220,7 +220,7 @@ msgstr "Se generează pachete RPM..."
 
 #: kernel_installer_gui/core/kernel.py:310
 msgid "Compiling for direct installation..."
-msgstr "Se compilează pentru instalare directă..."
+msgstr "Se compilează para instalare directă..."
 
 #: kernel_installer_gui/core/kernel.py:324
 msgid "Compiling modules..."
@@ -319,7 +319,7 @@ msgstr "Actualizează versiunile (F5)"
 
 #: kernel_installer_gui/app/main_window.py:64
 msgid "Clean build files"
-msgstr "Curăță fiérele de construcție"
+msgstr "Curăță fișierele de construcție"
 
 #: kernel_installer_gui/app/main_window.py:65
 msgid "About"

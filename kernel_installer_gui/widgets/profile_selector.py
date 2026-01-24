@@ -42,7 +42,7 @@ class ProfileCard(Gtk.RadioButton):
         box.pack_start(name_label, False, False, 0)
         
         # Tooltip with description (shows on hover)
-        self.set_tooltip_text(profile.description)
+        self.set_tooltip_text(_(profile.description))
         
         self.add(box)
         self.show_all()
