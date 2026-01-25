@@ -36,11 +36,18 @@ Requires:       xz
 Requires:       curl
 Requires:       openssl
 Requires:       coreutils
+Source0:        %{name}-%{version}.tar.gz
 
 %description
 Kernel Installer GUI allows users to easily manage Linux kernel versions,
 apply optimization profiles (Gaming, Audio/Video, Office) and install them
 safely in Debian, Ubuntu, Fedora and Arch Linux.
+
+%prep
+%setup -q
+
+%build
+# No build steps needed for Python files
 
 %install
 mkdir -p %{buildroot}%{_bindir}
