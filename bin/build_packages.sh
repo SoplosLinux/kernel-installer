@@ -33,15 +33,15 @@ chmod +x "$DEB_DIR/usr/bin/kernel-installer"
 # Include everything from root in share dir
 cp main.py README.md LICENSE CHANGELOG.md setup.py "$DEB_DIR/usr/share/kernel-installer/"
 cp -r kernel_installer_gui "$DEB_DIR/usr/share/kernel-installer/"
-cp kernel_installer_gui/data/kernel-installer.desktop "$DEB_DIR/usr/share/applications/"
+cp kernel_installer_gui/data/org.soplos.kernel-installer.desktop "$DEB_DIR/usr/share/applications/"
 # Professional Metadata (AppStream)
-cp kernel_installer_gui/data/io.github.alexiarstein.kernelinstall.metainfo.xml "$DEB_DIR/usr/share/metainfo/"
-cp kernel_installer_gui/assets/icons/kernel-installer-48.png "$DEB_DIR/usr/share/icons/hicolor/48x48/apps/kernel-installer.png"
-cp kernel_installer_gui/assets/icons/kernel-installer-128.png "$DEB_DIR/usr/share/icons/hicolor/128x128/apps/kernel-installer.png"
-cp kernel_installer_gui/assets/icons/kernel-installer-256.png "$DEB_DIR/usr/share/icons/hicolor/256x256/apps/kernel-installer.png"
+cp kernel_installer_gui/data/org.soplos.kernel-installer.metainfo.xml "$DEB_DIR/usr/share/metainfo/"
+cp kernel_installer_gui/assets/icons/org.soplos.kernel-installer-48.png "$DEB_DIR/usr/share/icons/hicolor/48x48/apps/org.soplos.kernel-installer.png"
+cp kernel_installer_gui/assets/icons/org.soplos.kernel-installer-128.png "$DEB_DIR/usr/share/icons/hicolor/128x128/apps/org.soplos.kernel-installer.png"
+cp kernel_installer_gui/assets/icons/org.soplos.kernel-installer-256.png "$DEB_DIR/usr/share/icons/hicolor/256x256/apps/org.soplos.kernel-installer.png"
 
-cp kernel_installer_gui/data/kernel-installer.1 "$DEB_DIR/usr/share/man/man1/"
-gzip -9 "$DEB_DIR/usr/share/man/man1/kernel-installer.1"
+cp kernel_installer_gui/data/org.soplos.kernel-installer.1 "$DEB_DIR/usr/share/man/man1/"
+gzip -9 "$DEB_DIR/usr/share/man/man1/org.soplos.kernel-installer.1"
 
 # Build .deb
 dpkg-deb --build --root-owner-group "$DEB_DIR" "releases/${APP_NAME}_${VERSION}_all.deb"
@@ -90,19 +90,19 @@ chmod +x "$ARCH_DIR/usr/bin/kernel-installer"
 # Mirror Debian completeness
 cp main.py README.md LICENSE CHANGELOG.md setup.py "$ARCH_DIR/usr/share/kernel-installer/"
 cp -r kernel_installer_gui "$ARCH_DIR/usr/share/kernel-installer/"
-cp kernel_installer_gui/data/kernel-installer.desktop "$ARCH_DIR/usr/share/applications/"
-cp kernel_installer_gui/data/io.github.alexiarstein.kernelinstall.metainfo.xml "$ARCH_DIR/usr/share/metainfo/"
+cp kernel_installer_gui/data/org.soplos.kernel-installer.desktop "$ARCH_DIR/usr/share/applications/"
+cp kernel_installer_gui/data/org.soplos.kernel-installer.metainfo.xml "$ARCH_DIR/usr/share/metainfo/"
 
-cp kernel_installer_gui/assets/icons/kernel-installer-48.png "$ARCH_DIR/usr/share/icons/hicolor/48x48/apps/kernel-installer.png"
-cp kernel_installer_gui/assets/icons/kernel-installer-128.png "$ARCH_DIR/usr/share/icons/hicolor/128x128/apps/kernel-installer.png"
-cp kernel_installer_gui/assets/icons/kernel-installer-256.png "$ARCH_DIR/usr/share/icons/hicolor/256x256/apps/kernel-installer.png"
+cp kernel_installer_gui/assets/icons/org.soplos.kernel-installer-48.png "$ARCH_DIR/usr/share/icons/hicolor/48x48/apps/org.soplos.kernel-installer.png"
+cp kernel_installer_gui/assets/icons/org.soplos.kernel-installer-128.png "$ARCH_DIR/usr/share/icons/hicolor/128x128/apps/org.soplos.kernel-installer.png"
+cp kernel_installer_gui/assets/icons/org.soplos.kernel-installer-256.png "$ARCH_DIR/usr/share/icons/hicolor/256x256/apps/org.soplos.kernel-installer.png"
 
 # Generate .PKGINFO
 cat > "$ARCH_DIR/.PKGINFO" <<EOF
 pkgname = kernel-installer
 pkgver = ${VERSION}
 pkgdesc = Graphical interface for downloading, compiling and installing Linux kernels
-url = https://github.com/SoplosLinux/kernell-installer
+url = https://github.com/SoplosLinux/kernel-installer
 builddate = $(date +%s)
 packager = Kernel Installer Builder
 size = $(du -sb "$ARCH_DIR" | cut -f1)

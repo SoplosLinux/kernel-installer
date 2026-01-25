@@ -51,11 +51,11 @@ gi.require_version('Gdk', '3.0')
 from gi.repository import GLib, Gdk, Gtk
 
 # Force identity association for panel icons (Soplos Standard)
-GLib.set_prgname('kernel-installer')
+GLib.set_prgname('org.soplos.kernel-installer')
 GLib.set_application_name('Kernel Installer')
 if hasattr(Gdk, 'set_program_class'):
-    Gdk.set_program_class('kernel-installer')
-Gtk.Window.set_default_icon_name('kernel-installer')
+    Gdk.set_program_class('org.soplos.kernel-installer')
+Gtk.Window.set_default_icon_name('org.soplos.kernel-installer')
 
 from kernel_installer_gui.app import KernelInstallerApp
 

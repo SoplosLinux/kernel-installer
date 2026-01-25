@@ -207,6 +207,35 @@ KERNEL_PROFILES = {
             # Disable unused features
             'CONFIG_PROFILING': 'n',
             'CONFIG_OPROFILE': 'n',
+            
+            # VirtIO support for VMs (QEMU/KVM)
+            'CONFIG_VIRTIO': 'y',
+            'CONFIG_VIRTIO_PCI': 'y',
+            'CONFIG_VIRTIO_BLK': 'y',
+            'CONFIG_VIRTIO_NET': 'y',
+            
+            # VMWare support
+            'CONFIG_VMWARE_PVSCSI': 'y',
+            'CONFIG_VMXNET3': 'y',
+            'CONFIG_HYPERVISOR_GUEST': 'y',
+            'CONFIG_VMWARE_BALLOON': 'y',
+            
+            # VirtualBox / Generic VM support
+            'CONFIG_DRM_VBOXVIDEO': 'y',
+            
+            # NVMe support for modern storage
+            'CONFIG_NVME_CORE': 'y',
+            'CONFIG_BLK_DEV_NVME': 'y',
+            
+            # SATA/Generic storage support
+            'CONFIG_SATA_AHCI': 'y',
+            'CONFIG_ATA': 'y',
+            'CONFIG_SCSI': 'y',
+            'CONFIG_BLK_DEV_SD': 'y',
+            
+            # Generic PCI/Bridge support
+            'CONFIG_PCI': 'y',
+            'CONFIG_PCI_MSI': 'y',
         },
         modules_to_disable=[
             # Gaming hardware not needed
@@ -214,8 +243,6 @@ KERNEL_PROFILES = {
             'GAMEPORT',
             
             # Exotic filesystems
-            'BTRFS_FS',
-            'XFS_FS',
             'REISERFS_FS',
             'JFS_FS',
             'NILFS2_FS',

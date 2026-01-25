@@ -613,3 +613,54 @@ class KernelManager:
         except Exception as e:
             print(f"Error cleaning up: {e}")
             return False
+
+    def remove_kernel(self, kernel_version: str) -> bool:
+        """
+        Remove an installed kernel from the system.
+        
+        Args:
+            kernel_version: Full version string (e.g. 6.13.0-custom-minimal)
+            
+        Returns:
+            True if successful
+        """
+        self._report_progress(_("Removing kernel %(version)s...") % {'version': kernel_version}, 0)
+        
+        # 1. Get remove command
+        remove_cmd = self._distro.get_kernel_remove_command(kernel_version)
+        self._report_progress(_("Uninstalling packages/files..."), 20)
+        
+        result = run_privileged(remove_cmd)
+        if result.returncode != 0:
+            self._report_progress(_("Error removing kernel: %(error)s") % {'error': result.stderr}, -1)
+            return False
+            
+        # 2. Update bootloader
+        self._report_progress(_("Updating bootloader..."), 60)
+        bootloader_cmd = self._distro.get_bootloader_update_command()
+        result = run_privileged(bootloader_cmd)
+        
+        if result.returncode != 0:
+            self._report_progress(_("Warning: Error updating bootloader during removal"), -1)
+            
+        # 3. Remove from history
+        self._report_progress(_("Updating history..."), 90)
+        history = self.get_installation_history()
+        updated_history = [k for k in history if k.version != kernel_version]
+        
+        # Save updated history
+        try:
+            with open(self._get_history_path(), 'w') as f:
+                json.dump([
+                    {
+                        'version': k.version,
+                        'profile': k.profile,
+                        'installed_date': k.installed_date
+                    }
+                    for k in updated_history
+                ], f, indent=2)
+        except Exception as e:
+            print(f"Error updating history after removal: {e}")
+            
+        self._report_progress(_("Kernel removed successfully."), 100)
+        return True

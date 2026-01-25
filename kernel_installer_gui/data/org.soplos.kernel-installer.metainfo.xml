@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
-  <id>io.github.alexiarstein.kernelinstall</id>
+  <id>org.soplos.kernel-installer</id>
   
   <name>Kernel Installer</name>
   <name xml:lang="es">Instalador de Kernel</name>
@@ -14,8 +14,8 @@
   <summary xml:lang="ro">Descărcați, compilați și instalați cel mai recent nucleu Linux</summary>
   <summary xml:lang="ru">Скачивание, компиляция и установка последней версии ядра Linux</summary>
   
-  <developer id="io.github.alexiarstein">
-    <name>Alexia Michelle &amp; Sergi Perich</name>
+  <developer id="org.soplos">
+    <name>Sergi Perich (Fork of Alexia Michelle's version)</name>
   </developer>
   
   <metadata_license>CC0-1.0</metadata_license>
@@ -58,9 +58,9 @@
   
   <launchable type="desktop-id">kernel-installer.desktop</launchable>
   
-  <url type="homepage">https://github.com/alexiarstein/kernelinstall</url>
-  <url type="bugtracker">https://github.com/alexiarstein/kernelinstall/issues</url>
-  <url type="vcs-browser">https://github.com/alexiarstein/kernelinstall</url>
+  <url type="homepage">https://github.com/SoplosLinux/kernel-installer</url>
+  <url type="bugtracker">https://github.com/SoplosLinux/kernel-installer/issues</url>
+  <url type="vcs-browser">https://github.com/SoplosLinux/kernel-installer</url>
   
   <categories>
     <category>System</category>
@@ -125,6 +125,9 @@
           <li>Automated system dependency verification and installation</li>
           <li>Native support for 8 languages (EN, ES, FR, PT, DE, IT, RO, RU)</li>
           <li>Installation history tracking</li>
+          <li>Kernel removal support for Debian, Fedora, and Arch Linux</li>
+          <li>Enhanced "Minimal" profile with optimized kernel configuration</li>
+          <li>100% translation coverage for all 8 supported languages</li>
           
           <li xml:lang="es">Interfaz GTK3 con soporte para modo oscuro</li>
           <li xml:lang="es">Gestión automática de dependencias del sistema</li>
@@ -132,6 +135,9 @@
           <li xml:lang="es">Soporte verificado para Debian, Ubuntu, Fedora y Arch Linux</li>
           <li xml:lang="es">Notificaciones transitorias vía libnotify</li>
           <li xml:lang="es">Soporte para 8 idiomas</li>
+          <li xml:lang="es">Soporte para eliminación de kernel en Debian, Fedora y Arch Linux</li>
+          <li xml:lang="es">Perfil "Mínimo" mejorado con configuración de kernel optimizada</li>
+          <li xml:lang="es">Cobertura de traducción al 100% para los 8 idiomas soportados</li>
           
           <li xml:lang="fr">Gestion automatique des dépendances du sistema</li>
           <li xml:lang="fr">Interface GTK3 avec support du mode sombre</li>

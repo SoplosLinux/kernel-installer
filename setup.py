@@ -15,12 +15,12 @@ if readme_path.exists():
 setup(
     name="kernel-installer-gui",
     version="1.0.0",
-    author="Alexia Michelle",
-    author_email="alexia@goldendoglinux.org",
+    author="Sergi Perich",
+    author_email="info@soploslinux.com",
     description="GTK3 GUI for downloading, compiling and installing Linux kernels",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/alexiarstein/kernelinstall",
+    url="https://github.com/SoplosLinux/kernel-installer",
     license="GPL-3.0",
     
     packages=find_packages(),
@@ -30,7 +30,7 @@ setup(
             "data/*.css",
             "data/*.desktop",
             "data/*.xml",
-            "assets/icons/*.png",
+            "assets/icons/org.soplos.kernel-installer*.png",
             "locale/*/LC_MESSAGES/*.mo",
         ],
     },
@@ -50,12 +50,12 @@ setup(
     },
     
     data_files=[
-        ("share/applications", ["kernel_installer_gui/data/kernel-installer.desktop"]),
-        ("share/metainfo", ["kernel_installer_gui/data/io.github.alexiarstein.kernelinstall.metainfo.xml"]),
+        ("share/applications", ["kernel_installer_gui/data/org.soplos.kernel-installer.desktop"]),
+        ("share/metainfo", ["kernel_installer_gui/data/org.soplos.kernel-installer.metainfo.xml"]),
         ("share/kernel-installer", ["kernel_installer_gui/data/style.css"]),
-        ("share/icons/hicolor/48x48/apps", ["kernel_installer_gui/assets/icons/kernel-installer-48.png"]),
-        ("share/icons/hicolor/128x128/apps", ["kernel_installer_gui/assets/icons/kernel-installer-128.png"]),
-        ("share/icons/hicolor/256x256/apps", ["kernel_installer_gui/assets/icons/kernel-installer-256.png"]),
+        ("share/icons/hicolor/48x48/apps", ["kernel_installer_gui/assets/icons/org.soplos.kernel-installer-48.png"]),
+        ("share/icons/hicolor/128x128/apps", ["kernel_installer_gui/assets/icons/org.soplos.kernel-installer-128.png"]),
+        ("share/icons/hicolor/256x256/apps", ["kernel_installer_gui/assets/icons/org.soplos.kernel-installer-256.png"]),
     ],
     
     classifiers=[

@@ -4,7 +4,7 @@ Release:        1%{?dist}
 Summary:        Graphical interface for downloading, compiling and installing Linux kernels
 
 License:        GPLv3+
-URL:            https://github.com/SoplosLinux/kernell-installer
+URL:            https://github.com/SoplosLinux/kernel-installer
 BuildArch:      noarch
 
 Requires:       python3
@@ -62,19 +62,19 @@ cp bin/kernel-installer %{buildroot}%{_bindir}/kernel-installer
 chmod +x %{buildroot}%{_bindir}/kernel-installer
 cp main.py README.md LICENSE CHANGELOG.md setup.py %{buildroot}%{_datadir}/kernel-installer/
 cp -r kernel_installer_gui/ %{buildroot}%{_datadir}/kernel-installer/
-cp kernel_installer_gui/data/kernel-installer.desktop %{buildroot}%{_datadir}/applications/
-cp kernel_installer_gui/data/io.github.alexiarstein.kernelinstall.metainfo.xml %{buildroot}%{_datadir}/metainfo/
+cp kernel_installer_gui/data/org.soplos.kernel-installer.desktop %{buildroot}%{_datadir}/applications/
+cp kernel_installer_gui/data/org.soplos.kernel-installer.metainfo.xml %{buildroot}%{_datadir}/metainfo/
 
-cp kernel_installer_gui/assets/icons/kernel-installer-48.png %{buildroot}%{_datadir}/icons/hicolor/48x48/apps/kernel-installer.png
-cp kernel_installer_gui/assets/icons/kernel-installer-128.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/kernel-installer.png
-cp kernel_installer_gui/assets/icons/kernel-installer-256.png %{buildroot}%{_datadir}/icons/hicolor/256x256/apps/kernel-installer.png
+cp kernel_installer_gui/assets/icons/org.soplos.kernel-installer-48.png %{buildroot}%{_datadir}/icons/hicolor/48x48/apps/org.soplos.kernel-installer.png
+cp kernel_installer_gui/assets/icons/org.soplos.kernel-installer-128.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/org.soplos.kernel-installer.png
+cp kernel_installer_gui/assets/icons/org.soplos.kernel-installer-256.png %{buildroot}%{_datadir}/icons/hicolor/256x256/apps/org.soplos.kernel-installer.png
 
 %files
 %{_bindir}/kernel-installer
 %{_datadir}/kernel-installer/
-%{_datadir}/applications/kernel-installer.desktop
-%{_datadir}/metainfo/io.github.alexiarstein.kernelinstall.metainfo.xml
-%{_datadir}/icons/hicolor/*/apps/kernel-installer.png
+%{_datadir}/applications/org.soplos.kernel-installer.desktop
+%{_datadir}/metainfo/org.soplos.kernel-installer.metainfo.xml
+%{_datadir}/icons/hicolor/*/apps/org.soplos.kernel-installer.png
 
 %changelog
 * Sat Jan 24 2026 Sergi Perich <info@soploslinux.com> - 1.0.0

@@ -1,6 +1,6 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: kernel-installer
-Source: https://github.com/SoplosLinux/kernell-installer
+Source: https://github.com/SoplosLinux/kernel-installer
 
 Files: *
 Copyright: 2026 Sergi Perich <info@soploslinux.com>

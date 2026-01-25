@@ -16,6 +16,10 @@ class HistoryView(Gtk.Box):
     Widget showing previously installed kernels with profile info.
     """
     
+    __gsignals__ = {
+        'remove-kernel': (gi.repository.GObject.SignalFlags.RUN_FIRST, None, (str,)),
+    }
+    
     def __init__(self, kernel_manager: KernelManager = None):
         super().__init__(orientation=Gtk.Orientation.VERTICAL, spacing=8)
         
@@ -23,7 +27,7 @@ class HistoryView(Gtk.Box):
         
         # Header with expander
         expander = Gtk.Expander(label=_("📜 Installed kernels history"))
-        expander.set_expanded(False)
+        expander.set_expanded(True)  # Open by default if there's history
         
         # List container
         self._list_box = Gtk.ListBox()
@@ -33,7 +37,7 @@ class HistoryView(Gtk.Box):
         # Scroll window for list
         scroll = Gtk.ScrolledWindow()
         scroll.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
-        scroll.set_max_content_height(150)
+        scroll.set_max_content_height(200)
         scroll.set_propagate_natural_height(True)
         scroll.add(self._list_box)
         
@@ -103,8 +107,27 @@ class HistoryView(Gtk.Box):
         date_label.get_style_context().add_class('dim-label')
         box.pack_start(date_label, False, False, 0)
         
+        # Remove button
+        remove_btn = Gtk.Button()
+        remove_btn.set_image(Gtk.Image.new_from_icon_name('edit-delete-symbolic', Gtk.IconSize.BUTTON))
+        remove_btn.set_tooltip_text(_("Remove this kernel"))
+        remove_btn.get_style_context().add_class('flat')
+        remove_btn.get_style_context().add_class('destructive-action')
+        
+        if kernel.is_current:
+            remove_btn.set_sensitive(False)
+            remove_btn.set_tooltip_text(_("Cannot remove the currently running kernel"))
+        else:
+            remove_btn.connect('clicked', self._on_remove_clicked, kernel.version)
+            
+        box.pack_start(remove_btn, False, False, 0)
+        
         row.add(box)
         return row
+    
+    def _on_remove_clicked(self, button: Gtk.Button, version: str) -> None:
+        """Handle remove button click."""
+        self.emit('remove-kernel', version)
     
     def set_history(self, history: List[InstalledKernel]) -> None:
         """Manually set history items."""

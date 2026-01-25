@@ -19,7 +19,7 @@ from ..locale.i18n import _
 class KernelInstallerApp(Gtk.Application):
     """Main GTK Application for Kernel Installer."""
     
-    APP_ID = "kernel-installer"
+    APP_ID = "org.soplos.kernel-installer"
     
     def __init__(self, force_new=False):
         flags = Gio.ApplicationFlags.FLAGS_NONE
@@ -33,6 +33,21 @@ class KernelInstallerApp(Gtk.Application):
         
         self._window = None
         self._kernel_manager = KernelManager()
+    
+    def do_activate(self) -> None:
+        """Called when application is activated (e.g. at startup)."""
+        if not self._window:
+            self._window = KernelInstallerWindow(self)
+            # Connect key press event for shortcuts
+            self._window.connect('key-press-event', self._on_key_press)
+        
+        self._window.present()
+        
+        # Schedule dependency check only on first activation if needed
+        # We use a flag to avoid re-triggering on multiple activations
+        if not hasattr(self, '_dep_checked'):
+            self._dep_checked = True
+            GLib.idle_add(self._check_dependencies_threaded)
     
     def do_startup(self) -> None:
         """Called when application starts."""
@@ -50,16 +65,6 @@ class KernelInstallerApp(Gtk.Application):
         # Setup notification manager
         notifier = get_notification_manager()
         notifier.set_application(self)
-        
-        if not self._window:
-            self._window = KernelInstallerWindow(self)
-            # Connect key press event for shortcuts
-            self._window.connect('key-press-event', self._on_key_press)
-        
-        self._window.present()
-        
-        # Schedule dependency check after UI is shown
-        GLib.idle_add(self._check_dependencies_threaded)
 
     def _check_dependencies_threaded(self) -> bool:
         """Interact with main window to run check in thread."""
@@ -327,9 +332,9 @@ progressbar trough {
         ])
         about.set_copyright("© 2026 Sergi Perich & Alexia Michelle")
         about.set_license_type(Gtk.License.GPL_3_0)
-        about.set_website("https://github.com/SoplosLinux/kernell-installer")
+        about.set_website("https://github.com/SoplosLinux/kernel-installer")
         about.set_website_label("GitHub")
-        about.set_logo_icon_name("kernel-installer")
+        about.set_logo_icon_name("org.soplos.kernel-installer")
         
         about.run()
         about.destroy()

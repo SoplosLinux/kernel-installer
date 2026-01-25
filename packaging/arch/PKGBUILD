@@ -4,10 +4,10 @@ pkgver=1.0.0
 pkgrel=1
 pkgdesc="Graphical interface for downloading, compiling and installing Linux kernels"
 arch=('any')
-url="https://github.com/SoplosLinux/kernell-installer"
+url="https://github.com/SoplosLinux/kernel-installer"
 license=('GPL3')
 depends=('python-gobject' 'gtk3' 'wget' 'binutils' 'flex' 'bison' 'make' 'gcc' 'bc' 'rsync' 'kmod' 'dwarves' 'cpio' 'linux-api-headers' 'pkgconf' 'ncurses' 'gettext' 'fakeroot' 'pahole' 'libelf' 'openssl' 'git' 'tar' 'xz' 'curl' 'coreutils')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/SoplosLinux/kernell-installer/archive/refs/tags/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/SoplosLinux/kernel-installer/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 package() {
@@ -22,9 +22,9 @@ package() {
   cp "$srcdir/bin/kernel-installer" "$pkgdir/usr/bin/kernel-installer"
   chmod +x "$pkgdir/usr/bin/kernel-installer"
   cp -r "$srcdir/kernel_installer_gui" "$pkgdir/usr/share/kernel-installer/"
-  cp "$srcdir/kernel_installer_gui/data/kernel-installer.desktop" "$pkgdir/usr/share/applications/"
-  cp "$srcdir/kernel_installer_gui/data/io.github.alexiarstein.kernelinstall.metainfo.xml" "$pkgdir/usr/share/metainfo/"
-  cp "$srcdir/kernel_installer_gui/assets/icons/kernel-installer-48.png" "$pkgdir/usr/share/icons/hicolor/48x48/apps/kernel-installer.png"
-  cp "$srcdir/kernel_installer_gui/assets/icons/kernel-installer-128.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/kernel-installer.png"
-  cp "$srcdir/kernel_installer_gui/assets/icons/kernel-installer-256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/kernel-installer.png"
+  cp "$srcdir/kernel_installer_gui/data/org.soplos.kernel-installer.desktop" "$pkgdir/usr/share/applications/"
+  cp "$srcdir/kernel_installer_gui/data/org.soplos.kernel-installer.metainfo.xml" "$pkgdir/usr/share/metainfo/"
+  cp "$srcdir/kernel_installer_gui/assets/icons/org.soplos.kernel-installer-48.png" "$pkgdir/usr/share/icons/hicolor/48x48/apps/org.soplos.kernel-installer.png"
+  cp "$srcdir/kernel_installer_gui/assets/icons/org.soplos.kernel-installer-128.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/org.soplos.kernel-installer.png"
+  cp "$srcdir/kernel_installer_gui/assets/icons/org.soplos.kernel-installer-256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/org.soplos.kernel-installer.png"
 }

@@ -25,6 +25,8 @@ A graphical interface for downloading, compiling, and installing the Linux kerne
 - Desktop notifications (transient via libnotify)
 - Full i18n coverage for 8 languages (EN, ES, FR, PT, DE, IT, RO, RU)
 - Intelligent automated system dependency verification and installation
+- Kernel removal support for Debian, Fedora, and Arch Linux
+- Optimized kernel configuration for "Minimal" profile with full hardware support
 
 ## Requirements
 
@@ -54,7 +56,7 @@ sudo pacman -S python-gobject gtk3
 
 ### Option 1: Native Packages (Recommended)
 
-- **Debian/Ubuntu/Mint**: [Download .deb](https://github.com/SoplosLinux/kernell-installer/releases)
+- **Debian/Ubuntu/Mint**: [Download .deb](https://github.com/SoplosLinux/kernel-installer/releases)
   ```bash
   sudo dpkg -i kernel-installer_1.0.0_all.deb
   sudo apt install -f
@@ -74,7 +76,7 @@ sudo pacman -S python-gobject gtk3
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/SoplosLinux/kernell-installer.git
+   git clone https://github.com/SoplosLinux/kernel-installer.git
    ```
 2. Install dependencies (see Requirements)
 3. Run the program:
@@ -95,4 +97,4 @@ GPL-3.0 - See [LICENSE](LICENSE)
 
 ## Links
 
-- [GitHub Repository](https://github.com/SoplosLinux/kernell-installer)
+- [GitHub Repository](https://github.com/SoplosLinux/kernel-installer)

@@ -386,6 +386,35 @@ class DistroDetector:
         else:
             return 'update-initramfs -u'
 
+    def get_kernel_remove_command(self, kernel_version: str) -> str:
+        """
+        Get the command to remove an installed kernel.
+        
+        Args:
+            kernel_version: String identifying the kernel version (e.g. 6.1.0-custom-minimal)
+        """
+        info = self.detect()
+        
+        if info.family in (DistroFamily.DEBIAN, DistroFamily.UBUNTU, DistroFamily.SOPLOS):
+            # For Debian-based, we remove the image and headers packages
+            return f'apt purge -y linux-image-{kernel_version} linux-headers-{kernel_version}'
+        elif info.family == DistroFamily.FEDORA:
+            return f'dnf remove -y kernel-{kernel_version}'
+        elif info.family == DistroFamily.ARCH:
+            # Arch: Manual removal of files + modules
+            # We also update bootloader after
+            files = [
+                f'/boot/vmlinuz-{kernel_version}',
+                f'/boot/initramfs-{kernel_version}.img',
+                f'/boot/initramfs-{kernel_version}-fallback.img',
+                f'/boot/System.map-{kernel_version}',
+                f'/boot/config-{kernel_version}'
+            ]
+            files_to_rm = " ".join(files)
+            return f'rm -f {files_to_rm} && rm -rf /lib/modules/{kernel_version}'
+        else:
+            return f'apt purge -y linux-image-{kernel_version}'
+
     def _are_headers_broken(self) -> bool:
         """
         Check if system headers are broken by attempting a dummy compilation.

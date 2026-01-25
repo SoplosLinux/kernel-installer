@@ -210,6 +210,7 @@ class KernelInstallerWindow(Gtk.ApplicationWindow):
         
         # History
         self._history_view = HistoryView(self._kernel_manager)
+        self._history_view.connect('remove-kernel', self._on_remove_kernel)
         config_box.pack_start(self._history_view, False, False, 0)
         
         self._stack.add_named(config_box, "config")
@@ -435,6 +436,63 @@ class KernelInstallerWindow(Gtk.ApplicationWindow):
             
             # This sets the flag that run_command_with_callback checks
             self._kernel_manager.cancel_operation()
+
+    def _on_remove_kernel(self, widget, version: str) -> None:
+        """Handle kernel removal request from history."""
+        if not self._confirm_remove(version):
+            return
+            
+        # Switch to build view (reuse progress reporting)
+        self._stack.set_visible_child_name("build")
+        self._build_progress.start_build()
+        self._build_progress.update_progress(_("Starting removal..."), 0)
+        self._cancel_btn.set_sensitive(False)
+        self._building = True # Treat removal as a "build" for UI state
+        
+        # Set progress callback
+        self._kernel_manager.set_progress_callback(self._on_build_progress)
+        
+        # Start removal in thread
+        def remove_thread():
+            try:
+                success = self._kernel_manager.remove_kernel(version)
+                GLib.idle_add(self._on_remove_complete, success)
+            except Exception as e:
+                GLib.idle_add(self._on_build_error, str(e))
+        
+        thread = threading.Thread(target=remove_thread, daemon=True)
+        thread.start()
+
+    def _confirm_remove(self, version: str) -> bool:
+        """Show removal confirmation dialog."""
+        dialog = Gtk.MessageDialog(
+            transient_for=self,
+            modal=True,
+            message_type=Gtk.MessageType.QUESTION,
+            buttons=Gtk.ButtonsType.YES_NO,
+            text=_("Remove kernel?")
+        )
+        dialog.format_secondary_text(
+            _("Are you sure you want to completely remove Linux %(version)s?\n\n"
+              "This will delete the kernel image, modules, and update the bootloader.") % {'version': version}
+        )
+        
+        response = dialog.run()
+        dialog.destroy()
+        return response == Gtk.ResponseType.YES
+
+    def _on_remove_complete(self, success: bool) -> None:
+        """Handle removal completion."""
+        self._building = False
+        self._done_btn.show()
+        self._build_progress.set_complete(success)
+        
+        # Refresh history
+        self._history_view.refresh()
+        
+        if success:
+            notifier = get_notification_manager()
+            notifier.notify(_("Kernel removed successfully"))
     
     def _on_done_clicked(self, button: Gtk.Button) -> None:
         """Handle done button click - return to config view."""

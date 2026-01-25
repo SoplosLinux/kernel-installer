@@ -28,6 +28,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Professional packaging for .deb, .rpm and Arch Linux
 - AppStream/Metainfo integration for software centers
 - Automated system dependency verification and installation
+- New feature: Kernel removal support for Debian, Fedora, and Arch Linux
+- Enhanced localization: 100% translated for all 8 supported languages
+- Improved "Minimal" profile with optimized kernel configuration and mandatory drivers
 
 ### Authors
 
