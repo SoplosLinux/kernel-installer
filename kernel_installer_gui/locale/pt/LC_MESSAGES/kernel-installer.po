@@ -305,3 +305,26 @@ msgstr "Está prestes a descarregar, compilar e instalar:\n\n• Versão: Linux 
 msgid "Unknown"
 msgstr "Desconhecido"
 
+msgid "Checking system dependencies..."
+msgstr "Verificando dependências do sistema..."
+
+msgid "Working..."
+msgstr "Trabalhando..."
+
+msgid "Verifying environment (requires password)..."
+msgstr "Verificando ambiente (requer senha)..."
+
+msgid "Dependencies installed/verified."
+msgstr "Dependências instaladas/verificadas."
+
+msgid "Error installing dependencies."
+msgstr "Erro ao instalar dependências."
+
+msgid "Stopping build process..."
+msgstr "Interrompendo processo de compilação..."
+
+msgid "Cancellation requested by user..."
+msgstr "Cancelamento solicitado pelo usuário..."
+
+msgid "Build cancelled by user."
+msgstr "Compilação cancelada pelo usuário."

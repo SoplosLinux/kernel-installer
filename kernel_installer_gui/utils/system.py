@@ -38,7 +38,7 @@ def run_command(cmd: str, cwd: str = None, capture_output: bool = True) -> subpr
 
 
 def run_command_with_callback(cmd: str, cwd: str = None, 
-                               line_callback=None) -> int:
+                               line_callback=None, stop_check=None) -> int:
     """
     Run a command and call a callback for each output line.
     Useful for progress tracking during long operations.
@@ -47,9 +47,10 @@ def run_command_with_callback(cmd: str, cwd: str = None,
         cmd: Command string to execute
         cwd: Working directory
         line_callback: Function to call with each line of output
+        stop_check: Function returning True if execution should be cancelled
     
     Returns:
-        Exit code of the command
+        Exit code of the command (-1 if cancelled)
     """
     import sys
     log_path = os.path.join(os.path.expanduser('~'), 'kernel_build', 'build.log')
@@ -69,7 +70,13 @@ def run_command_with_callback(cmd: str, cwd: str = None,
         log_file.write(f"\n--- Running command: {cmd} ---\n")
         log_file.flush()
         
+        # Use stdout as iterator to handle lines
         for line in iter(process.stdout.readline, ''):
+            if stop_check and stop_check():
+                process.terminate()
+                log_file.write("\n!!! COMMAND CANCELLED BY USER !!!\n")
+                return -1
+                
             line = line.rstrip('\n')
             # Print to terminal
             print(line, file=sys.stderr, flush=True)

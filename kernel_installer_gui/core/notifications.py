@@ -1,11 +1,11 @@
 """
 System notifications for Kernel Installer GUI.
-Uses Gio.Notification for desktop notifications.
+Uses libnotify for transient desktop notifications.
 """
 
 import gi
-gi.require_version('Gio', '2.0')
-from gi.repository import Gio, GLib
+gi.require_version('Notify', '0.7')
+from gi.repository import Notify, GLib
 from ..locale.i18n import _
 
 
@@ -13,51 +13,60 @@ class NotificationManager:
     """
     Manages desktop notifications for the Kernel Installer.
     
-    Uses GNotification for cross-desktop compatibility.
+    Uses libnotify to ensure notifications are transient and disappear automatically.
     """
     
-    def __init__(self, application: Gio.Application = None):
+    def __init__(self, application=None):
         """
         Initialize the notification manager.
-        
-        Args:
-            application: The GtkApplication instance (required for notifications)
         """
+        self._initialized = False
+        # libnotify doesn't strictly need the app instance for simple notifications,
+        # but we keep the structure for compatibility.
+        self._app = application
+        try:
+            self._initialized = Notify.init("kernel-installer")
+        except Exception as e:
+            print(f"Failed to initialize libnotify: {e}")
+    
+    def set_application(self, application) -> None:
+        """Set the application instance."""
         self._app = application
     
-    def set_application(self, application: Gio.Application) -> None:
-        """Set the application instance after initialization."""
-        self._app = application
-    
-    def send(self, title: str, body: str, icon: str = "dialog-information",
+    def send(self, title: str, body: str, icon: str = "kernel-installer",
              priority: str = "normal") -> None:
         """
-        Send a desktop notification.
+        Send a transient desktop notification using libnotify.
         
         Args:
             title: Notification title
             body: Notification body text
-            icon: Icon name (from icon theme)
-            priority: 'low', 'normal', 'high', or 'urgent'
+            icon: Icon name
+            priority: 'low', 'normal', 'high'
         """
-        if not self._app:
+        if not self._initialized:
             print(f"[Notification] {title}: {body}")
             return
         
-        notification = Gio.Notification.new(title)
-        notification.set_body(body)
-        notification.set_icon(Gio.ThemedIcon.new(icon))
-        
-        # Set priority
-        priority_map = {
-            'low': Gio.NotificationPriority.LOW,
-            'normal': Gio.NotificationPriority.NORMAL,
-            'high': Gio.NotificationPriority.HIGH,
-            'urgent': Gio.NotificationPriority.URGENT,
+        # Priority mapping for Notify
+        urgency_map = {
+            'low': Notify.Urgency.LOW,
+            'normal': Notify.Urgency.NORMAL,
+            'high': Notify.Urgency.CRITICAL,
         }
-        notification.set_priority(priority_map.get(priority, Gio.NotificationPriority.NORMAL))
         
-        self._app.send_notification(None, notification)
+        notification = Notify.Notification.new(title, body, icon)
+        notification.set_urgency(urgency_map.get(priority, Notify.Urgency.NORMAL))
+        
+        # Set timeout to ensure it disappears (milliseconds)
+        # Most notification servers ignore this and use their own defaults for normal/low,
+        # but specifying it helps in some environments.
+        notification.set_timeout(5000) 
+        
+        try:
+            notification.show()
+        except Exception as e:
+            print(f"Error showing notification: {e}")
     
     def notify_new_kernel_available(self, version: str) -> None:
         """Notify that a new kernel version is available."""
@@ -84,14 +93,14 @@ class NotificationManager:
                 title=_("Build complete"),
                 body=_("Linux %(version)s has been compiled and installed successfully.") % {'version': version},
                 icon="emblem-ok-symbolic",
-                priority="high"
+                priority="normal"
             )
         else:
             self.send(
                 title=_("Build error"),
                 body=_("Compilation of Linux %(version)s has failed.") % {'version': version},
                 icon="dialog-error",
-                priority="urgent"
+                priority="high"
             )
     
     def notify_reboot_required(self) -> None:
@@ -100,8 +109,9 @@ class NotificationManager:
             title=_("Reboot required"),
             body=_("Reboot the system to use the new kernel."),
             icon="system-reboot",
-            priority="high"
+            priority="normal"
         )
+
 
 
 # Global notification manager instance

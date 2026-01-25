@@ -16,14 +16,20 @@ import argparse
 # Handle cleanup on exit
 def cleanup_pycache():
     """Remove all __pycache__ directories in the project."""
-    base_dir = os.path.dirname(os.path.abspath(__file__))
-    for root, dirs, files in os.walk(base_dir):
-        if "__pycache__" in dirs:
-            pycache_path = os.path.join(root, "__pycache__")
-            try:
-                shutil.rmtree(pycache_path)
-            except Exception:
-                pass
+    try:
+        # Check if __file__ exists (it might be gone during atexit/traceback)
+        curr_file = globals().get('__file__') or sys.argv[0]
+        base_dir = os.path.dirname(os.path.abspath(curr_file))
+        for root, dirs, files in os.walk(base_dir):
+            if "__pycache__" in dirs:
+                pycache_path = os.path.join(root, "__pycache__")
+                try:
+                    shutil.rmtree(pycache_path)
+                except Exception:
+                    pass
+    except Exception:
+        pass
+
 
 # Register cleanup for normal exit
 atexit.register(cleanup_pycache)
@@ -39,7 +45,21 @@ signal.signal(signal.SIGTERM, signal_handler)
 # Add package directory to path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
+import gi
+gi.require_version('Gtk', '3.0')
+gi.require_version('Gdk', '3.0')
+from gi.repository import GLib, Gdk, Gtk
+
+# Force identity association for panel icons (Soplos Standard)
+GLib.set_prgname('kernel-installer')
+GLib.set_application_name('Kernel Installer')
+if hasattr(Gdk, 'set_program_class'):
+    Gdk.set_program_class('kernel-installer')
+Gtk.Window.set_default_icon_name('kernel-installer')
+
 from kernel_installer_gui.app import KernelInstallerApp
+
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Kernel Installer GUI Launcher")

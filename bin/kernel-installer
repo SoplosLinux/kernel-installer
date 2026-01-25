@@ -4,24 +4,26 @@
 #
 # This wrapper allows running the application from anywhere
 
+# 1. Determine search locations
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PACKAGE_DIR="$SCRIPT_DIR/kernel_installer_gui"
 
-# Check if running from installed location or development
-if [ -d "$PACKAGE_DIR" ]; then
-    # Development mode - run from source
-    cd "$SCRIPT_DIR"
-    exec python3 -m kernel_installer_gui "$@"
-elif [ -d "/usr/share/kernel-installer" ]; then
+# 2. Find the application base directory
+if [ -f "$SCRIPT_DIR/../main.py" ]; then
+    # Development mode (bin/ inside the repo)
+    APP_BASE="$(cd "$SCRIPT_DIR/.." && pwd)"
+elif [ -f "/usr/share/kernel-installer/main.py" ]; then
     # Installed system-wide
-    export PYTHONPATH="/usr/share/kernel-installer:$PYTHONPATH"
-    exec python3 -m kernel_installer_gui "$@"
-elif [ -d "$HOME/.local/share/kernel-installer" ]; then
+    APP_BASE="/usr/share/kernel-installer"
+elif [ -f "$HOME/.local/share/kernel-installer/main.py" ]; then
     # Installed for user
-    cd "$HOME/.local/share/kernel-installer"
-    exec python3 -m kernel_installer_gui "$@"
+    APP_BASE="$HOME/.local/share/kernel-installer"
 else
-    echo "Error: Kernel Installer not found."
-    echo "Please run from the source directory or install the application."
+    echo "Error: kernel-installer core files not found."
+    echo "Checked: $SCRIPT_DIR/../main.py and /usr/share/kernel-installer/main.py"
     exit 1
 fi
+
+# 3. Launch the application
+export PYTHONPATH="$APP_BASE:$PYTHONPATH"
+exec python3 "$APP_BASE/main.py" "$@"
+

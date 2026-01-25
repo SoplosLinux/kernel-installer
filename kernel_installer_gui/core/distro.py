@@ -17,6 +17,7 @@ class DistroFamily(Enum):
     UBUNTU = auto()      # Ubuntu and derivatives (Mint, Elementary, Pop)
     FEDORA = auto()      # Fedora, RHEL, CentOS, Rocky, Alma
     ARCH = auto()        # Arch and derivatives
+    SOPLOS = auto()      # Soplos Linux
     UNKNOWN = auto()
 
 
@@ -360,12 +361,18 @@ class DistroDetector:
             kernel_version: Specific kernel version, or None for all
         """
         initramfs = self.detect_initramfs_tool()
+        info = self.detect()
         
         if initramfs == InitramfsTool.DRACUT:
+            # Soplos/Legacy specific flags for Dracut (restored from soplos.h)
+            flags = "--force"
+            if info.family == DistroFamily.SOPLOS or info.id == 'soplos':
+                flags += " --hostonly --hostonly-cmdline"
+                
             if kernel_version:
-                return f'dracut --force /boot/initramfs-{kernel_version}.img {kernel_version}'
+                return f'dracut {flags} /boot/initramfs-{kernel_version}.img {kernel_version}'
             else:
-                return 'dracut --regenerate-all --force'
+                return f'dracut --regenerate-all {flags}'
         elif initramfs == InitramfsTool.MKINITCPIO:
             if kernel_version:
                 return f'mkinitcpio -k {kernel_version} -g /boot/initramfs-{kernel_version}.img'
@@ -378,6 +385,118 @@ class DistroDetector:
                 return 'update-initramfs -u -k all'
         else:
             return 'update-initramfs -u'
+
+    def _are_headers_broken(self) -> bool:
+        """
+        Check if system headers are broken by attempting a dummy compilation.
+        Specifically targets issues where <linux/limits.h> or others might be missing.
+        """
+        import tempfile
+        import subprocess
+        
+        # Test C code that includes critical headers
+        test_code = "#include <linux/limits.h>\n#include <sys/types.h>\nint main() { return 0; }\n"
+        
+        with tempfile.NamedTemporaryFile(suffix='.c', mode='w') as f:
+            f.write(test_code)
+            f.flush()
+            
+            try:
+                # Try to compile (linkage not needed)
+                result = subprocess.run(
+                    ['gcc', '-c', f.name, '-o', '/dev/null'],
+                    capture_output=True, text=True, timeout=5
+                )
+                return result.returncode != 0
+            except Exception:
+                # If gcc is missing, we consider it 'broken' or needing install
+                return True
+
+    def install_dependencies(self) -> bool:
+        """
+        Install required build dependencies for the current distribution.
+        Strict Legacy Implementation (matches compile.sh logic).
+        
+        Returns:
+            True if installation was successful or skipped
+        """
+        from ..utils.system import run_privileged, run_command
+        info = self.detect()
+        update_cmd = None
+        install_cmd = None
+        
+        # Soplos Linux / Debian Family (Legacy Logic)
+        if info.family in (DistroFamily.SOPLOS, DistroFamily.DEBIAN, DistroFamily.UBUNTU) or info.id == 'soplos':
+            # Resolve kernel version safely in python
+            uname_r = run_command('uname -r').stdout.strip()
+            
+            # Exact list from soplos.h/compile.sh
+            deps = (
+                "build-essential libncurses-dev bison flex libssl-dev libelf-dev "
+                "bc wget tar xz-utils gettext libc6-dev fakeroot curl git debhelper libdw-dev rsync locales "
+                "dracut dracut-core dracut-network linux-libc-dev libudev-dev libbpf-dev pkg-config "
+                "zlib1g-dev libzstd-dev dwarves kmod cpio pahole libzstd-dev liblz4-dev liblzma-dev "
+                f"linux-headers-{uname_r} linux-headers-generic"
+            )
+            
+            # OPTIMIZATION: Check if already installed AND headers are healthy
+            # We only skip if all packages exist AND we can compile a simple C file
+            check_cmd = f"dpkg-query -W -f='${{Status}}' {deps} 2>/dev/null | grep -v 'install ok installed' || true"
+            pkg_check = run_command(check_cmd)
+            
+            if not pkg_check.stdout.strip():
+                # Packages exist, now check if headers are actually working
+                if not self._are_headers_broken():
+                    return True
+            
+            update_cmd = "apt update"
+            install_cmd = f"apt install --reinstall -y {deps}"
+            
+        # Fedora/RHEL Family
+        elif info.family == DistroFamily.FEDORA:
+            # List from fedora.h
+            deps = (
+                "gcc make ncurses-devel bison flex openssl-devel elfutils-libelf-devel "
+                "rpm-build bc rsync wget tar xz dwarves git-core rubygem-asciidoctor "
+                "xmlto zlib-devel libzstd-devel"
+            )
+            
+            # Optimization for Fedora
+            check_cmd = f"rpm -q {deps} --quiet || echo 'missing'"
+            if run_command(check_cmd).stdout.strip() != 'missing':
+                return True
+                
+            pkg_mgr = "dnf" if shutil.which("dnf") else "yum"
+            install_cmd = f"{pkg_mgr} install -y {deps}"
+            
+        # Arch Family
+        elif info.family == DistroFamily.ARCH:
+            # List from arch.h
+            deps = "base-devel xmlto kmod inetutils bc libelf git cpio perl tar xz"
+            
+            # Optimization for Arch
+            check_cmd = f"pacman -Qq {deps} >/dev/null 2>&1 || echo 'missing'"
+            if run_command(check_cmd).stdout.strip() != 'missing':
+                return True
+                
+            update_cmd = "pacman -Syu --noconfirm"
+            install_cmd = f"pacman -S --noconfirm {deps}"
+            
+        cmds = []
+        if update_cmd:
+            cmds.append(update_cmd)
+        if install_cmd:
+            cmds.append(install_cmd)
+            
+        if cmds:
+            # Combine commands to ask for password only once
+            full_cmd = " && ".join(cmds)
+            final_cmd = f"sh -c '{full_cmd}'"
+            
+            result = run_privileged(final_cmd)
+            return result.returncode == 0
+            
+        return True
     
     def needs_secure_boot_handling(self) -> bool:
         """Check if this distro needs special Secure Boot certificate handling."""

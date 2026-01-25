@@ -305,3 +305,26 @@ msgstr "Вы собираетесь загрузить, скомпилирова
 msgid "Unknown"
 msgstr "Неизвестно"
 
+msgid "Checking system dependencies..."
+msgstr "Проверка системных зависимостей..."
+
+msgid "Working..."
+msgstr "Работа..."
+
+msgid "Verifying environment (requires password)..."
+msgstr "Проверка окружения (требуется пароль)..."
+
+msgid "Dependencies installed/verified."
+msgstr "Зависимости установлены/проверены."
+
+msgid "Error installing dependencies."
+msgstr "Ошибка при установке зависимостей."
+
+msgid "Stopping build process..."
+msgstr "Остановка процесса сборки..."
+
+msgid "Cancellation requested by user..."
+msgstr "Отмена запрошена пользователем..."
+
+msgid "Build cancelled by user."
+msgstr "Сборка отменена пользователем."

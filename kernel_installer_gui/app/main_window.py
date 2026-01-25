@@ -184,7 +184,22 @@ class KernelInstallerWindow(Gtk.ApplicationWindow):
         initramfs_box.pack_start(self._initramfs_value, False, False, 0)
         info_box2.pack_start(initramfs_box, True, True, 0)
         
+        
         config_box.pack_start(info_box2, False, False, 0)
+        
+        # Dependency progress area (Initially hidden)
+        dep_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=4)
+        self._dep_label = Gtk.Label(label="")
+        self._dep_label.set_halign(Gtk.Align.START)
+        self._dep_label.get_style_context().add_class('dim-label')
+        dep_box.pack_start(self._dep_label, False, False, 0)
+        
+        self._dep_progress = Gtk.ProgressBar()
+        self._dep_progress.set_show_text(True)
+        dep_box.pack_start(self._dep_progress, False, False, 0)
+        
+        self._dep_box = dep_box # Keep ref to hide/show
+        config_box.pack_start(self._dep_box, False, False, 0)
         
         # Install button
         self._install_btn = Gtk.Button(label=_("📥 Download and install kernel"))
@@ -226,7 +241,57 @@ class KernelInstallerWindow(Gtk.ApplicationWindow):
         
         main_box.pack_start(self._stack, True, True, 0)
         self.add(main_box)
+        
+        # Initially hide dependency box
+        self._dep_box.hide()
+        
         self.show_all()
+        # Ensure hidden after show_all
+        self._dep_box.hide()
+        
+        # Pulse timer
+        self._pulse_timer_id = None
+    
+    def _pulse_progress(self) -> bool:
+        """Pulse the progress bar."""
+        if self._dep_box.get_visible():
+            self._dep_progress.pulse()
+            return True
+        return False
+    
+    def show_dependency_check_ui(self) -> None:
+        """Switch to progress view for dependency checking."""
+        # Show local progress bar, stay on config page
+        self._dep_box.show()
+        self._install_btn.set_sensitive(False)
+        self._dep_progress.set_fraction(0.0)
+        self._dep_label.set_text(_("Checking system dependencies..."))
+        
+        # Start pulsing
+        if self._pulse_timer_id is None:
+            self._pulse_timer_id = GLib.timeout_add(100, self._pulse_progress)
+    
+    def update_dependency_progress(self, message: str) -> None:
+        """Update progress bar during dependency check."""
+        # Pulse handled by timer
+        self._dep_progress.set_text(_("Working..."))
+        self._dep_label.set_text(message)
+    
+    def hide_dependency_check_ui(self, success: bool) -> None:
+        """Return to config view after check."""
+        self._dep_box.hide()
+        self._install_btn.set_sensitive(True)
+        
+        # Stop pulsing
+        if self._pulse_timer_id is not None:
+            GLib.source_remove(self._pulse_timer_id)
+            self._pulse_timer_id = None
+        
+        if success:
+            # Maybe show a small checkmark or nothing
+            pass
+        else:
+            self._show_error(_("CRITICAL: Failed to install dependencies. Check terminal output."))
     
     def _load_initial_data(self) -> None:
         """Load initial data when window opens."""
@@ -363,8 +428,13 @@ class KernelInstallerWindow(Gtk.ApplicationWindow):
     
     def _on_cancel_clicked(self, button: Gtk.Button) -> None:
         """Handle cancel button click."""
-        # TODO: Implement build cancellation
-        pass
+        if self._building:
+            self._cancel_btn.set_sensitive(False)
+            self._build_progress.update_progress(_("Stopping build process..."), -1)
+            self._build_progress.append_log(_("Cancellation requested by user..."))
+            
+            # This sets the flag that run_command_with_callback checks
+            self._kernel_manager.cancel_operation()
     
     def _on_done_clicked(self, button: Gtk.Button) -> None:
         """Handle done button click - return to config view."""

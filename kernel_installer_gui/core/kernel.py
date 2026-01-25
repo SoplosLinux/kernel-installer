@@ -3,6 +3,7 @@ Kernel manager for downloading, compiling, and installing kernels.
 """
 
 import os
+import sys
 import re
 import json
 import urllib.request
@@ -56,7 +57,16 @@ class KernelManager:
         self._build_dir = get_build_directory()
         self._progress_callback: Optional[Callable[[str, int], None]] = None
         self._current_version: Optional[str] = None
+        self._cancel_requested = False
     
+    def cancel_operation(self) -> None:
+        """Request cancellation of the current operation."""
+        self._cancel_requested = True
+    
+    def _is_cancelled(self) -> bool:
+        """Check if cancellation was requested."""
+        return self._cancel_requested
+
     def set_progress_callback(self, callback: Callable[[str, int], None]) -> None:
         """
         Set a callback for progress updates.
@@ -380,7 +390,14 @@ class KernelManager:
             # Fallback: generic make
             cmd = f'make -j{cpu_count}'
         
-        exit_code = run_command_with_callback(cmd, cwd=source_dir, line_callback=line_callback)
+        exit_code = run_command_with_callback(cmd, cwd=source_dir, 
+                                            line_callback=line_callback,
+                                            stop_check=self._is_cancelled)
+        
+        if self._is_cancelled():
+            self._report_progress(_("Build cancelled by user."), -1)
+            self.cleanup_build_files()
+            return False
         
         if exit_code != 0:
             error_msg = _("Build error (Exit code: %(code)d)") % {'code': exit_code}
@@ -393,7 +410,13 @@ class KernelManager:
         if distro_info.family == DistroFamily.ARCH:
             self._report_progress(_("Compiling modules..."), 85)
             cmd = f'make -j{cpu_count} modules'
-            exit_code = run_command_with_callback(cmd, cwd=source_dir, line_callback=line_callback)
+            exit_code = run_command_with_callback(cmd, cwd=source_dir, 
+                                                line_callback=line_callback,
+                                                stop_check=self._is_cancelled)
+                                                
+            if self._is_cancelled():
+                return False
+                
             if exit_code != 0:
                 self._report_progress(_("Error compiling modules"), -1)
                 return False
@@ -499,14 +522,24 @@ class KernelManager:
         """
         # Store custom name for use in configure and install
         self._custom_name = custom_name or "custom"
+        self._cancel_requested = False
         
         if not self.download_kernel(version):
             return False
         
+        if self._is_cancelled():
+            return False
+        
         if not self.configure_kernel(version, profile):
+            return False
+            
+        if self._is_cancelled():
             return False
         
         if not self.build_kernel(version):
+            return False
+            
+        if self._is_cancelled():
             return False
         
         if not self.install_kernel(version, profile):

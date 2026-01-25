@@ -60,9 +60,11 @@ mkdir -p %{buildroot}%{_datadir}/icons/hicolor/256x256/apps
 
 cp bin/kernel-installer %{buildroot}%{_bindir}/kernel-installer
 chmod +x %{buildroot}%{_bindir}/kernel-installer
+cp main.py README.md LICENSE CHANGELOG.md setup.py %{buildroot}%{_datadir}/kernel-installer/
 cp -r kernel_installer_gui/ %{buildroot}%{_datadir}/kernel-installer/
 cp kernel_installer_gui/data/kernel-installer.desktop %{buildroot}%{_datadir}/applications/
 cp kernel_installer_gui/data/io.github.alexiarstein.kernelinstall.metainfo.xml %{buildroot}%{_datadir}/metainfo/
+
 cp kernel_installer_gui/assets/icons/kernel-installer-48.png %{buildroot}%{_datadir}/icons/hicolor/48x48/apps/kernel-installer.png
 cp kernel_installer_gui/assets/icons/kernel-installer-128.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/kernel-installer.png
 cp kernel_installer_gui/assets/icons/kernel-installer-256.png %{buildroot}%{_datadir}/icons/hicolor/256x256/apps/kernel-installer.png
@@ -75,5 +77,5 @@ cp kernel_installer_gui/assets/icons/kernel-installer-256.png %{buildroot}%{_dat
 %{_datadir}/icons/hicolor/*/apps/kernel-installer.png
 
 %changelog
-* Sat Jan 24 2026 Sergi Perich <info@soploslinux.com> - 1.0.0-1
-- Initial release with Python and GTK3
+* Sat Jan 24 2026 Sergi Perich <info@soploslinux.com> - 1.0.0
+- Initial release for production stable 1.0.0

@@ -305,3 +305,26 @@ msgstr "Stai per scaricare, compilare e installare:\n\n• Versione: Linux %(ver
 msgid "Unknown"
 msgstr "Sconosciuto"
 
+msgid "Checking system dependencies..."
+msgstr "Verifica delle dipendenze di sistema..."
+
+msgid "Working..."
+msgstr "In corso..."
+
+msgid "Verifying environment (requires password)..."
+msgstr "Verifica dell'ambiente (richiesta password)..."
+
+msgid "Dependencies installed/verified."
+msgstr "Dipendenze installate/verificate."
+
+msgid "Error installing dependencies."
+msgstr "Errore durante l'installazione delle dipendenze."
+
+msgid "Stopping build process..."
+msgstr "Interruzione del processo di compilazione..."
+
+msgid "Cancellation requested by user..."
+msgstr "Annullamento richiesto dall'utente..."
+
+msgid "Build cancelled by user."
+msgstr "Compilazione annullata dall'utente."

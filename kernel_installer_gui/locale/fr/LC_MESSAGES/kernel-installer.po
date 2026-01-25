@@ -305,3 +305,26 @@ msgstr "Vous êtes sur le point de télécharger, compiler et installer :\n\n•
 msgid "Unknown"
 msgstr "Inconnu"
 
+msgid "Checking system dependencies..."
+msgstr "Vérification des dépendances système..."
+
+msgid "Working..."
+msgstr "Travail en cours..."
+
+msgid "Verifying environment (requires password)..."
+msgstr "Vérification de l'environnement (mot de passe requis)..."
+
+msgid "Dependencies installed/verified."
+msgstr "Dépendances installées/vérifiées."
+
+msgid "Error installing dependencies."
+msgstr "Erreur lors de l'installation des dépendances."
+
+msgid "Stopping build process..."
+msgstr "Arrêt du processus de compilation..."
+
+msgid "Cancellation requested by user..."
+msgstr "Annulation demandée par l'utilisateur..."
+
+msgid "Build cancelled by user."
+msgstr "Compilation annulée par l'utilisateur."

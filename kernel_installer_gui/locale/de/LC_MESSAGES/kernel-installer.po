@@ -305,3 +305,26 @@ msgstr "Sie sind im Begriff, herunterzuladen, zu kompilieren und zu installieren
 msgid "Unknown"
 msgstr "Unbekannt"
 
+msgid "Checking system dependencies..."
+msgstr "Systemabhängigkeiten werden geprüft..."
+
+msgid "Working..."
+msgstr "Arbeiten..."
+
+msgid "Verifying environment (requires password)..."
+msgstr "Umgebung wird verifiziert (Passwort erforderlich)..."
+
+msgid "Dependencies installed/verified."
+msgstr "Abhängigkeiten installiert/verifiziert."
+
+msgid "Error installing dependencies."
+msgstr "Fehler bei der Installation der Abhängigkeiten."
+
+msgid "Stopping build process..."
+msgstr "Erstellungsprozess wird gestoppt..."
+
+msgid "Cancellation requested by user..."
+msgstr "Abbruch durch Benutzer angefordert..."
+
+msgid "Build cancelled by user."
+msgstr "Erstellung durch Benutzer abgebrochen."

@@ -22,6 +22,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Desktop notifications for build completion
 - Installation history tracking
 - Keyboard shortcuts (Ctrl+Q, F5)
+- Support for 8 languages: EN, ES, FR, PT, DE, IT, RO, RU
+- Verified support for Debian, Fedora and Arch Linux systems
+- Transient notifications via libnotify (auto-hide after 5s)
+- Professional packaging for .deb, .rpm and Arch Linux
+- AppStream/Metainfo integration for software centers
+- Automated system dependency verification and installation
 
 ### Authors
 

@@ -107,20 +107,55 @@
     <release version="1.0.0" date="2025-01-24">
       <description>
         <p>Initial release of Kernel Installer GUI</p>
+        <p xml:lang="es">Lanzamiento inicial de la interfaz gráfica de Kernel Installer</p>
+        <p xml:lang="fr">Version initiale de l'interface graphique de Kernel Installer</p>
+        <p xml:lang="pt">Lançamento inicial da interface gráfica do Kernel Installer</p>
+        <p xml:lang="de">Erstveröffentlichung der Kernel Installer-Grafikoberfläche</p>
+        <p xml:lang="it">Rilascio iniziale dell'interfaccia grafica di Kernel Installer</p>
+        <p xml:lang="ro">Lansarea inițială a interfeței grafice Kernel Installer</p>
+        <p xml:lang="ru">Первоначальный выпуск графического интерфейса Kernel Installer</p>
         <ul>
-          <li>GTK3 graphical interface</li>
+          <li>GTK3 graphical interface with dark mode support</li>
           <li>Kernel profiles: Gaming, Audio/Video, Minimal</li>
-          <li>Support for Debian, Ubuntu, Fedora, and Arch Linux</li>
-          <li>Bootloader detection (GRUB2, systemd-boot, rEFInd, LILO, Syslinux)</li>
-          <li>Initramfs detection (initramfs-tools, dracut, mkinitcpio)</li>
-          <li>All kernel versions from kernel.org</li>
-          <li>Custom kernel naming</li>
-          <li>i18n support (English, Spanish)</li>
-          <li>Desktop notifications</li>
+          <li>Verified support for Debian, Ubuntu, Fedora, and Arch Linux</li>
+          <li>Intelligent detection of GRUB2, systemd-boot, rEFInd, LILO and Syslinux</li>
+          <li>Support for initramfs-tools, dracut and mkinitcpio generators</li>
+          <li>Custom kernel naming and suffix management</li>
+          <li>Transient desktop notifications via libnotify</li>
+          <li>Automated system dependency verification and installation</li>
+          <li>Native support for 8 languages (EN, ES, FR, PT, DE, IT, RO, RU)</li>
           <li>Installation history tracking</li>
+          
+          <li xml:lang="es">Interfaz GTK3 con soporte para modo oscuro</li>
+          <li xml:lang="es">Gestión automática de dependencias del sistema</li>
+          <li xml:lang="es">Perfiles de kernel: Juegos, Audio/Vídeo, Mínimo</li>
+          <li xml:lang="es">Soporte verificado para Debian, Ubuntu, Fedora y Arch Linux</li>
+          <li xml:lang="es">Notificaciones transitorias vía libnotify</li>
+          <li xml:lang="es">Soporte para 8 idiomas</li>
+          
+          <li xml:lang="fr">Gestion automatique des dépendances du sistema</li>
+          <li xml:lang="fr">Interface GTK3 avec support du mode sombre</li>
+          <li xml:lang="fr">Support vérifié pour Debian, Ubuntu, Fedora et Arch Linux</li>
+          <li xml:lang="fr">Notifications transitoires via libnotify</li>
+          
+          <li xml:lang="pt">Interface GTK3 com suporte para modo escuro</li>
+          <li xml:lang="pt">Gestão automática de dependências do sistema</li>
+          
+          <li xml:lang="de">Automatische Verwaltung von Systemabhängigkeiten</li>
+          <li xml:lang="de">GTK3-Benutzeroberfläche mit Dunkelmodus-Unterstützung</li>
+          
+          <li xml:lang="it">Gestione automatica delle dipendenze di sistema</li>
+          <li xml:lang="it">Interfaccia GTK3 con supporto alla modalità scura</li>
+          
+          <li xml:lang="ro">Gestionarea automată a dependențelor de sistem</li>
+          <li xml:lang="ro">Interfață GTK3 cu suport pentru modul întunecat</li>
+          
+          <li xml:lang="ru">Автоматическое управление системными зависимостями</li>
+          <li xml:lang="ru">Интерфейс GTK3 с поддержкой темной темы</li>
         </ul>
       </description>
     </release>
+
   </releases>
   
   <content_rating type="oars-1.1" />

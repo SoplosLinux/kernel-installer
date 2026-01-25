@@ -22,7 +22,9 @@ A graphical interface for downloading, compiling, and installing the Linux kerne
 - Auto-detection of initramfs tool (dracut, initramfs-tools, mkinitcpio)
 - Custom kernel naming
 - i18n support (English, Spanish, French, Portuguese, German, Italian, Romanian, Russian)
-- Desktop notifications
+- Desktop notifications (transient via libnotify)
+- Full i18n coverage for 8 languages (EN, ES, FR, PT, DE, IT, RO, RU)
+- Intelligent automated system dependency verification and installation
 
 ## Requirements
 

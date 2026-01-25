@@ -19,7 +19,7 @@ from ..locale.i18n import _
 class KernelInstallerApp(Gtk.Application):
     """Main GTK Application for Kernel Installer."""
     
-    APP_ID = "org.soploslinux.kernelinstaller"
+    APP_ID = "kernel-installer"
     
     def __init__(self, force_new=False):
         flags = Gio.ApplicationFlags.FLAGS_NONE
@@ -50,15 +50,57 @@ class KernelInstallerApp(Gtk.Application):
         # Setup notification manager
         notifier = get_notification_manager()
         notifier.set_application(self)
-    
-    def do_activate(self) -> None:
-        """Called when application is activated."""
+        
         if not self._window:
             self._window = KernelInstallerWindow(self)
             # Connect key press event for shortcuts
             self._window.connect('key-press-event', self._on_key_press)
         
         self._window.present()
+        
+        # Schedule dependency check after UI is shown
+        GLib.idle_add(self._check_dependencies_threaded)
+
+    def _check_dependencies_threaded(self) -> bool:
+        """Interact with main window to run check in thread."""
+        # Switch UI to progress mode
+        self._window.show_dependency_check_ui()
+        
+        import threading
+        
+        def run_check():
+            try:
+                from ..core.distro import DistroDetector
+                distro = DistroDetector()
+                
+                # We can't get granular progress from apt easily without complex parsing,
+                # but at least the UI won't freeze.
+                GLib.idle_add(self._window.update_dependency_progress, 
+                             _("Verifying environment (requires password)..."))
+                
+                # This blocks this thread, but UI stays alive
+                success = distro.install_dependencies()
+                
+                if success:
+                    GLib.idle_add(self._window.update_dependency_progress, 
+                                 _("Dependencies installed/verified."))
+                    # Small delay to let user see "Done"
+                    import time
+                    time.sleep(1.0)
+                    GLib.idle_add(self._window.hide_dependency_check_ui, True)
+                else:
+                    GLib.idle_add(self._window.update_dependency_progress, 
+                                 _("Error installing dependencies."))
+                    GLib.idle_add(self._window.hide_dependency_check_ui, False)
+                    
+            except Exception as e:
+                print(f"Dependency thread error: {e}")
+                GLib.idle_add(self._window.update_dependency_progress, f"Error: {e}")
+                
+        thread = threading.Thread(target=run_check, daemon=True)
+        thread.start()
+            
+        return False  # Don't call again
     
     def _on_key_press(self, widget, event) -> bool:
         """Handle key press events for shortcuts."""

@@ -305,3 +305,26 @@ msgstr "Sunteți pe cale să descărcați, să compilați și să instalați:\n\
 msgid "Unknown"
 msgstr "Necunoscut"
 
+msgid "Checking system dependencies..."
+msgstr "Se verifică dependențele sistemului..."
+
+msgid "Working..."
+msgstr "Se lucrează..."
+
+msgid "Verifying environment (requires password)..."
+msgstr "Se verifică mediul (necesită parolă)..."
+
+msgid "Dependencies installed/verified."
+msgstr "Dependențe instalate/verificate."
+
+msgid "Error installing dependencies."
+msgstr "Eroare la instalarea dependențelor."
+
+msgid "Stopping build process..."
+msgstr "Se oprește procesul de compilare..."
+
+msgid "Cancellation requested by user..."
+msgstr "Anulare solicitată de utilizator..."
+
+msgid "Build cancelled by user."
+msgstr "Compilare anulată de utilizator."

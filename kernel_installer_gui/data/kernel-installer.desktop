@@ -30,3 +30,4 @@ Type=Application
 Categories=System;Settings;
 Keywords=kernel;linux;compile;install;update;
 StartupNotify=true
+StartupWMClass=kernel-installer
