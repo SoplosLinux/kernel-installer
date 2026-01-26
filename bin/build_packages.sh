@@ -81,10 +81,13 @@ done
 echo "🔹 Building Arch Linux (.pkg.tar.zst) [Manual]..."
 ARCH_DIR="$BUILD_DIR/arch/pkg"
 prepare_base_structure "$ARCH_DIR"
-# Generate .PKGINFO
+
+# Generate .PKGINFO with strict format
+# Note: pkgver in .PKGINFO must include pkgrel (e.g. 1.0.1-1)
+PKGREL="1"
 cat > "$ARCH_DIR/.PKGINFO" <<EOF
 pkgname = kernel-installer
-pkgver = ${VERSION}
+pkgver = ${VERSION}-${PKGREL}
 pkgdesc = Graphical interface for downloading, compiling and installing Linux kernels
 url = https://github.com/SoplosLinux/kernel-installer
 builddate = $(date +%s)
@@ -109,11 +112,21 @@ depend = gettext
 depend = git
 EOF
 
+# Create the package using tar properly to ensure metadata is at the root
+# The '--transform' or just 'tar -C "$ARCH_DIR" -c . ' avoids leading './'
+# We also use a more standard filename format
+ARCH_PKG_NAME="${APP_NAME}-${VERSION}-${PKGREL}-any.pkg.tar.zst"
+
 if tar --help | grep -q zstd; then
-    tar -C "$ARCH_DIR" -c --zstd -f "releases/${APP_NAME}-${VERSION}-arch.pkg.tar.zst" .
+    # Use --no-recursion if we manually ordered files, but a simple glob is usually fine
+    # We must ensure .PKGINFO is near the beginning
+    tar -C "$ARCH_DIR" -c --zstd -f "releases/$ARCH_PKG_NAME" .PKGINFO usr
 elif command -v zstd >/dev/null; then
-    tar -C "$ARCH_DIR" -c . | zstd - > "releases/${APP_NAME}-${VERSION}-arch.pkg.tar.zst"
+    tar -C "$ARCH_DIR" -c .PKGINFO usr | zstd - > "releases/$ARCH_PKG_NAME"
 fi
+
+# Symbolic link for internal consistency if needed
+ln -sf "$ARCH_PKG_NAME" "releases/${APP_NAME}-${VERSION}-arch.pkg.tar.zst"
 
 # Cleanup
 echo "✅ Packaging complete. Files in 'releases/':"
