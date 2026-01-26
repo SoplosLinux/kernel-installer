@@ -1,6 +1,6 @@
 Name:           kernel-installer
 Version:        1.0.1
-Release:        1
+Release:        2
 Summary:        Graphical interface for downloading, compiling and installing Linux kernels (Fedora Family)
 
 License:        GPLv3+
@@ -38,7 +38,7 @@ Requires:       gcc
 Requires:       gcc-c++
 Requires:       gettext
 Requires:       fakeroot
-Requires:       newt
+Requires:       newt-devel
 
 Source0:        %{name}-%{version}.tar.gz
 
@@ -82,6 +82,9 @@ cp kernel_installer_gui/assets/icons/org.soplos.kernel-installer-256.png %{build
 %{_datadir}/icons/hicolor/*/apps/org.soplos.kernel-installer.png
 
 %changelog
-* Mon Jan 26 2026 Sergi Perich <info@soploslinux.com> - 1.0.1
+* Mon Jan 26 2026 Sergi Perich <info@soploslinux.com> - 1.0.1-2
+- Fixed newt dependency: changed from 'newt' to 'newt-devel'
+
+* Mon Jan 26 2026 Sergi Perich <info@soploslinux.com> - 1.0.1-1
 - Sudo optimization and RC fix
 - Updated Fedora specific dependencies

@@ -237,26 +237,13 @@ class KernelManager:
             extension = "tar.xz"
             
         tarball = os.path.join(self._build_dir, f"linux-{version}.{extension}")
-        
-        self._report_progress(_("Downloading linux-%(version)s.%(ext)s...") % {'version': version, 'ext': extension}, 5)
-        
-        # Download using wget for progress
-        cmd = f'wget -O "{tarball}" "{url}"'
-        result = run_command(cmd, cwd=self._build_dir)
-        
-        if result.returncode != 0:
-            self._report_progress(_("Download error: %(error)s") % {'error': result.stderr}, -1)
-            return False
-        
-        self._report_progress(_("Download complete. Extracting..."), 15)
-        
         source_dir = os.path.join(self._build_dir, f"linux-{version}")
-        
+
         # 1. Clean old sources and artifacts to ensure a fresh start
         if os.path.exists(source_dir):
-            self._report_progress(_("Removing old source directory..."), 16)
+            self._report_progress(_("Removing old source directory..."), 6)
             shutil.rmtree(source_dir)
-            
+
         # Also remove old tarballs and packages for THIS version to avoid conflicts
         import glob
         old_artifacts = [
@@ -274,7 +261,19 @@ class KernelManager:
                         os.remove(f)
                 except Exception:
                     pass
-            
+
+        self._report_progress(_("Downloading linux-%(version)s.%(ext)s...") % {'version': version, 'ext': extension}, 7)
+        
+        # Download using wget for progress
+        cmd = f'wget -O "{tarball}" "{url}"'
+        result = run_command(cmd, cwd=self._build_dir)
+        
+        if result.returncode != 0:
+            self._report_progress(_("Download error: %(error)s") % {'error': result.stderr}, -1)
+            return False
+        
+        self._report_progress(_("Download complete. Extracting..."), 15)
+        
         # 2. Extract
         self._report_progress(_("Extracting linux-%(version)s...") % {'version': version}, 17)
         cmd = f'tar -xf "{tarball}"'
@@ -473,18 +472,21 @@ class KernelManager:
         
         if distro_info.family in (DistroFamily.DEBIAN, DistroFamily.UBUNTU):
             self._report_progress(_("Preparing .deb packages installation..."), 93)
-            cmds.append(f'dpkg -i {self._build_dir}/linux-image-{version}*.deb')
-            cmds.append(f'dpkg -i {self._build_dir}/linux-headers-{version}*.deb 2>/dev/null || true')
+            # Use a single dpkg call for all packages to speed up and reduce prompts
+            cmds.append(f'dpkg -i {self._build_dir}/linux-image-{version}*.deb {self._build_dir}/linux-headers-{version}*.deb 2>/dev/null || dpkg -i {self._build_dir}/linux-image-{version}*.deb')
             
-        elif distro_info.family == DistroFamily.FEDORA:
+        elif distro_info.family in (DistroFamily.FEDORA, DistroFamily.MANDRIVA):
             self._report_progress(_("Preparing RPM packages installation..."), 93)
-            rpm_path = os.path.expanduser("~/rpmbuild/RPMS/x86_64/")
-            cmds.append(f'rpm -ivh {rpm_path}kernel-{version}*.rpm')
+            # Check both possible RPM build locations
+            rpm_base = os.path.expanduser("~/rpmbuild/RPMS")
+            # Common patterns for both Fedora and Mageia
+            cmds.append(f'rpm -Uvh {rpm_base}/*/kernel-{version}*.rpm {rpm_base}/*/kernel-devel-{version}*.rpm 2>/dev/null || rpm -Uvh {rpm_base}/*/kernel-{version}*.rpm')
                 
         elif distro_info.family == DistroFamily.ARCH:
             self._report_progress(_("Preparing direct installation..."), 93)
-            cmds.append(f'cd {source_dir} && make modules_install')
-            cmds.append(f'cd {source_dir} && make install')
+            # Ensure we are in root of source for modules_install
+            cmds.append(f'make -C {source_dir} modules_install')
+            cmds.append(f'make -C {source_dir} install')
         
         # Regenerate initramfs
         initramfs_cmd = self._distro.get_initramfs_update_command(kernel_version)

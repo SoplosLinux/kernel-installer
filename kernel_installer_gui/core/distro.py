@@ -17,7 +17,7 @@ class DistroFamily(Enum):
     UBUNTU = auto()      # Ubuntu and derivatives (Mint, Elementary, Pop)
     FEDORA = auto()      # Fedora, RHEL, CentOS, Rocky, Alma
     ARCH = auto()        # Arch and derivatives
-    SOPLOS = auto()      # Soplos Linux
+    MANDRIVA = auto()    # Mageia, OpenMandriva, Rosa, PCLinuxOS
     UNKNOWN = auto()
 
 
@@ -71,11 +71,11 @@ DISTRO_MAP = {
     'goblin': DistroFamily.DEBIAN,
     'gobmis': DistroFamily.DEBIAN,
     'huayra': DistroFamily.DEBIAN,
+    'lmde': DistroFamily.DEBIAN,  # LMDE is Debian-based
     
     # Ubuntu/Mint family (need special handling for Secure Boot)
     'ubuntu': DistroFamily.UBUNTU,
     'linuxmint': DistroFamily.UBUNTU,
-    'lmde': DistroFamily.DEBIAN,  # LMDE is Debian-based
     'elementary': DistroFamily.UBUNTU,
     'pop': DistroFamily.UBUNTU,
     'zorin': DistroFamily.UBUNTU,
@@ -94,6 +94,13 @@ DISTRO_MAP = {
     'manjaro': DistroFamily.ARCH,
     'endeavouros': DistroFamily.ARCH,
     'garuda': DistroFamily.ARCH,
+    'cachyos': DistroFamily.ARCH,
+
+    # Mandriva family
+    'mageia': DistroFamily.MANDRIVA,
+    'openmandriva': DistroFamily.MANDRIVA,
+    'rosa': DistroFamily.MANDRIVA,
+    'pclinuxos': DistroFamily.MANDRIVA,
 }
 
 
@@ -277,6 +284,8 @@ class DistroDetector:
             return 'dnf'
         elif info.family == DistroFamily.ARCH:
             return 'pacman'
+        elif info.family == DistroFamily.MANDRIVA:
+            return 'dnf'
         else:
             return 'apt'  # Default fallback
     
@@ -312,6 +321,13 @@ class DistroDetector:
             DistroFamily.ARCH: [
                 'base-devel', 'bc', 'rsync', 'wget', 'tar', 'xz', 'libelf', 
                 'pahole', 'kmod', 'cpio', 'openssl', 'ncurses'
+            ],
+            DistroFamily.MANDRIVA: [
+                'gcc', 'gcc-c++', 'make', 'binutils', 'bison', 'flex', 'bc', 'rsync', 
+                'wget', 'tar', 'xz', 'curl', 'git', 'gettext', 'kmod', 'cpio',
+                'dwarves', 'fakeroot', 'openssl-devel', 'elfutils-devel', 
+                'ncurses-devel', 'newt-devel', 'kernel-desktop-devel', 'python3-gi',
+                'gtk+3.0'
             ]
         }
         
@@ -329,6 +345,8 @@ class DistroDetector:
             return f'dnf install -y {pkg_list}'
         elif info.family == DistroFamily.ARCH:
             return f'pacman -S --noconfirm {pkg_list}'
+        elif info.family == DistroFamily.MANDRIVA:
+            return f'dnf install -y {pkg_list}'
         else:
             return f'apt install -y {pkg_list}'
     
@@ -366,7 +384,7 @@ class DistroDetector:
         if initramfs == InitramfsTool.DRACUT:
             # Soplos/Legacy specific flags for Dracut (restored from soplos.h)
             flags = "--force"
-            if info.family == DistroFamily.SOPLOS or info.id == 'soplos':
+            if info.id == 'soplos':
                 flags += " --hostonly --hostonly-cmdline"
                 
             if kernel_version:
@@ -395,10 +413,12 @@ class DistroDetector:
         """
         info = self.detect()
         
-        if info.family in (DistroFamily.DEBIAN, DistroFamily.UBUNTU, DistroFamily.SOPLOS):
+        if info.family in (DistroFamily.DEBIAN, DistroFamily.UBUNTU):
             # For Debian-based, we remove the image and headers packages
             return f'apt purge -y linux-image-{kernel_version} linux-headers-{kernel_version}'
         elif info.family == DistroFamily.FEDORA:
+            return f'dnf remove -y kernel-{kernel_version}'
+        elif info.family == DistroFamily.MANDRIVA:
             return f'dnf remove -y kernel-{kernel_version}'
         elif info.family == DistroFamily.ARCH:
             # Arch: Manual removal of files + modules
@@ -455,7 +475,7 @@ class DistroDetector:
         install_cmd = None
         
         # Soplos Linux / Debian Family (Legacy Logic)
-        if info.family in (DistroFamily.SOPLOS, DistroFamily.DEBIAN, DistroFamily.UBUNTU) or info.id == 'soplos':
+        if info.family in (DistroFamily.DEBIAN, DistroFamily.UBUNTU) or info.id == 'soplos':
             # Resolve kernel version safely in python
             uname_r = run_command('uname -r').stdout.strip()
             
@@ -510,6 +530,23 @@ class DistroDetector:
                 
             update_cmd = "pacman -Syu --noconfirm"
             install_cmd = f"pacman -S --noconfirm {deps}"
+
+        # Mandriva Family (Mageia/OpenMandriva)
+        elif info.family == DistroFamily.MANDRIVA:
+            # Check for essential binaries (this is fast and doesn't need root)
+            essential_bins = ['gcc', 'make', 'tar', 'xz']
+            if all(shutil.which(b) for b in essential_bins):
+                # Check if headers are working by compiling a simple C file
+                if not self._are_headers_broken():
+                    return True # Compilation possible, skip sudo
+
+            # Prepare list if something is missing
+            deps = (
+                "gcc gcc-c++ make binutils bison flex bc rsync wget tar xz curl git gettext "
+                "kmod cpio dwarves fakeroot openssl-devel elfutils-devel ncurses-devel "
+                "newt-devel kernel-desktop-devel python3-gi gtk+3.0"
+            )
+            install_cmd = f"dnf install -y {deps}"
             
         cmds = []
         if update_cmd:
@@ -535,7 +572,7 @@ class DistroDetector:
     def is_supported(self) -> bool:
         """Check if this distribution is supported."""
         info = self.detect()
-        return info.family in (DistroFamily.DEBIAN, DistroFamily.UBUNTU, DistroFamily.FEDORA, DistroFamily.ARCH)
+        return info.family in (DistroFamily.DEBIAN, DistroFamily.UBUNTU, DistroFamily.FEDORA, DistroFamily.ARCH, DistroFamily.MANDRIVA)
     
     def get_bootloader_name(self) -> str:
         """Get human-readable bootloader name."""

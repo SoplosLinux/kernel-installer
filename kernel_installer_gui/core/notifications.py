@@ -37,18 +37,11 @@ class NotificationManager:
              priority: str = "normal") -> None:
         """
         Send a transient desktop notification using libnotify.
-        
-        Args:
-            title: Notification title
-            body: Notification body text
-            icon: Icon name
-            priority: 'low', 'normal', 'high'
         """
         if not self._initialized:
             print(f"[Notification] {title}: {body}")
             return
         
-        # Priority mapping for Notify
         urgency_map = {
             'low': Notify.Urgency.LOW,
             'normal': Notify.Urgency.NORMAL,
@@ -58,10 +51,10 @@ class NotificationManager:
         notification = Notify.Notification.new(title, body, icon)
         notification.set_urgency(urgency_map.get(priority, Notify.Urgency.NORMAL))
         
-        # Set timeout to ensure it disappears (milliseconds)
-        # Most notification servers ignore this and use their own defaults for normal/low,
-        # but specifying it helps in some environments.
-        notification.set_timeout(5000) 
+        # 1. Set explicit timeout (5 seconds)
+        # 2. Add 'transient' hint to ensure it doesn't stay in summary/log area
+        notification.set_timeout(5000)
+        notification.set_hint("transient", GLib.Variant('b', True))
         
         try:
             notification.show()
@@ -86,8 +79,12 @@ class NotificationManager:
             priority="low"
         )
     
-    def notify_build_complete(self, version: str, success: bool) -> None:
-        """Notify that kernel build is complete."""
+    def notify_build_complete(self, version: str, success: bool, cancelled: bool = False) -> None:
+        """Notify that kernel build is complete or cancelled."""
+        if cancelled:
+            self.notify_build_cancelled(version)
+            return
+
         if success:
             self.send(
                 title=_("Build complete"),
@@ -102,6 +99,15 @@ class NotificationManager:
                 icon="dialog-error",
                 priority="high"
             )
+
+    def notify_build_cancelled(self, version: str) -> None:
+        """Notify that kernel build was cancelled by user."""
+        self.send(
+            title=_("Build cancelled"),
+            body=_("Compilation of Linux %(version)s was cancelled by user.") % {'version': version},
+            icon="dialog-warning-symbolic",
+            priority="normal"
+        )
     
     def notify_reboot_required(self) -> None:
         """Notify that a reboot is required."""

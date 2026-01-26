@@ -1,6 +1,7 @@
 from dataclasses import dataclass, field
 from enum import Enum, auto
 from typing import Dict, List
+import os
 # Standard gettext marker for string extraction without immediate translation
 def _(s): return s
 

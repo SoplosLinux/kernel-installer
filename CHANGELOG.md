@@ -15,7 +15,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Automatic virtualization detection (QEMU/KVM, VirtualBox, VMware) in optimized profile
 - Added checkbox for optional build directory cleanup after installation
 - Fixed build errors when the source or build directory already existed from a previous attempt
-- Refined Arch Linux support (fixed kernel module paths)
+- Refined Arch Linux support (fixed kernel module paths) and added CachyOS
+- Added official support for LMDE (Linux Mint Debian Edition)
+- Extended Mandriva family support: Mageia, OpenMandriva, Rosa Linux, PCLinuxOS
+- Fixed Mageia/Mandriva package dependencies and architecture naming (lib64)
 
 ### Fixed
 

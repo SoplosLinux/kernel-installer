@@ -461,6 +461,15 @@ msgstr "Ошибка сборки"
 msgid "Compilation of Linux %(version)s has failed."
 msgstr "Сборка Linux %(version)s не удалась."
 
+#: kernel_installer_gui/core/notifications.py:110
+msgid "Build cancelled"
+msgstr "Сборка отменена"
+
+#: kernel_installer_gui/core/notifications.py:111
+#, python-format
+msgid "Compilation of Linux %(version)s was cancelled by user."
+msgstr "Сборка Linux %(version)s была отменена пользователем."
+
 #: kernel_installer_gui/core/notifications.py:109
 msgid "Reboot required"
 msgstr "Требуется перезагрузка"

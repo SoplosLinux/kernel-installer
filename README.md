@@ -20,10 +20,10 @@ A graphical interface for downloading, compiling, and installing the Linux kerne
 - Auto-detection of Hardware features (CPU, GPU, NVMe) for performance
 - Virtualization support detection (QEMU, VMware, VirtualBox)
 - **Multi-distro support**:
-  - **Debian Family**: Debian, Soplos, GoldenDog, Ubuntu, Kubuntu, Xubuntu, Lubuntu, Linux Mint, Pop!\_OS, MX Linux, Elementary OS, Kali Linux.
+  - **Debian Family**: Debian, Soplos, GoldenDog, LMDE, Ubuntu, Kubuntu, Xubuntu, Lubuntu, Linux Mint, Pop!\_OS, MX Linux, Elementary OS, Kali Linux.
   - **Arch Family**: Arch Linux, Manjaro, EndeavourOS, CachyOS, Garuda Linux.
   - **Fedora Family**: Fedora, Red Hat Enterprise Linux, CentOS Stream, AlmaLinux, Rocky Linux.
-  - **Mageia Family**: Mageia, OpenMandriva.
+  - **Mageia Family**: Mageia, OpenMandriva, Rosa Linux, PCLinuxOS.
 - Single sudo prompt for the entire installation process
 - Fluent reboot without extra password prompts (integrated with systemd)
 - Optional automatic cleanup of build directory
@@ -61,10 +61,11 @@ sudo dnf install python3-gobject gtk3
 sudo pacman -S python-gobject gtk3
 ```
 
-### Mageia / OpenMandriva
+### Mageia / OpenMandriva / Rosa / PCLOS
 
 ```bash
-sudo dnf install python3-gobject gtk+3.0
+# In Mageia (use urpmi for best results with architecture naming)
+sudo urpmi python3-gi lib64gtk+3.0_0
 ```
 
 ## 📦 Installation

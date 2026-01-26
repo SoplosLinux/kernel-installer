@@ -460,6 +460,15 @@ msgstr "Eroare de construcție"
 msgid "Compilation of Linux %(version)s has failed."
 msgstr "Compilarea Linux %(version)s a eșuat."
 
+#: kernel_installer_gui/core/notifications.py:110
+msgid "Build cancelled"
+msgstr "Compilare anulată"
+
+#: kernel_installer_gui/core/notifications.py:111
+#, python-format
+msgid "Compilation of Linux %(version)s was cancelled by user."
+msgstr "Compilarea Linux %(version)s a fost anulată de utilizator."
+
 #: kernel_installer_gui/core/notifications.py:109
 msgid "Reboot required"
 msgstr "Repornire necesară"

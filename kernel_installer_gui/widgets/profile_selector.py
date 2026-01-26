@@ -39,6 +39,8 @@ class ProfileCard(Gtk.RadioButton):
         name_label = Gtk.Label(label=_(profile.name))
         name_label.get_style_context().add_class('profile-name')
         name_label.set_halign(Gtk.Align.CENTER)
+        name_label.set_line_wrap(False)
+        name_label.set_max_width_chars(10)
         box.pack_start(name_label, False, False, 0)
         
         # Tooltip with description (shows on hover)

@@ -463,6 +463,15 @@ msgstr "Errore di compilazione"
 msgid "Compilation of Linux %(version)s has failed."
 msgstr "La compilazione di Linux %(version)s è fallita."
 
+#: kernel_installer_gui/core/notifications.py:110
+msgid "Build cancelled"
+msgstr "Compilazione annullata"
+
+#: kernel_installer_gui/core/notifications.py:111
+#, python-format
+msgid "Compilation of Linux %(version)s was cancelled by user."
+msgstr "La compilazione di Linux %(version)s è stata annullata dall'utente."
+
 #: kernel_installer_gui/core/notifications.py:109
 msgid "Reboot required"
 msgstr "Riavvio requerido"

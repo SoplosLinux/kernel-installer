@@ -55,7 +55,9 @@ done
 # --- RPM FAMILY (.rpm) ---
 for target in fedora mageia; do
     echo "🔹 Building RPM-based ($target) .rpm..."
+    # Create RPM structure and clean previous build for this package
     mkdir -p "$RPM_BUILD_DIR"/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
+    rm -f "$RPM_BUILD_DIR"/RPMS/noarch/${APP_NAME}-${VERSION}-*.noarch.rpm
     
     # Create source tarball
     TAR_NAME="${APP_NAME}-${VERSION}"
@@ -68,7 +70,8 @@ for target in fedora mageia; do
     
     if command -v rpmbuild >/dev/null; then
         rpmbuild -bb "$RPM_BUILD_DIR/SPECS/kernel-installer.spec" --define "_topdir $RPM_BUILD_DIR"
-        cp "$RPM_BUILD_DIR"/RPMS/noarch/kernel-installer-${VERSION}-1.noarch.rpm "releases/kernel-installer-${VERSION}-${target}.noarch.rpm"
+        # Usar comodín para el release para evitar fallos si cambia en el .spec
+        cp "$RPM_BUILD_DIR"/RPMS/noarch/kernel-installer-${VERSION}-*.noarch.rpm "releases/kernel-installer-${VERSION}-${target}.noarch.rpm"
     else
         echo "⚠️ rpmbuild not found. Skipping RPM build for $target."
     fi

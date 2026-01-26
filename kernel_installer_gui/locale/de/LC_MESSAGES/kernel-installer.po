@@ -462,6 +462,15 @@ msgstr "Build-Fehler"
 msgid "Compilation of Linux %(version)s has failed."
 msgstr "Das Kompilieren von Linux %(version)s ist fehlgeschlagen."
 
+#: kernel_installer_gui/core/notifications.py:110
+msgid "Build cancelled"
+msgstr "Kompilierung abgebrochen"
+
+#: kernel_installer_gui/core/notifications.py:111
+#, python-format
+msgid "Compilation of Linux %(version)s was cancelled by user."
+msgstr "Die Kompilierung von Linux %(version)s wurde vom Benutzer abgebrochen."
+
 #: kernel_installer_gui/core/notifications.py:109
 msgid "Reboot required"
 msgstr "Neustart erforderlich"

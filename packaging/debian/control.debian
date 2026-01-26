@@ -8,4 +8,4 @@ Maintainer: Sergi Perich <info@soploslinux.com>
 Description: Kernel Installer GUI for Linux (Debian Family)
  Graphical interface for downloading, compiling and installing Linux kernels.
  .
- Optimized for Debian and its direct derivatives (Soplos, GoldenDog, MX Linux).
+ Optimized for Debian and its direct derivatives (Soplos, GoldenDog, LMDE, MX Linux).

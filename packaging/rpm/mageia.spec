@@ -1,16 +1,17 @@
 Name:           kernel-installer
 Version:        1.0.1
-Release:        1
+Release:        5
 Summary:        Graphical interface for downloading, compiling and installing Linux kernels (Mageia Family)
-
+Group:          System/Configuration/Hardware
 License:        GPLv3+
 URL:            https://github.com/SoplosLinux/kernel-installer
 BuildArch:      noarch
 
-# Core runtime (Mageia names)
+# Core runtime (Mageia provides - architecture independent)
 Requires:       python3
-Requires:       python3-gobject
+Requires:       python3-gi
 Requires:       gtk+3.0
+Requires:       newt
 Requires:       wget
 Requires:       curl
 Requires:       git
@@ -19,19 +20,17 @@ Requires:       xz
 Requires:       openssl
 Requires:       coreutils
 
-# Build dependencies (Mageia/Mandriva specific names)
+# Build dependencies (Mageia specific names)
 Requires:       binutils
 Requires:       flex
 Requires:       bison
-Requires:       libopenssl-devel
-Requires:       libelf-devel
+Requires:       openssl-devel
+Requires:       elfutils-devel
 Requires:       bc
 Requires:       rsync
 Requires:       kmod
 Requires:       dwarves
 Requires:       cpio
-Requires:       kernel-devel
-Requires:       pkgconfig
 Requires:       ncurses-devel
 Requires:       make
 Requires:       gcc
@@ -39,6 +38,9 @@ Requires:       gcc-c++
 Requires:       gettext
 Requires:       fakeroot
 Requires:       newt-devel
+
+# Kernel headers
+Requires:       kernel-desktop-devel
 
 Source0:        %{name}-%{version}.tar.gz
 
@@ -82,6 +84,15 @@ cp kernel_installer_gui/assets/icons/org.soplos.kernel-installer-256.png %{build
 %{_datadir}/icons/hicolor/*/apps/org.soplos.kernel-installer.png
 
 %changelog
-* Mon Jan 26 2026 Sergi Perich <info@soploslinux.com> - 1.0.1
+* Mon Jan 26 2026 Sergi Perich <info@soploslinux.com> - 1.0.1-2
+- Corrected dependencies for Mageia 10 with DNF
+- Changed gtk+3.0 (virtual provide, architecture independent)
+- Changed libopenssl-devel to openssl-devel (virtual provide)
+- Changed libelf-devel to elfutils-devel (virtual provide)
+- Changed lib64ncurses-devel to ncurses-devel (virtual provide)
+- Changed lib64newt-devel to newt-devel (virtual provide)
+- Using virtual provides when possible for better compatibility
+
+* Mon Jan 26 2026 Sergi Perich <info@soploslinux.com> - 1.0.1-1
 - Sudo optimization and RC fix
-- Adjusted dependencies for Mageia/OpenMandriva (gtk+3.0, kernel-devel, libopenssl-devel)
+- Initial Mageia/OpenMandriva package

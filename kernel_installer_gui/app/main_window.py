@@ -409,6 +409,7 @@ class KernelInstallerWindow(Gtk.ApplicationWindow):
     
     def _on_build_complete(self, success: bool) -> None:
         """Handle build completion."""
+        is_cancelled = self._kernel_manager._cancel_requested
         self._building = False
         self._cancel_btn.set_sensitive(False)
         self._done_btn.show()
@@ -420,7 +421,7 @@ class KernelInstallerWindow(Gtk.ApplicationWindow):
         # Send notification
         version = self._version_picker.get_selected_version()
         notifier = get_notification_manager()
-        notifier.notify_build_complete(version, success)
+        notifier.notify_build_complete(version, success, cancelled=is_cancelled)
         
         if success:
             self._ask_reboot()
