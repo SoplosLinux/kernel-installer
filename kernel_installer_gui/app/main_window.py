@@ -125,6 +125,11 @@ class KernelInstallerWindow(Gtk.ApplicationWindow):
         
         config_box.pack_start(name_box, False, False, 0)
         
+        # Cleanup option
+        self._cleanup_check = Gtk.CheckButton(label=_("Clean build directory after installation (Save disk space)"))
+        self._cleanup_check.set_active(True)
+        config_box.pack_start(self._cleanup_check, False, False, 0)
+        
         # Separator
         config_box.pack_start(Gtk.Separator(), False, False, 0)
         
@@ -365,9 +370,10 @@ class KernelInstallerWindow(Gtk.ApplicationWindow):
         
         # Start build in thread
         custom_name = self.get_kernel_name()
+        cleanup = self._cleanup_check.get_active()
         def build_thread():
             try:
-                success = self._kernel_manager.full_install(version, profile, custom_name)
+                success = self._kernel_manager.full_install(version, profile, custom_name, cleanup)
                 GLib.idle_add(self._on_build_complete, success)
             except Exception as e:
                 GLib.idle_add(self._on_build_error, str(e))
@@ -517,8 +523,8 @@ class KernelInstallerWindow(Gtk.ApplicationWindow):
         dialog.destroy()
         
         if response == Gtk.ResponseType.YES:
-            from ..utils.system import run_privileged
-            run_privileged("reboot")
+            from ..utils.system import reboot_system
+            reboot_system()
     
     def _show_error(self, message: str) -> None:
         """Show error dialog."""

@@ -244,10 +244,28 @@ class KernelManager:
         
         source_dir = os.path.join(self._build_dir, f"linux-{version}")
         
-        # 1. Clean old sources to ensure a fresh extraction
+        # 1. Clean old sources and artifacts to ensure a fresh start
         if os.path.exists(source_dir):
             self._report_progress(_("Removing old source directory..."), 16)
             shutil.rmtree(source_dir)
+            
+        # Also remove old tarballs and packages for THIS version to avoid conflicts
+        import glob
+        old_artifacts = [
+            tarball,
+            os.path.join(self._build_dir, f"linux-image-{version}*.deb"),
+            os.path.join(self._build_dir, f"linux-headers-{version}*.deb"),
+            os.path.join(self._build_dir, f"linux-libc-dev-{version}*.deb"),
+            os.path.join(self._build_dir, f"linux-image-{version}*.rpm"),
+            os.path.join(self._build_dir, f"linux-{version}*.rpm")
+        ]
+        for pattern in old_artifacts:
+            for f in glob.glob(pattern):
+                try:
+                    if os.path.isfile(f):
+                        os.remove(f)
+                except Exception:
+                    pass
             
         # 2. Extract
         self._report_progress(_("Extracting linux-%(version)s...") % {'version': version}, 17)
@@ -443,64 +461,39 @@ class KernelManager:
         source_dir = os.path.join(self._build_dir, f"linux-{version}")
         kernel_version = f"{version}{full_tag}"
         
+        cmds = []
+        
         if distro_info.family in (DistroFamily.DEBIAN, DistroFamily.UBUNTU):
-            # Install .deb packages
-            self._report_progress(_("Installing .deb packages..."), 93)
-            cmd = f'dpkg -i {self._build_dir}/linux-image-{version}*.deb'
-            result = run_privileged(cmd)
-            
-            if result.returncode != 0:
-                self._report_progress(_("Installation error: %(error)s") % {'error': result.stderr}, -1)
-                return False
-            
-            # Install headers if exists
-            cmd = f'dpkg -i {self._build_dir}/linux-headers-{version}*.deb 2>/dev/null || true'
-            run_privileged(cmd)
+            self._report_progress(_("Preparing .deb packages installation..."), 93)
+            cmds.append(f'dpkg -i {self._build_dir}/linux-image-{version}*.deb')
+            cmds.append(f'dpkg -i {self._build_dir}/linux-headers-{version}*.deb 2>/dev/null || true')
             
         elif distro_info.family == DistroFamily.FEDORA:
-            # Install RPM packages
-            self._report_progress(_("Installing RPM packages..."), 93)
+            self._report_progress(_("Preparing RPM packages installation..."), 93)
             rpm_path = os.path.expanduser("~/rpmbuild/RPMS/x86_64/")
-            cmd = f'rpm -ivh {rpm_path}kernel-{version}*.rpm'
-            result = run_privileged(cmd)
-            
-            if result.returncode != 0:
-                self._report_progress(_("RPM installation error: %(error)s") % {'error': result.stderr}, -1)
-                return False
+            cmds.append(f'rpm -ivh {rpm_path}kernel-{version}*.rpm')
                 
         elif distro_info.family == DistroFamily.ARCH:
-            # Arch: Direct installation using make
-            self._report_progress(_("Installing modules..."), 93)
-            cmd = f'make modules_install'
-            result = run_privileged(f'sh -c "cd {source_dir} && {cmd}"')
-            
-            if result.returncode != 0:
-                self._report_progress(_("Module installation error: %(error)s") % {'error': result.stderr}, -1)
-                return False
-            
-            self._report_progress(_("Installing kernel..."), 94)
-            cmd = f'make install'
-            result = run_privileged(f'sh -c "cd {source_dir} && {cmd}"')
-            
-            if result.returncode != 0:
-                self._report_progress(_("Kernel installation error: %(error)s") % {'error': result.stderr}, -1)
-                return False
+            self._report_progress(_("Preparing direct installation..."), 93)
+            cmds.append(f'cd {source_dir} && make modules_install')
+            cmds.append(f'cd {source_dir} && make install')
         
         # Regenerate initramfs
-        self._report_progress(_("Regenerating initramfs..."), 95)
         initramfs_cmd = self._distro.get_initramfs_update_command(kernel_version)
-        result = run_privileged(initramfs_cmd)
-        
-        if result.returncode != 0:
-            self._report_progress(_("Warning: Error regenerating initramfs"), -1)
+        cmds.append(initramfs_cmd)
         
         # Update bootloader
-        self._report_progress(_("Updating bootloader..."), 97)
         bootloader_cmd = self._distro.get_bootloader_update_command()
-        result = run_privileged(bootloader_cmd)
+        cmds.append(bootloader_cmd)
+        
+        # Combine all commands into a single privileged call
+        self._report_progress(_("Finalizing installation (may require password)..."), 95)
+        full_cmd = " && ".join(cmds)
+        result = run_privileged(full_cmd)
         
         if result.returncode != 0:
-            self._report_progress(_("Warning: Error updating bootloader"), -1)
+            self._report_progress(_("Installation error: %(error)s") % {'error': result.stderr or result.stdout}, -1)
+            return False
         
         # Save to history
         self._save_to_history(version, profile)
@@ -508,7 +501,7 @@ class KernelManager:
         self._report_progress(_("Installation complete!"), 100)
         return True
     
-    def full_install(self, version: str, profile: KernelProfile, custom_name: str = "") -> bool:
+    def full_install(self, version: str, profile: KernelProfile, custom_name: str = "", cleanup: bool = False) -> bool:
         """
         Perform full kernel installation: download, configure, build, install.
         
@@ -516,6 +509,7 @@ class KernelManager:
             version: Kernel version
             profile: KernelProfile to use
             custom_name: Custom name/suffix for the kernel
+            cleanup: Whether to remove build files after success
             
         Returns:
             True if all steps successful
@@ -544,6 +538,10 @@ class KernelManager:
         
         if not self.install_kernel(version, profile):
             return False
+            
+        if cleanup:
+            self._report_progress(_("Cleaning up build files..."), 100)
+            self.cleanup_build_files()
         
         return True
     

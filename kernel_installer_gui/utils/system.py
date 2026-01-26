@@ -93,7 +93,7 @@ def run_command_with_callback(cmd: str, cwd: str = None,
 
 def run_privileged(cmd: str) -> subprocess.CompletedProcess:
     """
-    Run a command with elevated privileges using pkexec.
+    Run a command with elevated privileges using pkexec or sudo.
     
     Args:
         cmd: Command to run as root
@@ -103,10 +103,14 @@ def run_privileged(cmd: str) -> subprocess.CompletedProcess:
     """
     # Check if pkexec is available
     if shutil.which('pkexec'):
-        full_cmd = f'pkexec {cmd}'
+        # pkexec doesn't handle complex shell strings well without sh -c
+        if any(c in cmd for c in ['|', '>', '&', ';', '\n']):
+            full_cmd = f"pkexec sh -c '{cmd}'"
+        else:
+            full_cmd = f'pkexec {cmd}'
     else:
         # Fallback to sudo
-        full_cmd = f'sudo {cmd}'
+        full_cmd = f"sudo sh -c '{cmd}'"
     
     return subprocess.run(
         full_cmd,
@@ -114,6 +118,22 @@ def run_privileged(cmd: str) -> subprocess.CompletedProcess:
         capture_output=True,
         text=True
     )
+
+
+def reboot_system() -> bool:
+    """
+    Reboot the system using systemctl or reboot command.
+    
+    Returns:
+        True if the command was sent successfully
+    """
+    # Try systemctl first (more reliable on modern distros)
+    if shutil.which('systemctl'):
+        result = run_privileged("systemctl reboot")
+    else:
+        result = run_privileged("reboot")
+    
+    return result.returncode == 0
 
 
 def get_home_directory() -> str:

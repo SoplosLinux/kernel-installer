@@ -411,7 +411,7 @@ class DistroDetector:
                 f'/boot/config-{kernel_version}'
             ]
             files_to_rm = " ".join(files)
-            return f'rm -f {files_to_rm} && rm -rf /lib/modules/{kernel_version}'
+            return f'rm -f {files_to_rm} && rm -rf /usr/lib/modules/{kernel_version}'
         else:
             return f'apt purge -y linux-image-{kernel_version}'
 

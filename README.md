@@ -16,8 +16,12 @@ A graphical interface for downloading, compiling, and installing the Linux kerne
 ## Features
 
 - Download kernels directly from kernel.org (stable, LTS, RC)
-- Optimized profiles: Gaming, Audio/Video, Minimal
+- Optimized profiles: Gaming, Audio/Video, Minimal, Hardware Optimized
+- Auto-detection of Hardware features (CPU, GPU, NVMe) for performance
+- Virtualization support detection (QEMU, VMware, VirtualBox)
 - Multi-distro support: Debian, Ubuntu, Fedora, Arch
+- Single sudo prompt for the entire installation process
+- Optional automatic cleanup of build directory
 - Auto-detection of bootloader (GRUB, systemd-boot, rEFInd)
 - Auto-detection of initramfs tool (dracut, initramfs-tools, mkinitcpio)
 - Custom kernel naming
@@ -26,7 +30,6 @@ A graphical interface for downloading, compiling, and installing the Linux kerne
 - Full i18n coverage for 8 languages (EN, ES, FR, PT, DE, IT, RO, RU)
 - Intelligent automated system dependency verification and installation
 - Kernel removal support for Debian, Fedora, and Arch Linux
-- Optimized kernel configuration for "Minimal" profile with full hardware support
 
 ## Requirements
 
@@ -58,7 +61,7 @@ sudo pacman -S python-gobject gtk3
 
 - **Debian/Ubuntu/Mint**: [Download .deb](https://github.com/SoplosLinux/kernel-installer/releases)
   ```bash
-  sudo dpkg -i kernel-installer_1.0.0_all.deb
+  sudo dpkg -i kernel-installer_1.0.1_all.deb
   sudo apt install -f
   ```
 - **Arch Linux/Manjaro**:

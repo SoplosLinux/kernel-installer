@@ -3,7 +3,7 @@
 set -e
 
 APP_NAME="kernel-installer"
-VERSION="1.0.0"
+VERSION="1.0.1"
 BUILD_DIR="build_packages"
 RPM_BUILD_DIR="$HOME/rpmbuild"
 
@@ -65,7 +65,7 @@ cp packaging/rpm/kernel-installer.spec "$RPM_BUILD_DIR/SPECS/"
 if command -v rpmbuild >/dev/null; then
     rpmbuild -bb "$RPM_BUILD_DIR/SPECS/kernel-installer.spec" --define "_topdir $RPM_BUILD_DIR"
     # Move and rename to avoid the release suffix in the artifact name if user requested
-    cp "$RPM_BUILD_DIR"/RPMS/noarch/kernel-installer-1.0.0-1.noarch.rpm releases/kernel-installer-1.0.0.noarch.rpm
+    cp "$RPM_BUILD_DIR"/RPMS/noarch/kernel-installer-1.0.1-1.noarch.rpm releases/kernel-installer-1.0.1.noarch.rpm
 else
     echo "⚠️ rpmbuild not found. Skipping RPM build."
 fi

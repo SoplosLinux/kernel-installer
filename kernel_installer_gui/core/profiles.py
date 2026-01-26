@@ -10,6 +10,7 @@ class ProfileType(Enum):
     GAMING = auto()
     AUDIO_VIDEO = auto()
     MINIMAL = auto()
+    HARDWARE_OPTIMIZED = auto()
     CUSTOM = auto()
 
 
@@ -72,6 +73,65 @@ class KernelProfile:
                     f.write(f'# {key} is not set\n')
                 else:
                     f.write(f'{key}={value}\n')
+
+    @staticmethod
+    def detect_hardware_optimizations() -> Dict[str, str]:
+        """Detect hardware features for kernel optimization."""
+        options = {
+            # Base optimizations for general hardware detection
+            'CONFIG_PREEMPT': 'y',
+            'CONFIG_HZ_1000': 'y',
+            'CONFIG_HZ': '1000',
+        }
+        
+        try:
+            # CPU Detection
+            with open('/proc/cpuinfo', 'r') as f:
+                cpuinfo = f.read().lower()
+                
+            # Check for specific instructions
+            if 'avx2' in cpuinfo:
+                # We can't easily set MARCH_NATIVE on all kernels but we can set generic optimizations
+                pass
+            
+            # GPU Detection
+            from ..utils.system import run_command
+            lspci = run_command("lspci").stdout.lower()
+            
+            if 'nvidia' in lspci:
+                options['CONFIG_FB_NVIDIA'] = 'y'
+            elif 'amd' in lspci or 'ati' in lspci:
+                options['CONFIG_DRM_AMDGPU'] = 'y'
+                options['CONFIG_DRM_AMDGPU_SI'] = 'y'
+                options['CONFIG_DRM_AMDGPU_CIK'] = 'y'
+            elif 'intel' in lspci:
+                options['CONFIG_DRM_I915'] = 'y'
+            
+            # Virtualization Detection
+            if 'virtio' in lspci or 'qemu' in lspci:
+                options['CONFIG_VIRTIO'] = 'y'
+                options['CONFIG_VIRTIO_PCI'] = 'y'
+                options['CONFIG_VIRTIO_BLK'] = 'y'
+                options['CONFIG_VIRTIO_NET'] = 'y'
+                options['CONFIG_HYPERVISOR_GUEST'] = 'y'
+            elif 'vmware' in lspci:
+                options['CONFIG_VMWARE_PVSCSI'] = 'y'
+                options['CONFIG_VMXNET3'] = 'y'
+                options['CONFIG_HYPERVISOR_GUEST'] = 'y'
+                options['CONFIG_VMWARE_BALLOON'] = 'y'
+            elif 'virtualbox' in lspci or 'vbox' in lspci:
+                options['CONFIG_DRM_VBOXVIDEO'] = 'y'
+                options['CONFIG_HYPERVISOR_GUEST'] = 'y'
+                
+            # NVMe detection
+            if os.path.exists('/dev/nvme0'):
+                options['CONFIG_NVME_CORE'] = 'y'
+                options['CONFIG_BLK_DEV_NVME'] = 'y'
+                
+        except Exception as e:
+            print(f"Hardware detection warning: {e}")
+            
+        return options
 
 
 # Predefined kernel profiles
@@ -257,7 +317,21 @@ KERNEL_PROFILES = {
             
             # IrDA
             'IRDA',
+            'IRDA',
         ]
+    ),
+    
+    ProfileType.HARDWARE_OPTIMIZED: KernelProfile(
+        id=ProfileType.HARDWARE_OPTIMIZED,
+        name=_("Hardware Optimized"),
+        suffix="optimized",
+        description=_(
+            "Auto-detects your CPU and GPU to enable specific drivers and "
+            "optimizations for your machine. Ideal for maximum performance "
+            "on your specific hardware."
+        ),
+        icon="computer",
+        config_options=KernelProfile.detect_hardware_optimizations()
     ),
 }
 

@@ -2,10 +2,242 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-25 18:32+0100\n"
+"POT-Creation-Date: 2026-01-26 11:43+0100\n"
 "Language: ro\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: kernel_installer_gui/app/application.py:84
+msgid "Verifying environment (requires password)..."
+msgstr "Se verifică mediul (necesită parolă)..."
+
+#: kernel_installer_gui/app/application.py:91
+msgid "Dependencies installed/verified."
+msgstr "Dependențe instalate/verificate."
+
+#: kernel_installer_gui/app/application.py:98
+msgid "Error installing dependencies."
+msgstr "Eroare la instalarea dependențelor."
+
+#: kernel_installer_gui/app/application.py:324
+#: kernel_installer_gui/app/main_window.py:51
+msgid "Kernel Installer"
+msgstr "Instalator de Kernel"
+
+#: kernel_installer_gui/app/application.py:327
+msgid ""
+"A graphical interface for downloading, compiling and installing the Linux "
+"kernel with optimized profiles."
+msgstr ""
+"O interfață grafică pentru descărcarea, compilarea și instalarea nucleului "
+"Linux cu profiluri optimizate."
+
+#: kernel_installer_gui/app/application.py:349
+msgid "Clean build files?"
+msgstr "Curățați fișierele de construcție?"
+
+#: kernel_installer_gui/app/application.py:352
+msgid ""
+"All temporary files in ~/kernel_build will be deleted.\n"
+"This will free up disk space."
+msgstr ""
+"Toate fișierele temporare din ~/kernel_build vor fi șterse.\n"
+"Acest lucru va elibera spațiu pe disc."
+
+#: kernel_installer_gui/app/application.py:361
+msgid "Build files deleted."
+msgstr "Fișierele de construcție au fost șterse."
+
+#: kernel_installer_gui/app/application.py:363
+msgid "Error cleaning files."
+msgstr "Eroare la curățarea fișierelor."
+
+#: kernel_installer_gui/app/main_window.py:52
+msgid "by Sergi Perich & Alexia Michelle"
+msgstr "de Sergi Perich și Alexia Michelle"
+
+#: kernel_installer_gui/app/main_window.py:63
+msgid "Refresh versions (F5)"
+msgstr "Actualizează versiunile (F5)"
+
+#: kernel_installer_gui/app/main_window.py:64
+msgid "Clean build files"
+msgstr "Curăță fișierele de construcție"
+
+#: kernel_installer_gui/app/main_window.py:65
+msgid "About"
+msgstr "Despre"
+
+#: kernel_installer_gui/app/main_window.py:66
+msgid "Quit (Ctrl+Q)"
+msgstr "Ieșire (Ctrl+Q)"
+
+#: kernel_installer_gui/app/main_window.py:103
+msgid "Kernel name (suffix)"
+msgstr "Numele nucleului (sufix)"
+
+#: kernel_installer_gui/app/main_window.py:111
+msgid "E.g.: gaming, server, my-kernel"
+msgstr "Ex: gaming, server, nucleul-meu"
+
+#: kernel_installer_gui/app/main_window.py:112
+msgid "This name will be added to the kernel, e.g.: 6.18.7-custom-gaming"
+msgstr "Acest nume va fi adăugat la nucleu, ex: 6.18.7-custom-gaming"
+
+#: kernel_installer_gui/app/main_window.py:117
+msgid "Result: 6.x.x-custom-gaming (combined with profile)"
+msgstr "Rezultat: 6.x.x-custom-gaming (combinat cu profil)"
+
+#: kernel_installer_gui/app/main_window.py:129
+msgid "Clean build directory after installation (Save disk space)"
+msgstr "Curăță directorul de construcție după instalare (Economisiți spațiu)"
+
+#: kernel_installer_gui/app/main_window.py:141
+msgid "Distribution:"
+msgstr "Distribuție:"
+
+#: kernel_installer_gui/app/main_window.py:146
+msgid "Detecting..."
+msgstr "Detectare..."
+
+#: kernel_installer_gui/app/main_window.py:153
+msgid "Current kernel:"
+msgstr "Nucleul actual:"
+
+#: kernel_installer_gui/app/main_window.py:170
+msgid "Bootloader:"
+msgstr "Încărcător de pornire:"
+
+#: kernel_installer_gui/app/main_window.py:182
+msgid "Initramfs:"
+msgstr "Initramfs:"
+
+#: kernel_installer_gui/app/main_window.py:210
+msgid "📥 Download and install kernel"
+msgstr "📥 Descărcați și instalați nucleul"
+
+#: kernel_installer_gui/app/main_window.py:233
+msgid "Cancel"
+msgstr "Anulează"
+
+#: kernel_installer_gui/app/main_window.py:239
+msgid "Done"
+msgstr "Gata"
+
+#: kernel_installer_gui/app/main_window.py:274
+msgid "Checking system dependencies..."
+msgstr "Se verifică dependențele sistemului..."
+
+#: kernel_installer_gui/app/main_window.py:283
+msgid "Working..."
+msgstr "Se lucrează..."
+
+#: kernel_installer_gui/app/main_window.py:300
+msgid "CRITICAL: Failed to install dependencies. Check terminal output."
+msgstr "CRITIC: Instalarea dependențelor a eșuat. Verificați terminalul."
+
+#: kernel_installer_gui/app/main_window.py:333
+msgid "Unsupported distribution"
+msgstr "Distribuție neacceptată"
+
+#: kernel_installer_gui/app/main_window.py:336
+#, python-format
+msgid ""
+"%(distro)s is not officially supported. The program might not work correctly."
+msgstr ""
+"%(distro)s nu este acceptat oficial. Programul s-ar putea să nu funcționeze "
+"corect."
+
+#: kernel_installer_gui/app/main_window.py:348
+msgid "Please select a kernel version."
+msgstr "Vă rugăm să selectați o versiune de nucleu."
+
+#: kernel_installer_gui/app/main_window.py:355
+#, python-format
+msgid ""
+"Missing required build tools: %(tools)s\n"
+"\n"
+"Please install them and try again."
+msgstr ""
+"Instrumente de construcție necesare lipsă: %(tools)s\n"
+"\n"
+"Vă rugăm să le instalați și să încercați din nou."
+
+#: kernel_installer_gui/app/main_window.py:391
+msgid "Install kernel?"
+msgstr "Instalați nucleul?"
+
+#: kernel_installer_gui/app/main_window.py:394
+#, python-format
+msgid ""
+"You are about to download, compile and install:\n"
+"\n"
+"• Version: Linux %(version)s\n"
+"• Profile: %(profile)s\n"
+"\n"
+"This process may take several hours."
+msgstr ""
+"Sunteți pe cale să descărcați, să compilați și să instalați:\n"
+"\n"
+"• Versiune: Linux %(version)s\n"
+"• Profil: %(profile)s\n"
+"\n"
+"Acest proces poate dura câteva ore."
+
+#: kernel_installer_gui/app/main_window.py:440
+msgid "Stopping build process..."
+msgstr "Se oprește procesul de compilare..."
+
+#: kernel_installer_gui/app/main_window.py:441
+msgid "Cancellation requested by user..."
+msgstr "Anulare solicitată de utilizator..."
+
+#: kernel_installer_gui/app/main_window.py:454
+msgid "Starting removal..."
+msgstr "Se începe eliminarea..."
+
+#: kernel_installer_gui/app/main_window.py:479
+msgid "Remove kernel?"
+msgstr "Eliminați nucleul?"
+
+#: kernel_installer_gui/app/main_window.py:482
+#, python-format
+msgid ""
+"Are you sure you want to completely remove Linux %(version)s?\n"
+"\n"
+"This will delete the kernel image, modules, and update the bootloader."
+msgstr ""
+"Sunteți sigur că doriți să eliminați complet Linux %(version)s?\n"
+"\n"
+"Aceasta va șterge imaginea nucleului, modulele și va actualiza bootloader-ul."
+
+#: kernel_installer_gui/app/main_window.py:501
+msgid "Kernel removed successfully"
+msgstr "Nucleu eliminat cu succes"
+
+#: kernel_installer_gui/app/main_window.py:515
+#: kernel_installer_gui/core/kernel.py:501
+msgid "Installation complete!"
+msgstr "Instalare finalizată!"
+
+#: kernel_installer_gui/app/main_window.py:518
+msgid ""
+"The kernel has been installed successfully.\n"
+"\n"
+"Do you want to reboot now to use the new kernel?"
+msgstr ""
+"Nucleul a fost instalat cu succes.\n"
+"\n"
+"Doriți să reporniți acum pentru a utiliza noul nucleu?"
+
+#: kernel_installer_gui/app/main_window.py:536
+msgid "Error"
+msgstr "Eroare"
+
+#: kernel_installer_gui/app/main_window.py:562
+#, python-format
+msgid "Result: %s"
+msgstr "Rezultat: %s"
 
 #: kernel_installer_gui/core/distro.py:549
 #: kernel_installer_gui/core/distro.py:551
@@ -41,174 +273,154 @@ msgstr "Descărcare completă. Se extrage..."
 msgid "Removing old source directory..."
 msgstr "Se elimină vechiul director de surse..."
 
-#: kernel_installer_gui/core/kernel.py:253
+#: kernel_installer_gui/core/kernel.py:271
 #, fuzzy, python-format
 msgid "Extracting linux-%(version)s..."
 msgstr "Se descarcă linux-%(version)s.tar.xz..."
 
-#: kernel_installer_gui/core/kernel.py:258
+#: kernel_installer_gui/core/kernel.py:276
 #, python-format
 msgid "Extraction error: %(error)s"
 msgstr "Eroare la extracție: %(error)s"
 
-#: kernel_installer_gui/core/kernel.py:263
+#: kernel_installer_gui/core/kernel.py:281
 #, python-format
 msgid "Error: Extraction failed (Makefile not found in %s)"
 msgstr ""
 
-#: kernel_installer_gui/core/kernel.py:266
+#: kernel_installer_gui/core/kernel.py:284
 msgid "Extraction complete."
 msgstr "Extracție completă."
 
-#: kernel_installer_gui/core/kernel.py:284
+#: kernel_installer_gui/core/kernel.py:302
 msgid "Copying current kernel configuration..."
 msgstr "Se copiază configurația curentă a nucleului..."
 
-#: kernel_installer_gui/core/kernel.py:295
+#: kernel_installer_gui/core/kernel.py:313
 #, python-format
 msgid "Applying profile: %(profile)s..."
 msgstr "Se aplică profilul: %(profile)s..."
 
-#: kernel_installer_gui/core/kernel.py:301
+#: kernel_installer_gui/core/kernel.py:319
 #, python-format
 msgid "Warning applying profile: %(error)s"
 msgstr "Avertisment la aplicarea profilului: %(error)s"
 
-#: kernel_installer_gui/core/kernel.py:335
+#: kernel_installer_gui/core/kernel.py:353
 #, fuzzy
 msgid "Running make olddefconfig..."
 msgstr "Se rulează make oldconfig..."
 
-#: kernel_installer_gui/core/kernel.py:341
+#: kernel_installer_gui/core/kernel.py:359
 msgid "Configuration complete."
 msgstr "Configurație completă."
 
-#: kernel_installer_gui/core/kernel.py:357
+#: kernel_installer_gui/core/kernel.py:375
 #, python-format
 msgid "Compiling kernel with %(cores)d cores..."
 msgstr "Se compilează nucleul cu %(cores)d nuclee..."
 
-#: kernel_installer_gui/core/kernel.py:378
+#: kernel_installer_gui/core/kernel.py:396
 msgid "Generating .deb packages..."
 msgstr "Se generează pachete .deb..."
 
-#: kernel_installer_gui/core/kernel.py:383
+#: kernel_installer_gui/core/kernel.py:401
 msgid "Generating RPM packages..."
 msgstr "Se generează pachete RPM..."
 
-#: kernel_installer_gui/core/kernel.py:387
+#: kernel_installer_gui/core/kernel.py:405
 msgid "Compiling for direct installation..."
 msgstr "Se compilează pentru instalare directă..."
 
-#: kernel_installer_gui/core/kernel.py:398
+#: kernel_installer_gui/core/kernel.py:416
 msgid "Build cancelled by user."
 msgstr "Compilare anulată de utilizator."
 
-#: kernel_installer_gui/core/kernel.py:403
+#: kernel_installer_gui/core/kernel.py:421
 #, python-format
 msgid "Build error (Exit code: %(code)d)"
 msgstr ""
 
-#: kernel_installer_gui/core/kernel.py:406
+#: kernel_installer_gui/core/kernel.py:424
 msgid ""
 "Check the terminal output for details or try installing missing dependencies "
 "and rebuilding."
 msgstr ""
 
-#: kernel_installer_gui/core/kernel.py:411
+#: kernel_installer_gui/core/kernel.py:429
 msgid "Compiling modules..."
 msgstr "Se compilează modulele..."
 
-#: kernel_installer_gui/core/kernel.py:421
+#: kernel_installer_gui/core/kernel.py:439
 msgid "Error compiling modules"
 msgstr "Eroare la compilarea modulelor"
 
-#: kernel_installer_gui/core/kernel.py:424
+#: kernel_installer_gui/core/kernel.py:442
 msgid "Build complete."
 msgstr "Construcție finalizada."
 
-#: kernel_installer_gui/core/kernel.py:438
-#: kernel_installer_gui/core/kernel.py:481
+#: kernel_installer_gui/core/kernel.py:456
 msgid "Installing kernel..."
 msgstr "Se instalează nucleul..."
 
-#: kernel_installer_gui/core/kernel.py:448
-msgid "Installing .deb packages..."
-msgstr "Se instalează pachetele .deb..."
+#: kernel_installer_gui/core/kernel.py:467
+#, fuzzy
+msgid "Preparing .deb packages installation..."
+msgstr "Se generează pachete .deb..."
 
-#: kernel_installer_gui/core/kernel.py:453
+#: kernel_installer_gui/core/kernel.py:472
+#, fuzzy
+msgid "Preparing RPM packages installation..."
+msgstr "Se generează pachete RPM..."
+
+#: kernel_installer_gui/core/kernel.py:477
+#, fuzzy
+msgid "Preparing direct installation..."
+msgstr "Se compilează pentru instalare directă..."
+
+#: kernel_installer_gui/core/kernel.py:490
+#, fuzzy
+msgid "Finalizing installation (may require password)..."
+msgstr "Se verifică mediul (necesită parolă)..."
+
+#: kernel_installer_gui/core/kernel.py:495
 #, python-format
 msgid "Installation error: %(error)s"
 msgstr "Eroare la instalare: %(error)s"
 
-#: kernel_installer_gui/core/kernel.py:462
-msgid "Installing RPM packages..."
-msgstr "Se instalează pachetele RPM..."
+#: kernel_installer_gui/core/kernel.py:543
+#, fuzzy
+msgid "Cleaning up build files..."
+msgstr "Curăță fișierele de construcție"
 
-#: kernel_installer_gui/core/kernel.py:468
-#, python-format
-msgid "RPM installation error: %(error)s"
-msgstr "Eroare la instalare RPM: %(error)s"
-
-#: kernel_installer_gui/core/kernel.py:473
-msgid "Installing modules..."
-msgstr "Se instalează modulele..."
-
-#: kernel_installer_gui/core/kernel.py:478
-#, python-format
-msgid "Module installation error: %(error)s"
-msgstr "Eroare la instalarea modulelor: %(error)s"
-
-#: kernel_installer_gui/core/kernel.py:486
-#, python-format
-msgid "Kernel installation error: %(error)s"
-msgstr "Eroare la instalarea nucleului: %(error)s"
-
-#: kernel_installer_gui/core/kernel.py:490
-msgid "Regenerating initramfs..."
-msgstr "Se regenerează initramfs..."
-
-#: kernel_installer_gui/core/kernel.py:495
-msgid "Warning: Error regenerating initramfs"
-msgstr "Avertisment: Eroare la regenerarea initramfs"
-
-#: kernel_installer_gui/core/kernel.py:498
-#: kernel_installer_gui/core/kernel.py:639
-msgid "Updating bootloader..."
-msgstr "Se actualizează bootloader-ul..."
-
-#: kernel_installer_gui/core/kernel.py:503
-msgid "Warning: Error updating bootloader"
-msgstr "Avertisment: Eroare la actualizarea bootloader-ului"
-
-#: kernel_installer_gui/core/kernel.py:508
-#: kernel_installer_gui/app/main_window.py:509
-msgid "Installation complete!"
-msgstr "Instalare finalizată!"
-
-#: kernel_installer_gui/core/kernel.py:627
+#: kernel_installer_gui/core/kernel.py:625
 #, python-format
 msgid "Removing kernel %(version)s..."
 msgstr "Se elimină nucleul %(version)s..."
 
-#: kernel_installer_gui/core/kernel.py:631
+#: kernel_installer_gui/core/kernel.py:629
 msgid "Uninstalling packages/files..."
 msgstr "Se dezinstalează pachetele/fișierele..."
 
-#: kernel_installer_gui/core/kernel.py:635
+#: kernel_installer_gui/core/kernel.py:633
 #, python-format
 msgid "Error removing kernel: %(error)s"
 msgstr "Eroare la eliminarea nucleului: %(error)s"
 
-#: kernel_installer_gui/core/kernel.py:644
-msgid "Warning: Error updating bootloader during removal"
-msgstr "Avertisment: Eroare la actualizarea bootloader-ului în timpul eliminării"
+#: kernel_installer_gui/core/kernel.py:637
+msgid "Updating bootloader..."
+msgstr "Se actualizează bootloader-ul..."
 
-#: kernel_installer_gui/core/kernel.py:647
+#: kernel_installer_gui/core/kernel.py:642
+msgid "Warning: Error updating bootloader during removal"
+msgstr ""
+"Avertisment: Eroare la actualizarea bootloader-ului în timpul eliminării"
+
+#: kernel_installer_gui/core/kernel.py:645
 msgid "Updating history..."
 msgstr "Se actualizează istoricul..."
 
-#: kernel_installer_gui/core/kernel.py:665
+#: kernel_installer_gui/core/kernel.py:663
 msgid "Kernel removed successfully."
 msgstr "Nucleul a fost eliminat cu succes."
 
@@ -256,11 +468,11 @@ msgstr "Repornire necesară"
 msgid "Reboot the system to use the new kernel."
 msgstr "Reporniți sistemul pentru a utiliza noul nucleu."
 
-#: kernel_installer_gui/core/profiles.py:81
+#: kernel_installer_gui/core/profiles.py:141
 msgid "Gaming"
 msgstr "Jocuri"
 
-#: kernel_installer_gui/core/profiles.py:84
+#: kernel_installer_gui/core/profiles.py:144
 msgid ""
 "Optimized for games with low input latency, high CPU performance and better "
 "GPU management. Ideal for gamers and streaming."
@@ -269,11 +481,11 @@ msgstr ""
 "a procesorului și o mai bună gestionare a procesorului grafic. Ideal pentru "
 "jucători și streaming."
 
-#: kernel_installer_gui/core/profiles.py:130
+#: kernel_installer_gui/core/profiles.py:190
 msgid "Audio/Video"
 msgstr "Audio/Video"
 
-#: kernel_installer_gui/core/profiles.py:133
+#: kernel_installer_gui/core/profiles.py:193
 msgid ""
 "Low-latency kernel for audio and video production. Optimized for DAWs, video "
 "editing and professional streaming. Uses real-time preemption for ultra-low "
@@ -283,11 +495,11 @@ msgstr ""
 "DAW-uri, editare video și streaming profesional. Utilizează preempțiunea în "
 "timp real pentru o latență ultra-scăzută."
 
-#: kernel_installer_gui/core/profiles.py:179
+#: kernel_installer_gui/core/profiles.py:239
 msgid "Minimal / Office"
 msgstr "Minimal / Office"
 
-#: kernel_installer_gui/core/profiles.py:182
+#: kernel_installer_gui/core/profiles.py:242
 msgid ""
 "Lightweight kernel for office work, web browsing and general use. No "
 "unnecessary modules, low resource consumption. Ideal for older hardware or "
@@ -296,6 +508,18 @@ msgstr ""
 "Nucleu ușor pentru munca de birou, navigarea pe web și utilizarea generală. "
 "Fără module inutile, consum redus de resurse. Ideal pentru hardware vechi "
 "sau mașini virtuale."
+
+#: kernel_installer_gui/core/profiles.py:326
+msgid "Hardware Optimized"
+msgstr "Optimizat pentru Hardware"
+
+#: kernel_installer_gui/core/profiles.py:329
+msgid ""
+"Auto-detects your CPU and GPU to enable specific drivers and optimizations "
+"for your machine. Ideal for maximum performance on your specific hardware."
+msgstr ""
+"Detectează automat procesorul și placa video pentru a activa optimizări "
+"specifice. Ideal pentru performanță maximă pe hardware-ul tău."
 
 #: kernel_installer_gui/widgets/build_progress.py:62
 msgid "SYSTEM LOAD"
@@ -387,222 +611,32 @@ msgstr " (Ultima)"
 msgid " (LTS)"
 msgstr " (LTS)"
 
-#: kernel_installer_gui/app/application.py:79
-msgid "Verifying environment (requires password)..."
-msgstr "Se verifică mediul (necesită parolă)..."
+#~ msgid "Installing .deb packages..."
+#~ msgstr "Se instalează pachetele .deb..."
 
-#: kernel_installer_gui/app/application.py:86
-msgid "Dependencies installed/verified."
-msgstr "Dependențe instalate/verificate."
+#~ msgid "Installing RPM packages..."
+#~ msgstr "Se instalează pachetele RPM..."
 
-#: kernel_installer_gui/app/application.py:93
-msgid "Error installing dependencies."
-msgstr "Eroare la instalarea dependențelor."
-
-#: kernel_installer_gui/app/application.py:319
-#: kernel_installer_gui/app/main_window.py:51
-msgid "Kernel Installer"
-msgstr "Instalator de Kernel"
-
-#: kernel_installer_gui/app/application.py:322
-msgid ""
-"A graphical interface for downloading, compiling and installing the Linux "
-"kernel with optimized profiles."
-msgstr ""
-"O interfață grafică pentru descărcarea, compilarea și instalarea nucleului "
-"Linux cu profiluri optimizate."
-
-#: kernel_installer_gui/app/application.py:344
-msgid "Clean build files?"
-msgstr "Curățați fișierele de construcție?"
-
-#: kernel_installer_gui/app/application.py:347
-msgid ""
-"All temporary files in ~/kernel_build will be deleted.\n"
-"This will free up disk space."
-msgstr ""
-"Toate fișierele temporare din ~/kernel_build vor fi șterse.\n"
-"Acest lucru va elibera spațiu pe disc."
-
-#: kernel_installer_gui/app/application.py:356
-msgid "Build files deleted."
-msgstr "Fișierele de construcție au fost șterse."
-
-#: kernel_installer_gui/app/application.py:358
-msgid "Error cleaning files."
-msgstr "Eroare la curățarea fișierelor."
-
-#: kernel_installer_gui/app/main_window.py:52
-msgid "by Sergi Perich & Alexia Michelle"
-msgstr "de Sergi Perich și Alexia Michelle"
-
-#: kernel_installer_gui/app/main_window.py:63
-msgid "Refresh versions (F5)"
-msgstr "Actualizează versiunile (F5)"
-
-#: kernel_installer_gui/app/main_window.py:64
-msgid "Clean build files"
-msgstr "Curăță fișierele de construcție"
-
-#: kernel_installer_gui/app/main_window.py:65
-msgid "About"
-msgstr "Despre"
-
-#: kernel_installer_gui/app/main_window.py:66
-msgid "Quit (Ctrl+Q)"
-msgstr "Ieșire (Ctrl+Q)"
-
-#: kernel_installer_gui/app/main_window.py:103
-msgid "Kernel name (suffix)"
-msgstr "Numele nucleului (sufix)"
-
-#: kernel_installer_gui/app/main_window.py:111
-msgid "E.g.: gaming, server, my-kernel"
-msgstr "Ex: gaming, server, nucleul-meu"
-
-#: kernel_installer_gui/app/main_window.py:112
-msgid "This name will be added to the kernel, e.g.: 6.18.7-custom-gaming"
-msgstr "Acest nume va fi adăugat la nucleu, ex: 6.18.7-custom-gaming"
-
-#: kernel_installer_gui/app/main_window.py:117
-msgid "Result: 6.x.x-custom-gaming (combined with profile)"
-msgstr "Rezultat: 6.x.x-custom-gaming (combinat cu profil)"
-
-#: kernel_installer_gui/app/main_window.py:136
-msgid "Distribution:"
-msgstr "Distribuție:"
-
-#: kernel_installer_gui/app/main_window.py:141
-msgid "Detecting..."
-msgstr "Detectare..."
-
-#: kernel_installer_gui/app/main_window.py:148
-msgid "Current kernel:"
-msgstr "Nucleul actual:"
-
-#: kernel_installer_gui/app/main_window.py:165
-msgid "Bootloader:"
-msgstr "Încărcător de pornire:"
-
-#: kernel_installer_gui/app/main_window.py:177
-msgid "Initramfs:"
-msgstr "Initramfs:"
-
-#: kernel_installer_gui/app/main_window.py:205
-msgid "📥 Download and install kernel"
-msgstr "📥 Descărcați și instalați nucleul"
-
-#: kernel_installer_gui/app/main_window.py:228
-msgid "Cancel"
-msgstr "Anulează"
-
-#: kernel_installer_gui/app/main_window.py:234
-msgid "Done"
-msgstr "Gata"
-
-#: kernel_installer_gui/app/main_window.py:269
-msgid "Checking system dependencies..."
-msgstr "Se verifică dependențele sistemului..."
-
-#: kernel_installer_gui/app/main_window.py:278
-msgid "Working..."
-msgstr "Se lucrează..."
-
-#: kernel_installer_gui/app/main_window.py:295
-msgid "CRITICAL: Failed to install dependencies. Check terminal output."
-msgstr ""
-
-#: kernel_installer_gui/app/main_window.py:328
-msgid "Unsupported distribution"
-msgstr "Distribuție neacceptată"
-
-#: kernel_installer_gui/app/main_window.py:331
 #, python-format
-msgid ""
-"%(distro)s is not officially supported. The program might not work correctly."
-msgstr ""
-"%(distro)s nu este acceptat oficial. Programul s-ar putea să nu funcționeze "
-"corect."
+#~ msgid "RPM installation error: %(error)s"
+#~ msgstr "Eroare la instalare RPM: %(error)s"
 
-#: kernel_installer_gui/app/main_window.py:343
-msgid "Please select a kernel version."
-msgstr "Vă rugăm să selectați o versiune de nucleu."
+#~ msgid "Installing modules..."
+#~ msgstr "Se instalează modulele..."
 
-#: kernel_installer_gui/app/main_window.py:350
 #, python-format
-msgid ""
-"Missing required build tools: %(tools)s\n"
-"\n"
-"Please install them and try again."
-msgstr ""
+#~ msgid "Module installation error: %(error)s"
+#~ msgstr "Eroare la instalarea modulelor: %(error)s"
 
-#: kernel_installer_gui/app/main_window.py:385
-msgid "Install kernel?"
-msgstr "Instalați nucleul?"
-
-#: kernel_installer_gui/app/main_window.py:388
 #, python-format
-msgid ""
-"You are about to download, compile and install:\n"
-"\n"
-"• Version: Linux %(version)s\n"
-"• Profile: %(profile)s\n"
-"\n"
-"This process may take several hours."
-msgstr ""
-"Sunteți pe cale să descărcați, să compilați și să instalați:\n"
-"\n"
-"• Versiune: Linux %(version)s\n"
-"• Profil: %(profile)s\n"
-"\n"
-"Acest proces poate dura câteva ore."
+#~ msgid "Kernel installation error: %(error)s"
+#~ msgstr "Eroare la instalarea nucleului: %(error)s"
 
-#: kernel_installer_gui/app/main_window.py:434
-msgid "Stopping build process..."
-msgstr "Se oprește procesul de compilare..."
+#~ msgid "Regenerating initramfs..."
+#~ msgstr "Se regenerează initramfs..."
 
-#: kernel_installer_gui/app/main_window.py:435
-msgid "Cancellation requested by user..."
-msgstr "Anulare solicitată de utilizator..."
+#~ msgid "Warning: Error regenerating initramfs"
+#~ msgstr "Avertisment: Eroare la regenerarea initramfs"
 
-#: kernel_installer_gui/app/main_window.py:448
-msgid "Starting removal..."
-msgstr "Se începe eliminarea..."
-
-#: kernel_installer_gui/app/main_window.py:473
-msgid "Remove kernel?"
-msgstr "Eliminați nucleul?"
-
-#: kernel_installer_gui/app/main_window.py:476
-#, python-format
-msgid ""
-"Are you sure you want to completely remove Linux %(version)s?\n"
-"\n"
-"This will delete the kernel image, modules, and update the bootloader."
-msgstr ""
-"Sunteți sigur că doriți să eliminați complet Linux %(version)s?\n"
-"\n"
-"Aceasta va șterge imaginea nucleului, modulele și va actualiza bootloader-ul."
-
-#: kernel_installer_gui/app/main_window.py:495
-msgid "Kernel removed successfully"
-msgstr "Nucleu eliminat cu succes"
-
-#: kernel_installer_gui/app/main_window.py:512
-msgid ""
-"The kernel has been installed successfully.\n"
-"\n"
-"Do you want to reboot now to use the new kernel?"
-msgstr ""
-"Nucleul a fost instalat cu succes.\n"
-"\n"
-"Doriți să reporniți acum pentru a utiliza noul nucleu?"
-
-#: kernel_installer_gui/app/main_window.py:530
-msgid "Error"
-msgstr "Eroare"
-
-#: kernel_installer_gui/app/main_window.py:556
-#, python-format
-msgid "Result: %s"
-msgstr "Rezultat: %s"
+#~ msgid "Warning: Error updating bootloader"
+#~ msgstr "Avertisment: Eroare la actualizarea bootloader-ului"

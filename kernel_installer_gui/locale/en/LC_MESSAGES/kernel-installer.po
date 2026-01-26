@@ -2,10 +2,241 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-25 18:32+0100\n"
+"POT-Creation-Date: 2026-01-26 11:43+0100\n"
 "Language: en\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: kernel_installer_gui/app/application.py:84
+msgid "Verifying environment (requires password)..."
+msgstr "Verifying environment (requires password)..."
+
+#: kernel_installer_gui/app/application.py:91
+msgid "Dependencies installed/verified."
+msgstr "Dependencies installed/verified."
+
+#: kernel_installer_gui/app/application.py:98
+msgid "Error installing dependencies."
+msgstr "Error installing dependencies."
+
+#: kernel_installer_gui/app/application.py:324
+#: kernel_installer_gui/app/main_window.py:51
+msgid "Kernel Installer"
+msgstr "Kernel Installer"
+
+#: kernel_installer_gui/app/application.py:327
+msgid ""
+"A graphical interface for downloading, compiling and installing the Linux "
+"kernel with optimized profiles."
+msgstr ""
+"A graphical interface for downloading, compiling and installing the Linux "
+"kernel with optimized profiles."
+
+#: kernel_installer_gui/app/application.py:349
+msgid "Clean build files?"
+msgstr "Clean build files?"
+
+#: kernel_installer_gui/app/application.py:352
+msgid ""
+"All temporary files in ~/kernel_build will be deleted.\n"
+"This will free up disk space."
+msgstr ""
+"All temporary files in ~/kernel_build will be deleted.\n"
+"This will free up disk space."
+
+#: kernel_installer_gui/app/application.py:361
+msgid "Build files deleted."
+msgstr "Build files deleted."
+
+#: kernel_installer_gui/app/application.py:363
+msgid "Error cleaning files."
+msgstr "Error cleaning files."
+
+#: kernel_installer_gui/app/main_window.py:52
+msgid "by Sergi Perich & Alexia Michelle"
+msgstr "by Sergi Perich & Alexia Michelle"
+
+#: kernel_installer_gui/app/main_window.py:63
+msgid "Refresh versions (F5)"
+msgstr "Refresh versions (F5)"
+
+#: kernel_installer_gui/app/main_window.py:64
+msgid "Clean build files"
+msgstr "Clean build files"
+
+#: kernel_installer_gui/app/main_window.py:65
+msgid "About"
+msgstr "About"
+
+#: kernel_installer_gui/app/main_window.py:66
+msgid "Quit (Ctrl+Q)"
+msgstr "Quit (Ctrl+Q)"
+
+#: kernel_installer_gui/app/main_window.py:103
+msgid "Kernel name (suffix)"
+msgstr "Kernel name (suffix)"
+
+#: kernel_installer_gui/app/main_window.py:111
+msgid "E.g.: gaming, server, my-kernel"
+msgstr "E.g.: gaming, server, my-kernel"
+
+#: kernel_installer_gui/app/main_window.py:112
+msgid "This name will be added to the kernel, e.g.: 6.18.7-custom-gaming"
+msgstr "This name will be added to the kernel, e.g.: 6.18.7-custom-gaming"
+
+#: kernel_installer_gui/app/main_window.py:117
+msgid "Result: 6.x.x-custom-gaming (combined with profile)"
+msgstr "Result: 6.x.x-custom-gaming (combined with profile)"
+
+#: kernel_installer_gui/app/main_window.py:129
+msgid "Clean build directory after installation (Save disk space)"
+msgstr "Clean build directory after installation (Save disk space)"
+
+#: kernel_installer_gui/app/main_window.py:141
+msgid "Distribution:"
+msgstr "Distribution:"
+
+#: kernel_installer_gui/app/main_window.py:146
+msgid "Detecting..."
+msgstr "Detecting..."
+
+#: kernel_installer_gui/app/main_window.py:153
+msgid "Current kernel:"
+msgstr "Current kernel:"
+
+#: kernel_installer_gui/app/main_window.py:170
+msgid "Bootloader:"
+msgstr "Bootloader:"
+
+#: kernel_installer_gui/app/main_window.py:182
+msgid "Initramfs:"
+msgstr "Initramfs:"
+
+#: kernel_installer_gui/app/main_window.py:210
+msgid "📥 Download and install kernel"
+msgstr "📥 Download and install kernel"
+
+#: kernel_installer_gui/app/main_window.py:233
+msgid "Cancel"
+msgstr "Cancel"
+
+#: kernel_installer_gui/app/main_window.py:239
+msgid "Done"
+msgstr "Done"
+
+#: kernel_installer_gui/app/main_window.py:274
+msgid "Checking system dependencies..."
+msgstr "Checking system dependencies..."
+
+#: kernel_installer_gui/app/main_window.py:283
+msgid "Working..."
+msgstr "Working..."
+
+#: kernel_installer_gui/app/main_window.py:300
+msgid "CRITICAL: Failed to install dependencies. Check terminal output."
+msgstr "CRITICAL: Failed to install dependencies. Check terminal output."
+
+#: kernel_installer_gui/app/main_window.py:333
+msgid "Unsupported distribution"
+msgstr "Unsupported distribution"
+
+#: kernel_installer_gui/app/main_window.py:336
+#, python-format
+msgid ""
+"%(distro)s is not officially supported. The program might not work correctly."
+msgstr ""
+"%(distro)s is not officially supported. The program might not work correctly."
+
+#: kernel_installer_gui/app/main_window.py:348
+msgid "Please select a kernel version."
+msgstr "Please select a kernel version."
+
+#: kernel_installer_gui/app/main_window.py:355
+#, python-format
+msgid ""
+"Missing required build tools: %(tools)s\n"
+"\n"
+"Please install them and try again."
+msgstr ""
+"Missing required build tools: %(tools)s\n"
+"\n"
+"Please install them and try again."
+
+#: kernel_installer_gui/app/main_window.py:391
+msgid "Install kernel?"
+msgstr "Install kernel?"
+
+#: kernel_installer_gui/app/main_window.py:394
+#, python-format
+msgid ""
+"You are about to download, compile and install:\n"
+"\n"
+"• Version: Linux %(version)s\n"
+"• Profile: %(profile)s\n"
+"\n"
+"This process may take several hours."
+msgstr ""
+"You are about to download, compile and install:\n"
+"\n"
+"• Version: Linux %(version)s\n"
+"• Profile: %(profile)s\n"
+"\n"
+"This process may take several hours."
+
+#: kernel_installer_gui/app/main_window.py:440
+msgid "Stopping build process..."
+msgstr "Stopping build process..."
+
+#: kernel_installer_gui/app/main_window.py:441
+msgid "Cancellation requested by user..."
+msgstr "Cancellation requested by user..."
+
+#: kernel_installer_gui/app/main_window.py:454
+msgid "Starting removal..."
+msgstr "Starting removal..."
+
+#: kernel_installer_gui/app/main_window.py:479
+msgid "Remove kernel?"
+msgstr "Remove kernel?"
+
+#: kernel_installer_gui/app/main_window.py:482
+#, python-format
+msgid ""
+"Are you sure you want to completely remove Linux %(version)s?\n"
+"\n"
+"This will delete the kernel image, modules, and update the bootloader."
+msgstr ""
+"Are you sure you want to completely remove Linux %(version)s?\n"
+"\n"
+"This will delete the kernel image, modules, and update the bootloader."
+
+#: kernel_installer_gui/app/main_window.py:501
+msgid "Kernel removed successfully"
+msgstr "Kernel removed successfully"
+
+#: kernel_installer_gui/app/main_window.py:515
+#: kernel_installer_gui/core/kernel.py:501
+msgid "Installation complete!"
+msgstr "Installation complete!"
+
+#: kernel_installer_gui/app/main_window.py:518
+msgid ""
+"The kernel has been installed successfully.\n"
+"\n"
+"Do you want to reboot now to use the new kernel?"
+msgstr ""
+"The kernel has been installed successfully.\n"
+"\n"
+"Do you want to reboot now to use the new kernel?"
+
+#: kernel_installer_gui/app/main_window.py:536
+msgid "Error"
+msgstr "Error"
+
+#: kernel_installer_gui/app/main_window.py:562
+#, python-format
+msgid "Result: %s"
+msgstr "Result: %s"
 
 #: kernel_installer_gui/core/distro.py:549
 #: kernel_installer_gui/core/distro.py:551
@@ -41,174 +272,153 @@ msgstr "Download complete. Extracting..."
 msgid "Removing old source directory..."
 msgstr ""
 
-#: kernel_installer_gui/core/kernel.py:253
+#: kernel_installer_gui/core/kernel.py:271
 #, fuzzy, python-format
 msgid "Extracting linux-%(version)s..."
 msgstr "Downloading linux-%(version)s.tar.xz..."
 
-#: kernel_installer_gui/core/kernel.py:258
+#: kernel_installer_gui/core/kernel.py:276
 #, python-format
 msgid "Extraction error: %(error)s"
 msgstr "Extraction error: %(error)s"
 
-#: kernel_installer_gui/core/kernel.py:263
+#: kernel_installer_gui/core/kernel.py:281
 #, python-format
 msgid "Error: Extraction failed (Makefile not found in %s)"
 msgstr ""
 
-#: kernel_installer_gui/core/kernel.py:266
+#: kernel_installer_gui/core/kernel.py:284
 msgid "Extraction complete."
 msgstr "Extraction complete."
 
-#: kernel_installer_gui/core/kernel.py:284
+#: kernel_installer_gui/core/kernel.py:302
 msgid "Copying current kernel configuration..."
 msgstr "Copying current kernel configuration..."
 
-#: kernel_installer_gui/core/kernel.py:295
+#: kernel_installer_gui/core/kernel.py:313
 #, python-format
 msgid "Applying profile: %(profile)s..."
 msgstr "Applying profile: %(profile)s..."
 
-#: kernel_installer_gui/core/kernel.py:301
+#: kernel_installer_gui/core/kernel.py:319
 #, python-format
 msgid "Warning applying profile: %(error)s"
 msgstr "Warning applying profile: %(error)s"
 
-#: kernel_installer_gui/core/kernel.py:335
+#: kernel_installer_gui/core/kernel.py:353
 #, fuzzy
 msgid "Running make olddefconfig..."
 msgstr "Running make oldconfig..."
 
-#: kernel_installer_gui/core/kernel.py:341
+#: kernel_installer_gui/core/kernel.py:359
 msgid "Configuration complete."
 msgstr "Configuration complete."
 
-#: kernel_installer_gui/core/kernel.py:357
+#: kernel_installer_gui/core/kernel.py:375
 #, python-format
 msgid "Compiling kernel with %(cores)d cores..."
 msgstr "Compiling kernel with %(cores)d cores..."
 
-#: kernel_installer_gui/core/kernel.py:378
+#: kernel_installer_gui/core/kernel.py:396
 msgid "Generating .deb packages..."
 msgstr "Generating .deb packages..."
 
-#: kernel_installer_gui/core/kernel.py:383
+#: kernel_installer_gui/core/kernel.py:401
 msgid "Generating RPM packages..."
 msgstr "Generating RPM packages..."
 
-#: kernel_installer_gui/core/kernel.py:387
+#: kernel_installer_gui/core/kernel.py:405
 msgid "Compiling for direct installation..."
 msgstr "Compiling for direct installation..."
 
-#: kernel_installer_gui/core/kernel.py:398
+#: kernel_installer_gui/core/kernel.py:416
 msgid "Build cancelled by user."
 msgstr "Build cancelled by user."
 
-#: kernel_installer_gui/core/kernel.py:403
+#: kernel_installer_gui/core/kernel.py:421
 #, python-format
 msgid "Build error (Exit code: %(code)d)"
 msgstr ""
 
-#: kernel_installer_gui/core/kernel.py:406
+#: kernel_installer_gui/core/kernel.py:424
 msgid ""
 "Check the terminal output for details or try installing missing dependencies "
 "and rebuilding."
 msgstr ""
 
-#: kernel_installer_gui/core/kernel.py:411
+#: kernel_installer_gui/core/kernel.py:429
 msgid "Compiling modules..."
 msgstr "Compiling modules..."
 
-#: kernel_installer_gui/core/kernel.py:421
+#: kernel_installer_gui/core/kernel.py:439
 msgid "Error compiling modules"
 msgstr "Error compiling modules"
 
-#: kernel_installer_gui/core/kernel.py:424
+#: kernel_installer_gui/core/kernel.py:442
 msgid "Build complete."
 msgstr "Build complete."
 
-#: kernel_installer_gui/core/kernel.py:438
-#: kernel_installer_gui/core/kernel.py:481
+#: kernel_installer_gui/core/kernel.py:456
 msgid "Installing kernel..."
 msgstr "Installing kernel..."
 
-#: kernel_installer_gui/core/kernel.py:448
-msgid "Installing .deb packages..."
-msgstr "Installing .deb packages..."
+#: kernel_installer_gui/core/kernel.py:467
+#, fuzzy
+msgid "Preparing .deb packages installation..."
+msgstr "Generating .deb packages..."
 
-#: kernel_installer_gui/core/kernel.py:453
+#: kernel_installer_gui/core/kernel.py:472
+#, fuzzy
+msgid "Preparing RPM packages installation..."
+msgstr "Generating RPM packages..."
+
+#: kernel_installer_gui/core/kernel.py:477
+#, fuzzy
+msgid "Preparing direct installation..."
+msgstr "Compiling for direct installation..."
+
+#: kernel_installer_gui/core/kernel.py:490
+#, fuzzy
+msgid "Finalizing installation (may require password)..."
+msgstr "Verifying environment (requires password)..."
+
+#: kernel_installer_gui/core/kernel.py:495
 #, python-format
 msgid "Installation error: %(error)s"
 msgstr "Installation error: %(error)s"
 
-#: kernel_installer_gui/core/kernel.py:462
-msgid "Installing RPM packages..."
-msgstr "Installing RPM packages..."
+#: kernel_installer_gui/core/kernel.py:543
+#, fuzzy
+msgid "Cleaning up build files..."
+msgstr "Clean build files"
 
-#: kernel_installer_gui/core/kernel.py:468
-#, python-format
-msgid "RPM installation error: %(error)s"
-msgstr "RPM installation error: %(error)s"
-
-#: kernel_installer_gui/core/kernel.py:473
-msgid "Installing modules..."
-msgstr "Installing modules..."
-
-#: kernel_installer_gui/core/kernel.py:478
-#, python-format
-msgid "Module installation error: %(error)s"
-msgstr "Module installation error: %(error)s"
-
-#: kernel_installer_gui/core/kernel.py:486
-#, python-format
-msgid "Kernel installation error: %(error)s"
-msgstr "Kernel installation error: %(error)s"
-
-#: kernel_installer_gui/core/kernel.py:490
-msgid "Regenerating initramfs..."
-msgstr "Regenerating initramfs..."
-
-#: kernel_installer_gui/core/kernel.py:495
-msgid "Warning: Error regenerating initramfs"
-msgstr "Warning: Error regenerating initramfs"
-
-#: kernel_installer_gui/core/kernel.py:498
-#: kernel_installer_gui/core/kernel.py:639
-msgid "Updating bootloader..."
-msgstr "Updating bootloader..."
-
-#: kernel_installer_gui/core/kernel.py:503
-msgid "Warning: Error updating bootloader"
-msgstr "Warning: Error updating bootloader"
-
-#: kernel_installer_gui/core/kernel.py:508
-#: kernel_installer_gui/app/main_window.py:509
-msgid "Installation complete!"
-msgstr "Installation complete!"
-
-#: kernel_installer_gui/core/kernel.py:627
+#: kernel_installer_gui/core/kernel.py:625
 #, python-format
 msgid "Removing kernel %(version)s..."
 msgstr "Removing kernel %(version)s..."
 
-#: kernel_installer_gui/core/kernel.py:631
+#: kernel_installer_gui/core/kernel.py:629
 msgid "Uninstalling packages/files..."
 msgstr "Uninstalling packages/files..."
 
-#: kernel_installer_gui/core/kernel.py:635
+#: kernel_installer_gui/core/kernel.py:633
 #, python-format
 msgid "Error removing kernel: %(error)s"
 msgstr "Error removing kernel: %(error)s"
 
-#: kernel_installer_gui/core/kernel.py:644
+#: kernel_installer_gui/core/kernel.py:637
+msgid "Updating bootloader..."
+msgstr "Updating bootloader..."
+
+#: kernel_installer_gui/core/kernel.py:642
 msgid "Warning: Error updating bootloader during removal"
 msgstr "Warning: Error updating bootloader during removal"
 
-#: kernel_installer_gui/core/kernel.py:647
+#: kernel_installer_gui/core/kernel.py:645
 msgid "Updating history..."
 msgstr "Updating history..."
 
-#: kernel_installer_gui/core/kernel.py:665
+#: kernel_installer_gui/core/kernel.py:663
 msgid "Kernel removed successfully."
 msgstr "Kernel removed successfully."
 
@@ -256,11 +466,11 @@ msgstr "Reboot required"
 msgid "Reboot the system to use the new kernel."
 msgstr "Reboot the system to use the new kernel."
 
-#: kernel_installer_gui/core/profiles.py:81
+#: kernel_installer_gui/core/profiles.py:141
 msgid "Gaming"
 msgstr "Gaming"
 
-#: kernel_installer_gui/core/profiles.py:84
+#: kernel_installer_gui/core/profiles.py:144
 msgid ""
 "Optimized for games with low input latency, high CPU performance and better "
 "GPU management. Ideal for gamers and streaming."
@@ -268,11 +478,11 @@ msgstr ""
 "Optimized for games with low input latency, high CPU performance and better "
 "GPU management. Ideal for gamers and streaming."
 
-#: kernel_installer_gui/core/profiles.py:130
+#: kernel_installer_gui/core/profiles.py:190
 msgid "Audio/Video"
 msgstr "Audio/Video"
 
-#: kernel_installer_gui/core/profiles.py:133
+#: kernel_installer_gui/core/profiles.py:193
 msgid ""
 "Low-latency kernel for audio and video production. Optimized for DAWs, video "
 "editing and professional streaming. Uses real-time preemption for ultra-low "
@@ -282,11 +492,11 @@ msgstr ""
 "editing and professional streaming. Uses real-time preemption for ultra-low "
 "latency."
 
-#: kernel_installer_gui/core/profiles.py:179
+#: kernel_installer_gui/core/profiles.py:239
 msgid "Minimal / Office"
 msgstr "Minimal / Office"
 
-#: kernel_installer_gui/core/profiles.py:182
+#: kernel_installer_gui/core/profiles.py:242
 msgid ""
 "Lightweight kernel for office work, web browsing and general use. No "
 "unnecessary modules, low resource consumption. Ideal for older hardware or "
@@ -295,6 +505,18 @@ msgstr ""
 "Lightweight kernel for office work, web browsing and general use. No "
 "unnecessary modules, low resource consumption. Ideal for older hardware or "
 "virtual machines."
+
+#: kernel_installer_gui/core/profiles.py:326
+msgid "Hardware Optimized"
+msgstr "Hardware Optimized"
+
+#: kernel_installer_gui/core/profiles.py:329
+msgid ""
+"Auto-detects your CPU and GPU to enable specific drivers and optimizations "
+"for your machine. Ideal for maximum performance on your specific hardware."
+msgstr ""
+"Auto-detects your CPU and GPU to enable specific drivers and optimizations "
+"for your machine. Ideal for maximum performance on your specific hardware."
 
 #: kernel_installer_gui/widgets/build_progress.py:62
 msgid "SYSTEM LOAD"
@@ -386,221 +608,32 @@ msgstr " (Latest)"
 msgid " (LTS)"
 msgstr " (LTS)"
 
-#: kernel_installer_gui/app/application.py:79
-msgid "Verifying environment (requires password)..."
-msgstr "Verifying environment (requires password)..."
+#~ msgid "Installing .deb packages..."
+#~ msgstr "Installing .deb packages..."
 
-#: kernel_installer_gui/app/application.py:86
-msgid "Dependencies installed/verified."
-msgstr "Dependencies installed/verified."
+#~ msgid "Installing RPM packages..."
+#~ msgstr "Installing RPM packages..."
 
-#: kernel_installer_gui/app/application.py:93
-msgid "Error installing dependencies."
-msgstr "Error installing dependencies."
-
-#: kernel_installer_gui/app/application.py:319
-#: kernel_installer_gui/app/main_window.py:51
-msgid "Kernel Installer"
-msgstr "Kernel Installer"
-
-#: kernel_installer_gui/app/application.py:322
-msgid ""
-"A graphical interface for downloading, compiling and installing the Linux "
-"kernel with optimized profiles."
-msgstr ""
-"A graphical interface for downloading, compiling and installing the Linux "
-"kernel with optimized profiles."
-
-#: kernel_installer_gui/app/application.py:344
-msgid "Clean build files?"
-msgstr "Clean build files?"
-
-#: kernel_installer_gui/app/application.py:347
-msgid ""
-"All temporary files in ~/kernel_build will be deleted.\n"
-"This will free up disk space."
-msgstr ""
-"All temporary files in ~/kernel_build will be deleted.\n"
-"This will free up disk space."
-
-#: kernel_installer_gui/app/application.py:356
-msgid "Build files deleted."
-msgstr "Build files deleted."
-
-#: kernel_installer_gui/app/application.py:358
-msgid "Error cleaning files."
-msgstr "Error cleaning files."
-
-#: kernel_installer_gui/app/main_window.py:52
-msgid "by Sergi Perich & Alexia Michelle"
-msgstr "by Sergi Perich & Alexia Michelle"
-
-#: kernel_installer_gui/app/main_window.py:63
-msgid "Refresh versions (F5)"
-msgstr "Refresh versions (F5)"
-
-#: kernel_installer_gui/app/main_window.py:64
-msgid "Clean build files"
-msgstr "Clean build files"
-
-#: kernel_installer_gui/app/main_window.py:65
-msgid "About"
-msgstr "About"
-
-#: kernel_installer_gui/app/main_window.py:66
-msgid "Quit (Ctrl+Q)"
-msgstr "Quit (Ctrl+Q)"
-
-#: kernel_installer_gui/app/main_window.py:103
-msgid "Kernel name (suffix)"
-msgstr "Kernel name (suffix)"
-
-#: kernel_installer_gui/app/main_window.py:111
-msgid "E.g.: gaming, server, my-kernel"
-msgstr "E.g.: gaming, server, my-kernel"
-
-#: kernel_installer_gui/app/main_window.py:112
-msgid "This name will be added to the kernel, e.g.: 6.18.7-custom-gaming"
-msgstr "This name will be added to the kernel, e.g.: 6.18.7-custom-gaming"
-
-#: kernel_installer_gui/app/main_window.py:117
-msgid "Result: 6.x.x-custom-gaming (combined with profile)"
-msgstr "Result: 6.x.x-custom-gaming (combined with profile)"
-
-#: kernel_installer_gui/app/main_window.py:136
-msgid "Distribution:"
-msgstr "Distribution:"
-
-#: kernel_installer_gui/app/main_window.py:141
-msgid "Detecting..."
-msgstr "Detecting..."
-
-#: kernel_installer_gui/app/main_window.py:148
-msgid "Current kernel:"
-msgstr "Current kernel:"
-
-#: kernel_installer_gui/app/main_window.py:165
-msgid "Bootloader:"
-msgstr "Bootloader:"
-
-#: kernel_installer_gui/app/main_window.py:177
-msgid "Initramfs:"
-msgstr "Initramfs:"
-
-#: kernel_installer_gui/app/main_window.py:205
-msgid "📥 Download and install kernel"
-msgstr "📥 Download and install kernel"
-
-#: kernel_installer_gui/app/main_window.py:228
-msgid "Cancel"
-msgstr "Cancel"
-
-#: kernel_installer_gui/app/main_window.py:234
-msgid "Done"
-msgstr "Done"
-
-#: kernel_installer_gui/app/main_window.py:269
-msgid "Checking system dependencies..."
-msgstr "Checking system dependencies..."
-
-#: kernel_installer_gui/app/main_window.py:278
-msgid "Working..."
-msgstr "Working..."
-
-#: kernel_installer_gui/app/main_window.py:295
-msgid "CRITICAL: Failed to install dependencies. Check terminal output."
-msgstr ""
-
-#: kernel_installer_gui/app/main_window.py:328
-msgid "Unsupported distribution"
-msgstr "Unsupported distribution"
-
-#: kernel_installer_gui/app/main_window.py:331
 #, python-format
-msgid ""
-"%(distro)s is not officially supported. The program might not work correctly."
-msgstr ""
-"%(distro)s is not officially supported. The program might not work correctly."
+#~ msgid "RPM installation error: %(error)s"
+#~ msgstr "RPM installation error: %(error)s"
 
-#: kernel_installer_gui/app/main_window.py:343
-msgid "Please select a kernel version."
-msgstr "Please select a kernel version."
+#~ msgid "Installing modules..."
+#~ msgstr "Installing modules..."
 
-#: kernel_installer_gui/app/main_window.py:350
 #, python-format
-msgid ""
-"Missing required build tools: %(tools)s\n"
-"\n"
-"Please install them and try again."
-msgstr ""
+#~ msgid "Module installation error: %(error)s"
+#~ msgstr "Module installation error: %(error)s"
 
-#: kernel_installer_gui/app/main_window.py:385
-msgid "Install kernel?"
-msgstr "Install kernel?"
-
-#: kernel_installer_gui/app/main_window.py:388
 #, python-format
-msgid ""
-"You are about to download, compile and install:\n"
-"\n"
-"• Version: Linux %(version)s\n"
-"• Profile: %(profile)s\n"
-"\n"
-"This process may take several hours."
-msgstr ""
-"You are about to download, compile and install:\n"
-"\n"
-"• Version: Linux %(version)s\n"
-"• Profile: %(profile)s\n"
-"\n"
-"This process may take several hours."
+#~ msgid "Kernel installation error: %(error)s"
+#~ msgstr "Kernel installation error: %(error)s"
 
-#: kernel_installer_gui/app/main_window.py:434
-msgid "Stopping build process..."
-msgstr "Stopping build process..."
+#~ msgid "Regenerating initramfs..."
+#~ msgstr "Regenerating initramfs..."
 
-#: kernel_installer_gui/app/main_window.py:435
-msgid "Cancellation requested by user..."
-msgstr "Cancellation requested by user..."
+#~ msgid "Warning: Error regenerating initramfs"
+#~ msgstr "Warning: Error regenerating initramfs"
 
-#: kernel_installer_gui/app/main_window.py:448
-msgid "Starting removal..."
-msgstr "Starting removal..."
-
-#: kernel_installer_gui/app/main_window.py:473
-msgid "Remove kernel?"
-msgstr "Remove kernel?"
-
-#: kernel_installer_gui/app/main_window.py:476
-#, python-format
-msgid ""
-"Are you sure you want to completely remove Linux %(version)s?\n"
-"\n"
-"This will delete the kernel image, modules, and update the bootloader."
-msgstr ""
-"Are you sure you want to completely remove Linux %(version)s?\n"
-"\n"
-"This will delete the kernel image, modules, and update the bootloader."
-
-#: kernel_installer_gui/app/main_window.py:495
-msgid "Kernel removed successfully"
-msgstr "Kernel removed successfully"
-
-#: kernel_installer_gui/app/main_window.py:512
-msgid ""
-"The kernel has been installed successfully.\n"
-"\n"
-"Do you want to reboot now to use the new kernel?"
-msgstr ""
-"The kernel has been installed successfully.\n"
-"\n"
-"Do you want to reboot now to use the new kernel?"
-
-#: kernel_installer_gui/app/main_window.py:530
-msgid "Error"
-msgstr "Error"
-
-#: kernel_installer_gui/app/main_window.py:556
-#, python-format
-msgid "Result: %s"
-msgstr "Result: %s"
+#~ msgid "Warning: Error updating bootloader"
+#~ msgstr "Warning: Error updating bootloader"
