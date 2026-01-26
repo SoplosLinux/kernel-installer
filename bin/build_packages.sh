@@ -1,5 +1,5 @@
 #!/bin/bash
-# Kernel Installer Package Builder (Reconstructed & Robust)
+# Kernel Installer Package Builder (Multi-Distro Edition)
 set -e
 
 APP_NAME="kernel-installer"
@@ -7,96 +7,77 @@ VERSION="1.0.1"
 BUILD_DIR="build_packages"
 RPM_BUILD_DIR="$HOME/rpmbuild"
 
-echo "📦 Starting proper packaging..."
+echo "📦 Starting proper packaging for multiple distributions..."
 
 # 1. Clean previous builds
 rm -rf "$BUILD_DIR" releases
 mkdir -p releases
 
-# --- DEBIAN PACKAGE ---
-echo "🔹 Building Debian (.deb)..."
-DEB_DIR="$BUILD_DIR/deb"
-mkdir -p "$DEB_DIR/DEBIAN"
-mkdir -p "$DEB_DIR/usr/bin"
-mkdir -p "$DEB_DIR/usr/share/kernel-installer"
-mkdir -p "$DEB_DIR/usr/share/applications"
-mkdir -p "$DEB_DIR/usr/share/metainfo"
-mkdir -p "$DEB_DIR/usr/share/icons/hicolor/48x48/apps"
-mkdir -p "$DEB_DIR/usr/share/icons/hicolor/128x128/apps"
-mkdir -p "$DEB_DIR/usr/share/icons/hicolor/256x256/apps"
-mkdir -p "$DEB_DIR/usr/share/man/man1"
+# Helper function to create shared structure
+prepare_base_structure() {
+    local target_dir=$1
+    mkdir -p "$target_dir/usr/bin"
+    mkdir -p "$target_dir/usr/share/kernel-installer"
+    mkdir -p "$target_dir/usr/share/applications"
+    mkdir -p "$target_dir/usr/share/metainfo"
+    mkdir -p "$target_dir/usr/share/icons/hicolor/48x48/apps"
+    mkdir -p "$target_dir/usr/share/icons/hicolor/128x128/apps"
+    mkdir -p "$target_dir/usr/share/icons/hicolor/256x256/apps"
+    mkdir -p "$target_dir/usr/share/man/man1"
 
-# Copy files
-cp packaging/debian/control "$DEB_DIR/DEBIAN/"
-cp bin/kernel-installer "$DEB_DIR/usr/bin/"
-chmod +x "$DEB_DIR/usr/bin/kernel-installer"
-# Include everything from root in share dir
-cp main.py README.md LICENSE CHANGELOG.md setup.py "$DEB_DIR/usr/share/kernel-installer/"
-cp -r kernel_installer_gui "$DEB_DIR/usr/share/kernel-installer/"
-cp kernel_installer_gui/data/org.soplos.kernel-installer.desktop "$DEB_DIR/usr/share/applications/"
-# Professional Metadata (AppStream)
-cp kernel_installer_gui/data/org.soplos.kernel-installer.metainfo.xml "$DEB_DIR/usr/share/metainfo/"
-cp kernel_installer_gui/assets/icons/org.soplos.kernel-installer-48.png "$DEB_DIR/usr/share/icons/hicolor/48x48/apps/org.soplos.kernel-installer.png"
-cp kernel_installer_gui/assets/icons/org.soplos.kernel-installer-128.png "$DEB_DIR/usr/share/icons/hicolor/128x128/apps/org.soplos.kernel-installer.png"
-cp kernel_installer_gui/assets/icons/org.soplos.kernel-installer-256.png "$DEB_DIR/usr/share/icons/hicolor/256x256/apps/org.soplos.kernel-installer.png"
+    # Copy files
+    cp bin/kernel-installer "$target_dir/usr/bin/"
+    chmod +x "$target_dir/usr/bin/kernel-installer"
+    cp main.py README.md LICENSE CHANGELOG.md setup.py "$target_dir/usr/share/kernel-installer/"
+    cp -r kernel_installer_gui "$target_dir/usr/share/kernel-installer/"
+    cp kernel_installer_gui/data/org.soplos.kernel-installer.desktop "$target_dir/usr/share/applications/"
+    cp kernel_installer_gui/data/org.soplos.kernel-installer.metainfo.xml "$target_dir/usr/share/metainfo/"
+    cp kernel_installer_gui/assets/icons/org.soplos.kernel-installer-48.png "$target_dir/usr/share/icons/hicolor/48x48/apps/org.soplos.kernel-installer.png"
+    cp kernel_installer_gui/assets/icons/org.soplos.kernel-installer-128.png "$target_dir/usr/share/icons/hicolor/128x128/apps/org.soplos.kernel-installer.png"
+    cp kernel_installer_gui/assets/icons/org.soplos.kernel-installer-256.png "$target_dir/usr/share/icons/hicolor/256x256/apps/org.soplos.kernel-installer.png"
+    
+    if [ -f kernel_installer_gui/data/org.soplos.kernel-installer.1 ]; then
+        cp kernel_installer_gui/data/org.soplos.kernel-installer.1 "$target_dir/usr/share/man/man1/"
+        gzip -9 -f "$target_dir/usr/share/man/man1/org.soplos.kernel-installer.1"
+    fi
+}
 
-cp kernel_installer_gui/data/org.soplos.kernel-installer.1 "$DEB_DIR/usr/share/man/man1/"
-gzip -9 "$DEB_DIR/usr/share/man/man1/org.soplos.kernel-installer.1"
+# --- DEBIAN FAMILY (.deb) ---
+for target in debian ubuntu; do
+    echo "🔹 Building Debian-based ($target) .deb..."
+    DEB_TARGET_DIR="$BUILD_DIR/deb-$target"
+    mkdir -p "$DEB_TARGET_DIR/DEBIAN"
+    prepare_base_structure "$DEB_TARGET_DIR"
+    cp "packaging/debian/control.$target" "$DEB_TARGET_DIR/DEBIAN/control"
+    dpkg-deb --build --root-owner-group "$DEB_TARGET_DIR" "releases/${APP_NAME}_${VERSION}_${target}.deb"
+done
 
-# Build .deb
-dpkg-deb --build --root-owner-group "$DEB_DIR" "releases/${APP_NAME}_${VERSION}_all.deb"
-
-
-# --- FEDORA PACKAGE (RPM) ---
-echo "🔹 Building Fedora (.rpm)..."
-mkdir -p "$RPM_BUILD_DIR"/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
-
-# Create source tarball
-TAR_NAME="${APP_NAME}-${VERSION}"
-mkdir -p "$BUILD_DIR/$TAR_NAME"
-# Professional completeness: include everything in the source tarball
-cp -r bin kernel_installer_gui main.py README.md LICENSE CHANGELOG.md setup.py "$BUILD_DIR/$TAR_NAME/"
-tar -czf "$RPM_BUILD_DIR/SOURCES/${TAR_NAME}.tar.gz" -C "$BUILD_DIR" "${TAR_NAME}"
-
-# Copy spec file
-cp packaging/rpm/kernel-installer.spec "$RPM_BUILD_DIR/SPECS/"
-
-# Build RPM
-if command -v rpmbuild >/dev/null; then
-    rpmbuild -bb "$RPM_BUILD_DIR/SPECS/kernel-installer.spec" --define "_topdir $RPM_BUILD_DIR"
-    # Move and rename to avoid the release suffix in the artifact name if user requested
-    cp "$RPM_BUILD_DIR"/RPMS/noarch/kernel-installer-1.0.1-1.noarch.rpm releases/kernel-installer-1.0.1.noarch.rpm
-else
-    echo "⚠️ rpmbuild not found. Skipping RPM build."
-fi
-
+# --- RPM FAMILY (.rpm) ---
+for target in fedora mageia; do
+    echo "🔹 Building RPM-based ($target) .rpm..."
+    mkdir -p "$RPM_BUILD_DIR"/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
+    
+    # Create source tarball
+    TAR_NAME="${APP_NAME}-${VERSION}"
+    mkdir -p "$BUILD_DIR/$TAR_NAME"
+    cp -r bin kernel_installer_gui main.py README.md LICENSE CHANGELOG.md setup.py "$BUILD_DIR/$TAR_NAME/"
+    tar -czf "$RPM_BUILD_DIR/SOURCES/${TAR_NAME}.tar.gz" -C "$BUILD_DIR" "${TAR_NAME}"
+    
+    # Copy specific spec
+    cp "packaging/rpm/$target.spec" "$RPM_BUILD_DIR/SPECS/kernel-installer.spec"
+    
+    if command -v rpmbuild >/dev/null; then
+        rpmbuild -bb "$RPM_BUILD_DIR/SPECS/kernel-installer.spec" --define "_topdir $RPM_BUILD_DIR"
+        cp "$RPM_BUILD_DIR"/RPMS/noarch/kernel-installer-${VERSION}-1.noarch.rpm "releases/kernel-installer-${VERSION}-${target}.noarch.rpm"
+    else
+        echo "⚠️ rpmbuild not found. Skipping RPM build for $target."
+    fi
+done
 
 # --- ARCH LINUX ---
 echo "🔹 Building Arch Linux (.pkg.tar.zst) [Manual]..."
-
-# Create package structure
 ARCH_DIR="$BUILD_DIR/arch/pkg"
-mkdir -p "$ARCH_DIR/usr/bin"
-mkdir -p "$ARCH_DIR/usr/share/kernel-installer"
-mkdir -p "$ARCH_DIR/usr/share/applications"
-mkdir -p "$ARCH_DIR/usr/share/metainfo"
-mkdir -p "$ARCH_DIR/usr/share/icons/hicolor/48x48/apps"
-mkdir -p "$ARCH_DIR/usr/share/icons/hicolor/128x128/apps"
-mkdir -p "$ARCH_DIR/usr/share/icons/hicolor/256x256/apps"
-
-# Copy files
-cp bin/kernel-installer "$ARCH_DIR/usr/bin/"
-chmod +x "$ARCH_DIR/usr/bin/kernel-installer"
-# Mirror Debian completeness
-cp main.py README.md LICENSE CHANGELOG.md setup.py "$ARCH_DIR/usr/share/kernel-installer/"
-cp -r kernel_installer_gui "$ARCH_DIR/usr/share/kernel-installer/"
-cp kernel_installer_gui/data/org.soplos.kernel-installer.desktop "$ARCH_DIR/usr/share/applications/"
-cp kernel_installer_gui/data/org.soplos.kernel-installer.metainfo.xml "$ARCH_DIR/usr/share/metainfo/"
-
-cp kernel_installer_gui/assets/icons/org.soplos.kernel-installer-48.png "$ARCH_DIR/usr/share/icons/hicolor/48x48/apps/org.soplos.kernel-installer.png"
-cp kernel_installer_gui/assets/icons/org.soplos.kernel-installer-128.png "$ARCH_DIR/usr/share/icons/hicolor/128x128/apps/org.soplos.kernel-installer.png"
-cp kernel_installer_gui/assets/icons/org.soplos.kernel-installer-256.png "$ARCH_DIR/usr/share/icons/hicolor/256x256/apps/org.soplos.kernel-installer.png"
-
+prepare_base_structure "$ARCH_DIR"
 # Generate .PKGINFO
 cat > "$ARCH_DIR/.PKGINFO" <<EOF
 pkgname = kernel-installer
@@ -125,15 +106,10 @@ depend = gettext
 depend = git
 EOF
 
-# Compress
-# Use tar to create zst package. --zstd is supported by GNU tar (usually).
-# If not, pipe to zstd.
 if tar --help | grep -q zstd; then
-    tar -C "$ARCH_DIR" -c --zstd -f "releases/${APP_NAME}-${VERSION}-any.pkg.tar.zst" .
+    tar -C "$ARCH_DIR" -c --zstd -f "releases/${APP_NAME}-${VERSION}-arch.pkg.tar.zst" .
 elif command -v zstd >/dev/null; then
-    tar -C "$ARCH_DIR" -c . | zstd - > "releases/${APP_NAME}-${VERSION}-any.pkg.tar.zst"
-else
-    echo "⚠️ zstd not found. Skipping Arch package."
+    tar -C "$ARCH_DIR" -c . | zstd - > "releases/${APP_NAME}-${VERSION}-arch.pkg.tar.zst"
 fi
 
 # Cleanup

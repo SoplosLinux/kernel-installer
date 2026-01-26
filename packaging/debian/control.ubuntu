@@ -1,0 +1,11 @@
+Package: kernel-installer
+Version: 1.0.1
+Section: utils
+Priority: optional
+Architecture: all
+Depends: python3, python3-gi, gir1.2-gtk-3.0, gir1.2-notify-0.7, wget, binutils, coreutils, build-essential, flex, bison, libssl-dev, libelf-dev, bc, fakeroot, rsync, kmod, dwarves, cpio, linux-libc-dev, libncurses-dev, pkg-config, gettext, git, tar, xz-utils, curl, g++
+Maintainer: Sergi Perich <info@soploslinux.com>
+Description: Kernel Installer GUI for Linux (Ubuntu Family)
+ Graphical interface for downloading, compiling and installing Linux kernels.
+ .
+ Optimized for Ubuntu and its derivatives (Kubuntu, Mint, Pop!_OS, Elementary).
