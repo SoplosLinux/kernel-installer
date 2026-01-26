@@ -85,8 +85,11 @@ sudo urpmi python3-gi lib64gtk+3.0_0
   ```
 - **Fedora/RHEL**:
   ```bash
-  rpmbuild -ba packaging/rpm/kernel-installer.spec
-  sudo dnf install ~/rpmbuild/RPMS/noarch/kernel-installer-*.rpm
+  sudo dnf install kernel-installer-1.0.1-fedora.noarch.rpm
+  ```
+- **Mageia/Mandriva**:
+  ```bash
+  sudo urpmi kernel-installer-1.0.1-mageia.noarch.rpm
   ```
 
 ### Option 2: From Source
