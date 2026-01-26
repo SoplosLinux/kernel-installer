@@ -19,7 +19,7 @@ A graphical interface for downloading, compiling, and installing the Linux kerne
 - Optimized profiles: Gaming, Audio/Video, Minimal, Hardware Optimized
 - Auto-detection of Hardware features (CPU, GPU, NVMe) for performance
 - Virtualization support detection (QEMU, VMware, VirtualBox)
-- Multi-distro support: Debian, Ubuntu, Fedora, Arch
+- Multi-distro support: Debian, Ubuntu, Fedora, Arch, Mageia
 - Single sudo prompt for the entire installation process
 - Fluent reboot without extra password prompts (integrated with systemd)
 - Optional automatic cleanup of build directory
@@ -55,6 +55,12 @@ sudo dnf install python3-gobject gtk3
 
 ```bash
 sudo pacman -S python-gobject gtk3
+```
+
+### Mageia
+
+```bash
+sudo dnf install python3-gobject gtk3
 ```
 
 ## 📦 Installation
