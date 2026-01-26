@@ -125,9 +125,6 @@ elif command -v zstd >/dev/null; then
     tar -C "$ARCH_DIR" -c .PKGINFO usr | zstd - > "releases/$ARCH_PKG_NAME"
 fi
 
-# Symbolic link for internal consistency if needed
-ln -sf "$ARCH_PKG_NAME" "releases/${APP_NAME}-${VERSION}-arch.pkg.tar.zst"
-
 # Cleanup
 echo "✅ Packaging complete. Files in 'releases/':"
 ls -lh releases/

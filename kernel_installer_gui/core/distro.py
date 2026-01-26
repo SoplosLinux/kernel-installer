@@ -320,7 +320,7 @@ class DistroDetector:
             ],
             DistroFamily.ARCH: [
                 'base-devel', 'bc', 'rsync', 'wget', 'tar', 'xz', 'libelf', 
-                'pahole', 'kmod', 'cpio', 'openssl', 'ncurses'
+                'dwarves', 'kmod', 'cpio', 'openssl', 'ncurses', 'perl', 'python'
             ],
             DistroFamily.MANDRIVA: [
                 'gcc', 'gcc-c++', 'make', 'binutils', 'bison', 'flex', 'bc', 'rsync', 
@@ -520,16 +520,21 @@ class DistroDetector:
             
         # Arch Family
         elif info.family == DistroFamily.ARCH:
-            # List from arch.h
-            deps = "base-devel xmlto kmod inetutils bc libelf git cpio perl tar xz"
+            # Check for essential binaries first (no root if possible)
+            essential_bins = ['gcc', 'make', 'pahole', 'tar', 'bc']
+            if all(shutil.which(b) for b in essential_bins):
+                if not self._are_headers_broken():
+                    return True
+
+            # Full list for Arch
+            deps = "base-devel bc rsync wget tar xz libelf dwarves kmod cpio openssl ncurses perl python"
             
-            # Optimization for Arch
-            check_cmd = f"pacman -Qq {deps} >/dev/null 2>&1 || echo 'missing'"
+            # Use pacman -T (deptest) which is faster and handles groups/packages correctly
+            check_cmd = f"pacman -T {deps} >/dev/null 2>&1 || echo 'missing'"
             if run_command(check_cmd).stdout.strip() != 'missing':
                 return True
                 
-            update_cmd = "pacman -Syu --noconfirm"
-            install_cmd = f"pacman -S --noconfirm {deps}"
+            install_cmd = f"pacman -S --needed --noconfirm {deps}"
 
         # Mandriva Family (Mageia/OpenMandriva)
         elif info.family == DistroFamily.MANDRIVA:
