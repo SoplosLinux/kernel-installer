@@ -1,6 +1,6 @@
 Name:           kernel-installer
 Version:        1.0.1
-Release:        1%{?dist}
+Release:        1
 Summary:        Graphical interface for downloading, compiling and installing Linux kernels
 
 License:        GPLv3+
@@ -9,19 +9,19 @@ BuildArch:      noarch
 
 Requires:       python3
 Requires:       python3-gobject
-Requires:       gtk3
+Requires:       (gtk3 or gtk+3.0)
 Requires:       wget
 Requires:       binutils
 Requires:       flex
 Requires:       bison
-Requires:       openssl-devel
-Requires:       elfutils-libelf-devel
+Requires:       (openssl-devel or libopenssl-devel)
+Requires:       (elfutils-libelf-devel or libelf-devel)
 Requires:       bc
 Requires:       rsync
 Requires:       kmod
 Requires:       dwarves
 Requires:       cpio
-Requires:       kernel-headers
+Requires:       (kernel-headers or kernel-devel)
 Requires:       pkgconfig
 Requires:       ncurses-devel
 Requires:       make
@@ -29,13 +29,14 @@ Requires:       gcc
 Requires:       gcc-c++
 Requires:       gettext
 Requires:       fakeroot
-Requires:       newt
+Requires:       (newt or newt-devel)
 Requires:       git
 Requires:       tar
 Requires:       xz
 Requires:       curl
 Requires:       openssl
 Requires:       coreutils
+
 Source0:        %{name}-%{version}.tar.gz
 
 %description

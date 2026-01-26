@@ -19,7 +19,11 @@ A graphical interface for downloading, compiling, and installing the Linux kerne
 - Optimized profiles: Gaming, Audio/Video, Minimal, Hardware Optimized
 - Auto-detection of Hardware features (CPU, GPU, NVMe) for performance
 - Virtualization support detection (QEMU, VMware, VirtualBox)
-- Multi-distro support: Debian, Ubuntu, Fedora, Arch, Mageia
+- **Multi-distro support**:
+  - **Debian-based**: Debian, Soplos, GoldenDog, Ubuntu, Kubuntu, Xubuntu, Lubuntu, Linux Mint, Pop!\_OS, MX Linux, Elementary OS, Kali Linux.
+  - **Arch-based**: Arch Linux, Manjaro, EndeavourOS, CachyOS, Garuda Linux.
+  - **Fedora-based**: Fedora, Red Hat Enterprise Linux, CentOS Stream, AlmaLinux, Rocky Linux.
+  - **Mageia-based**: Mageia, OpenMandriva.
 - Single sudo prompt for the entire installation process
 - Fluent reboot without extra password prompts (integrated with systemd)
 - Optional automatic cleanup of build directory
@@ -31,7 +35,7 @@ A graphical interface for downloading, compiling, and installing the Linux kerne
 - Desktop notifications (transient via libnotify)
 - Full i18n coverage for 8 languages (EN, ES, FR, PT, DE, IT, RO, RU)
 - Intelligent automated system dependency verification and installation
-- Kernel removal support for Debian, Fedora, and Arch Linux
+- Kernel removal support for Debian, Ubuntu, Arch, Fedora, and Mageia families
 
 ## Requirements
 
