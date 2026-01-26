@@ -85,16 +85,19 @@ class BuildProgress(Gtk.Box):
         avg_header.set_halign(Gtk.Align.START)
         stats_box.pack_start(avg_header, False, False, 0)
         
-        self._load_1m = Gtk.Label(label="1m:  0.00")
+        self._load_1m = Gtk.Label(label=_("Now (1m):") + "  0.00")
         self._load_1m.set_halign(Gtk.Align.START)
+        self._load_1m.set_tooltip_text(_("System load in the last minute"))
         stats_box.pack_start(self._load_1m, False, False, 0)
         
-        self._load_5m = Gtk.Label(label="5m:  0.00")
+        self._load_5m = Gtk.Label(label=_("Avg (5m):") + "  0.00")
         self._load_5m.set_halign(Gtk.Align.START)
+        self._load_5m.set_tooltip_text(_("Average system load in the last 5 minutes"))
         stats_box.pack_start(self._load_5m, False, False, 0)
         
-        self._load_15m = Gtk.Label(label="15m: 0.00")
+        self._load_15m = Gtk.Label(label=_("Avg (15m):") + " 0.00")
         self._load_15m.set_halign(Gtk.Align.START)
+        self._load_15m.set_tooltip_text(_("Average system load in the last 15 minutes"))
         stats_box.pack_start(self._load_15m, False, False, 0)
         
         # Cores
@@ -206,9 +209,9 @@ class BuildProgress(Gtk.Box):
         self._load_bar.set_value(usage)
         self._load_label.set_text(f"{usage:.1f}%")
         
-        self._load_1m.set_text(f"1m:  {load1:.2f}")
-        self._load_5m.set_text(f"5m:  {load5:.2f}")
-        self._load_15m.set_text(f"15m: {load15:.2f}")
+        self._load_1m.set_text(f"{_('Now (1m):')}  {load1:.2f}")
+        self._load_5m.set_text(f"{_('Avg (5m):')}  {load5:.2f}")
+        self._load_15m.set_text(f"{_('Avg (15m):')} {load15:.2f}")
         
         return True  # Continue timer
     

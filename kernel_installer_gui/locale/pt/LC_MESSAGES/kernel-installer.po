@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-26 12:46+0100\n"
+"POT-Creation-Date: 2026-01-26 12:52+0100\n"
 "Language: pt\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -528,25 +528,52 @@ msgstr "CARGA DO SISTEMA"
 msgid "Load average:"
 msgstr "Média de carga:"
 
-#: kernel_installer_gui/widgets/build_progress.py:101
+#: kernel_installer_gui/widgets/build_progress.py:88
+#: kernel_installer_gui/widgets/build_progress.py:212
+msgid "Now (1m):"
+msgstr "Agora (1m):"
+
+#: kernel_installer_gui/widgets/build_progress.py:90
+msgid "System load in the last minute"
+msgstr "Carga do sistema no 00faltimo minuto"
+
+#: kernel_installer_gui/widgets/build_progress.py:93
+#: kernel_installer_gui/widgets/build_progress.py:213
+msgid "Avg (5m):"
+msgstr "M00e9dia (5m):"
+
+#: kernel_installer_gui/widgets/build_progress.py:95
+msgid "Average system load in the last 5 minutes"
+msgstr "Carga m00e9dia (5 min)"
+
+#: kernel_installer_gui/widgets/build_progress.py:98
+#: kernel_installer_gui/widgets/build_progress.py:214
+msgid "Avg (15m):"
+msgstr "M00e9dia (15m):"
+
+#: kernel_installer_gui/widgets/build_progress.py:100
+msgid "Average system load in the last 15 minutes"
+msgstr "Carga m00e9dia (15 min)"
+
+#: kernel_installer_gui/widgets/build_progress.py:104
 #, python-format
 msgid "Cores: %d"
 msgstr "Núcleos: %d"
 
-#: kernel_installer_gui/widgets/build_progress.py:117
+#: kernel_installer_gui/widgets/build_progress.py:120
 msgid "Ready to build"
 msgstr "Pronto para compilar"
 
-#: kernel_installer_gui/widgets/build_progress.py:181
+#: kernel_installer_gui/widgets/build_progress.py:184
 #, python-format
 msgid "Time: %(h)02d:%(m)02d:%(s)02d"
 msgstr "Tempo: %(h)02d:%(m)02d:%(s)02d"
 
-#: kernel_installer_gui/widgets/build_progress.py:220
+#: kernel_installer_gui/widgets/build_progress.py:223
 msgid "Build completed successfully!"
 msgstr "Compilação concluída com sucesso!"
 
-#: kernel_installer_gui/widgets/build_progress.py:224
+#: kernel_installer_gui/widgets/build_progress.py:227
 msgid "Build failed"
 msgstr "Falha na compilação"
 
