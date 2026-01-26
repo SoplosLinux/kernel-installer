@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-26 11:43+0100\n"
+"POT-Creation-Date: 2026-01-26 12:46+0100\n"
 "Language: pt\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -134,7 +134,8 @@ msgstr "Trabalhando..."
 
 #: kernel_installer_gui/app/main_window.py:300
 msgid "CRITICAL: Failed to install dependencies. Check terminal output."
-msgstr "CRÍTICO: Falha ao instalar dependências. Verifique a saída do terminal."
+msgstr ""
+"CRÍTICO: Falha ao instalar dependências. Verifique a saída do terminal."
 
 #: kernel_installer_gui/app/main_window.py:333
 msgid "Unsupported distribution"
@@ -214,7 +215,7 @@ msgid "Kernel removed successfully"
 msgstr "Kernel removido com sucesso"
 
 #: kernel_installer_gui/app/main_window.py:515
-#: kernel_installer_gui/core/kernel.py:501
+#: kernel_installer_gui/core/kernel.py:504
 msgid "Installation complete!"
 msgstr "Instalação concluída!"
 
@@ -253,171 +254,171 @@ msgstr "A preparar a descarga de Linux %(version)s..."
 msgid "Error: Could not create build directory"
 msgstr "Erro: Não foi posible crear o diretório de compilação"
 
-#: kernel_installer_gui/core/kernel.py:233
+#: kernel_installer_gui/core/kernel.py:236
 #, python-format
 msgid "Downloading linux-%(version)s.tar.xz..."
 msgstr "A descarregar linux-%(version)s.tar.xz..."
 
-#: kernel_installer_gui/core/kernel.py:240
+#: kernel_installer_gui/core/kernel.py:243
 #, python-format
 msgid "Download error: %(error)s"
 msgstr "Erro na descarga: %(error)s"
 
-#: kernel_installer_gui/core/kernel.py:243
+#: kernel_installer_gui/core/kernel.py:246
 msgid "Download complete. Extracting..."
 msgstr "Download concluído. A extrair..."
 
-#: kernel_installer_gui/core/kernel.py:249
+#: kernel_installer_gui/core/kernel.py:252
 msgid "Removing old source directory..."
 msgstr "A remover o diretório de fontes antigo..."
 
-#: kernel_installer_gui/core/kernel.py:271
+#: kernel_installer_gui/core/kernel.py:274
 #, fuzzy, python-format
 msgid "Extracting linux-%(version)s..."
 msgstr "A descarregar linux-%(version)s.tar.xz..."
 
-#: kernel_installer_gui/core/kernel.py:276
+#: kernel_installer_gui/core/kernel.py:279
 #, python-format
 msgid "Extraction error: %(error)s"
 msgstr "Erro na extração: %(error)s"
 
-#: kernel_installer_gui/core/kernel.py:281
+#: kernel_installer_gui/core/kernel.py:284
 #, python-format
 msgid "Error: Extraction failed (Makefile not found in %s)"
 msgstr ""
 
-#: kernel_installer_gui/core/kernel.py:284
+#: kernel_installer_gui/core/kernel.py:287
 msgid "Extraction complete."
 msgstr "Extração concluída."
 
-#: kernel_installer_gui/core/kernel.py:302
+#: kernel_installer_gui/core/kernel.py:305
 msgid "Copying current kernel configuration..."
 msgstr "A copiar a configuração atual do kernel..."
 
-#: kernel_installer_gui/core/kernel.py:313
+#: kernel_installer_gui/core/kernel.py:316
 #, python-format
 msgid "Applying profile: %(profile)s..."
 msgstr "A aplicar perfil: %(profile)s..."
 
-#: kernel_installer_gui/core/kernel.py:319
+#: kernel_installer_gui/core/kernel.py:322
 #, python-format
 msgid "Warning applying profile: %(error)s"
 msgstr "Aviso ao aplicar perfil: %(error)s"
 
-#: kernel_installer_gui/core/kernel.py:353
+#: kernel_installer_gui/core/kernel.py:356
 #, fuzzy
 msgid "Running make olddefconfig..."
 msgstr "A ejecutar make oldconfig..."
 
-#: kernel_installer_gui/core/kernel.py:359
+#: kernel_installer_gui/core/kernel.py:362
 msgid "Configuration complete."
 msgstr "Configuração concluída."
 
-#: kernel_installer_gui/core/kernel.py:375
+#: kernel_installer_gui/core/kernel.py:378
 #, python-format
 msgid "Compiling kernel with %(cores)d cores..."
 msgstr "A compilar kernel com %(cores)d núcleos..."
 
-#: kernel_installer_gui/core/kernel.py:396
+#: kernel_installer_gui/core/kernel.py:399
 msgid "Generating .deb packages..."
 msgstr "A gerar pacotes .deb..."
 
-#: kernel_installer_gui/core/kernel.py:401
+#: kernel_installer_gui/core/kernel.py:404
 msgid "Generating RPM packages..."
 msgstr "A gerar pacotes RPM..."
 
-#: kernel_installer_gui/core/kernel.py:405
+#: kernel_installer_gui/core/kernel.py:408
 msgid "Compiling for direct installation..."
 msgstr "A compilar para instalação direta..."
 
-#: kernel_installer_gui/core/kernel.py:416
+#: kernel_installer_gui/core/kernel.py:419
 msgid "Build cancelled by user."
 msgstr "Compilação cancelada pelo usuário."
 
-#: kernel_installer_gui/core/kernel.py:421
+#: kernel_installer_gui/core/kernel.py:424
 #, python-format
 msgid "Build error (Exit code: %(code)d)"
 msgstr ""
 
-#: kernel_installer_gui/core/kernel.py:424
+#: kernel_installer_gui/core/kernel.py:427
 msgid ""
 "Check the terminal output for details or try installing missing dependencies "
 "and rebuilding."
 msgstr ""
 
-#: kernel_installer_gui/core/kernel.py:429
+#: kernel_installer_gui/core/kernel.py:432
 msgid "Compiling modules..."
 msgstr "A compilar módulos..."
 
-#: kernel_installer_gui/core/kernel.py:439
+#: kernel_installer_gui/core/kernel.py:442
 msgid "Error compiling modules"
 msgstr "Erro ao compilar módulos"
 
-#: kernel_installer_gui/core/kernel.py:442
+#: kernel_installer_gui/core/kernel.py:445
 msgid "Build complete."
 msgstr "Compilação concluída."
 
-#: kernel_installer_gui/core/kernel.py:456
+#: kernel_installer_gui/core/kernel.py:459
 msgid "Installing kernel..."
 msgstr "A instalar kernel..."
 
-#: kernel_installer_gui/core/kernel.py:467
+#: kernel_installer_gui/core/kernel.py:470
 #, fuzzy
 msgid "Preparing .deb packages installation..."
 msgstr "A gerar pacotes .deb..."
 
-#: kernel_installer_gui/core/kernel.py:472
+#: kernel_installer_gui/core/kernel.py:475
 #, fuzzy
 msgid "Preparing RPM packages installation..."
 msgstr "A gerar pacotes RPM..."
 
-#: kernel_installer_gui/core/kernel.py:477
+#: kernel_installer_gui/core/kernel.py:480
 #, fuzzy
 msgid "Preparing direct installation..."
 msgstr "A compilar para instalação direta..."
 
-#: kernel_installer_gui/core/kernel.py:490
+#: kernel_installer_gui/core/kernel.py:493
 #, fuzzy
 msgid "Finalizing installation (may require password)..."
 msgstr "Verificando ambiente (requer senha)..."
 
-#: kernel_installer_gui/core/kernel.py:495
+#: kernel_installer_gui/core/kernel.py:498
 #, python-format
 msgid "Installation error: %(error)s"
 msgstr "Erro na instalação: %(error)s"
 
-#: kernel_installer_gui/core/kernel.py:543
+#: kernel_installer_gui/core/kernel.py:546
 #, fuzzy
 msgid "Cleaning up build files..."
 msgstr "Limpar ficheiros de compilação"
 
-#: kernel_installer_gui/core/kernel.py:625
+#: kernel_installer_gui/core/kernel.py:628
 #, python-format
 msgid "Removing kernel %(version)s..."
 msgstr "A remover o kernel %(version)s..."
 
-#: kernel_installer_gui/core/kernel.py:629
+#: kernel_installer_gui/core/kernel.py:632
 msgid "Uninstalling packages/files..."
 msgstr "A desinstalar pacotes/ficheiros..."
 
-#: kernel_installer_gui/core/kernel.py:633
+#: kernel_installer_gui/core/kernel.py:636
 #, python-format
 msgid "Error removing kernel: %(error)s"
 msgstr "Erro ao remover o kernel: %(error)s"
 
-#: kernel_installer_gui/core/kernel.py:637
+#: kernel_installer_gui/core/kernel.py:640
 msgid "Updating bootloader..."
 msgstr "A actualizar o gestor de arranque..."
 
-#: kernel_installer_gui/core/kernel.py:642
+#: kernel_installer_gui/core/kernel.py:645
 msgid "Warning: Error updating bootloader during removal"
 msgstr "Aviso: Erro ao actualizar o gestor de arranque durante a remoção"
 
-#: kernel_installer_gui/core/kernel.py:645
+#: kernel_installer_gui/core/kernel.py:648
 msgid "Updating history..."
 msgstr "A actualizar o histórico..."
 
-#: kernel_installer_gui/core/kernel.py:663
+#: kernel_installer_gui/core/kernel.py:666
 msgid "Kernel removed successfully."
 msgstr "O kernel foi removido com sucesso."
 
@@ -478,8 +479,9 @@ msgstr ""
 "melhor gestão de GPU. Ideal para jogadores e streaming."
 
 #: kernel_installer_gui/core/profiles.py:190
-msgid "Audio/Video"
-msgstr "Áudio/Vídeo"
+#, fuzzy
+msgid "Audio / Video"
+msgstr "Áudio / Vídeo"
 
 #: kernel_installer_gui/core/profiles.py:193
 msgid ""
@@ -515,7 +517,8 @@ msgid ""
 "for your machine. Ideal for maximum performance on your specific hardware."
 msgstr ""
 "Deteta automaticamente o seu CPU e GPU para ativar drivers e otimizações "
-"específicas para a sua máquina. Ideal para o máximo desempenho no seu hardware específico."
+"específicas para a sua máquina. Ideal para o máximo desempenho no seu "
+"hardware específico."
 
 #: kernel_installer_gui/widgets/build_progress.py:62
 msgid "SYSTEM LOAD"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-26 11:43+0100\n"
+"POT-Creation-Date: 2026-01-26 12:46+0100\n"
 "Language: ro\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -216,7 +216,7 @@ msgid "Kernel removed successfully"
 msgstr "Nucleu eliminat cu succes"
 
 #: kernel_installer_gui/app/main_window.py:515
-#: kernel_installer_gui/core/kernel.py:501
+#: kernel_installer_gui/core/kernel.py:504
 msgid "Installation complete!"
 msgstr "Instalare finalizată!"
 
@@ -255,172 +255,172 @@ msgstr "Se pregătește descărcarea pentru Linux %(version)s..."
 msgid "Error: Could not create build directory"
 msgstr "Eroare: Nu s-a putut crea directorul de construcție"
 
-#: kernel_installer_gui/core/kernel.py:233
+#: kernel_installer_gui/core/kernel.py:236
 #, python-format
 msgid "Downloading linux-%(version)s.tar.xz..."
 msgstr "Se descarcă linux-%(version)s.tar.xz..."
 
-#: kernel_installer_gui/core/kernel.py:240
+#: kernel_installer_gui/core/kernel.py:243
 #, python-format
 msgid "Download error: %(error)s"
 msgstr "Eroare la descărcare: %(error)s"
 
-#: kernel_installer_gui/core/kernel.py:243
+#: kernel_installer_gui/core/kernel.py:246
 msgid "Download complete. Extracting..."
 msgstr "Descărcare completă. Se extrage..."
 
-#: kernel_installer_gui/core/kernel.py:249
+#: kernel_installer_gui/core/kernel.py:252
 msgid "Removing old source directory..."
 msgstr "Se elimină vechiul director de surse..."
 
-#: kernel_installer_gui/core/kernel.py:271
+#: kernel_installer_gui/core/kernel.py:274
 #, fuzzy, python-format
 msgid "Extracting linux-%(version)s..."
 msgstr "Se descarcă linux-%(version)s.tar.xz..."
 
-#: kernel_installer_gui/core/kernel.py:276
+#: kernel_installer_gui/core/kernel.py:279
 #, python-format
 msgid "Extraction error: %(error)s"
 msgstr "Eroare la extracție: %(error)s"
 
-#: kernel_installer_gui/core/kernel.py:281
+#: kernel_installer_gui/core/kernel.py:284
 #, python-format
 msgid "Error: Extraction failed (Makefile not found in %s)"
 msgstr ""
 
-#: kernel_installer_gui/core/kernel.py:284
+#: kernel_installer_gui/core/kernel.py:287
 msgid "Extraction complete."
 msgstr "Extracție completă."
 
-#: kernel_installer_gui/core/kernel.py:302
+#: kernel_installer_gui/core/kernel.py:305
 msgid "Copying current kernel configuration..."
 msgstr "Se copiază configurația curentă a nucleului..."
 
-#: kernel_installer_gui/core/kernel.py:313
+#: kernel_installer_gui/core/kernel.py:316
 #, python-format
 msgid "Applying profile: %(profile)s..."
 msgstr "Se aplică profilul: %(profile)s..."
 
-#: kernel_installer_gui/core/kernel.py:319
+#: kernel_installer_gui/core/kernel.py:322
 #, python-format
 msgid "Warning applying profile: %(error)s"
 msgstr "Avertisment la aplicarea profilului: %(error)s"
 
-#: kernel_installer_gui/core/kernel.py:353
+#: kernel_installer_gui/core/kernel.py:356
 #, fuzzy
 msgid "Running make olddefconfig..."
 msgstr "Se rulează make oldconfig..."
 
-#: kernel_installer_gui/core/kernel.py:359
+#: kernel_installer_gui/core/kernel.py:362
 msgid "Configuration complete."
 msgstr "Configurație completă."
 
-#: kernel_installer_gui/core/kernel.py:375
+#: kernel_installer_gui/core/kernel.py:378
 #, python-format
 msgid "Compiling kernel with %(cores)d cores..."
 msgstr "Se compilează nucleul cu %(cores)d nuclee..."
 
-#: kernel_installer_gui/core/kernel.py:396
+#: kernel_installer_gui/core/kernel.py:399
 msgid "Generating .deb packages..."
 msgstr "Se generează pachete .deb..."
 
-#: kernel_installer_gui/core/kernel.py:401
+#: kernel_installer_gui/core/kernel.py:404
 msgid "Generating RPM packages..."
 msgstr "Se generează pachete RPM..."
 
-#: kernel_installer_gui/core/kernel.py:405
+#: kernel_installer_gui/core/kernel.py:408
 msgid "Compiling for direct installation..."
 msgstr "Se compilează pentru instalare directă..."
 
-#: kernel_installer_gui/core/kernel.py:416
+#: kernel_installer_gui/core/kernel.py:419
 msgid "Build cancelled by user."
 msgstr "Compilare anulată de utilizator."
 
-#: kernel_installer_gui/core/kernel.py:421
+#: kernel_installer_gui/core/kernel.py:424
 #, python-format
 msgid "Build error (Exit code: %(code)d)"
 msgstr ""
 
-#: kernel_installer_gui/core/kernel.py:424
+#: kernel_installer_gui/core/kernel.py:427
 msgid ""
 "Check the terminal output for details or try installing missing dependencies "
 "and rebuilding."
 msgstr ""
 
-#: kernel_installer_gui/core/kernel.py:429
+#: kernel_installer_gui/core/kernel.py:432
 msgid "Compiling modules..."
 msgstr "Se compilează modulele..."
 
-#: kernel_installer_gui/core/kernel.py:439
+#: kernel_installer_gui/core/kernel.py:442
 msgid "Error compiling modules"
 msgstr "Eroare la compilarea modulelor"
 
-#: kernel_installer_gui/core/kernel.py:442
+#: kernel_installer_gui/core/kernel.py:445
 msgid "Build complete."
 msgstr "Construcție finalizada."
 
-#: kernel_installer_gui/core/kernel.py:456
+#: kernel_installer_gui/core/kernel.py:459
 msgid "Installing kernel..."
 msgstr "Se instalează nucleul..."
 
-#: kernel_installer_gui/core/kernel.py:467
+#: kernel_installer_gui/core/kernel.py:470
 #, fuzzy
 msgid "Preparing .deb packages installation..."
 msgstr "Se generează pachete .deb..."
 
-#: kernel_installer_gui/core/kernel.py:472
+#: kernel_installer_gui/core/kernel.py:475
 #, fuzzy
 msgid "Preparing RPM packages installation..."
 msgstr "Se generează pachete RPM..."
 
-#: kernel_installer_gui/core/kernel.py:477
+#: kernel_installer_gui/core/kernel.py:480
 #, fuzzy
 msgid "Preparing direct installation..."
 msgstr "Se compilează pentru instalare directă..."
 
-#: kernel_installer_gui/core/kernel.py:490
+#: kernel_installer_gui/core/kernel.py:493
 #, fuzzy
 msgid "Finalizing installation (may require password)..."
 msgstr "Se verifică mediul (necesită parolă)..."
 
-#: kernel_installer_gui/core/kernel.py:495
+#: kernel_installer_gui/core/kernel.py:498
 #, python-format
 msgid "Installation error: %(error)s"
 msgstr "Eroare la instalare: %(error)s"
 
-#: kernel_installer_gui/core/kernel.py:543
+#: kernel_installer_gui/core/kernel.py:546
 #, fuzzy
 msgid "Cleaning up build files..."
 msgstr "Curăță fișierele de construcție"
 
-#: kernel_installer_gui/core/kernel.py:625
+#: kernel_installer_gui/core/kernel.py:628
 #, python-format
 msgid "Removing kernel %(version)s..."
 msgstr "Se elimină nucleul %(version)s..."
 
-#: kernel_installer_gui/core/kernel.py:629
+#: kernel_installer_gui/core/kernel.py:632
 msgid "Uninstalling packages/files..."
 msgstr "Se dezinstalează pachetele/fișierele..."
 
-#: kernel_installer_gui/core/kernel.py:633
+#: kernel_installer_gui/core/kernel.py:636
 #, python-format
 msgid "Error removing kernel: %(error)s"
 msgstr "Eroare la eliminarea nucleului: %(error)s"
 
-#: kernel_installer_gui/core/kernel.py:637
+#: kernel_installer_gui/core/kernel.py:640
 msgid "Updating bootloader..."
 msgstr "Se actualizează bootloader-ul..."
 
-#: kernel_installer_gui/core/kernel.py:642
+#: kernel_installer_gui/core/kernel.py:645
 msgid "Warning: Error updating bootloader during removal"
 msgstr ""
 "Avertisment: Eroare la actualizarea bootloader-ului în timpul eliminării"
 
-#: kernel_installer_gui/core/kernel.py:645
+#: kernel_installer_gui/core/kernel.py:648
 msgid "Updating history..."
 msgstr "Se actualizează istoricul..."
 
-#: kernel_installer_gui/core/kernel.py:663
+#: kernel_installer_gui/core/kernel.py:666
 msgid "Kernel removed successfully."
 msgstr "Nucleul a fost eliminat cu succes."
 
@@ -482,8 +482,9 @@ msgstr ""
 "jucători și streaming."
 
 #: kernel_installer_gui/core/profiles.py:190
-msgid "Audio/Video"
-msgstr "Audio/Video"
+#, fuzzy
+msgid "Audio / Video"
+msgstr "Audio / Video"
 
 #: kernel_installer_gui/core/profiles.py:193
 msgid ""

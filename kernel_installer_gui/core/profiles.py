@@ -187,7 +187,7 @@ KERNEL_PROFILES = {
     
     ProfileType.AUDIO_VIDEO: KernelProfile(
         id=ProfileType.AUDIO_VIDEO,
-        name=_("Audio/Video"),
+        name=_("Audio / Video"),
         suffix="lowlatency",
         description=_(
             "Low-latency kernel for audio and video production. "
