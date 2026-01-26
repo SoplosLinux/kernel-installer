@@ -2,7 +2,7 @@
 
 A graphical interface for downloading, compiling, and installing the Linux kernel with optimized profiles.
 
-![Kernel Installer Icon](kernel_installer_gui/assets/icons/kernel-installer-128.png)
+![Kernel Installer Icon](kernel_installer_gui/assets/icons/org.soplos.kernel-installer-128.png)
 
 ## Preview
 
