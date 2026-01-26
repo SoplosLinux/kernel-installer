@@ -31,10 +31,11 @@ A graphical interface for downloading, compiling, and installing the Linux kerne
 - Auto-detection of bootloader (GRUB, systemd-boot, rEFInd)
 - Auto-detection of initramfs tool (dracut, initramfs-tools, mkinitcpio)
 - Custom kernel naming
-- i18n support (English, Spanish, French, Portuguese, German, Italian, Romanian, Russian)
-- Desktop notifications (transient via libnotify)
-- Full i18n coverage for 8 languages (EN, ES, FR, PT, DE, IT, RO, RU)
+- Desktop notifications (transient via libnotify, auto-hide after 5s)
+- **Universal localization**: 100% translation coverage for 8 languages (EN, ES, FR, PT, DE, IT, RO, RU)
+- **Compact UI**: Redesigned and optimized interface for various screen sizes
 - Intelligent automated system dependency verification and installation
+- Improved build cancellation: smart detection and user-friendly notifications
 - Kernel removal support for Debian, Ubuntu, Arch, Fedora, and Mageia families
 
 ## Requirements

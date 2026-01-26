@@ -19,6 +19,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added official support for LMDE (Linux Mint Debian Edition)
 - Extended Mandriva family support: Mageia, OpenMandriva, Rosa Linux, PCLinuxOS
 - Fixed Mageia/Mandriva package dependencies and architecture naming (lib64)
+- Redesigned Profile cards: compact layout, reduced padding, and smart text wrap for names
+- Improved cancellation support: distinct "Build cancelled" notifications and logic
+- Transient notifications: all build status alerts now auto-hide after 5 seconds
+- Multi-language expansion: 100% translation coverage for 8 languages (EN, ES, FR, PT, DE, IT, RO, RU)
 
 ### Fixed
 

@@ -147,6 +147,10 @@
           <li>Refined Arch Linux support (fixed kernel module paths)</li>
           <li>Fixed 404 error when downloading Release Candidate (RC) kernels</li>
           <li>Reboot without extra password prompts (integrated with systemd/logind)</li>
+          <li>Redesigned Profile cards: compact layout and smart text wrap for names</li>
+          <li>Improved cancellation support with user-friendly notifications</li>
+          <li>Transient notifications: build alerts auto-hide after 5 seconds</li>
+          <li>Full translation coverage for 8 languages (EN, ES, FR, PT, DE, IT, RO, RU)</li>
           <li>Improved clarity of system load metrics with descriptive labels and tooltips</li>
           
           <li xml:lang="es">Autenticación sudo optimizada: solicita contraseña solo una vez durante la instalación</li>
@@ -158,6 +162,10 @@
           <li xml:lang="es">Soporte mejorado para Arch Linux (corregidas rutas de módulos del kernel)</li>
           <li xml:lang="es">Corregido error 404 al descargar kernels Release Candidate (RC)</li>
           <li xml:lang="es">Reinicio sin solicitudes adicionales de contraseña (integración con systemd/logind)</li>
+          <li xml:lang="es">Tarjetas de perfil rediseñadas: diseño compacto y ajuste de texto inteligente</li>
+          <li xml:lang="es">Soporte de cancelación mejorado con notificaciones amigables</li>
+          <li xml:lang="es">Notificaciones transitorias: las alertas se ocultan tras 5 segundos</li>
+          <li xml:lang="es">Cobertura total de traducción para 8 idiomas (EN, ES, FR, PT, DE, IT, RO, RU)</li>
           <li xml:lang="es">Mejorada la claridad de las métricas de carga del sistema con etiquetas descriptivas</li>
           
           <li xml:lang="fr">Authentification sudo optimisée : demande le mot de passe une seule fois pendant l'installation</li>
@@ -169,6 +177,10 @@
           <li xml:lang="fr">Support amélioré pour Arch Linux (chemins des modules du noyau corrigés)</li>
           <li xml:lang="fr">Correction de l'erreur 404 lors du téléchargement de noyaux RC</li>
           <li xml:lang="fr">Redémarrage sans demande de mot de passe supplémentaire (via systemd)</li>
+          <li xml:lang="fr">Cartes de profil redessinées : mise en page compacte et retour à la ligne intelligent</li>
+          <li xml:lang="fr">Prise en charge améliorée de l'annulation avec des notifications conviviales</li>
+          <li xml:lang="fr">Notifications transitoires : les alertes se masquent après 5 secondes</li>
+          <li xml:lang="fr">Traduction complète pour 8 langues (EN, ES, FR, PT, DE, IT, RO, RU)</li>
           <li xml:lang="fr">Amélioration de la clarté des métriques de charge avec des libellés descriptifs</li>
           
           <li xml:lang="pt">Autenticação sudo otimizada: solicita senha apenas uma vez durante a instalação</li>
@@ -180,6 +192,10 @@
           <li xml:lang="pt">Suporte refinado para Arch Linux (caminhos dos módulos do kernel corrigidos)</li>
           <li xml:lang="pt">Corrigido erro 404 ao descarregar kernels Release Candidate (RC)</li>
           <li xml:lang="pt">Reinicialização sem pedidos de palavra-passe adicionais (via systemd)</li>
+          <li xml:lang="pt">Cartões de perfil redesenhados: layout compacto e quebra de texto inteligente</li>
+          <li xml:lang="pt">Suporte de cancelamento aprimorado com notificações amigáveis</li>
+          <li xml:lang="pt">Notificações transitórias: os alertas ocultam-se após 5 segundos</li>
+          <li xml:lang="pt">Cobertura total de tradução para 8 idiomas (EN, ES, FR, PT, DE, IT, RO, RU)</li>
           <li xml:lang="pt">Melhoria da clareza das métricas de carga com etiquetas descritivas</li>
           
           <li xml:lang="de">Optimierte sudo-Authentifizierung: Passwort wird während der Installation nur einmal abgefragt</li>
@@ -191,6 +207,10 @@
           <li xml:lang="de">Verbesserter Arch Linux-Support (Kernel-Modul-Pfade korrigiert)</li>
           <li>404-Fehler beim Herunterladen von RC-Kernen behoben</li>
           <li>Neustart ohne zusätzliche Passwortabfragen (via systemd)</li>
+          <li xml:lang="de">Neu gestaltete Profilkarten: kompaktes Layout und intelligenter Zeilenumbruch</li>
+          <li xml:lang="de">Verbesserte Abbruchunterstützung mit benutzerfreundlichen Benachrichtigungen</li>
+          <li xml:lang="de">Transiente Benachrichtigungen: Build-Warnungen werden nach 5 Sekunden ausgeblendet</li>
+          <li xml:lang="de">Vollständige Übersetzungsabdeckung für 8 Sprachen (EN, ES, FR, PT, DE, IT, RO, RU)</li>
           <li>Die Übersichtlichkeit der Systemlastmetriken wurde verbessert</li>
           
           <li xml:lang="it">Autenticazione sudo ottimizzata: richiede la password solo una volta durante l'installazione</li>
@@ -202,7 +222,11 @@
           <li xml:lang="it">Supporto raffinato per Arch Linux (percorsi dei moduli del kernel corretti)</li>
           <li>Corretto l'errore 404 durante el download de kernel RC</li>
           <li>Riavvio senza ulteriori richieste di password (via systemd)</li>
-          <li>Migliorata la chiarezza delle metriche di carico del sistema</li>
+          <li xml:lang="it">Schede profilo ridisegnate: layout compatto e a capo automatico intelligente</li>
+          <li xml:lang="it">Supporto per la cancellazione migliorato con notifiche intuitive</li>
+          <li xml:lang="it">Notifiche transitorie: gli avvisi si chiudono dopo 5 secondi</li>
+          <li xml:lang="it">Copertura totale della traduzione per 8 lingue (EN, ES, FR, PT, DE, IT, RO, RU)</li>
+          <li xml:lang="it">Migliorata la chiarezza delle metriche di carico del sistema</li>
           
           <li xml:lang="ro">Autentificare sudo optimizată: solicită parola doar o dată în timpul instalării</li>
           <li xml:lang="ro">Funcționalitate de repornire robustă folosind systemctl reboot</li>
@@ -213,6 +237,10 @@
           <li xml:lang="ro">Suport rafinat pentru Arch Linux (corectate căile modulelor de kernel)</li>
           <li>S-a corectat eroarea 404 la descărcarea kernel-urilor RC</li>
           <li>Repornire fără solicitări suplimentare de parolă (prin systemd)</li>
+          <li xml:lang="ro">Carduri de profil reproiectate: aspect compact și aliniere inteligentă a textului</li>
+          <li xml:lang="ro">Suport de anulare îmbunătățit cu notificări prietenoase</li>
+          <li xml:lang="ro">Notificări tranzitorii: alertele se ascund după 5 secunde</li>
+          <li xml:lang="ro">Acoperire completă a traducerii pentru 8 limbi (EN, ES, FR, PT, DE, IT, RO, RU)</li>
           <li>S-a îmbunătățit claritatea metricilor de sarcină a sistemului</li>
           
           <li xml:lang="ru">Оптимизированная аутентификация sudo: запрос пароля только один раз во время установки</li>
@@ -224,6 +252,10 @@
           <li xml:lang="ru">Улучшенная поддержка Arch Linux (исправлены пути модулей ядра)</li>
           <li>Исправлена ошибка 404 при загрузке ядер RC</li>
           <li>Перезагрузка без дополнительных запросов пароля (через systemd)</li>
+          <li xml:lang="ru">Обновленные карточки профилей: компактный вид и умный перенос текста</li>
+          <li xml:lang="ru">Улучшенная поддержка отмены сборки с понятными уведомлениями</li>
+          <li xml:lang="ru">Временные уведомления: оповещения скрываются через 5 секунд</li>
+          <li xml:lang="ru">Полный перевод на 8 языков (EN, ES, FR, PT, DE, IT, RO, RU)</li>
           <li>Улучшена наглядность показателей нагрузки системы</li>
         </ul>
       </description>
