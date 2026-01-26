@@ -404,9 +404,9 @@ class KernelManager:
             # Ensure we have a clean environment and use standard bindeb-pkg
             cmd = f'make -j{cpu_count} bindeb-pkg'
         elif distro_info.family == DistroFamily.FEDORA:
-            # Build RPM packages
+            # Build RPM packages (binary only is more robust)
             self._report_progress(_("Generating RPM packages..."), 32)
-            cmd = f'make -j{cpu_count} rpm-pkg'
+            cmd = f'make -j{cpu_count} binrpm-pkg'
         elif distro_info.family == DistroFamily.ARCH:
             # Arch uses direct installation
             self._report_progress(_("Compiling for direct installation..."), 32)
@@ -484,9 +484,22 @@ class KernelManager:
                 
         elif distro_info.family == DistroFamily.ARCH:
             self._report_progress(_("Preparing direct installation..."), 93)
-            # Ensure we are in root of source for modules_install
+            
+            # Get the EXACT kernel release string from the build system
+            # This avoids discrepancies like 6.19-rc7 vs 6.19.0-rc7
+            rel_res = run_command("make -s kernelrelease", cwd=source_dir)
+            if rel_res.returncode == 0:
+                kernel_version = rel_res.stdout.strip()
+            
+            # 1. Install modules
             cmds.append(f'make -C {source_dir} modules_install')
-            cmds.append(f'make -C {source_dir} install')
+            
+            # 2. Manual installation of kernel image (standard for Arch)
+            # This is more reliable than 'make install' which depends on host scripts
+            image_path = "arch/x86/boot/bzImage"
+            cmds.append(f'cp {source_dir}/{image_path} /boot/vmlinuz-{kernel_version}')
+            cmds.append(f'cp {source_dir}/System.map /boot/System.map-{kernel_version}')
+            cmds.append(f'cp {source_dir}/.config /boot/config-{kernel_version}')
         
         # Regenerate initramfs
         initramfs_cmd = self._distro.get_initramfs_update_command(kernel_version)
