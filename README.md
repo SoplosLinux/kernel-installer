@@ -21,7 +21,9 @@ A graphical interface for downloading, compiling, and installing the Linux kerne
 - Virtualization support detection (QEMU, VMware, VirtualBox)
 - Multi-distro support: Debian, Ubuntu, Fedora, Arch
 - Single sudo prompt for the entire installation process
+- Fluent reboot without extra password prompts (integrated with systemd)
 - Optional automatic cleanup of build directory
+- Real-time system load monitoring with descriptive labels and tooltips
 - Auto-detection of bootloader (GRUB, systemd-boot, rEFInd)
 - Auto-detection of initramfs tool (dracut, initramfs-tools, mkinitcpio)
 - Custom kernel naming

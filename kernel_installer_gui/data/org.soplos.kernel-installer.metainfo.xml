@@ -145,6 +145,9 @@
           <li>Added checkbox for optional build directory cleanup after installation</li>
           <li>Fixed build errors when the source or build directory already existed from a previous attempt</li>
           <li>Refined Arch Linux support (fixed kernel module paths)</li>
+          <li>Fixed 404 error when downloading Release Candidate (RC) kernels</li>
+          <li>Reboot without extra password prompts (integrated with systemd/logind)</li>
+          <li>Improved clarity of system load metrics with descriptive labels and tooltips</li>
           
           <li xml:lang="es">Autenticación sudo optimizada: solicita contraseña solo una vez durante la instalación</li>
           <li xml:lang="es">Funcionalidad de reinicio robusta usando systemctl reboot</li>
@@ -153,6 +156,9 @@
           <li xml:lang="es">Casilla de verificación añadida para limpieza opcional del directorio de compilación tras la instalación</li>
           <li xml:lang="es">Corregidos errores de compilación cuando el directorio de origen o compilación ya existía de un intento previo</li>
           <li xml:lang="es">Soporte mejorado para Arch Linux (corregidas rutas de módulos del kernel)</li>
+          <li xml:lang="es">Corregido error 404 al descargar kernels Release Candidate (RC)</li>
+          <li xml:lang="es">Reinicio sin solicitudes adicionales de contraseña (integración con systemd/logind)</li>
+          <li xml:lang="es">Mejorada la claridad de las métricas de carga del sistema con etiquetas descriptivas</li>
           
           <li xml:lang="fr">Authentification sudo optimisée : demande le mot de passe une seule fois pendant l'installation</li>
           <li xml:lang="fr">Fonctionnalité de redémarrage robuste utilisant systemctl reboot</li>
@@ -161,6 +167,9 @@
           <li xml:lang="fr">Case à cocher ajoutée pour le nettoyage optionnel du répertoire de compilation après l'installation</li>
           <li xml:lang="fr">Correction des erreurs de compilation lorsque le répertoire source ou de compilation existait déjà d'une tentative précédente</li>
           <li xml:lang="fr">Support amélioré pour Arch Linux (chemins des modules du noyau corrigés)</li>
+          <li xml:lang="fr">Correction de l'erreur 404 lors du téléchargement de noyaux RC</li>
+          <li xml:lang="fr">Redémarrage sans demande de mot de passe supplémentaire (via systemd)</li>
+          <li xml:lang="fr">Amélioration de la clarté des métriques de charge avec des libellés descriptifs</li>
           
           <li xml:lang="pt">Autenticação sudo otimizada: solicita senha apenas uma vez durante a instalação</li>
           <li xml:lang="pt">Funcionalidade de reinicialização robusta usando systemctl reboot</li>
@@ -169,6 +178,9 @@
           <li xml:lang="pt">Caixa de seleção adicionada para limpeza opcional do diretório de compilação após a instalação</li>
           <li xml:lang="pt">Corrigidos erros de compilação quando o diretório de origem ou compilação já existia de uma tentativa anterior</li>
           <li xml:lang="pt">Suporte refinado para Arch Linux (caminhos dos módulos do kernel corrigidos)</li>
+          <li xml:lang="pt">Corrigido erro 404 ao descarregar kernels Release Candidate (RC)</li>
+          <li xml:lang="pt">Reinicialização sem pedidos de palavra-passe adicionais (via systemd)</li>
+          <li xml:lang="pt">Melhoria da clareza das métricas de carga com etiquetas descritivas</li>
           
           <li xml:lang="de">Optimierte sudo-Authentifizierung: Passwort wird während der Installation nur einmal abgefragt</li>
           <li xml:lang="de">Robuste Neustart-Funktionalität mit systemctl reboot</li>
@@ -177,6 +189,9 @@
           <li xml:lang="de">Kontrollkästchen hinzugefügt für optionale Bereinigung des Build-Verzeichnisses nach der Installation</li>
           <li xml:lang="de">Build-Fehler behoben, wenn das Quell- oder Build-Verzeichnis bereits von einem vorherigen Versuch existierte</li>
           <li xml:lang="de">Verbesserter Arch Linux-Support (Kernel-Modul-Pfade korrigiert)</li>
+          <li>404-Fehler beim Herunterladen von RC-Kernen behoben</li>
+          <li>Neustart ohne zusätzliche Passwortabfragen (via systemd)</li>
+          <li>Die Übersichtlichkeit der Systemlastmetriken wurde verbessert</li>
           
           <li xml:lang="it">Autenticazione sudo ottimizzata: richiede la password solo una volta durante l'installazione</li>
           <li xml:lang="it">Funzionalità di riavvio robusta utilizzando systemctl reboot</li>
@@ -185,6 +200,9 @@
           <li xml:lang="it">Casella di controllo aggiunta per la pulizia facoltativa della directory di compilazione dopo l'installazione</li>
           <li xml:lang="it">Corretti errori di compilazione quando la directory di origine o di compilazione esisteva già da un tentativo precedente</li>
           <li xml:lang="it">Supporto raffinato per Arch Linux (percorsi dei moduli del kernel corretti)</li>
+          <li>Corretto l'errore 404 durante el download de kernel RC</li>
+          <li>Riavvio senza ulteriori richieste di password (via systemd)</li>
+          <li>Migliorata la chiarezza delle metriche di carico del sistema</li>
           
           <li xml:lang="ro">Autentificare sudo optimizată: solicită parola doar o dată în timpul instalării</li>
           <li xml:lang="ro">Funcționalitate de repornire robustă folosind systemctl reboot</li>
@@ -193,6 +211,9 @@
           <li xml:lang="ro">Casetă de bifat adăugată pentru curățarea opțională a directorului de compilare după instalare</li>
           <li xml:lang="ro">Corectate erorile de compilare când directorul sursă sau de compilare exista deja de la o încercare anterioară</li>
           <li xml:lang="ro">Suport rafinat pentru Arch Linux (corectate căile modulelor de kernel)</li>
+          <li>S-a corectat eroarea 404 la descărcarea kernel-urilor RC</li>
+          <li>Repornire fără solicitări suplimentare de parolă (prin systemd)</li>
+          <li>S-a îmbunătățit claritatea metricilor de sarcină a sistemului</li>
           
           <li xml:lang="ru">Оптимизированная аутентификация sudo: запрос пароля только один раз во время установки</li>
           <li xml:lang="ru">Надежная функциональность перезагрузки с использованием systemctl reboot</li>
@@ -201,6 +222,9 @@
           <li xml:lang="ru">Добавлен флажок для необязательной очистки каталога сборки после установки</li>
           <li xml:lang="ru">Исправлены ошибки сборки, когда исходный каталог или каталог сборки уже существовали от предыдущей попытки</li>
           <li xml:lang="ru">Улучшенная поддержка Arch Linux (исправлены пути модулей ядра)</li>
+          <li>Исправлена ошибка 404 при загрузке ядер RC</li>
+          <li>Перезагрузка без дополнительных запросов пароля (через systemd)</li>
+          <li>Улучшена наглядность показателей нагрузки системы</li>
         </ul>
       </description>
     </release>
