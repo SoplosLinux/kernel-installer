@@ -14,14 +14,14 @@ Requires:       wget
 Requires:       binutils
 Requires:       flex
 Requires:       bison
-Requires:       (openssl-devel or libopenssl-devel)
-Requires:       (elfutils-libelf-devel or libelf-devel)
+Requires:       (openssl-devel or libopenssl-devel or lib64openssl-devel)
+Requires:       (elfutils-libelf-devel or libelf-devel or lib64elfutils-libelf-devel)
 Requires:       bc
 Requires:       rsync
 Requires:       kmod
 Requires:       dwarves
 Requires:       cpio
-Requires:       (kernel-headers or kernel-devel)
+Requires:       (kernel-headers or kernel-devel or kernel-headers-latest)
 Requires:       pkgconfig
 Requires:       ncurses-devel
 Requires:       make
@@ -29,7 +29,7 @@ Requires:       gcc
 Requires:       gcc-c++
 Requires:       gettext
 Requires:       fakeroot
-Requires:       (newt or newt-devel)
+Requires:       (newt or newt-devel or lib64newt-devel)
 Requires:       git
 Requires:       tar
 Requires:       xz

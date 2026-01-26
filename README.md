@@ -20,10 +20,10 @@ A graphical interface for downloading, compiling, and installing the Linux kerne
 - Auto-detection of Hardware features (CPU, GPU, NVMe) for performance
 - Virtualization support detection (QEMU, VMware, VirtualBox)
 - **Multi-distro support**:
-  - **Debian-based**: Debian, Soplos, GoldenDog, Ubuntu, Kubuntu, Xubuntu, Lubuntu, Linux Mint, Pop!\_OS, MX Linux, Elementary OS, Kali Linux.
-  - **Arch-based**: Arch Linux, Manjaro, EndeavourOS, CachyOS, Garuda Linux.
-  - **Fedora-based**: Fedora, Red Hat Enterprise Linux, CentOS Stream, AlmaLinux, Rocky Linux.
-  - **Mageia-based**: Mageia, OpenMandriva.
+  - **Debian Family**: Debian, Soplos, GoldenDog, Ubuntu, Kubuntu, Xubuntu, Lubuntu, Linux Mint, Pop!\_OS, MX Linux, Elementary OS, Kali Linux.
+  - **Arch Family**: Arch Linux, Manjaro, EndeavourOS, CachyOS, Garuda Linux.
+  - **Fedora Family**: Fedora, Red Hat Enterprise Linux, CentOS Stream, AlmaLinux, Rocky Linux.
+  - **Mageia Family**: Mageia, OpenMandriva.
 - Single sudo prompt for the entire installation process
 - Fluent reboot without extra password prompts (integrated with systemd)
 - Optional automatic cleanup of build directory
@@ -49,22 +49,22 @@ A graphical interface for downloading, compiling, and installing the Linux kerne
 sudo apt install python3-gi python3-gi-cairo gir1.2-gtk-3.0 gir1.2-notify-0.7
 ```
 
-### Fedora
+### Fedora / RHEL / Alma / Rocky
 
 ```bash
 sudo dnf install python3-gobject gtk3
 ```
 
-### Arch
+### Arch / Manjaro / Endeavour / Cachy / Garuda
 
 ```bash
 sudo pacman -S python-gobject gtk3
 ```
 
-### Mageia
+### Mageia / OpenMandriva
 
 ```bash
-sudo dnf install python3-gobject gtk3
+sudo dnf install python3-gobject gtk+3.0
 ```
 
 ## 📦 Installation
