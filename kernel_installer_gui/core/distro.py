@@ -320,7 +320,7 @@ class DistroDetector:
             ],
             DistroFamily.ARCH: [
                 'base-devel', 'bc', 'rsync', 'wget', 'tar', 'xz', 'libelf', 
-                'dwarves', 'kmod', 'cpio', 'openssl', 'ncurses', 'perl', 'python'
+                'pahole', 'kmod', 'cpio', 'openssl', 'ncurses', 'perl', 'python'
             ],
             DistroFamily.MANDRIVA: [
                 'gcc', 'gcc-c++', 'make', 'binutils', 'bison', 'flex', 'bc', 'rsync', 
@@ -520,20 +520,19 @@ class DistroDetector:
             
         # Arch Family
         elif info.family == DistroFamily.ARCH:
-            # Full list for Arch (base-devel is a group)
-            deps_list = ["base-devel", "bc", "rsync", "wget", "tar", "xz", "libelf", "dwarves", "kmod", "cpio", "openssl", "ncurses", "perl", "python"]
-            deps_str = " ".join(deps_list)
+            # Full list for Arch (base-devel is a group, pahole is the package)
+            deps_list = ["base-devel", "bc", "rsync", "wget", "tar", "xz", "libelf", "pahole", "kmod", "cpio", "openssl", "ncurses", "perl", "python"]
             
             # 1. Pre-check essential binaries (no root needed)
             essential_bins = ['gcc', 'make', 'pahole', 'tar', 'bc']
             if all(shutil.which(b) for b in essential_bins) and not self._are_headers_broken():
                 # 2. Check for missing packages (filter out groups)
-                pkg_deps = " ".join([d for d in deps_list if d != "base-devel"])
-                check_cmd = f"pacman -T {pkg_deps} >/dev/null 2>&1"
+                pkg_deps = [d for d in deps_list if d != "base-devel"]
+                check_cmd = f"pacman -T {' '.join(pkg_deps)} >/dev/null 2>&1"
                 if run_command(check_cmd).returncode == 0:
                     return True
                 
-            install_cmd = f"pacman -S --needed --noconfirm {deps_str}"
+            install_cmd = f"pacman -S --needed --noconfirm {' '.join(deps_list)}"
 
         # Mandriva Family (Mageia/OpenMandriva)
         elif info.family == DistroFamily.MANDRIVA:
