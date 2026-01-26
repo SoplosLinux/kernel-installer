@@ -123,15 +123,24 @@ def run_privileged(cmd: str) -> subprocess.CompletedProcess:
 def reboot_system() -> bool:
     """
     Reboot the system using systemctl or reboot command.
+    Attempts non-privileged reboot first (common on desktops).
     
     Returns:
         True if the command was sent successfully
     """
-    # Try systemctl first (more reliable on modern distros)
-    if shutil.which('systemctl'):
-        result = run_privileged("systemctl reboot")
-    else:
-        result = run_privileged("reboot")
+    cmd = "systemctl reboot" if shutil.which('systemctl') else "reboot"
+    
+    # 1. Try as normal user first (systemd handles this for local sessions)
+    # We use capture_output=False to avoid issues with systemctl output during shutdown
+    try:
+        result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
+        if result.returncode == 0:
+            return True
+    except Exception:
+        pass
+        
+    # 2. Fallback to privileged if user reboot failed or was denied
+    result = run_privileged(cmd)
     
     return result.returncode == 0
 
