@@ -90,7 +90,10 @@ class VersionPicker(Gtk.Box):
         for v in self._versions:
             if v.version == self._selected_version:
                 if v.is_mainline:
-                    self._info_label.set_markup(_("<span foreground='orange'>⚠ Experimental version (RC)</span>"))
+                    if '-rc' in v.version:
+                        self._info_label.set_markup(_("<span foreground='orange'>⚠ Experimental version (RC)</span>"))
+                    else:
+                        self._info_label.set_markup(_("<span foreground='lightblue'>✦ Mainline version (Development)</span>"))
                 elif v.is_latest:
                     self._info_label.set_markup(_("<b>✓ Latest stable version</b>"))
                 elif v.is_longterm:
@@ -127,7 +130,10 @@ class VersionPicker(Gtk.Box):
         for v in versions:
             label = v.version
             if v.is_mainline:
-                label += _(" (RC - Experimental)")
+                if '-rc' in v.version:
+                    label += _(" (RC - Experimental)")
+                else:
+                    label += _(" (Mainline)")
             elif v.is_latest:
                 label += _(" (Latest)")
             elif v.is_longterm:

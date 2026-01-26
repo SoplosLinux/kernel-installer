@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-26 12:52+0100\n"
+"POT-Creation-Date: 2026-01-26 13:31+0100\n"
 "Language: ru\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -218,7 +218,7 @@ msgid "Kernel removed successfully"
 msgstr "Ядро успешно удалено"
 
 #: kernel_installer_gui/app/main_window.py:515
-#: kernel_installer_gui/core/kernel.py:504
+#: kernel_installer_gui/core/kernel.py:509
 msgid "Installation complete!"
 msgstr "Установка завершена!"
 
@@ -248,180 +248,180 @@ msgstr "Результат: %s"
 msgid "Unknown"
 msgstr "Неизвестно"
 
-#: kernel_installer_gui/core/kernel.py:222
+#: kernel_installer_gui/core/kernel.py:223
 #, python-format
 msgid "Preparing download for Linux %(version)s..."
 msgstr "Подготовка к загрузке Linux %(version)s..."
 
-#: kernel_installer_gui/core/kernel.py:226
+#: kernel_installer_gui/core/kernel.py:227
 msgid "Error: Could not create build directory"
 msgstr "Ошибка: не удалось создать каталог сборки"
 
-#: kernel_installer_gui/core/kernel.py:236
-#, python-format
-msgid "Downloading linux-%(version)s.tar.xz..."
+#: kernel_installer_gui/core/kernel.py:241
+#, fuzzy, python-format
+msgid "Downloading linux-%(version)s.%(ext)s..."
 msgstr "Загрузка linux-%(version)s.tar.xz..."
 
-#: kernel_installer_gui/core/kernel.py:243
+#: kernel_installer_gui/core/kernel.py:248
 #, python-format
 msgid "Download error: %(error)s"
 msgstr "Ошибка загрузки: %(error)s"
 
-#: kernel_installer_gui/core/kernel.py:246
+#: kernel_installer_gui/core/kernel.py:251
 msgid "Download complete. Extracting..."
 msgstr "Загрузка завершена. Распаковка..."
 
-#: kernel_installer_gui/core/kernel.py:252
+#: kernel_installer_gui/core/kernel.py:257
 msgid "Removing old source directory..."
 msgstr "Удаление старого каталога исходного кода..."
 
-#: kernel_installer_gui/core/kernel.py:274
+#: kernel_installer_gui/core/kernel.py:279
 #, fuzzy, python-format
 msgid "Extracting linux-%(version)s..."
 msgstr "Загрузка linux-%(version)s.tar.xz..."
 
-#: kernel_installer_gui/core/kernel.py:279
+#: kernel_installer_gui/core/kernel.py:284
 #, python-format
 msgid "Extraction error: %(error)s"
 msgstr "Ошибка распаковки: %(error)s"
 
-#: kernel_installer_gui/core/kernel.py:284
+#: kernel_installer_gui/core/kernel.py:289
 #, python-format
 msgid "Error: Extraction failed (Makefile not found in %s)"
 msgstr ""
 
-#: kernel_installer_gui/core/kernel.py:287
+#: kernel_installer_gui/core/kernel.py:292
 msgid "Extraction complete."
 msgstr "Распаковка завершена."
 
-#: kernel_installer_gui/core/kernel.py:305
+#: kernel_installer_gui/core/kernel.py:310
 msgid "Copying current kernel configuration..."
 msgstr "Копирование текущей конфигурации ядра..."
 
-#: kernel_installer_gui/core/kernel.py:316
+#: kernel_installer_gui/core/kernel.py:321
 #, python-format
 msgid "Applying profile: %(profile)s..."
 msgstr "Применение профиля: %(profile)s..."
 
-#: kernel_installer_gui/core/kernel.py:322
+#: kernel_installer_gui/core/kernel.py:327
 #, python-format
 msgid "Warning applying profile: %(error)s"
 msgstr "Предупреждение при применении профиля: %(error)s"
 
-#: kernel_installer_gui/core/kernel.py:356
+#: kernel_installer_gui/core/kernel.py:361
 #, fuzzy
 msgid "Running make olddefconfig..."
 msgstr "Выполнение make oldconfig..."
 
-#: kernel_installer_gui/core/kernel.py:362
+#: kernel_installer_gui/core/kernel.py:367
 msgid "Configuration complete."
 msgstr "Настройка завершена."
 
-#: kernel_installer_gui/core/kernel.py:378
+#: kernel_installer_gui/core/kernel.py:383
 #, python-format
 msgid "Compiling kernel with %(cores)d cores..."
 msgstr "Компиляция ядра на %(cores)d ядрах..."
 
-#: kernel_installer_gui/core/kernel.py:399
+#: kernel_installer_gui/core/kernel.py:404
 msgid "Generating .deb packages..."
 msgstr "Создание пакетов .deb..."
 
-#: kernel_installer_gui/core/kernel.py:404
+#: kernel_installer_gui/core/kernel.py:409
 msgid "Generating RPM packages..."
 msgstr "Создание пакетов RPM..."
 
-#: kernel_installer_gui/core/kernel.py:408
+#: kernel_installer_gui/core/kernel.py:413
 msgid "Compiling for direct installation..."
 msgstr "Компиляция для прямой установки..."
 
-#: kernel_installer_gui/core/kernel.py:419
+#: kernel_installer_gui/core/kernel.py:424
 msgid "Build cancelled by user."
 msgstr "Сборка отменена пользователем."
 
-#: kernel_installer_gui/core/kernel.py:424
+#: kernel_installer_gui/core/kernel.py:429
 #, python-format
 msgid "Build error (Exit code: %(code)d)"
 msgstr ""
 
-#: kernel_installer_gui/core/kernel.py:427
+#: kernel_installer_gui/core/kernel.py:432
 msgid ""
 "Check the terminal output for details or try installing missing dependencies "
 "and rebuilding."
 msgstr ""
 
-#: kernel_installer_gui/core/kernel.py:432
+#: kernel_installer_gui/core/kernel.py:437
 msgid "Compiling modules..."
 msgstr "Компиляция модулей..."
 
-#: kernel_installer_gui/core/kernel.py:442
+#: kernel_installer_gui/core/kernel.py:447
 msgid "Error compiling modules"
 msgstr "Ошибка компиляции модулей"
 
-#: kernel_installer_gui/core/kernel.py:445
+#: kernel_installer_gui/core/kernel.py:450
 msgid "Build complete."
 msgstr "Сборка завершена."
 
-#: kernel_installer_gui/core/kernel.py:459
+#: kernel_installer_gui/core/kernel.py:464
 msgid "Installing kernel..."
 msgstr "Установка ядра..."
 
-#: kernel_installer_gui/core/kernel.py:470
+#: kernel_installer_gui/core/kernel.py:475
 #, fuzzy
 msgid "Preparing .deb packages installation..."
 msgstr "Создание пакетов .deb..."
 
-#: kernel_installer_gui/core/kernel.py:475
+#: kernel_installer_gui/core/kernel.py:480
 #, fuzzy
 msgid "Preparing RPM packages installation..."
 msgstr "Создание пакетов RPM..."
 
-#: kernel_installer_gui/core/kernel.py:480
+#: kernel_installer_gui/core/kernel.py:485
 #, fuzzy
 msgid "Preparing direct installation..."
 msgstr "Компиляция для прямой установки..."
 
-#: kernel_installer_gui/core/kernel.py:493
+#: kernel_installer_gui/core/kernel.py:498
 #, fuzzy
 msgid "Finalizing installation (may require password)..."
 msgstr "Проверка окружения (требуется пароль)..."
 
-#: kernel_installer_gui/core/kernel.py:498
+#: kernel_installer_gui/core/kernel.py:503
 #, python-format
 msgid "Installation error: %(error)s"
 msgstr "Ошибка установки: %(error)s"
 
-#: kernel_installer_gui/core/kernel.py:546
+#: kernel_installer_gui/core/kernel.py:551
 #, fuzzy
 msgid "Cleaning up build files..."
 msgstr "Очистить файлы сборки"
 
-#: kernel_installer_gui/core/kernel.py:628
+#: kernel_installer_gui/core/kernel.py:633
 #, python-format
 msgid "Removing kernel %(version)s..."
 msgstr "Удаление ядра %(version)s..."
 
-#: kernel_installer_gui/core/kernel.py:632
+#: kernel_installer_gui/core/kernel.py:637
 msgid "Uninstalling packages/files..."
 msgstr "Деинсталляция пакетов/файлов..."
 
-#: kernel_installer_gui/core/kernel.py:636
+#: kernel_installer_gui/core/kernel.py:641
 #, python-format
 msgid "Error removing kernel: %(error)s"
 msgstr "Ошибка при удалении ядра: %(error)s"
 
-#: kernel_installer_gui/core/kernel.py:640
+#: kernel_installer_gui/core/kernel.py:645
 msgid "Updating bootloader..."
 msgstr "Обновление загрузчика..."
 
-#: kernel_installer_gui/core/kernel.py:645
+#: kernel_installer_gui/core/kernel.py:650
 msgid "Warning: Error updating bootloader during removal"
 msgstr "Предупреждение: ошибка обновления загрузчика при удалении"
 
-#: kernel_installer_gui/core/kernel.py:648
+#: kernel_installer_gui/core/kernel.py:653
 msgid "Updating history..."
 msgstr "Обновление истории..."
 
-#: kernel_installer_gui/core/kernel.py:666
+#: kernel_installer_gui/core/kernel.py:671
 msgid "Kernel removed successfully."
 msgstr "Ядро успешно удалено."
 
@@ -538,7 +538,9 @@ msgstr "042104350439044704300441 (1m):"
 
 #: kernel_installer_gui/widgets/build_progress.py:90
 msgid "System load in the last minute"
-msgstr "041704300433044004430437043a0430 04410438044104420435043c044b 04370430 043f043e0441043b04350434043d044e044e 043c0438043d044304420443"
+msgstr ""
+"041704300433044004430437043a0430 04410438044104420435043c044b 04370430 "
+"043f043e0441043b04350434043d044e044e 043c0438043d044304420443"
 
 #: kernel_installer_gui/widgets/build_progress.py:93
 #: kernel_installer_gui/widgets/build_progress.py:213
@@ -547,7 +549,9 @@ msgstr "0421044004350434043d04350435 (5m):"
 
 #: kernel_installer_gui/widgets/build_progress.py:95
 msgid "Average system load in the last 5 minutes"
-msgstr "0421044004350434043d044f044f 043704300433044004430437043a0430 (5 043c0438043d)"
+msgstr ""
+"0421044004350434043d044f044f 043704300433044004430437043a0430 (5 "
+"043c0438043d)"
 
 #: kernel_installer_gui/widgets/build_progress.py:98
 #: kernel_installer_gui/widgets/build_progress.py:214
@@ -556,7 +560,9 @@ msgstr "0421044004350434043d04350435 (15m):"
 
 #: kernel_installer_gui/widgets/build_progress.py:100
 msgid "Average system load in the last 15 minutes"
-msgstr "0421044004350434043d044f044f 043704300433044004430437043a0430 (15 043c0438043d)"
+msgstr ""
+"0421044004350434043d044f044f 043704300433044004430437043a0430 (15 "
+"043c0438043d)"
 
 #: kernel_installer_gui/widgets/build_progress.py:104
 #, python-format
@@ -612,31 +618,39 @@ msgstr "Версия ядра"
 msgid "Check for updates"
 msgstr "Проверить обновления"
 
-#: kernel_installer_gui/widgets/version_picker.py:93
+#: kernel_installer_gui/widgets/version_picker.py:94
 msgid "<span foreground='orange'>⚠ Experimental version (RC)</span>"
 msgstr "<span foreground='orange'>⚠ Экспериментальная версия (RC)</span>"
 
-#: kernel_installer_gui/widgets/version_picker.py:95
+#: kernel_installer_gui/widgets/version_picker.py:96
+msgid "<span foreground='lightblue'>✦ Mainline version (Development)</span>"
+msgstr "<span foreground='orange'>⚠ Экспериментальная версия (RC)</span>"
+
+#: kernel_installer_gui/widgets/version_picker.py:98
 msgid "<b>✓ Latest stable version</b>"
 msgstr "<b>✓ Последняя стабильная версия</b>"
 
-#: kernel_installer_gui/widgets/version_picker.py:97
+#: kernel_installer_gui/widgets/version_picker.py:100
 msgid "Long-term support version (LTS)"
 msgstr "Версия с долгосрочной поддержкой (LTS)"
 
-#: kernel_installer_gui/widgets/version_picker.py:99
+#: kernel_installer_gui/widgets/version_picker.py:102
 msgid "Stable version"
 msgstr "Стабильная версия"
 
-#: kernel_installer_gui/widgets/version_picker.py:130
+#: kernel_installer_gui/widgets/version_picker.py:134
 msgid " (RC - Experimental)"
 msgstr " (RC - Экспериментальная)"
 
-#: kernel_installer_gui/widgets/version_picker.py:132
+#: kernel_installer_gui/widgets/version_picker.py:136
+msgid " (Mainline)"
+msgstr " (Mainline)"
+
+#: kernel_installer_gui/widgets/version_picker.py:138
 msgid " (Latest)"
 msgstr " (Последняя)"
 
-#: kernel_installer_gui/widgets/version_picker.py:134
+#: kernel_installer_gui/widgets/version_picker.py:140
 msgid " (LTS)"
 msgstr " (LTS)"
 

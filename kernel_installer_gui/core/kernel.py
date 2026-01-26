@@ -104,9 +104,10 @@ class KernelManager:
             # We look for the version in the strong tag after each kernel type
             
             # Find all table rows with kernel info
+            # The label (mainline, stable, etc.) might be inside a tag or classes
             row_pattern = re.compile(
-                r'<tr[^>]*>.*?<td>(\w+):</td>.*?<strong>([0-9]+\.[0-9]+(?:\.[0-9]+)?(?:-rc\d+)?)</strong>',
-                re.DOTALL
+                r'<tr[^>]*>\s*<td[^>]*>\s*(\w+):?</td>\s*<td[^>]*>\s*<strong>([0-9]+\.[0-9]+(?:\.[0-9]+)?(?:-rc\d+)?)</strong>',
+                re.IGNORECASE | re.DOTALL
             )
             
             seen_versions = set()
@@ -122,9 +123,9 @@ class KernelManager:
                 
                 major = version.split('.')[0]
                 
-                # Mainline (RC) versions have different URL format
-                if '-rc' in version:
-                    url = f"{self.KERNEL_CDN_URL}/v{major}.x/testing/linux-{version}.tar.xz"
+                # Mainline/RC versions use snapshot from torvalds tree
+                if kernel_type == 'mainline' or '-rc' in version:
+                    url = f"https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/snapshot/linux-{version}.tar.gz"
                 else:
                     url = f"{self.KERNEL_CDN_URL}/v{major}.x/linux-{version}.tar.xz"
                 
@@ -228,12 +229,16 @@ class KernelManager:
         
         major = version.split('.')[0]
         if '-rc' in version:
-            url = f"{self.KERNEL_CDN_URL}/v{major}.x/testing/linux-{version}.tar.xz"
+            # Use snapshot from git.kernel.org for RC/Mainline
+            url = f"https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/snapshot/linux-{version}.tar.gz"
+            extension = "tar.gz"
         else:
             url = f"{self.KERNEL_CDN_URL}/v{major}.x/linux-{version}.tar.xz"
-        tarball = os.path.join(self._build_dir, f"linux-{version}.tar.xz")
+            extension = "tar.xz"
+            
+        tarball = os.path.join(self._build_dir, f"linux-{version}.{extension}")
         
-        self._report_progress(_("Downloading linux-%(version)s.tar.xz...") % {'version': version}, 5)
+        self._report_progress(_("Downloading linux-%(version)s.%(ext)s...") % {'version': version, 'ext': extension}, 5)
         
         # Download using wget for progress
         cmd = f'wget -O "{tarball}" "{url}"'

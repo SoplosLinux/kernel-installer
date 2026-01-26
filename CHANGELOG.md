@@ -19,8 +19,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Fixed 404 error when downloading Release Candidate (RC) kernels by correctly using the `/testing/` subdirectory on kernel.org
-- Fixed secondary password prompt during reboot by attempting unprivileged reboot first (vía systemd/logind)
+- Fixed 404 error when downloading Release Candidate (RC) kernels by using reliable snapshots from `git.kernel.org`.
+- Improved visibility and labeling of "Mainline" kernel versions in the selection menu.
+- Added support for both `.tar.xz` and `.tar.gz` kernel source formats.
+- Fixed secondary password prompt during reboot by attempting unprivileged reboot first (vía systemd/logind).
 
 ## [1.0.0] - 2025-01-24
 
