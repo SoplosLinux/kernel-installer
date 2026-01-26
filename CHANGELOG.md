@@ -17,6 +17,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed build errors when the source or build directory already existed from a previous attempt
 - Refined Arch Linux support (fixed kernel module paths)
 
+### Fixed
+
+- Fixed 404 error when downloading Release Candidate (RC) kernels by correctly using the `/testing/` subdirectory on kernel.org
+
 ## [1.0.0] - 2025-01-24
 
 ### Added

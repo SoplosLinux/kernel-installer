@@ -227,7 +227,10 @@ class KernelManager:
             return False
         
         major = version.split('.')[0]
-        url = f"{self.KERNEL_CDN_URL}/v{major}.x/linux-{version}.tar.xz"
+        if '-rc' in version:
+            url = f"{self.KERNEL_CDN_URL}/v{major}.x/testing/linux-{version}.tar.xz"
+        else:
+            url = f"{self.KERNEL_CDN_URL}/v{major}.x/linux-{version}.tar.xz"
         tarball = os.path.join(self._build_dir, f"linux-{version}.tar.xz")
         
         self._report_progress(_("Downloading linux-%(version)s.tar.xz...") % {'version': version}, 5)
