@@ -520,21 +520,20 @@ class DistroDetector:
             
         # Arch Family
         elif info.family == DistroFamily.ARCH:
-            # Check for essential binaries first (no root if possible)
-            essential_bins = ['gcc', 'make', 'pahole', 'tar', 'bc']
-            if all(shutil.which(b) for b in essential_bins):
-                if not self._are_headers_broken():
-                    return True
-
-            # Full list for Arch
-            deps = "base-devel bc rsync wget tar xz libelf dwarves kmod cpio openssl ncurses perl python"
+            # Full list for Arch (base-devel is a group)
+            deps_list = ["base-devel", "bc", "rsync", "wget", "tar", "xz", "libelf", "dwarves", "kmod", "cpio", "openssl", "ncurses", "perl", "python"]
+            deps_str = " ".join(deps_list)
             
-            # Use pacman -T (deptest) which is faster and handles groups/packages correctly
-            check_cmd = f"pacman -T {deps} >/dev/null 2>&1 || echo 'missing'"
-            if run_command(check_cmd).stdout.strip() != 'missing':
-                return True
+            # 1. Pre-check essential binaries (no root needed)
+            essential_bins = ['gcc', 'make', 'pahole', 'tar', 'bc']
+            if all(shutil.which(b) for b in essential_bins) and not self._are_headers_broken():
+                # 2. Check for missing packages (filter out groups)
+                pkg_deps = " ".join([d for d in deps_list if d != "base-devel"])
+                check_cmd = f"pacman -T {pkg_deps} >/dev/null 2>&1"
+                if run_command(check_cmd).returncode == 0:
+                    return True
                 
-            install_cmd = f"pacman -S --needed --noconfirm {deps}"
+            install_cmd = f"pacman -S --needed --noconfirm {deps_str}"
 
         # Mandriva Family (Mageia/OpenMandriva)
         elif info.family == DistroFamily.MANDRIVA:
@@ -561,10 +560,9 @@ class DistroDetector:
             
         if cmds:
             # Combine commands to ask for password only once
+            # run_privileged already handles the 'sh -c' wrapper if special chars like '&&' are present
             full_cmd = " && ".join(cmds)
-            final_cmd = f"sh -c '{full_cmd}'"
-            
-            result = run_privileged(final_cmd)
+            result = run_privileged(full_cmd)
             return result.returncode == 0
             
         return True
