@@ -6,7 +6,10 @@ A graphical interface for downloading, compiling, and installing the Linux kerne
 
 ## Preview
 
-![Kernel Installer Screenshot](kernel_installer_gui/assets/screenshots/screenshot01.png)
+![Kernel Installer Screenshot 01](kernel_installer_gui/assets/screenshots/screenshot01.png)
+![Kernel Installer Screenshot 02](kernel_installer_gui/assets/screenshots/screenshot02.png)
+![Kernel Installer Screenshot 03](kernel_installer_gui/assets/screenshots/screenshot03.png)
+![Kernel Installer Screenshot 04](kernel_installer_gui/assets/screenshots/screenshot04.png)
 
 ## Authors
 
