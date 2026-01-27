@@ -314,9 +314,9 @@ class DistroDetector:
             ],
             DistroFamily.FEDORA: [
                 'gcc', 'make', 'ncurses-devel', 'bison', 'flex', 'openssl-devel', 
-                'elfutils-libelf-devel', 'rpm-build', 'newt', 'curl', 'git', 
+                'elfutils-libelf-devel', 'elfutils-devel', 'rpm-build', 'newt-devel', 'curl', 'git', 
                 'wget', 'tar', 'xz', 'dwarves', 'pkgconfig', 'bc', 'rsync', 
-                'kmod', 'cpio'
+                'kmod', 'cpio', 'perl'
             ],
             DistroFamily.ARCH: [
                 'base-devel', 'bc', 'rsync', 'wget', 'tar', 'xz', 'libelf', 
@@ -325,9 +325,9 @@ class DistroDetector:
             DistroFamily.MANDRIVA: [
                 'gcc', 'gcc-c++', 'make', 'binutils', 'bison', 'flex', 'bc', 'rsync', 
                 'wget', 'tar', 'xz', 'curl', 'git', 'gettext', 'kmod', 'cpio',
-                'dwarves', 'fakeroot', 'openssl-devel', 'elfutils-devel', 
+                'dwarves', 'fakeroot', 'openssl-devel', 'elfutils-devel', 'rpm-build',
                 'ncurses-devel', 'newt-devel', 'kernel-desktop-devel', 'python3-gi',
-                'gtk+3.0'
+                'gtk+3.0', 'perl'
             ]
         }
         
@@ -505,9 +505,9 @@ class DistroDetector:
         elif info.family == DistroFamily.FEDORA:
             # List from fedora.h
             deps = (
-                "gcc make ncurses-devel bison flex openssl-devel elfutils-libelf-devel "
+                "gcc make ncurses-devel bison flex openssl-devel elfutils-libelf-devel elfutils-devel "
                 "rpm-build bc rsync wget tar xz dwarves git-core rubygem-asciidoctor "
-                "xmlto zlib-devel libzstd-devel"
+                "xmlto zlib-devel libzstd-devel perl"
             )
             
             # Optimization for Fedora
@@ -537,7 +537,7 @@ class DistroDetector:
         # Mandriva Family (Mageia/OpenMandriva)
         elif info.family == DistroFamily.MANDRIVA:
             # Check for essential binaries (this is fast and doesn't need root)
-            essential_bins = ['gcc', 'make', 'tar', 'xz']
+            essential_bins = ['gcc', 'make', 'tar', 'xz', 'perl']
             if all(shutil.which(b) for b in essential_bins):
                 # Check if headers are working by compiling a simple C file
                 if not self._are_headers_broken():
@@ -546,8 +546,8 @@ class DistroDetector:
             # Prepare list if something is missing
             deps = (
                 "gcc gcc-c++ make binutils bison flex bc rsync wget tar xz curl git gettext "
-                "kmod cpio dwarves fakeroot openssl-devel elfutils-devel ncurses-devel "
-                "newt-devel kernel-desktop-devel python3-gi gtk+3.0"
+                "kmod cpio dwarves fakeroot openssl-devel elfutils-devel rpm-build ncurses-devel "
+                "newt-devel kernel-desktop-devel python3-gi gtk+3.0 perl"
             )
             install_cmd = f"dnf install -y {deps}"
             

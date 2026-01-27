@@ -413,7 +413,7 @@ class KernelInstallerWindow(Gtk.ApplicationWindow):
         self._building = False
         self._cancel_btn.set_sensitive(False)
         self._done_btn.show()
-        self._build_progress.set_complete(success)
+        self._build_progress.set_complete(success, cancelled=is_cancelled)
         
         # Refresh history
         self._history_view.refresh()

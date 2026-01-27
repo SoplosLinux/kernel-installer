@@ -653,6 +653,22 @@ msgstr " (Latest)"
 msgid " (LTS)"
 msgstr " (LTS)"
 
+#: kernel_installer_gui/core/kernel.py:557
+msgid "Installation cancelled during download."
+msgstr "Installation cancelled during download."
+
+#: kernel_installer_gui/core/kernel.py:566
+msgid "Installation cancelled during configuration."
+msgstr "Installation cancelled during configuration."
+
+#: kernel_installer_gui/widgets/build_progress.py:224
+msgid "Cancellation complete."
+msgstr "Cancellation complete."
+
+#: kernel_installer_gui/widgets/build_progress.py:225
+msgid "Cancelled"
+msgstr "Cancelled"
+
 #~ msgid "Installing .deb packages..."
 #~ msgstr "Installing .deb packages..."
 

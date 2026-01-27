@@ -127,6 +127,59 @@
   </branding>
   
   <releases>
+    <release version="1.0.2" date="2026-01-27">
+      <description>
+        <p>Build optimizations and distribution fixes</p>
+        <p xml:lang="es">Optimizaciones de compilación y correcciones para distribuciones</p>
+        <p xml:lang="fr">Optimisations de build et corrections de distribution</p>
+        <p xml:lang="pt">Otimizações de compilação e correções de distribuição</p>
+        <p xml:lang="de">Build-Optimierungen und Fixes für Distributionen</p>
+        <p xml:lang="it">Ottimizzazioni della build e correzioni per le distribuzioni</p>
+        <p xml:lang="ro">Optimizări ale construcției și remedieri pentru distribuții</p>
+        <p xml:lang="ru">Оптимизация сборки и исправления для дистрибутивов</p>
+        <ul>
+          <li>Optimized build process by disabling kernel debug info (faster compilation)</li>
+          <li>Fixed Fedora build issues and corrected missing dependencies</li>
+          <li>Improved RPM packaging performance and compatibility</li>
+          <li>Standardized versioning across all supported distributions</li>
+          
+          <li xml:lang="es">Proceso de compilación optimizado desactivando la depuración del kernel (más rápido)</li>
+          <li xml:lang="es">Corregidos problemas de compilación en Fedora y dependencias faltantes</li>
+          <li xml:lang="es">Mejorado el rendimiento y la compatibilidad del empaquetado RPM</li>
+          <li xml:lang="es">Versiones estandarizadas en todas las distribuciones soportadas</li>
+          
+          <li xml:lang="fr">Processus de construction optimisé en désactivant les infos de débogage (plus rapide)</li>
+          <li xml:lang="fr">Correction des problèmes de build Fedora et des dépendances manquantes</li>
+          <li xml:lang="fr">Amélioration des performances et de la compatibilité des paquets RPM</li>
+          <li xml:lang="fr">Versions standardisées pour toutes les distributions supportées</li>
+          
+          <li xml:lang="pt">Processo de compilação otimizado desativando a depuração do kernel (mais rápido)</li>
+          <li xml:lang="pt">Corrigidos problemas de compilação no Fedora e dependências em falta</li>
+          <li xml:lang="pt">Melhor desempenho e compatibilidade da embalagem RPM</li>
+          <li xml:lang="pt">Versões padronizadas em todas as distribuições suportadas</li>
+          
+          <li xml:lang="de">Optimierter Build-Prozess durch Deaktivierung von Debug-Infos (schneller)</li>
+          <li xml:lang="de">Fedora Build-Probleme und fehlende Abhängigkeiten behoben</li>
+          <li xml:lang="de">RPM-Paketleistung und -Kompatibilität verbessert</li>
+          <li xml:lang="de">Standardisierte Versionierung über alle unterstützten Distributionen</li>
+          
+          <li xml:lang="it">Processo di build ottimizzato disabilitando le info di debug (più veloce)</li>
+          <li xml:lang="it">Risolti i problemi di build di Fedora e le dipendenze mancanti</li>
+          <li xml:lang="it">Migliorate le prestazioni e la compatibilità del packaging RPM</li>
+          <li xml:lang="it">Versionamento standardizzato in tutte le distribuzioni supportate</li>
+          
+          <li xml:lang="ro">Proces de construire optimizat prin dezactivarea informațiilor de depanare (mai rapid)</li>
+          <li xml:lang="ro">S-au rezolvat problemele de build pentru Fedora și dependențele lipsă</li>
+          <li xml:lang="ro">Performanță și compatibilitate îmbunătățite pentru pachetele RPM</li>
+          <li xml:lang="ro">Versiuni standardizate pentru toate distribuțiile acceptate</li>
+          
+          <li xml:lang="ru">Оптимизирован процесс сборки за счет отключения отладочной информации (быстрее)</li>
+          <li xml:lang="ru">Исправлены ошибки сборки в Fedora и отсутствующие зависимости</li>
+          <li xml:lang="ru">Улучшена производительность и совместимость RPM-пакетов</li>
+          <li xml:lang="ru">Стандартизация версий во всех поддерживаемых дистрибутивах</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.0.1" date="2026-01-26">
       <description>
         <p>Bug fixes and new features</p>

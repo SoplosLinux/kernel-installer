@@ -242,7 +242,12 @@ class KernelManager:
         # 1. Clean old sources and artifacts to ensure a fresh start
         if os.path.exists(source_dir):
             self._report_progress(_("Removing old source directory..."), 6)
-            shutil.rmtree(source_dir)
+            try:
+                shutil.rmtree(source_dir)
+            except Exception as e:
+                print(f"Warning: Could not remove old source directory: {e}")
+                # If we can't remove it, we might still be able to overwrite or it might be partially locked
+                # but we'll try to proceed or fail later if wget/tar can't write.
 
         # Also remove old tarballs and packages for THIS version to avoid conflicts
         import glob
@@ -264,23 +269,29 @@ class KernelManager:
 
         self._report_progress(_("Downloading linux-%(version)s.%(ext)s...") % {'version': version, 'ext': extension}, 7)
         
-        # Download using wget for progress
+        # Download using wget for progress (now cancellable)
         cmd = f'wget -O "{tarball}" "{url}"'
-        result = run_command(cmd, cwd=self._build_dir)
+        exit_code = run_command_with_callback(cmd, cwd=self._build_dir, stop_check=self._is_cancelled)
         
-        if result.returncode != 0:
-            self._report_progress(_("Download error: %(error)s") % {'error': result.stderr}, -1)
+        if self._is_cancelled():
+            return False
+            
+        if exit_code != 0:
+            self._report_progress(_("Download error: %(error)s") % {'error': str(exit_code)}, -1)
             return False
         
         self._report_progress(_("Download complete. Extracting..."), 15)
         
-        # 2. Extract
+        # 2. Extract (now cancellable)
         self._report_progress(_("Extracting linux-%(version)s...") % {'version': version}, 17)
         cmd = f'tar -xf "{tarball}"'
-        result = run_command(cmd, cwd=self._build_dir)
+        exit_code = run_command_with_callback(cmd, cwd=self._build_dir, stop_check=self._is_cancelled)
         
-        if result.returncode != 0:
-            self._report_progress(_("Extraction error: %(error)s") % {'error': result.stderr}, -1)
+        if self._is_cancelled():
+            return False
+            
+        if exit_code != 0:
+            self._report_progress(_("Extraction error: %(error)s") % {'error': str(exit_code)}, -1)
             return False
             
         # 3. Verify extraction
@@ -349,6 +360,12 @@ class KernelManager:
         
         # 6. Disable module signing to avoid cert issues
         run_command("./scripts/config --disable MODULE_SIG", cwd=source_dir)
+
+        # 7. Global Optimization: Disable Debug Info (Critical for Arch/Fedora speed)
+        # This reduces compilation time by 50-70% and avoids "freezes" during linking.
+        run_command("./scripts/config --disable DEBUG_INFO", cwd=source_dir)
+        run_command("./scripts/config --disable DEBUG_INFO_DWARF_TOOLCHAIN_DEFAULT", cwd=source_dir)
+        run_command("./scripts/config --enable DEBUG_INFO_NONE", cwd=source_dir)
         
         # Verbose verification for debugging
         print("\n--- DEBUG: Kernel Config Patch State ---", file=sys.stderr)
@@ -403,10 +420,21 @@ class KernelManager:
             self._report_progress(_("Generating .deb packages..."), 32)
             # Ensure we have a clean environment and use standard bindeb-pkg
             cmd = f'make -j{cpu_count} bindeb-pkg'
-        elif distro_info.family == DistroFamily.FEDORA:
+        elif distro_info.family in (DistroFamily.FEDORA, DistroFamily.MANDRIVA):
             # Build RPM packages (binary only is more robust)
-            self._report_progress(_("Generating RPM packages..."), 32)
-            cmd = f'make -j{cpu_count} binrpm-pkg'
+            self._report_progress(_("Generating RPM packages (optimized)..."), 32)
+            
+            # Use local _topdir to contain RPM generation within source directory
+            # AND optimize: disable debuginfo (slow!) and use fast compression (zstd)
+            rpm_opts = " ".join([
+                f"--define '_topdir {source_dir}/rpmbuild'",
+                "--define '_enable_debug_packages 0'",
+                "--define 'debug_package %{nil}'",
+                "--without debug",
+                "--without debuginfo"
+            ])
+            
+            cmd = f'make -j{cpu_count} binrpm-pkg RPMOPTS="{rpm_opts}"'
         elif distro_info.family == DistroFamily.ARCH:
             # Arch uses direct installation
             self._report_progress(_("Compiling for direct installation..."), 32)
@@ -477,8 +505,8 @@ class KernelManager:
             
         elif distro_info.family in (DistroFamily.FEDORA, DistroFamily.MANDRIVA):
             self._report_progress(_("Preparing RPM packages installation..."), 93)
-            # Check both possible RPM build locations
-            rpm_base = os.path.expanduser("~/rpmbuild/RPMS")
+            # Check local build directory for RPMs (must match _topdir used in build)
+            rpm_base = os.path.join(source_dir, "rpmbuild", "RPMS")
             # Common patterns for both Fedora and Mageia
             cmds.append(f'rpm -Uvh {rpm_base}/*/kernel-{version}*.rpm {rpm_base}/*/kernel-devel-{version}*.rpm 2>/dev/null || rpm -Uvh {rpm_base}/*/kernel-{version}*.rpm')
                 
@@ -541,25 +569,40 @@ class KernelManager:
         self._custom_name = custom_name or "custom"
         self._cancel_requested = False
         
+        # 1. Download and Extract
         if not self.download_kernel(version):
+            if self._is_cancelled():
+                self.cleanup_build_files()
             return False
         
         if self._is_cancelled():
+            self.cleanup_build_files()
             return False
         
+        # 2. Configure
         if not self.configure_kernel(version, profile):
+            if self._is_cancelled():
+                self.cleanup_build_files()
             return False
             
         if self._is_cancelled():
+            self.cleanup_build_files()
             return False
         
+        # 3. Build
         if not self.build_kernel(version):
+            if self._is_cancelled():
+                self.cleanup_build_files()
             return False
             
         if self._is_cancelled():
+            self.cleanup_build_files()
             return False
         
+        # 4. Install
         if not self.install_kernel(version, profile):
+            if self._is_cancelled():
+                self.cleanup_build_files()
             return False
             
         if cleanup:

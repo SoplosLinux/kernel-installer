@@ -1,6 +1,6 @@
 Name:           kernel-installer
-Version:        1.0.1
-Release:        2
+Version:        1.0.2
+Release:        1
 Summary:        Graphical interface for downloading, compiling and installing Linux kernels (Fedora Family)
 
 License:        GPLv3+
@@ -39,6 +39,9 @@ Requires:       gcc-c++
 Requires:       gettext
 Requires:       fakeroot
 Requires:       newt-devel
+Requires:       elfutils-devel
+Requires:       rpm-build
+Requires:       perl
 
 Source0:        %{name}-%{version}.tar.gz
 

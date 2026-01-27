@@ -331,6 +331,11 @@ msgstr "Generazione pacchetti .deb..."
 msgid "Generating RPM packages..."
 msgstr "Generazione pacchetti RPM..."
 
+
+#: kernel_installer_gui/core/kernel.py:409
+msgid "Generating RPM packages (optimized)..."
+msgstr "Generazione pacchetti RPM (ottimizzata)..."
+
 #: kernel_installer_gui/core/kernel.py:413
 msgid "Compiling for direct installation..."
 msgstr "Compilazione per l'installazione directa..."
@@ -367,24 +372,20 @@ msgid "Installing kernel..."
 msgstr "Installazione del kernel..."
 
 #: kernel_installer_gui/core/kernel.py:475
-#, fuzzy
 msgid "Preparing .deb packages installation..."
-msgstr "Generazione pacchetti .deb..."
+msgstr "Preparazione installazione pacchetti .deb..."
 
 #: kernel_installer_gui/core/kernel.py:480
-#, fuzzy
 msgid "Preparing RPM packages installation..."
-msgstr "Generazione pacchetti RPM..."
+msgstr "Preparazione installazione pacchetti RPM..."
 
 #: kernel_installer_gui/core/kernel.py:485
-#, fuzzy
 msgid "Preparing direct installation..."
-msgstr "Compilazione per l'installazione directa..."
+msgstr "Preparazione installazione diretta..."
 
 #: kernel_installer_gui/core/kernel.py:498
-#, fuzzy
 msgid "Finalizing installation (may require password)..."
-msgstr "Verifica dell'ambiente (richiesta password)..."
+msgstr "Finalizzazione installazione (potrebbe richiedere password)..."
 
 #: kernel_installer_gui/core/kernel.py:503
 #, python-format
@@ -657,6 +658,22 @@ msgstr " (Ultima)"
 #: kernel_installer_gui/widgets/version_picker.py:140
 msgid " (LTS)"
 msgstr " (LTS)"
+
+#: kernel_installer_gui/core/kernel.py:557
+msgid "Installation cancelled during download."
+msgstr "Installation cancelled during download."
+
+#: kernel_installer_gui/core/kernel.py:566
+msgid "Installation cancelled during configuration."
+msgstr "Installation cancelled during configuration."
+
+#: kernel_installer_gui/widgets/build_progress.py:224
+msgid "Cancellation complete."
+msgstr "Cancellation complete."
+
+#: kernel_installer_gui/widgets/build_progress.py:225
+msgid "Cancelled"
+msgstr "Cancelled"
 
 #~ msgid "Installing .deb packages..."
 #~ msgstr "Installazione pacchetti .deb..."

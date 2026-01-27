@@ -37,6 +37,7 @@ A graphical interface for downloading, compiling, and installing the Linux kerne
 - Desktop notifications (transient via libnotify, auto-hide after 5s)
 - **Universal localization**: 100% translation coverage for 8 languages (EN, ES, FR, PT, DE, IT, RO, RU)
 - **Compact UI**: Redesigned and optimized interface for various screen sizes
+- **Major build optimization**: Automatically disables `CONFIG_DEBUG_INFO` to speed up compilation by ~50%
 - Intelligent automated system dependency verification and installation
 - Improved build cancellation: smart detection and user-friendly notifications
 - Kernel removal support for Debian, Ubuntu, Arch, Fedora, and Mageia families
@@ -78,7 +79,7 @@ sudo urpmi python3-gi lib64gtk+3.0_0
 
 - **Debian/Ubuntu/Mint**: [Download .deb](https://github.com/SoplosLinux/kernel-installer/releases)
   ```bash
-  sudo dpkg -i kernel-installer_1.0.1_all.deb
+  sudo dpkg -i kernel-installer_1.0.2_all.deb
   sudo apt install -f
   ```
 - **Arch Linux/Manjaro**:
@@ -88,11 +89,11 @@ sudo urpmi python3-gi lib64gtk+3.0_0
   ```
 - **Fedora/RHEL**:
   ```bash
-  sudo dnf install kernel-installer-1.0.1-fedora.noarch.rpm
+  sudo dnf install kernel-installer-1.0.2-fedora.noarch.rpm
   ```
 - **Mageia/Mandriva**:
   ```bash
-  sudo urpmi kernel-installer-1.0.1-mageia.noarch.rpm
+  sudo urpmi kernel-installer-1.0.2-mageia.noarch.rpm
   ```
 
 ### Option 2: From Source

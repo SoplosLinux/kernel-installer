@@ -215,11 +215,21 @@ class BuildProgress(Gtk.Box):
         
         return True  # Continue timer
     
-    def set_complete(self, success: bool) -> None:
-        """Mark build as complete."""
+    def set_complete(self, success: bool, cancelled: bool = False) -> None:
+        """
+        Mark build as complete.
+        
+        Args:
+            success: Whether the build succeeded
+            cancelled: Whether it was cancelled by the user
+        """
         self.stop_build()
         
-        if success:
+        if cancelled:
+            self._status_label.set_text(_("Cancellation complete."))
+            self._progress_bar.set_text(_("Cancelled"))
+            # Keep the normal color, or use a neutral one
+        elif success:
             self._status_label.set_text(_("Build completed successfully!"))
             self._progress_bar.set_fraction(1.0)
             self._progress_bar.set_text("100%")

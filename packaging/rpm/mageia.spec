@@ -1,6 +1,6 @@
 Name:           kernel-installer
-Version:        1.0.1
-Release:        5
+Version:        1.0.2
+Release:        1
 Summary:        Graphical interface for downloading, compiling and installing Linux kernels (Mageia Family)
 Group:          System/Configuration/Hardware
 License:        GPLv3+
@@ -38,6 +38,7 @@ Requires:       gcc-c++
 Requires:       gettext
 Requires:       fakeroot
 Requires:       newt-devel
+Requires:       rpm-build
 
 # Kernel headers
 Requires:       kernel-desktop-devel

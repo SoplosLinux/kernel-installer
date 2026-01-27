@@ -331,6 +331,10 @@ msgstr "Generando paquetes .deb..."
 msgid "Generating RPM packages..."
 msgstr "Generando paquetes RPM..."
 
+#: kernel_installer_gui/core/kernel.py:409
+msgid "Generating RPM packages (optimized)..."
+msgstr "Generando paquetes RPM (optimizado)..."
+
 #: kernel_installer_gui/core/kernel.py:413
 msgid "Compiling for direct installation..."
 msgstr "Compilando para instalación directa..."
@@ -369,24 +373,20 @@ msgid "Installing kernel..."
 msgstr "Instalando kernel..."
 
 #: kernel_installer_gui/core/kernel.py:475
-#, fuzzy
 msgid "Preparing .deb packages installation..."
-msgstr "Generando paquetes .deb..."
+msgstr "Preparando instalación de paquetes .deb..."
 
 #: kernel_installer_gui/core/kernel.py:480
-#, fuzzy
 msgid "Preparing RPM packages installation..."
-msgstr "Generando paquetes RPM..."
+msgstr "Preparando instalación de paquetes RPM..."
 
 #: kernel_installer_gui/core/kernel.py:485
-#, fuzzy
 msgid "Preparing direct installation..."
-msgstr "Compilando para instalación directa..."
+msgstr "Preparando instalación directa..."
 
 #: kernel_installer_gui/core/kernel.py:498
-#, fuzzy
 msgid "Finalizing installation (may require password)..."
-msgstr "Verificando entorno (requiere contraseña)..."
+msgstr "Finalizando instalación (puede requerir contraseña)..."
 
 #: kernel_installer_gui/core/kernel.py:503
 #, python-format
@@ -661,6 +661,22 @@ msgstr " (Última)"
 #: kernel_installer_gui/widgets/version_picker.py:140
 msgid " (LTS)"
 msgstr " (LTS)"
+
+#: kernel_installer_gui/core/kernel.py:557
+msgid "Installation cancelled during download."
+msgstr "Instalación cancelada durante la descarga."
+
+#: kernel_installer_gui/core/kernel.py:566
+msgid "Installation cancelled during configuration."
+msgstr "Instalación cancelada durante la configuración."
+
+#: kernel_installer_gui/widgets/build_progress.py:224
+msgid "Cancellation complete."
+msgstr "Cancelación completada."
+
+#: kernel_installer_gui/widgets/build_progress.py:225
+msgid "Cancelled"
+msgstr "Cancelado"
 
 #~ msgid "Installing .deb packages..."
 #~ msgstr "Instalando paquetes .deb..."
