@@ -355,11 +355,23 @@ class DistroDetector:
         bootloader = self.detect_bootloader()
         
         if bootloader == Bootloader.GRUB:
-            # Check for different GRUB paths
-            if os.path.exists('/boot/grub2/grub.cfg'):
-                return 'grub2-mkconfig -o /boot/grub2/grub.cfg'
-            else:
+            # 1. Use update-grub if available (Debian, Ubuntu, Mageia, and wrappers)
+            if shutil.which('update-grub'):
                 return 'update-grub'
+            
+            # 2. Check for grub2-mkconfig (Fedora, RHEL, etc.)
+            if shutil.which('grub2-mkconfig'):
+                if os.path.isdir('/boot/grub2'):
+                    return 'grub2-mkconfig -o /boot/grub2/grub.cfg'
+                return 'grub2-mkconfig -o /boot/grub/grub.cfg'
+            
+            # 3. Fallback to grub-mkconfig (Arch and derivatives)
+            if shutil.which('grub-mkconfig'):
+                if os.path.isdir('/boot/grub2'):
+                    return 'grub-mkconfig -o /boot/grub2/grub.cfg'
+                return 'grub-mkconfig -o /boot/grub/grub.cfg'
+                
+            return 'update-grub'  # Default fallback
         elif bootloader == Bootloader.SYSTEMD_BOOT:
             return 'bootctl update'
         elif bootloader == Bootloader.REFIND:

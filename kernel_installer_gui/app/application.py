@@ -322,7 +322,7 @@ progressbar trough {
         """Show about dialog."""
         about = Gtk.AboutDialog(transient_for=self._window, modal=True)
         about.set_program_name(_("Kernel Installer"))
-        about.set_version("1.0.1")
+        about.set_version("1.0.2")
         about.set_comments(
             _("A graphical interface for downloading, compiling and installing the Linux kernel with optimized profiles.")
         )

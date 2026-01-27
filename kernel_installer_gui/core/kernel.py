@@ -7,6 +7,8 @@ import sys
 import re
 import json
 import urllib.request
+import shutil
+import glob
 from dataclasses import dataclass
 from datetime import datetime
 from typing import List, Optional, Callable
@@ -189,7 +191,6 @@ class KernelManager:
         Returns:
             List of missing tools/packages
         """
-        import shutil
         missing = []
         
         # Use exhaustive list from distro detector
@@ -239,33 +240,24 @@ class KernelManager:
         tarball = os.path.join(self._build_dir, f"linux-{version}.{extension}")
         source_dir = os.path.join(self._build_dir, f"linux-{version}")
 
-        # 1. Clean old sources and artifacts to ensure a fresh start
-        if os.path.exists(source_dir):
-            self._report_progress(_("Removing old source directory..."), 6)
-            try:
-                shutil.rmtree(source_dir)
-            except Exception as e:
-                print(f"Warning: Could not remove old source directory: {e}")
-                # If we can't remove it, we might still be able to overwrite or it might be partially locked
-                # but we'll try to proceed or fail later if wget/tar can't write.
-
-        # Also remove old tarballs and packages for THIS version to avoid conflicts
-        import glob
-        old_artifacts = [
-            tarball,
-            os.path.join(self._build_dir, f"linux-image-{version}*.deb"),
-            os.path.join(self._build_dir, f"linux-headers-{version}*.deb"),
-            os.path.join(self._build_dir, f"linux-libc-dev-{version}*.deb"),
-            os.path.join(self._build_dir, f"linux-image-{version}*.rpm"),
-            os.path.join(self._build_dir, f"linux-{version}*.rpm")
-        ]
-        for pattern in old_artifacts:
-            for f in glob.glob(pattern):
+        # 1. Clean entire build directory to ensure a fresh start
+        # This addresses user concerns about leftover files from previous builds.
+        if os.path.exists(self._build_dir):
+            self._report_progress(_("Cleaning build environment..."), 5)
+            # We want to keep the build.log if possible, but clear everything else
+            for item in os.listdir(self._build_dir):
+                if item == 'build.log':
+                    continue
+                item_path = os.path.join(self._build_dir, item)
                 try:
-                    if os.path.isfile(f):
-                        os.remove(f)
-                except Exception:
-                    pass
+                    if os.path.isfile(item_path):
+                        os.remove(item_path)
+                    elif os.path.isdir(item_path):
+                        shutil.rmtree(item_path)
+                except Exception as e:
+                    print(f"Warning: Could not remove {item_path}: {e}")
+
+        self._report_progress(_("Downloading linux-%(version)s.%(ext)s...") % {'version': version, 'ext': extension}, 7)
 
         self._report_progress(_("Downloading linux-%(version)s.%(ext)s...") % {'version': version, 'ext': extension}, 7)
         
@@ -494,8 +486,16 @@ class KernelManager:
         custom = getattr(self, '_custom_name', 'custom')
         full_tag = f"-{custom}-{profile.suffix}"
         source_dir = os.path.join(self._build_dir, f"linux-{version}")
-        kernel_version = f"{version}{full_tag}"
         
+        # Determine the EXACT kernel release string from the build system.
+        # This is CRITICAL for RC kernels where version '6.19-rc7' becomes '6.19.0-rc7'.
+        rel_res = run_command("make -s kernelrelease", cwd=source_dir)
+        if rel_res.returncode == 0:
+            kernel_version = rel_res.stdout.strip()
+        else:
+            # Fallback if make fails, though it shouldn't after a successful build
+            kernel_version = f"{version}{full_tag}"
+            
         cmds = []
         
         if distro_info.family in (DistroFamily.DEBIAN, DistroFamily.UBUNTU):
@@ -507,8 +507,11 @@ class KernelManager:
             self._report_progress(_("Preparing RPM packages installation..."), 93)
             # Check local build directory for RPMs (must match _topdir used in build)
             rpm_base = os.path.join(source_dir, "rpmbuild", "RPMS")
-            # Common patterns for both Fedora and Mageia
-            cmds.append(f'rpm -Uvh {rpm_base}/*/kernel-{version}*.rpm {rpm_base}/*/kernel-devel-{version}*.rpm 2>/dev/null || rpm -Uvh {rpm_base}/*/kernel-{version}*.rpm')
+            
+            # Use kernel_version (from make kernelrelease) for the wildcard.
+            # We also add a generic '*' fallback to be even more robust.
+            cmds.append(f'rpm -Uvh {rpm_base}/*/kernel-{kernel_version}*.rpm {rpm_base}/*/kernel-devel-{kernel_version}*.rpm 2>/dev/null || '
+                       f'rpm -Uvh {rpm_base}/*/kernel-*.rpm')
                 
         elif distro_info.family == DistroFamily.ARCH:
             self._report_progress(_("Preparing direct installation..."), 93)
@@ -665,12 +668,70 @@ class KernelManager:
         except Exception as e:
             print(f"Error loading history: {e}")
         
+        # 4. Sync with system (scan /boot for kernels not in history)
+        history = self._sync_with_system(history)
+        
+        return history
+    
+    def _sync_with_system(self, history: List[InstalledKernel]) -> List[InstalledKernel]:
+        """Scan /boot for kernels that might be missing from the JSON history."""
+        try:
+            from .profiles import get_all_profiles
+            
+            # Get existing versions for faster lookup
+            existing_versions = {k.version for k in history}
+            profiles = get_all_profiles()
+            suffixes = {p.suffix: p.name for p in profiles}
+            
+            # Scan /boot for vmlinuz files
+            # Pattern: vmlinuz-<version>-<custom_name>-<suffix>
+            vmlinuz_files = glob.glob("/boot/vmlinuz-*")
+            
+            new_entries = []
+            for f in vmlinuz_files:
+                # Extract the full version string (everything after 'vmlinuz-')
+                full_version = os.path.basename(f).replace("vmlinuz-", "")
+                
+                if full_version in existing_versions:
+                    continue
+                
+                # Check if it ends with one of our known suffixes
+                found_profile = "Custom"
+                for suffix, profile_name in suffixes.items():
+                    if full_version.endswith(f"-{suffix}"):
+                        found_profile = profile_name
+                        break
+                else:
+                    # If it doesn't end with a known suffix, it's not one of ours
+                    continue
+                
+                # If we're here, it's a kernel we built but isn't in history
+                file_time = os.path.getmtime(f)
+                install_date = datetime.fromtimestamp(file_time).isoformat()
+                
+                new_entries.append(InstalledKernel(
+                    version=full_version,
+                    profile=found_profile,
+                    installed_date=install_date
+                ))
+            
+            if new_entries:
+                # Add to history and sort by date (newest first)
+                history.extend(new_entries)
+                history.sort(key=lambda k: k.installed_date, reverse=True)
+                
+                # We don't necessarily save back to JSON immediately to avoid
+                # unnecessary writes, but the UI will see the combined list.
+                # If the user does an operation, it will be saved correctly anyway.
+                
+        except Exception as e:
+            print(f"Warning syncing history with system: {e}")
+            
         return history
     
     def cleanup_build_files(self) -> bool:
         """Remove build directory and temporary files."""
         try:
-            import shutil
             if os.path.exists(self._build_dir):
                 shutil.rmtree(self._build_dir)
             return True
