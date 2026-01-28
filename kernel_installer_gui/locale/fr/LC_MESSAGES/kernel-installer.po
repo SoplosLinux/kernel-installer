@@ -746,3 +746,27 @@ msgstr "Exécution de dracut..."
 #: kernel_installer_gui/core/kernel.py:772
 msgid "Removing kernel and updating bootloader..."
 msgstr "Suppression du noyau et mise à jour du chargeur d'amorçage..."
+
+msgid "Running mkinitcpio (generating initramfs)..."
+msgstr "Exécution de mkinitcpio (génération de l'initramfs)..."
+
+msgid "Running dracut (generating initramfs)..."
+msgstr "Exécution de dracut (génération de l'initramfs)..."
+
+msgid "Updating initramfs..."
+msgstr "Mise à jour de l'initramfs..."
+
+msgid "Updating GRUB bootloader..."
+msgstr "Mise à jour du chargeur d'amorçage GRUB..."
+
+msgid "Generating GRUB configuration..."
+msgstr "Génération de la configuration GRUB..."
+
+msgid "Installing GRUB..."
+msgstr "Installation de GRUB..."
+
+msgid "Setting up kernel image..."
+msgstr "Configuration de l'image du noyau..."
+
+msgid "Installing kernel packages..."
+msgstr "Installation des paquets du noyau..."

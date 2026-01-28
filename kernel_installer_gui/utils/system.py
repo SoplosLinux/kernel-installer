@@ -120,6 +120,55 @@ def run_privileged(cmd: str) -> subprocess.CompletedProcess:
     )
 
 
+def run_privileged_with_callback(cmd: str, line_callback=None, stop_check=None) -> int:
+    """
+    Run a command with elevated privileges and provide output via callback.
+    Maintains a single password prompt by using a single sh -c wrapper.
+    
+    Args:
+        cmd: Command to run as root
+        line_callback: Function to call with each line of output
+        stop_check: Function returning True if execution should be cancelled
+        
+    Returns:
+        Exit code or -1 if cancelled
+    """
+    import shutil
+    import sys
+    
+    # Check if pkexec is available
+    if shutil.which('pkexec'):
+        # We MUST use sh -c to ensure the entire chain runs under one pkexec session
+        full_cmd = f"pkexec sh -c {subprocess.list2cmdline([cmd])}"
+    else:
+        full_cmd = f"sudo sh -c {subprocess.list2cmdline([cmd])}"
+        
+    process = subprocess.Popen(
+        full_cmd,
+        shell=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        text=True,
+        bufsize=1
+    )
+    
+    # Process output
+    for line in iter(process.stdout.readline, ''):
+        if stop_check and stop_check():
+            process.terminate()
+            return -1
+            
+        line = line.strip()
+        if line:
+            # Print to terminal for debugging
+            print(f"PRIVILEGED: {line}", file=sys.stderr)
+            if line_callback:
+                line_callback(line)
+                
+    process.wait()
+    return process.returncode
+
+
 def reboot_system() -> bool:
     """
     Reboot the system using systemctl or reboot command.

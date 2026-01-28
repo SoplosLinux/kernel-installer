@@ -737,3 +737,27 @@ msgstr "Executando dracut..."
 #: kernel_installer_gui/core/kernel.py:772
 msgid "Removing kernel and updating bootloader..."
 msgstr "Removendo kernel e atualizando o bootloader..."
+
+msgid "Running mkinitcpio (generating initramfs)..."
+msgstr "Executando mkinitcpio (gerando initramfs)..."
+
+msgid "Running dracut (generating initramfs)..."
+msgstr "Executando dracut (gerando initramfs)..."
+
+msgid "Updating initramfs..."
+msgstr "Atualizando initramfs..."
+
+msgid "Updating GRUB bootloader..."
+msgstr "Atualizando o carregador de inicialização GRUB..."
+
+msgid "Generating GRUB configuration..."
+msgstr "Gerando configuração do GRUB..."
+
+msgid "Installing GRUB..."
+msgstr "Instalando GRUB..."
+
+msgid "Setting up kernel image..."
+msgstr "Configurando a imagem del kernel..."
+
+msgid "Installing kernel packages..."
+msgstr "Instalando pacotes do kernel..."

@@ -18,7 +18,8 @@ from .distro import DistroDetector, DistroFamily
 from .profiles import KernelProfile, ProfileType
 from ..utils.system import (
     run_command, run_command_with_callback, run_privileged,
-    get_build_directory, ensure_directory, get_cpu_count
+    run_privileged_with_callback, get_build_directory, 
+    ensure_directory, get_cpu_count
 )
 from ..locale.i18n import _
 
@@ -566,13 +567,41 @@ class KernelManager:
         bootloader_cmd = self._distro.get_bootloader_update_command()
         cmds.append(bootloader_cmd)
         
-        # Combine all commands into a single privileged call
+        # 3. Combine and run with descriptive feedback
         self._report_progress(_("Finalizing installation (may require password)..."), 95)
-        full_cmd = " && ".join(cmds)
-        result = run_privileged(full_cmd)
         
-        if result.returncode != 0:
-            self._report_progress(_("Installation error: %(error)s") % {'error': result.stderr or result.stdout}, -1)
+        def install_callback(line: str) -> None:
+            # Detect heavy phases to update UI
+            patterns = {
+                'mkinitcpio': _("Running mkinitcpio (generating initramfs)..."),
+                'dracut': _("Running dracut (generating initramfs)..."),
+                'update-initramfs': _("Updating initramfs..."),
+                'update-grub': _("Updating GRUB bootloader..."),
+                'grub-mkconfig': _("Generating GRUB configuration..."),
+                'grub-install': _("Installing GRUB..."),
+                'Setting up linux-image': _("Setting up kernel image..."),
+                'Installing: kernel': _("Installing kernel packages..."),
+            }
+            
+            for pattern, msg in patterns.items():
+                if pattern in line:
+                    # Move progress slightly to show activity (95 -> 99)
+                    current_percent = min(95 + (len(line) % 4), 99)
+                    self._report_progress(msg, current_percent)
+                    return
+
+        full_cmd = " && ".join(cmds)
+        exit_code = run_privileged_with_callback(
+            full_cmd, 
+            line_callback=install_callback,
+            stop_check=self._is_cancelled
+        )
+        
+        if exit_code != 0:
+            if exit_code == -1:
+                self._report_progress(_("Installation cancelled by user."), -2)
+            else:
+                self._report_progress(_("Installation error (Check logs)"), -1)
             return False
         
         # Save to history
