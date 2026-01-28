@@ -14,6 +14,7 @@ from .main_window import KernelInstallerWindow
 from ..core.notifications import get_notification_manager
 from ..core.kernel import KernelManager
 from ..locale.i18n import _
+from .. import __version__
 
 
 class KernelInstallerApp(Gtk.Application):
@@ -322,7 +323,7 @@ progressbar trough {
         """Show about dialog."""
         about = Gtk.AboutDialog(transient_for=self._window, modal=True)
         about.set_program_name(_("Kernel Installer"))
-        about.set_version("1.0.2")
+        about.set_version(__version__)
         about.set_comments(
             _("A graphical interface for downloading, compiling and installing the Linux kernel with optimized profiles.")
         )
