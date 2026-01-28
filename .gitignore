@@ -70,3 +70,7 @@ releases/
 # OS generated files
 .DS_Store
 Thumbs.db
+
+# Planning and proposals
+ICON_PROPOSALS.md
+FUTURE_PROJECTS.md

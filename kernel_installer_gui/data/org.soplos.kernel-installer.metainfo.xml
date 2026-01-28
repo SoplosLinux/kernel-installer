@@ -127,6 +127,67 @@
   </branding>
   
   <releases>
+    <release version="1.0.3" date="2026-01-28">
+      <description>
+        <p>New visual identity, improved feedback and history management</p>
+        <p xml:lang="es">Nueva identidad visual, mejoras en feedback e historial</p>
+        <p xml:lang="fr">Nouvelle identité visuelle, améliorations du feedback et de l'historique</p>
+        <p xml:lang="pt">Nova identidade visual, melhorias no feedback e no histórico</p>
+        <p xml:lang="de">Neue visuelle Identität, Feedback- und Verlaufsverbesserungen</p>
+        <p xml:lang="it">Nuova identità visiva, miglioramenti del feedback e della cronologia</p>
+        <p xml:lang="ro">Nouă identitate vizuală, îmbunătățiri ale feedback-ului și istoricului</p>
+        <p xml:lang="ru">Новая визуальная идентичность, улучшение обратной связи и истории</p>
+        <ul>
+          <li>Redesigned application icon for a more modern and technical look</li>
+          <li>Real-time build feedback during the final packaging phase (90-100%)</li>
+          <li>Refactored history management to prevent duplicate entries</li>
+          <li>Improved system synchronization and kernel removal process</li>
+          <li>Updated translations for all 8 supported languages</li>
+          
+          <li xml:lang="es">Ícono de la aplicación rediseñado para un aspecto más moderno y técnico</li>
+          <li xml:lang="es">Feedback de compilación en tiempo real durante la fase final de empaquetado (90-100%)</li>
+          <li xml:lang="es">Gestión de historial refactorizada para evitar entradas duplicadas</li>
+          <li xml:lang="es">Proceso de eliminación de kernel y sincronización del sistema mejorados</li>
+          <li xml:lang="es">Traducciones actualizadas para los 8 idiomas soportados</li>
+          
+          <li xml:lang="fr">Icône de l'application redessinée pour un look plus moderne et technique</li>
+          <li xml:lang="fr">Feedback de build en temps réel pendant la phase finale d'empaquetage (90-100%)</li>
+          <li xml:lang="fr">Gestion de l'historique refactorisée pour éviter les entrées dupliquées</li>
+          <li xml:lang="fr">Amélioration du processus de suppression du noyau et de la synchronisation</li>
+          <li xml:lang="fr">Traductions mises à jour pour les 8 langues supportées</li>
+          
+          <li xml:lang="pt">Ícone da aplicação redesenhado para um aspeto mais moderno e técnico</li>
+          <li xml:lang="pt">Feedback de compilação em tempo real durante a fase final de empacotamento (90-100%)</li>
+          <li xml:lang="pt">Gestão do histórico refactorizada para evitar entradas duplicadas</li>
+          <li xml:lang="pt">Melhoria do processo de remoção do kernel e sincronização do sistema</li>
+          <li xml:lang="pt">Traduções atualizadas para todos os 8 idiomas suportados</li>
+          
+          <li xml:lang="de">Neu gestaltetes Anwendungs-Icon für ein moderneres und technisches Aussehen</li>
+          <li xml:lang="de">Echtzeit-Build-Feedback während der finalen Paketierungsphase (90-100%)</li>
+          <li xml:lang="de">Überarbeitete Verlaufsverwaltung zur Vermeidung doppelter Einträge</li>
+          <li xml:lang="de">Verbesserte Kernel-Entfernung und Systemsynchronisation</li>
+          <li xml:lang="de">Aktualisierte Übersetzungen für alle 8 unterstützten Sprachen</li>
+          
+          <li xml:lang="it">Icona dell'applicazione ridisegnata per un look più moderno e tecnico</li>
+          <li xml:lang="it">Feedback della build in tempo reale durante la fase finale di pacchettizzazione (90-100%)</li>
+          <li xml:lang="it">Gestione della cronologia rifattorizzata per evitare voci duplicate</li>
+          <li xml:lang="it">Migliorato il processo di rimozione del kernel e la sincronizzazione del sistema</li>
+          <li xml:lang="it">Traduzioni aggiornate per tutte le 8 lingue supportate</li>
+          
+          <li xml:lang="ro">Pictogramă a aplicației reproiectată pentru un aspect mai modern și tehnic</li>
+          <li xml:lang="ro">Feedback de construcție în timp real în faza finală de ambalare (90-100%)</li>
+          <li xml:lang="ro">Gestionarea istoricului refactorizată pentru a preveni intrările duplicate</li>
+          <li xml:lang="ro">Proces îmbunătățit de eliminare a kernelului și sincronizare a sistemului</li>
+          <li xml:lang="ro">Traduceri actualizate pentru toate cele 8 limbi acceptate</li>
+          
+          <li xml:lang="ru">Обновленная иконка приложения для более современного и технического вида</li>
+          <li xml:lang="ru">Обратная связь по сборке в режиме реального времени на финальном этапе (90-100%)</li>
+          <li xml:lang="ru">Переработанное управление историей для предотвращения дублирования записей</li>
+          <li xml:lang="ru">Улучшенный процесс удаления ядра и синхронизации системы</li>
+          <li xml:lang="ru">Обновлены переводы для всех 8 поддерживаемых языков</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.0.2" date="2026-01-27">
       <description>
         <p>Build optimizations and distribution fixes</p>

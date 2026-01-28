@@ -1,5 +1,5 @@
 Name:           kernel-installer
-Version:        1.0.2
+Version:        1.0.3
 Release:        1
 Summary:        Graphical interface for downloading, compiling and installing Linux kernels (Mageia Family)
 Group:          System/Configuration/Hardware
@@ -85,6 +85,12 @@ cp kernel_installer_gui/assets/icons/org.soplos.kernel-installer-256.png %{build
 %{_datadir}/icons/hicolor/*/apps/org.soplos.kernel-installer.png
 
 %changelog
+* Wed Jan 28 2026 Sergi Perich <info@soploslinux.com> - 1.0.3-1
+- New visual identity and active packaging feedback
+- Improved history management and duplicate prevention
+- Consolidated kernel removal to reduce password prompts
+- Updated translations for all 8 supported languages
+
 * Mon Jan 26 2026 Sergi Perich <info@soploslinux.com> - 1.0.1-2
 - Corrected dependencies for Mageia 10 with DNF
 - Changed gtk+3.0 (virtual provide, architecture independent)

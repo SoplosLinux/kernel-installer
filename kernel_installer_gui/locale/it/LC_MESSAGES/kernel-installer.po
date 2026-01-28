@@ -702,5 +702,42 @@ msgstr "Cancelled"
 #~ msgid "Warning: Error regenerating initramfs"
 #~ msgstr "Avviso: Erore durante la rigenerazione di initramfs"
 
-#~ msgid "Warning: Error updating bootloader"
-#~ msgstr "Avviso: Errore durante l'aggiornamento del bootloader"
+#: kernel_installer_gui/core/kernel.py:414
+msgid "Generating .deb package (compressing)..."
+msgstr "Generazione del pacchetto .deb (compressione)..."
+
+#: kernel_installer_gui/core/kernel.py:416
+msgid "Preparing Debian packaging scripts..."
+msgstr "Preparazione degli script di pacchettizzazione Debian..."
+
+#: kernel_installer_gui/core/kernel.py:417
+msgid "Generating RPM package (compressing)..."
+msgstr "Generazione del pacchetto RPM (compressione)..."
+
+#: kernel_installer_gui/core/kernel.py:418
+msgid "RPM package generated."
+msgstr "Pacchetto RPM generato."
+
+#: kernel_installer_gui/core/kernel.py:419
+msgid "Kernel image ready, finalizing..."
+msgstr "Immagine del kernel pronta, finalizzazione..."
+
+#: kernel_installer_gui/core/kernel.py:420
+msgid "Finalizing modules (stage 2)..."
+msgstr "Finalizzazione dei moduli (fase 2)..."
+
+#: kernel_installer_gui/core/kernel.py:421
+msgid "Compressing kernel modules..."
+msgstr "Compressione dei moduli del kernel..."
+
+#: kernel_installer_gui/core/kernel.py:422
+msgid "Running mkinitcpio..."
+msgstr "Esecuzione di mkinitcpio..."
+
+#: kernel_installer_gui/core/kernel.py:423
+msgid "Running dracut..."
+msgstr "Esecuzione di dracut..."
+
+#: kernel_installer_gui/core/kernel.py:772
+msgid "Removing kernel and updating bootloader..."
+msgstr "Rimozione del kernel e aggiornamento del bootloader..."

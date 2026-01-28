@@ -696,5 +696,42 @@ msgstr "Cancelled"
 #~ msgid "Warning: Error regenerating initramfs"
 #~ msgstr "Warning: Error regenerating initramfs"
 
-#~ msgid "Warning: Error updating bootloader"
-#~ msgstr "Warning: Error updating bootloader"
+#: kernel_installer_gui/core/kernel.py:414
+msgid "Generating .deb package (compressing)..."
+msgstr "Generating .deb package (compressing)..."
+
+#: kernel_installer_gui/core/kernel.py:416
+msgid "Preparing Debian packaging scripts..."
+msgstr "Preparing Debian packaging scripts..."
+
+#: kernel_installer_gui/core/kernel.py:417
+msgid "Generating RPM package (compressing)..."
+msgstr "Generating RPM package (compressing)..."
+
+#: kernel_installer_gui/core/kernel.py:418
+msgid "RPM package generated."
+msgstr "RPM package generated."
+
+#: kernel_installer_gui/core/kernel.py:419
+msgid "Kernel image ready, finalizing..."
+msgstr "Kernel image ready, finalizing..."
+
+#: kernel_installer_gui/core/kernel.py:420
+msgid "Finalizing modules (stage 2)..."
+msgstr "Finalizing modules (stage 2)..."
+
+#: kernel_installer_gui/core/kernel.py:421
+msgid "Compressing kernel modules..."
+msgstr "Compressing kernel modules..."
+
+#: kernel_installer_gui/core/kernel.py:422
+msgid "Running mkinitcpio..."
+msgstr "Running mkinitcpio..."
+
+#: kernel_installer_gui/core/kernel.py:423
+msgid "Running dracut..."
+msgstr "Running dracut..."
+
+#: kernel_installer_gui/core/kernel.py:772
+msgid "Removing kernel and updating bootloader..."
+msgstr "Removing kernel and updating bootloader..."

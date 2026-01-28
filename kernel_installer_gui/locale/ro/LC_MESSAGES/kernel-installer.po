@@ -700,5 +700,42 @@ msgstr "Cancelled"
 #~ msgid "Warning: Error regenerating initramfs"
 #~ msgstr "Avertisment: Eroare la regenerarea initramfs"
 
-#~ msgid "Warning: Error updating bootloader"
-#~ msgstr "Avertisment: Eroare la actualizarea bootloader-ului"
+#: kernel_installer_gui/core/kernel.py:414
+msgid "Generating .deb package (compressing)..."
+msgstr "Se generează pachetul .deb (comprimare)..."
+
+#: kernel_installer_gui/core/kernel.py:416
+msgid "Preparing Debian packaging scripts..."
+msgstr "Se pregătesc scripturile de ambalare Debian..."
+
+#: kernel_installer_gui/core/kernel.py:417
+msgid "Generating RPM package (compressing)..."
+msgstr "Se generează pachetul RPM (comprimare)..."
+
+#: kernel_installer_gui/core/kernel.py:418
+msgid "RPM package generated."
+msgstr "Pachet RPM generat."
+
+#: kernel_installer_gui/core/kernel.py:419
+msgid "Kernel image ready, finalizing..."
+msgstr "Imagineea kernelului este gata, finalizare..."
+
+#: kernel_installer_gui/core/kernel.py:420
+msgid "Finalizing modules (stage 2)..."
+msgstr "Finalizare module (etapa 2)..."
+
+#: kernel_installer_gui/core/kernel.py:421
+msgid "Compressing kernel modules..."
+msgstr "Comprimare module kernel..."
+
+#: kernel_installer_gui/core/kernel.py:422
+msgid "Running mkinitcpio..."
+msgstr "Se execută mkinitcpio..."
+
+#: kernel_installer_gui/core/kernel.py:423
+msgid "Running dracut..."
+msgstr "Se execută dracut..."
+
+#: kernel_installer_gui/core/kernel.py:772
+msgid "Removing kernel and updating bootloader..."
+msgstr "Se elimină kernelul și se actualizează bootloader-ul..."

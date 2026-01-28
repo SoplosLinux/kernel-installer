@@ -399,10 +399,36 @@ class KernelManager:
         
         def line_callback(line: str) -> None:
             nonlocal compiled_count
+            
+            # 1. Compilation progress
             if ' CC ' in line or ' LD ' in line or ' AR ' in line:
                 compiled_count += 1
                 percent = min(30 + int((compiled_count / total_files) * 60), 90)
                 self._report_progress(line[:80], percent)
+                return
+
+            # 2. Packaging progress (90%+)
+            # Patterns for different package managers and final steps
+            packaging_patterns = {
+                'dpkg-deb: building package': _("Generating .deb package (compressing)..."),
+                'dpkg-deb: construyendo el paquete': _("Generating .deb package (compressing)..."),
+                'Scripts/package/builddeb': _("Preparing Debian packaging scripts..."),
+                'rpmbuild': _("Generating RPM package (compressing)..."),
+                'Wrote:': _("RPM package generated."),
+                'arch/x86/boot/bzImage is ready': _("Kernel image ready, finalizing..."),
+                'Building modules, stage 2': _("Finalizing modules (stage 2)..."),
+                'Compressing modules': _("Compressing kernel modules..."),
+                'MKINITCPIO': _("Running mkinitcpio..."),
+                'dracut': _("Running dracut..."),
+            }
+
+            for pattern, msg in packaging_patterns.items():
+                if pattern in line:
+                    # Bump progress slowly from 90 to 98
+                    # We don't have a file count here, so we just use small increments
+                    current_percent = 90 + (compiled_count % 8) # Pseudo-movement
+                    self._report_progress(msg, current_percent)
+                    return
         
         # Build command depends on distro family
         distro_info = self._distro.detect()
@@ -550,7 +576,7 @@ class KernelManager:
             return False
         
         # Save to history
-        self._save_to_history(version, profile)
+        self._save_to_history(kernel_version, profile)
         
         self._report_progress(_("Installation complete!"), 100)
         return True
@@ -618,41 +644,56 @@ class KernelManager:
         """Get path to history file."""
         return os.path.join(Path.home(), self.HISTORY_FILE)
     
-    def _save_to_history(self, version: str, profile: KernelProfile) -> None:
-        """Save installation to history."""
-        history = self.get_installation_history()
+    def _save_to_history(self, full_version: str, profile: KernelProfile) -> None:
+        """Save installation to history. Only saves to JSON file, doesn't mix with system scan."""
+        history = []
+        path = self._get_history_path()
         
-        custom = getattr(self, '_custom_name', 'custom')
-        full_version = f"{version}-{custom}-{profile.suffix}"
+        # 1. Load ONLY from JSON to avoid circular pollution
+        try:
+            if os.path.exists(path):
+                with open(path, 'r') as f:
+                    data = json.load(f)
+                    history = [
+                        InstalledKernel(
+                            version=item['version'],
+                            profile=item['profile'],
+                            installed_date=item['installed_date']
+                        ) for item in data
+                    ]
+        except Exception:
+            pass
+
+        # 2. Remove any existing entry with the same version (case-insensitive)
+        history = [k for k in history if k.version.casefold() != full_version.casefold()]
         
+        # 3. Add new entry at top
         history.insert(0, InstalledKernel(
             version=full_version,
             profile=profile.name,
             installed_date=datetime.now().isoformat()
         ))
         
-        # Keep only last 20 entries
-        history = history[:20]
-        
-        # Save to file
+        # 4. Save back to JSON (max 20)
         try:
-            with open(self._get_history_path(), 'w') as f:
+            with open(path, 'w') as f:
                 json.dump([
                     {
                         'version': k.version,
                         'profile': k.profile,
                         'installed_date': k.installed_date
                     }
-                    for k in history
+                    for k in history[:20]
                 ], f, indent=2)
         except Exception as e:
             print(f"Error saving history: {e}")
     
     def get_installation_history(self) -> List[InstalledKernel]:
-        """Get list of previously installed kernels."""
+        """Get combined list of installed kernels (JSON history + /boot scan)."""
         history = []
         current = self.get_current_kernel()
         
+        # 1. Load from JSON
         try:
             path = self._get_history_path()
             if os.path.exists(path):
@@ -662,70 +703,55 @@ class KernelManager:
                         history.append(InstalledKernel(
                             version=item['version'],
                             profile=item['profile'],
-                            installed_date=item['installed_date'],
-                            is_current=(item['version'] == current)
+                            installed_date=item['installed_date']
                         ))
-        except Exception as e:
-            print(f"Error loading history: {e}")
+        except Exception:
+            pass
         
-        # 4. Sync with system (scan /boot for kernels not in history)
+        # 2. Sync with system (scan /boot for kernels not in history)
         history = self._sync_with_system(history)
         
-        return history
+        # 3. Final deduplication and marking current
+        unique_history = []
+        seen = set()
+        for k in history:
+            v_cf = k.version.casefold()
+            if v_cf not in seen:
+                k.is_current = (k.version == current)
+                unique_history.append(k)
+                seen.add(v_cf)
+        
+        return unique_history
     
     def _sync_with_system(self, history: List[InstalledKernel]) -> List[InstalledKernel]:
-        """Scan /boot for kernels that might be missing from the JSON history."""
+        """Scan /boot for kernels missing from the provided history list."""
         try:
             from .profiles import get_all_profiles
+            existing_versions = {k.version.casefold() for k in history}
             
-            # Get existing versions for faster lookup
-            existing_versions = {k.version for k in history}
             profiles = get_all_profiles()
             suffixes = {p.suffix: p.name for p in profiles}
             
             # Scan /boot for vmlinuz files
-            # Pattern: vmlinuz-<version>-<custom_name>-<suffix>
-            vmlinuz_files = glob.glob("/boot/vmlinuz-*")
-            
-            new_entries = []
-            for f in vmlinuz_files:
-                # Extract the full version string (everything after 'vmlinuz-')
+            for f in glob.glob("/boot/vmlinuz-*"):
                 full_version = os.path.basename(f).replace("vmlinuz-", "")
-                
-                if full_version in existing_versions:
+                if full_version.casefold() in existing_versions:
                     continue
                 
-                # Check if it ends with one of our known suffixes
-                found_profile = "Custom"
+                # Check profile by suffix
                 for suffix, profile_name in suffixes.items():
                     if full_version.endswith(f"-{suffix}"):
-                        found_profile = profile_name
+                        file_time = os.path.getmtime(f)
+                        history.append(InstalledKernel(
+                            version=full_version,
+                            profile=profile_name,
+                            installed_date=datetime.fromtimestamp(file_time).isoformat()
+                        ))
                         break
-                else:
-                    # If it doesn't end with a known suffix, it's not one of ours
-                    continue
-                
-                # If we're here, it's a kernel we built but isn't in history
-                file_time = os.path.getmtime(f)
-                install_date = datetime.fromtimestamp(file_time).isoformat()
-                
-                new_entries.append(InstalledKernel(
-                    version=full_version,
-                    profile=found_profile,
-                    installed_date=install_date
-                ))
             
-            if new_entries:
-                # Add to history and sort by date (newest first)
-                history.extend(new_entries)
-                history.sort(key=lambda k: k.installed_date, reverse=True)
-                
-                # We don't necessarily save back to JSON immediately to avoid
-                # unnecessary writes, but the UI will see the combined list.
-                # If the user does an operation, it will be saved correctly anyway.
-                
+            history.sort(key=lambda k: k.installed_date, reverse=True)
         except Exception as e:
-            print(f"Warning syncing history with system: {e}")
+            print(f"Warning syncing history: {e}")
             
         return history
     
@@ -753,20 +779,19 @@ class KernelManager:
         
         # 1. Get remove command
         remove_cmd = self._distro.get_kernel_remove_command(kernel_version)
-        self._report_progress(_("Uninstalling packages/files..."), 20)
         
-        result = run_privileged(remove_cmd)
-        if result.returncode != 0:
-            self._report_progress(_("Error removing kernel: %(error)s") % {'error': result.stderr}, -1)
-            return False
-            
-        # 2. Update bootloader
-        self._report_progress(_("Updating bootloader..."), 60)
+        # 2. Get bootloader update command
         bootloader_cmd = self._distro.get_bootloader_update_command()
-        result = run_privileged(bootloader_cmd)
+        
+        # Combine both in a single privileged call to ask for password only once
+        self._report_progress(_("Removing kernel and updating bootloader..."), 20)
+        
+        full_cmd = f"{remove_cmd} && {bootloader_cmd}"
+        result = run_privileged(full_cmd)
         
         if result.returncode != 0:
-            self._report_progress(_("Warning: Error updating bootloader during removal"), -1)
+            self._report_progress(_("Error removing kernel: %(error)s") % {'error': result.stderr or result.stdout}, -1)
+            return False
             
         # 3. Remove from history
         self._report_progress(_("Updating history..."), 90)

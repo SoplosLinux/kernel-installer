@@ -6,7 +6,7 @@ A GTK3 frontend for downloading, compiling and installing
 the latest Linux kernel with optimized profiles.
 """
 
-__version__ = "1.0.2"
+__version__ = "1.0.3"
 __author__ = "Sergi Perich & Alexia Michelle"
 
 # Initialize internationalization

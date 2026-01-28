@@ -1,5 +1,5 @@
 Name:           kernel-installer
-Version:        1.0.2
+Version:        1.0.3
 Release:        1
 Summary:        Graphical interface for downloading, compiling and installing Linux kernels
 

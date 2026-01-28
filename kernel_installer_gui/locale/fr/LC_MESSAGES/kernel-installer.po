@@ -707,6 +707,42 @@ msgstr "Cancelled"
 #~ msgid "Warning: Error regenerating initramfs"
 #~ msgstr "Avertissement : Erreur lors de la régénération d'initramfs"
 
-#~ msgid "Warning: Error updating bootloader"
-#~ msgstr ""
-#~ "Avertissement : Erreur lors de la mise à jour du chargeur d'amorçage"
+#: kernel_installer_gui/core/kernel.py:414
+msgid "Generating .deb package (compressing)..."
+msgstr "Génération du paquet .deb (compression)..."
+
+#: kernel_installer_gui/core/kernel.py:416
+msgid "Preparing Debian packaging scripts..."
+msgstr "Préparation des scripts d'empaquetage Debian..."
+
+#: kernel_installer_gui/core/kernel.py:417
+msgid "Generating RPM package (compressing)..."
+msgstr "Génération du paquet RPM (compression)..."
+
+#: kernel_installer_gui/core/kernel.py:418
+msgid "RPM package generated."
+msgstr "Paquet RPM généré."
+
+#: kernel_installer_gui/core/kernel.py:419
+msgid "Kernel image ready, finalizing..."
+msgstr "Image du noyau prête, finalisation..."
+
+#: kernel_installer_gui/core/kernel.py:420
+msgid "Finalizing modules (stage 2)..."
+msgstr "Finalisation des modules (étape 2)..."
+
+#: kernel_installer_gui/core/kernel.py:421
+msgid "Compressing kernel modules..."
+msgstr "Compression des modules du noyau..."
+
+#: kernel_installer_gui/core/kernel.py:422
+msgid "Running mkinitcpio..."
+msgstr "Exécution de mkinitcpio..."
+
+#: kernel_installer_gui/core/kernel.py:423
+msgid "Running dracut..."
+msgstr "Exécution de dracut..."
+
+#: kernel_installer_gui/core/kernel.py:772
+msgid "Removing kernel and updating bootloader..."
+msgstr "Suppression du noyau et mise à jour du chargeur d'amorçage..."

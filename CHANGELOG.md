@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.3] - 2026-01-28
+
+### Added
+
+- **New Brand Identity**: Completely redesigned application icon with a modern, technical look.
+- **Active Packaging Feedback**: Real-time descriptive messages during the final 90-100% build phase (dpkg-deb, rpmbuild, mkinitcpio, etc.).
+- **Multi-language Expansion**: Full i18n support updated for 8 languages (EN, ES, FR, PT, DE, IT, RO, RU).
+- **Future Roadmap**: Added `FUTURE_PROJECTS.md` with cross-platform build concepts.
+
+### Changed
+
+- **Optimized Kernel Removal**: Consolidated kernel removal and bootloader updates into a single privileged operation, reducing password prompts.
+- **Improved History Management**: Refactored kernel history to prevent duplicate entries and ensure cleaner synchronization with `/boot`.
+- **System Synchronization**: Robust deduplication logic during system scan.
+
 ## [1.0.2] - 2026-01-27
 
 ### Changed

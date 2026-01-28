@@ -14,7 +14,7 @@ if readme_path.exists():
 
 setup(
     name="kernel-installer-gui",
-    version="1.0.2",
+    version="1.0.3",
     author="Sergi Perich",
     author_email="info@soploslinux.com",
     description="GTK3 GUI for downloading, compiling and installing Linux kernels",

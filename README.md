@@ -1,4 +1,4 @@
-# Kernel Installer
+# Kernel Installer GUI v1.0.3
 
 A graphical interface for downloading, compiling, and installing the Linux kernel with optimized profiles.
 

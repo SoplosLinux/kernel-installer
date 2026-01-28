@@ -3,7 +3,7 @@
 set -e
 
 APP_NAME="kernel-installer"
-VERSION="1.0.2"
+VERSION="1.0.3"
 BUILD_DIR="build_packages"
 RPM_BUILD_DIR="$HOME/rpmbuild"
 
@@ -98,6 +98,7 @@ license = GPL3
 depend = python-gobject
 depend = gtk3
 depend = base-devel
+depend = libnotify
 depend = bc
 depend = rsync
 depend = wget
@@ -114,15 +115,20 @@ EOF
 
 # Create the package using tar properly to ensure metadata is at the root
 # The '--transform' or just 'tar -C "$ARCH_DIR" -c . ' avoids leading './'
-# We also use a more standard filename format
+# We also use a more standard filename format and enforce permissions and root ownership
 ARCH_PKG_NAME="${APP_NAME}-${VERSION}-${PKGREL}-any.pkg.tar.zst"
 
+# Fix permissions before archiving (dirs 755, files 644, exe 755)
+find "$ARCH_DIR" -type d -exec chmod 755 {} +
+find "$ARCH_DIR" -type f -exec chmod 644 {} +
+chmod +x "$ARCH_DIR/usr/bin/kernel-installer"
+
 if tar --help | grep -q zstd; then
-    # Use --no-recursion if we manually ordered files, but a simple glob is usually fine
     # We must ensure .PKGINFO is near the beginning
-    tar -C "$ARCH_DIR" -c --zstd -f "releases/$ARCH_PKG_NAME" .PKGINFO usr
+    # Use --owner=0 --group=0 to ensure files are owned by root in the package
+    tar -C "$ARCH_DIR" --owner=0 --group=0 -c --zstd -f "releases/$ARCH_PKG_NAME" .PKGINFO usr
 elif command -v zstd >/dev/null; then
-    tar -C "$ARCH_DIR" -c .PKGINFO usr | zstd - > "releases/$ARCH_PKG_NAME"
+    tar -C "$ARCH_DIR" --owner=0 --group=0 -c .PKGINFO usr | zstd - > "releases/$ARCH_PKG_NAME"
 fi
 
 # Cleanup
