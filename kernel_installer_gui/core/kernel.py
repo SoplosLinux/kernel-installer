@@ -423,13 +423,18 @@ class KernelManager:
                 'dracut': _("Running dracut..."),
             }
 
-            for pattern, msg in packaging_patterns.items():
+            # 2. Verbosity for other steps and packaging (90%+)
+            msg = line[:100].strip()
+            # Bump progress slowly from 90 to 95
+            percent = min(90 + (compiled_count % 5), 95)
+            
+            for pattern, nice_msg in packaging_patterns.items():
                 if pattern in line:
-                    # Bump progress slowly from 90 to 98
-                    # We don't have a file count here, so we just use small increments
-                    current_percent = 90 + (compiled_count % 8) # Pseudo-movement
-                    self._report_progress(msg, current_percent)
-                    return
+                    msg = nice_msg
+                    break
+            
+            if msg:
+                self._report_progress(msg, percent)
         
         # Build command depends on distro family
         distro_info = self._distro.detect()
