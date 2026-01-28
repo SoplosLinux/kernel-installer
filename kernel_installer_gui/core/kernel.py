@@ -571,7 +571,7 @@ class KernelManager:
         self._report_progress(_("Finalizing installation (may require password)..."), 95)
         
         def install_callback(line: str) -> None:
-            # Detect heavy phases to update UI
+            # Patterns for high-level status messages
             patterns = {
                 'mkinitcpio': _("Running mkinitcpio (generating initramfs)..."),
                 'dracut': _("Running dracut (generating initramfs)..."),
@@ -583,12 +583,17 @@ class KernelManager:
                 'Installing: kernel': _("Installing kernel packages..."),
             }
             
-            for pattern, msg in patterns.items():
+            # Default status message (raw output for verbosity)
+            msg = line
+            # Keep progress moving slightly to avoid "stuck" feeling
+            current_percent = min(95 + (len(line) % 4), 99)
+            
+            for pattern, nice_msg in patterns.items():
                 if pattern in line:
-                    # Move progress slightly to show activity (95 -> 99)
-                    current_percent = min(95 + (len(line) % 4), 99)
-                    self._report_progress(msg, current_percent)
-                    return
+                    msg = nice_msg
+                    break
+            
+            self._report_progress(msg, current_percent)
 
         full_cmd = " && ".join(cmds)
         exit_code = run_privileged_with_callback(
