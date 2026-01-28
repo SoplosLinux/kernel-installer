@@ -1,0 +1,29 @@
+.TH KERNEL-INSTALLER 1 "2026-01-27" "1.0.2" "Kernel Installer Manual"
+.SH NAME
+kernel-installer \- A graphical interface for downloading, compiling and installing the Linux kernel
+.SH SYNOPSIS
+.B kernel-installer
+.SH DESCRIPTION
+.B kernel-installer
+is a GTK3 application designed to simplify the process of obtaining, configuring, and installing the Linux kernel. It supports multiple optimization profiles (Gaming, Audio/Video, Minimal) and is compatible with major Linux distributions.
+.SH OPTIONS
+This application does not take any command line options.
+.SH KEYBOARD SHORTCUTS
+.TP
+.B Ctrl+Q
+Quit the application.
+.TP
+.B F5
+Refresh available kernel versions.
+.SH FILES
+.TP
+.I /usr/share/kernel-installer/
+Application data and logic.
+.TP
+.I ~/.kernel_installer_history.json
+Installation history file.
+.SH AUTHORS
+Sergi Perich <info@soploslinux.com>
+Alexia Michelle <alexia@goldendoglinux.org>
+.SH LICENSE
+GPL-3.0

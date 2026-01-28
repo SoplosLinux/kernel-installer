@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>org.soplos.kernel-installer</id>
+  
+  <name>Kernel Installer</name>
+  <name xml:lang="es">Instalador de Kernel</name>
+  
+  <summary>Download, compile and install the latest Linux kernel</summary>
+  <summary xml:lang="es">Descarga, compila e instala el kernel Linux más reciente</summary>
+  <summary xml:lang="fr">Télécharger, compiler et installer le dernier noyau Linux</summary>
+  <summary xml:lang="pt">Descarregar, compilar e instalar o último kernel Linux</summary>
+  <summary xml:lang="de">Den neuesten Linux-Kernel herunterladen, kompilieren und installieren</summary>
+  <summary xml:lang="it">Scarica, compila e installa l'ultimo kernel Linux</summary>
+  <summary xml:lang="ro">Descărcați, compilați și instalați cel mai recent nucleu Linux</summary>
+  <summary xml:lang="ru">Скачивание, компиляция и установка последней версии ядра Linux</summary>
+  
+  <developer id="org.soplos">
+    <name>Sergi Perich (Fork of Alexia Michelle's version)</name>
+  </developer>
+  
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  
+  <description>
+    <p>
+      Kernel Installer is a graphical tool that simplifies the process of downloading,
+      compiling, and installing custom Linux kernels from kernel.org.
+    </p>
+    <p xml:lang="es">
+      Kernel Installer es una herramienta gráfica que simplifica el proceso de descargar,
+      compilar e instalar kernels Linux personalizados desde kernel.org.
+    </p>
+    <p xml:lang="fr">
+      Kernel Installer est un outil graphique qui simplifie le processus de téléchargement,
+      de compilation et d'installation de noyaux Linux personnalisés à partir de kernel.org.
+    </p>
+    <p xml:lang="pt">
+      O Kernel Installer é uma ferramenta gráfica que simplifica o processo de descarregar,
+      compilar e instalar kernels Linux personalizados a partir do kernel.org.
+    </p>
+    <p xml:lang="de">
+      Kernel Installer ist ein grafisches Tool, das den Prozess des Herunterladens,
+      Kompilierens und Installierens von angepassten Linux-Kerneln von kernel.org vereinfacht.
+    </p>
+    <p xml:lang="it">
+      Kernel Installer è uno strumento grafico che semplifica il processo di download,
+      compilazione e installazione di kernel Linux personalizzati da kernel.org.
+    </p>
+    <p xml:lang="ro">
+      Kernel Installer este un instrument grafic care simplifică procesul de descărcare,
+      compilare și instalare a nucleelor Linux personalizate de pe kernel.org.
+    </p>
+    <p xml:lang="ru">
+      Kernel Installer — это графический инструмент, упрощающий процесс загрузки,
+      компиляции и установки пользовательских ядер Linux с сайта kernel.org.
+    </p>
+  </description>
+  
+  <launchable type="desktop-id">org.soplos.kernel-installer.desktop</launchable>
+  
+  <url type="homepage">https://github.com/SoplosLinux/kernel-installer</url>
+  <url type="bugtracker">https://github.com/SoplosLinux/kernel-installer/issues</url>
+  <url type="vcs-browser">https://github.com/SoplosLinux/kernel-installer</url>
+  
+  <categories>
+    <category>System</category>
+    <category>Settings</category>
+  </categories>
+  
+  <keywords>
+    <keyword>kernel</keyword>
+    <keyword>linux</keyword>
+    <keyword>compile</keyword>
+    <keyword>install</keyword>
+    <keyword>update</keyword>
+    <keyword>build</keyword>
+    <keyword xml:lang="es">compilar</keyword>
+    <keyword xml:lang="es">instalar</keyword>
+    <keyword xml:lang="es">actualizar</keyword>
+    <keyword xml:lang="es">construir</keyword>
+    <keyword xml:lang="fr">noyau</keyword>
+    <keyword xml:lang="fr">compiler</keyword>
+    <keyword xml:lang="fr">installer</keyword>
+    <keyword xml:lang="fr">mettre à jour</keyword>
+    <keyword xml:lang="fr">construire</keyword>
+    <keyword xml:lang="pt">compilar</keyword>
+    <keyword xml:lang="pt">instalar</keyword>
+    <keyword xml:lang="pt">atualizar</keyword>
+    <keyword xml:lang="pt">construir</keyword>
+    <keyword xml:lang="de">kompilieren</keyword>
+    <keyword xml:lang="de">installieren</keyword>
+    <keyword xml:lang="de">aktualisieren</keyword>
+    <keyword xml:lang="de">erstellen</keyword>
+    <keyword xml:lang="it">compilare</keyword>
+    <keyword xml:lang="it">installare</keyword>
+    <keyword xml:lang="it">aggiornare</keyword>
+    <keyword xml:lang="it">costruire</keyword>
+    <keyword xml:lang="ro">nucleu</keyword>
+    <keyword xml:lang="ro">compila</keyword>
+    <keyword xml:lang="ro">instala</keyword>
+    <keyword xml:lang="ro">actualiza</keyword>
+    <keyword xml:lang="ro">construi</keyword>
+    <keyword xml:lang="ru">ядро</keyword>
+    <keyword xml:lang="ru">компилировать</keyword>
+    <keyword xml:lang="ru">установить</keyword>
+    <keyword xml:lang="ru">обновить</keyword>
+    <keyword xml:lang="ru">собрать</keyword>
+  </keywords>
+  
+  <provides>
+    <binary>kernel-installer-gui</binary>
+    <binary>kernel-installer</binary>
+  </provides>
+  
+  <requires>
+    <display_length compare="ge">768</display_length>
+  </requires>
+  
+  <supports>
+    <control>pointing</control>
+    <control>keyboard</control>
+  </supports>
+  
+  <branding>
+    <color type="primary" scheme_preference="light">#3584e4</color>
+    <color type="primary" scheme_preference="dark">#1a5fb4</color>
+  </branding>
+  
+  <releases>
+    <release version="1.0.3" date="2026-01-28">
+      <description>
+        <p>New visual identity, improved feedback and history management</p>
+        <p xml:lang="es">Nueva identidad visual, mejoras en feedback e historial</p>
+        <p xml:lang="fr">Nouvelle identité visuelle, améliorations du feedback et de l'historique</p>
+        <p xml:lang="pt">Nova identidade visual, melhorias no feedback e no histórico</p>
+        <p xml:lang="de">Neue visuelle Identität, Feedback- und Verlaufsverbesserungen</p>
+        <p xml:lang="it">Nuova identità visiva, miglioramenti del feedback e della cronologia</p>
+        <p xml:lang="ro">Nouă identitate vizuală, îmbunătățiri ale feedback-ului și istoricului</p>
+        <p xml:lang="ru">Новая визуальная идентичность, улучшение обратной связи и истории</p>
+        <ul>
+          <li>Redesigned application icon for a more modern and technical look</li>
+          <li>Real-time build feedback during the final packaging phase (90-100%)</li>
+          <li>Refactored history management to prevent duplicate entries</li>
+          <li>Improved system synchronization and kernel removal process</li>
+          <li>Updated translations for all 8 supported languages</li>
+          
+          <li xml:lang="es">Ícono de la aplicación rediseñado para un aspecto más moderno y técnico</li>
+          <li xml:lang="es">Feedback de compilación en tiempo real durante la fase final de empaquetado (90-100%)</li>
+          <li xml:lang="es">Gestión de historial refactorizada para evitar entradas duplicadas</li>
+          <li xml:lang="es">Proceso de eliminación de kernel y sincronización del sistema mejorados</li>
+          <li xml:lang="es">Traducciones actualizadas para los 8 idiomas soportados</li>
+          
+          <li xml:lang="fr">Icône de l'application redessinée pour un look plus moderne et technique</li>
+          <li xml:lang="fr">Feedback de build en temps réel pendant la phase finale d'empaquetage (90-100%)</li>
+          <li xml:lang="fr">Gestion de l'historique refactorisée pour éviter les entrées dupliquées</li>
+          <li xml:lang="fr">Amélioration du processus de suppression du noyau et de la synchronisation</li>
+          <li xml:lang="fr">Traductions mises à jour pour les 8 langues supportées</li>
+          
+          <li xml:lang="pt">Ícone da aplicação redesenhado para um aspeto mais moderno e técnico</li>
+          <li xml:lang="pt">Feedback de compilação em tempo real durante a fase final de empacotamento (90-100%)</li>
+          <li xml:lang="pt">Gestão do histórico refactorizada para evitar entradas duplicadas</li>
+          <li xml:lang="pt">Melhoria do processo de remoção do kernel e sincronização do sistema</li>
+          <li xml:lang="pt">Traduções atualizadas para todos os 8 idiomas suportados</li>
+          
+          <li xml:lang="de">Neu gestaltetes Anwendungs-Icon für ein moderneres und technisches Aussehen</li>
+          <li xml:lang="de">Echtzeit-Build-Feedback während der finalen Paketierungsphase (90-100%)</li>
+          <li xml:lang="de">Überarbeitete Verlaufsverwaltung zur Vermeidung doppelter Einträge</li>
+          <li xml:lang="de">Verbesserte Kernel-Entfernung und Systemsynchronisation</li>
+          <li xml:lang="de">Aktualisierte Übersetzungen für alle 8 unterstützten Sprachen</li>
+          
+          <li xml:lang="it">Icona dell'applicazione ridisegnata per un look più moderno e tecnico</li>
+          <li xml:lang="it">Feedback della build in tempo reale durante la fase finale di pacchettizzazione (90-100%)</li>
+          <li xml:lang="it">Gestione della cronologia rifattorizzata per evitare voci duplicate</li>
+          <li xml:lang="it">Migliorato il processo di rimozione del kernel e la sincronizzazione del sistema</li>
+          <li xml:lang="it">Traduzioni aggiornate per tutte le 8 lingue supportate</li>
+          
+          <li xml:lang="ro">Pictogramă a aplicației reproiectată pentru un aspect mai modern și tehnic</li>
+          <li xml:lang="ro">Feedback de construcție în timp real în faza finală de ambalare (90-100%)</li>
+          <li xml:lang="ro">Gestionarea istoricului refactorizată pentru a preveni intrările duplicate</li>
+          <li xml:lang="ro">Proces îmbunătățit de eliminare a kernelului și sincronizare a sistemului</li>
+          <li xml:lang="ro">Traduceri actualizate pentru toate cele 8 limbi acceptate</li>
+          
+          <li xml:lang="ru">Обновленная иконка приложения для более современного и технического вида</li>
+          <li xml:lang="ru">Обратная связь по сборке в режиме реального времени на финальном этапе (90-100%)</li>
+          <li xml:lang="ru">Переработанное управление историей для предотвращения дублирования записей</li>
+          <li xml:lang="ru">Улучшенный процесс удаления ядра и синхронизации системы</li>
+          <li xml:lang="ru">Обновлены переводы для всех 8 поддерживаемых языков</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.0.2" date="2026-01-27">
+      <description>
+        <p>Build optimizations and distribution fixes</p>
+        <p xml:lang="es">Optimizaciones de compilación y correcciones para distribuciones</p>
+        <p xml:lang="fr">Optimisations de build et corrections de distribution</p>
+        <p xml:lang="pt">Otimizações de compilação e correções de distribuição</p>
+        <p xml:lang="de">Build-Optimierungen und Fixes für Distributionen</p>
+        <p xml:lang="it">Ottimizzazioni della build e correzioni per le distribuzioni</p>
+        <p xml:lang="ro">Optimizări ale construcției și remedieri pentru distribuții</p>
+        <p xml:lang="ru">Оптимизация сборки и исправления для дистрибутивов</p>
+        <ul>
+          <li>Optimized build process by disabling kernel debug info (faster compilation)</li>
+          <li>Fixed Fedora build issues and corrected missing dependencies</li>
+          <li>Improved RPM packaging performance and compatibility</li>
+          <li>Standardized versioning across all supported distributions</li>
+          
+          <li xml:lang="es">Proceso de compilación optimizado desactivando la depuración del kernel (más rápido)</li>
+          <li xml:lang="es">Corregidos problemas de compilación en Fedora y dependencias faltantes</li>
+          <li xml:lang="es">Mejorado el rendimiento y la compatibilidad del empaquetado RPM</li>
+          <li xml:lang="es">Versiones estandarizadas en todas las distribuciones soportadas</li>
+          
+          <li xml:lang="fr">Processus de construction optimisé en désactivant les infos de débogage (plus rapide)</li>
+          <li xml:lang="fr">Correction des problèmes de build Fedora et des dépendances manquantes</li>
+          <li xml:lang="fr">Amélioration des performances et de la compatibilité des paquets RPM</li>
+          <li xml:lang="fr">Versions standardisées pour toutes les distributions supportées</li>
+          
+          <li xml:lang="pt">Processo de compilação otimizado desativando a depuração do kernel (mais rápido)</li>
+          <li xml:lang="pt">Corrigidos problemas de compilação no Fedora e dependências em falta</li>
+          <li xml:lang="pt">Melhor desempenho e compatibilidade da embalagem RPM</li>
+          <li xml:lang="pt">Versões padronizadas em todas as distribuições suportadas</li>
+          
+          <li xml:lang="de">Optimierter Build-Prozess durch Deaktivierung von Debug-Infos (schneller)</li>
+          <li xml:lang="de">Fedora Build-Probleme und fehlende Abhängigkeiten behoben</li>
+          <li xml:lang="de">RPM-Paketleistung und -Kompatibilität verbessert</li>
+          <li xml:lang="de">Standardisierte Versionierung über alle unterstützten Distributionen</li>
+          
+          <li xml:lang="it">Processo di build ottimizzato disabilitando le info di debug (più veloce)</li>
+          <li xml:lang="it">Risolti i problemi di build di Fedora e le dipendenze mancanti</li>
+          <li xml:lang="it">Migliorate le prestazioni e la compatibilità del packaging RPM</li>
+          <li xml:lang="it">Versionamento standardizzato in tutte le distribuzioni supportate</li>
+          
+          <li xml:lang="ro">Proces de construire optimizat prin dezactivarea informațiilor de depanare (mai rapid)</li>
+          <li xml:lang="ro">S-au rezolvat problemele de build pentru Fedora și dependențele lipsă</li>
+          <li xml:lang="ro">Performanță și compatibilitate îmbunătățite pentru pachetele RPM</li>
+          <li xml:lang="ro">Versiuni standardizate pentru toate distribuțiile acceptate</li>
+          
+          <li xml:lang="ru">Оптимизирован процесс сборки за счет отключения отладочной информации (быстрее)</li>
+          <li xml:lang="ru">Исправлены ошибки сборки в Fedora и отсутствующие зависимости</li>
+          <li xml:lang="ru">Улучшена производительность и совместимость RPM-пакетов</li>
+          <li xml:lang="ru">Стандартизация версий во всех поддерживаемых дистрибутивах</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.0.1" date="2026-01-26">
+      <description>
+        <p>Bug fixes and new features</p>
+        <p xml:lang="es">Correcciones de errores y nuevas características</p>
+        <p xml:lang="fr">Corrections de bugs et nouvelles fonctionnalités</p>
+        <p xml:lang="pt">Correções de bugs e novos recursos</p>
+        <p xml:lang="de">Fehlerbehebungen und neue Funktionen</p>
+        <p xml:lang="it">Correzioni di bug e nuove funzionalità</p>
+        <p xml:lang="ro">Corecturi de erori și noi funcționalități</p>
+        <p xml:lang="ru">Исправления ошибок и новые функции</p>
+        <ul>
+          <li>Optimized sudo authentication: ask for password only once during installation</li>
+          <li>Robust reboot functionality using systemctl reboot</li>
+          <li>New "Hardware Optimized" profile with auto-detection for CPU, GPU (NVIDIA/AMD/Intel) and NVMe</li>
+          <li>Automatic virtualization detection (QEMU/KVM, VirtualBox, VMware) in optimized profile</li>
+          <li>Added checkbox for optional build directory cleanup after installation</li>
+          <li>Fixed build errors when the source or build directory already existed from a previous attempt</li>
+          <li>Refined Arch Linux support (fixed kernel module paths)</li>
+          <li>Fixed 404 error when downloading Release Candidate (RC) kernels</li>
+          <li>Reboot without extra password prompts (integrated with systemd/logind)</li>
+          <li>Redesigned Profile cards: compact layout and smart text wrap for names</li>
+          <li>Improved cancellation support with user-friendly notifications</li>
+          <li>Transient notifications: build alerts auto-hide after 5 seconds</li>
+          <li>Full translation coverage for 8 languages (EN, ES, FR, PT, DE, IT, RO, RU)</li>
+          <li>Improved clarity of system load metrics with descriptive labels and tooltips</li>
+          
+          <li xml:lang="es">Autenticación sudo optimizada: solicita contraseña solo una vez durante la instalación</li>
+          <li xml:lang="es">Funcionalidad de reinicio robusta usando systemctl reboot</li>
+          <li xml:lang="es">Nuevo perfil "Optimizado para Hardware" con detección automática de CPU, GPU (NVIDIA/AMD/Intel) y NVMe</li>
+          <li xml:lang="es">Detección automática de virtualización (QEMU/KVM, VirtualBox, VMware) en perfil optimizado</li>
+          <li xml:lang="es">Casilla de verificación añadida para limpieza opcional del directorio de compilación tras la instalación</li>
+          <li xml:lang="es">Corregidos errores de compilación cuando el directorio de origen o compilación ya existía de un intento previo</li>
+          <li xml:lang="es">Soporte mejorado para Arch Linux (corregidas rutas de módulos del kernel)</li>
+          <li xml:lang="es">Corregido error 404 al descargar kernels Release Candidate (RC)</li>
+          <li xml:lang="es">Reinicio sin solicitudes adicionales de contraseña (integración con systemd/logind)</li>
+          <li xml:lang="es">Tarjetas de perfil rediseñadas: diseño compacto y ajuste de texto inteligente</li>
+          <li xml:lang="es">Soporte de cancelación mejorado con notificaciones amigables</li>
+          <li xml:lang="es">Notificaciones transitorias: las alertas se ocultan tras 5 segundos</li>
+          <li xml:lang="es">Cobertura total de traducción para 8 idiomas (EN, ES, FR, PT, DE, IT, RO, RU)</li>
+          <li xml:lang="es">Mejorada la claridad de las métricas de carga del sistema con etiquetas descriptivas</li>
+          
+          <li xml:lang="fr">Authentification sudo optimisée : demande le mot de passe une seule fois pendant l'installation</li>
+          <li xml:lang="fr">Fonctionnalité de redémarrage robuste utilisant systemctl reboot</li>
+          <li xml:lang="fr">Nouveau profil "Optimisé pour le matériel" avec détection automatique du CPU, GPU (NVIDIA/AMD/Intel) et NVMe</li>
+          <li xml:lang="fr">Détection automatique de la virtualisation (QEMU/KVM, VirtualBox, VMware) dans le profil optimisé</li>
+          <li xml:lang="fr">Case à cocher ajoutée pour le nettoyage optionnel du répertoire de compilation après l'installation</li>
+          <li xml:lang="fr">Correction des erreurs de compilation lorsque le répertoire source ou de compilation existait déjà d'une tentative précédente</li>
+          <li xml:lang="fr">Support amélioré pour Arch Linux (chemins des modules du noyau corrigés)</li>
+          <li xml:lang="fr">Correction de l'erreur 404 lors du téléchargement de noyaux RC</li>
+          <li xml:lang="fr">Redémarrage sans demande de mot de passe supplémentaire (via systemd)</li>
+          <li xml:lang="fr">Cartes de profil redessinées : mise en page compacte et retour à la ligne intelligent</li>
+          <li xml:lang="fr">Prise en charge améliorée de l'annulation avec des notifications conviviales</li>
+          <li xml:lang="fr">Notifications transitoires : les alertes se masquent après 5 secondes</li>
+          <li xml:lang="fr">Traduction complète pour 8 langues (EN, ES, FR, PT, DE, IT, RO, RU)</li>
+          <li xml:lang="fr">Amélioration de la clarté des métriques de charge avec des libellés descriptifs</li>
+          
+          <li xml:lang="pt">Autenticação sudo otimizada: solicita senha apenas uma vez durante a instalação</li>
+          <li xml:lang="pt">Funcionalidade de reinicialização robusta usando systemctl reboot</li>
+          <li xml:lang="pt">Novo perfil "Otimizado para Hardware" com deteção automática de CPU, GPU (NVIDIA/AMD/Intel) e NVMe</li>
+          <li xml:lang="pt">Deteção automática de virtualização (QEMU/KVM, VirtualBox, VMware) no perfil otimizado</li>
+          <li xml:lang="pt">Caixa de seleção adicionada para limpeza opcional do diretório de compilação após a instalação</li>
+          <li xml:lang="pt">Corrigidos erros de compilação quando o diretório de origem ou compilação já existia de uma tentativa anterior</li>
+          <li xml:lang="pt">Suporte refinado para Arch Linux (caminhos dos módulos do kernel corrigidos)</li>
+          <li xml:lang="pt">Corrigido erro 404 ao descarregar kernels Release Candidate (RC)</li>
+          <li xml:lang="pt">Reinicialização sem pedidos de palavra-passe adicionais (via systemd)</li>
+          <li xml:lang="pt">Cartões de perfil redesenhados: layout compacto e quebra de texto inteligente</li>
+          <li xml:lang="pt">Suporte de cancelamento aprimorado com notificações amigáveis</li>
+          <li xml:lang="pt">Notificações transitórias: os alertas ocultam-se após 5 segundos</li>
+          <li xml:lang="pt">Cobertura total de tradução para 8 idiomas (EN, ES, FR, PT, DE, IT, RO, RU)</li>
+          <li xml:lang="pt">Melhoria da clareza das métricas de carga com etiquetas descritivas</li>
+          
+          <li xml:lang="de">Optimierte sudo-Authentifizierung: Passwort wird während der Installation nur einmal abgefragt</li>
+          <li xml:lang="de">Robuste Neustart-Funktionalität mit systemctl reboot</li>
+          <li xml:lang="de">Neues Profil "Hardware-Optimiert" mit automatischer Erkennung von CPU, GPU (NVIDIA/AMD/Intel) und NVMe</li>
+          <li xml:lang="de">Automatische Virtualisierungserkennung (QEMU/KVM, VirtualBox, VMware) im optimierten Profil</li>
+          <li xml:lang="de">Kontrollkästchen hinzugefügt für optionale Bereinigung des Build-Verzeichnisses nach der Installation</li>
+          <li xml:lang="de">Build-Fehler behoben, wenn das Quell- oder Build-Verzeichnis bereits von einem vorherigen Versuch existierte</li>
+          <li xml:lang="de">Verbesserter Arch Linux-Support (Kernel-Modul-Pfade korrigiert)</li>
+          <li>404-Fehler beim Herunterladen von RC-Kernen behoben</li>
+          <li>Neustart ohne zusätzliche Passwortabfragen (via systemd)</li>
+          <li xml:lang="de">Neu gestaltete Profilkarten: kompaktes Layout und intelligenter Zeilenumbruch</li>
+          <li xml:lang="de">Verbesserte Abbruchunterstützung mit benutzerfreundlichen Benachrichtigungen</li>
+          <li xml:lang="de">Transiente Benachrichtigungen: Build-Warnungen werden nach 5 Sekunden ausgeblendet</li>
+          <li xml:lang="de">Vollständige Übersetzungsabdeckung für 8 Sprachen (EN, ES, FR, PT, DE, IT, RO, RU)</li>
+          <li>Die Übersichtlichkeit der Systemlastmetriken wurde verbessert</li>
+          
+          <li xml:lang="it">Autenticazione sudo ottimizzata: richiede la password solo una volta durante l'installazione</li>
+          <li xml:lang="it">Funzionalità di riavvio robusta utilizzando systemctl reboot</li>
+          <li xml:lang="it">Nuovo profilo "Ottimizzato per Hardware" con rilevamento automatico di CPU, GPU (NVIDIA/AMD/Intel) e NVMe</li>
+          <li xml:lang="it">Rilevamento automatico della virtualizzazione (QEMU/KVM, VirtualBox, VMware) nel profilo ottimizzato</li>
+          <li xml:lang="it">Casella di controllo aggiunta per la pulizia facoltativa della directory di compilazione dopo l'installazione</li>
+          <li xml:lang="it">Corretti errori di compilazione quando la directory di origine o di compilazione esisteva già da un tentativo precedente</li>
+          <li xml:lang="it">Supporto raffinato per Arch Linux (percorsi dei moduli del kernel corretti)</li>
+          <li>Corretto l'errore 404 durante el download de kernel RC</li>
+          <li>Riavvio senza ulteriori richieste di password (via systemd)</li>
+          <li xml:lang="it">Schede profilo ridisegnate: layout compatto e a capo automatico intelligente</li>
+          <li xml:lang="it">Supporto per la cancellazione migliorato con notifiche intuitive</li>
+          <li xml:lang="it">Notifiche transitorie: gli avvisi si chiudono dopo 5 secondi</li>
+          <li xml:lang="it">Copertura totale della traduzione per 8 lingue (EN, ES, FR, PT, DE, IT, RO, RU)</li>
+          <li xml:lang="it">Migliorata la chiarezza delle metriche di carico del sistema</li>
+          
+          <li xml:lang="ro">Autentificare sudo optimizată: solicită parola doar o dată în timpul instalării</li>
+          <li xml:lang="ro">Funcționalitate de repornire robustă folosind systemctl reboot</li>
+          <li xml:lang="ro">Profil nou "Optimizat pentru Hardware" cu detectare automată pentru CPU, GPU (NVIDIA/AMD/Intel) și NVMe</li>
+          <li xml:lang="ro">Detectare automată a virtualizării (QEMU/KVM, VirtualBox, VMware) în profilul optimizat</li>
+          <li xml:lang="ro">Casetă de bifat adăugată pentru curățarea opțională a directorului de compilare după instalare</li>
+          <li xml:lang="ro">Corectate erorile de compilare când directorul sursă sau de compilare exista deja de la o încercare anterioară</li>
+          <li xml:lang="ro">Suport rafinat pentru Arch Linux (corectate căile modulelor de kernel)</li>
+          <li>S-a corectat eroarea 404 la descărcarea kernel-urilor RC</li>
+          <li>Repornire fără solicitări suplimentare de parolă (prin systemd)</li>
+          <li xml:lang="ro">Carduri de profil reproiectate: aspect compact și aliniere inteligentă a textului</li>
+          <li xml:lang="ro">Suport de anulare îmbunătățit cu notificări prietenoase</li>
+          <li xml:lang="ro">Notificări tranzitorii: alertele se ascund după 5 secunde</li>
+          <li xml:lang="ro">Acoperire completă a traducerii pentru 8 limbi (EN, ES, FR, PT, DE, IT, RO, RU)</li>
+          <li>S-a îmbunătățit claritatea metricilor de sarcină a sistemului</li>
+          
+          <li xml:lang="ru">Оптимизированная аутентификация sudo: запрос пароля только один раз во время установки</li>
+          <li xml:lang="ru">Надежная функциональность перезагрузки с использованием systemctl reboot</li>
+          <li xml:lang="ru">Новый профиль "Оптимизированный для оборудования" с автоматическим обнаружением CPU, GPU (NVIDIA/AMD/Intel) и NVMe</li>
+          <li xml:lang="ru">Автоматическое обнаружение виртуализации (QEMU/KVM, VirtualBox, VMware) в оптимизированном профиле</li>
+          <li xml:lang="ru">Добавлен флажок для необязательной очистки каталога сборки после установки</li>
+          <li xml:lang="ru">Исправлены ошибки сборки, когда исходный каталог или каталог сборки уже существовали от предыдущей попытки</li>
+          <li xml:lang="ru">Улучшенная поддержка Arch Linux (исправлены пути модулей ядра)</li>
+          <li>Исправлена ошибка 404 при загрузке ядер RC</li>
+          <li>Перезагрузка без дополнительных запросов пароля (через systemd)</li>
+          <li xml:lang="ru">Обновленные карточки профилей: компактный вид и умный перенос текста</li>
+          <li xml:lang="ru">Улучшенная поддержка отмены сборки с понятными уведомлениями</li>
+          <li xml:lang="ru">Временные уведомления: оповещения скрываются через 5 секунд</li>
+          <li xml:lang="ru">Полный перевод на 8 языков (EN, ES, FR, PT, DE, IT, RO, RU)</li>
+          <li>Улучшена наглядность показателей нагрузки системы</li>
+        </ul>
+      </description>
+    </release>
+    
+    <release version="1.0.0" date="2025-01-24">
+      <description>
+        <p>Initial release of Kernel Installer GUI</p>
+        <p xml:lang="es">Lanzamiento inicial de la interfaz gráfica de Kernel Installer</p>
+        <p xml:lang="fr">Version initiale de l'interface graphique de Kernel Installer</p>
+        <p xml:lang="pt">Lançamento inicial da interface gráfica do Kernel Installer</p>
+        <p xml:lang="de">Erstveröffentlichung der Kernel Installer-Grafikoberfläche</p>
+        <p xml:lang="it">Rilascio iniziale dell'interfaccia grafica di Kernel Installer</p>
+        <p xml:lang="ro">Lansarea inițială a interfeței grafice Kernel Installer</p>
+        <p xml:lang="ru">Первоначальный выпуск графического интерфейса Kernel Installer</p>
+        <ul>
+          <li>GTK3 graphical interface with dark mode support</li>
+          <li>Kernel profiles: Gaming, Audio/Video, Minimal</li>
+          <li>Verified support for Debian, Ubuntu, Fedora, and Arch Linux</li>
+          <li>Intelligent detection of GRUB2, systemd-boot, rEFInd, LILO and Syslinux</li>
+          <li>Support for initramfs-tools, dracut and mkinitcpio generators</li>
+          <li>Custom kernel naming and suffix management</li>
+          <li>Transient desktop notifications via libnotify</li>
+          <li>Automated system dependency verification and installation</li>
+          <li>Native support for 8 languages (EN, ES, FR, PT, DE, IT, RO, RU)</li>
+          <li>Installation history tracking</li>
+          <li>Kernel removal support for Debian, Fedora, and Arch Linux</li>
+          <li>Enhanced "Minimal" profile with optimized kernel configuration</li>
+          <li>100% translation coverage for all 8 supported languages</li>
+          
+          <li xml:lang="es">Interfaz gráfica GTK3 con soporte para modo oscuro</li>
+          <li xml:lang="es">Perfiles de kernel: Juegos, Audio/Vídeo, Mínimo</li>
+          <li xml:lang="es">Soporte verificado para Debian, Ubuntu, Fedora y Arch Linux</li>
+          <li xml:lang="es">Detección inteligente de GRUB2, systemd-boot, rEFInd, LILO y Syslinux</li>
+          <li xml:lang="es">Soporte para generadores initramfs-tools, dracut y mkinitcpio</li>
+          <li xml:lang="es">Nomenclatura personalizada de kernel y gestión de sufijos</li>
+          <li xml:lang="es">Notificaciones de escritorio transitorias vía libnotify</li>
+          <li xml:lang="es">Verificación e instalación automatizada de dependencias del sistema</li>
+          <li xml:lang="es">Soporte nativo para 8 idiomas (EN, ES, FR, PT, DE, IT, RO, RU)</li>
+          <li xml:lang="es">Seguimiento del historial de instalaciones</li>
+          <li xml:lang="es">Soporte para eliminación de kernel en Debian, Fedora y Arch Linux</li>
+          <li xml:lang="es">Perfil "Mínimo" mejorado con configuración de kernel optimizada</li>
+          <li xml:lang="es">Cobertura de traducción al 100% para los 8 idiomas soportados</li>
+          
+          <li xml:lang="fr">Interface graphique GTK3 avec support du mode sombre</li>
+          <li xml:lang="fr">Profils de noyau : Jeux, Audio/Vidéo, Minimal</li>
+          <li xml:lang="fr">Support vérifié pour Debian, Ubuntu, Fedora et Arch Linux</li>
+          <li xml:lang="fr">Détection intelligente de GRUB2, systemd-boot, rEFInd, LILO et Syslinux</li>
+          <li xml:lang="fr">Support pour les générateurs initramfs-tools, dracut et mkinitcpio</li>
+          <li xml:lang="fr">Nommage personnalisé du noyau et gestion des suffixes</li>
+          <li xml:lang="fr">Notifications de bureau transitoires via libnotify</li>
+          <li xml:lang="fr">Vérification et installation automatisées des dépendances système</li>
+          <li xml:lang="fr">Support natif pour 8 langues (EN, ES, FR, PT, DE, IT, RO, RU)</li>
+          <li xml:lang="fr">Suivi de l'historique des installations</li>
+          <li xml:lang="fr">Support de suppression du noyau pour Debian, Fedora et Arch Linux</li>
+          <li xml:lang="fr">Profil "Minimal" amélioré avec configuration du noyau optimisée</li>
+          <li xml:lang="fr">Couverture de traduction à 100% pour les 8 langues supportées</li>
+          
+          <li xml:lang="pt">Interface gráfica GTK3 com suporte para modo escuro</li>
+          <li xml:lang="pt">Perfis de kernel: Jogos, Áudio/Vídeo, Mínimo</li>
+          <li xml:lang="pt">Suporte verificado para Debian, Ubuntu, Fedora e Arch Linux</li>
+          <li xml:lang="pt">Deteção inteligente de GRUB2, systemd-boot, rEFInd, LILO e Syslinux</li>
+          <li xml:lang="pt">Suporte para geradores initramfs-tools, dracut e mkinitcpio</li>
+          <li xml:lang="pt">Nomenclatura personalizada de kernel e gestão de sufixos</li>
+          <li xml:lang="pt">Notificações de desktop transitórias via libnotify</li>
+          <li xml:lang="pt">Verificação e instalação automatizadas de dependências do sistema</li>
+          <li xml:lang="pt">Suporte nativo para 8 idiomas (EN, ES, FR, PT, DE, IT, RO, RU)</li>
+          <li xml:lang="pt">Rastreamento do histórico de instalações</li>
+          <li xml:lang="pt">Suporte para remoção de kernel no Debian, Fedora e Arch Linux</li>
+          <li xml:lang="pt">Perfil "Mínimo" melhorado com configuração de kernel otimizada</li>
+          <li xml:lang="pt">Cobertura de tradução de 100% para os 8 idiomas suportados</li>
+          
+          <li xml:lang="de">GTK3-Grafikoberfläche mit Dunkelmodus-Unterstützung</li>
+          <li xml:lang="de">Kernel-Profile: Gaming, Audio/Video, Minimal</li>
+          <li xml:lang="de">Verifizierte Unterstützung für Debian, Ubuntu, Fedora und Arch Linux</li>
+          <li xml:lang="de">Intelligente Erkennung von GRUB2, systemd-boot, rEFInd, LILO und Syslinux</li>
+          <li xml:lang="de">Unterstützung für initramfs-tools, dracut und mkinitcpio Generatoren</li>
+          <li xml:lang="de">Benutzerdefinierte Kernel-Benennung und Suffix-Verwaltung</li>
+          <li xml:lang="de">Transiente Desktop-Benachrichtigungen über libnotify</li>
+          <li xml:lang="de">Automatisierte Systemabhängigkeitsüberprüfung und -installation</li>
+          <li xml:lang="de">Native Unterstützung für 8 Sprachen (EN, ES, FR, PT, DE, IT, RO, RU)</li>
+          <li xml:lang="de">Installationsverlauf-Verfolgung</li>
+          <li xml:lang="de">Kernel-Entfernungsunterstützung für Debian, Fedora und Arch Linux</li>
+          <li xml:lang="de">Verbessertes "Minimal"-Profil mit optimierter Kernel-Konfiguration</li>
+          <li xml:lang="de">100% Übersetzungsabdeckung für alle 8 unterstützten Sprachen</li>
+          
+          <li xml:lang="it">Interfaccia grafica GTK3 con supporto alla modalità scura</li>
+          <li xml:lang="it">Profili kernel: Gaming, Audio/Video, Minimale</li>
+          <li xml:lang="it">Supporto verificato per Debian, Ubuntu, Fedora e Arch Linux</li>
+          <li xml:lang="it">Rilevamento intelligente di GRUB2, systemd-boot, rEFInd, LILO e Syslinux</li>
+          <li xml:lang="it">Supporto per generatori initramfs-tools, dracut e mkinitcpio</li>
+          <li xml:lang="it">Nomenclatura kernel personalizzata e gestione dei suffissi</li>
+          <li xml:lang="it">Notifiche desktop transitorie tramite libnotify</li>
+          <li xml:lang="it">Verifica e installazione automatizzate delle dipendenze di sistema</li>
+          <li xml:lang="it">Supporto nativo per 8 lingue (EN, ES, FR, PT, DE, IT, RO, RU)</li>
+          <li xml:lang="it">Tracciamento della cronologia delle installazioni</li>
+          <li xml:lang="it">Supporto per la rimozione del kernel per Debian, Fedora e Arch Linux</li>
+          <li xml:lang="it">Profilo "Minimale" migliorato con configurazione kernel ottimizzata</li>
+          <li xml:lang="it">Copertura di traduzione al 100% per tutte le 8 lingue supportate</li>
+          
+          <li xml:lang="ro">Interfață grafică GTK3 cu suport pentru modul întunecat</li>
+          <li xml:lang="ro">Profile de nucleu: Gaming, Audio/Video, Minimal</li>
+          <li xml:lang="ro">Suport verificat pentru Debian, Ubuntu, Fedora și Arch Linux</li>
+          <li xml:lang="ro">Detectare inteligentă a GRUB2, systemd-boot, rEFInd, LILO și Syslinux</li>
+          <li xml:lang="ro">Suport pentru generatoare initramfs-tools, dracut și mkinitcpio</li>
+          <li xml:lang="ro">Denumire personalizată a nucleului și gestionarea sufixelor</li>
+          <li xml:lang="ro">Notificări de desktop tranzitorii prin libnotify</li>
+          <li xml:lang="ro">Verificare și instalare automatizată a dependențelor de sistem</li>
+          <li xml:lang="ro">Suport nativ pentru 8 limbi (EN, ES, FR, PT, DE, IT, RO, RU)</li>
+          <li xml:lang="ro">Urmărirea istoricului instalărilor</li>
+          <li xml:lang="ro">Suport pentru eliminarea nucleului pentru Debian, Fedora și Arch Linux</li>
+          <li xml:lang="ro">Profil "Minimal" îmbunătățit cu configurație de nucleu optimizată</li>
+          <li xml:lang="ro">Acoperire de traducere 100% pentru toate cele 8 limbi suportate</li>
+          
+          <li xml:lang="ru">Графический интерфейс GTK3 с поддержкой темной темы</li>
+          <li xml:lang="ru">Профили ядра: Игровой, Аудио/Видео, Минимальный</li>
+          <li xml:lang="ru">Проверенная поддержка Debian, Ubuntu, Fedora и Arch Linux</li>
+          <li xml:lang="ru">Интеллектуальное обнаружение GRUB2, systemd-boot, rEFInd, LILO и Syslinux</li>
+          <li xml:lang="ru">Поддержка генераторов initramfs-tools, dracut и mkinitcpio</li>
+          <li xml:lang="ru">Пользовательское именование ядра и управление суффиксами</li>
+          <li xml:lang="ru">Временные уведомления рабочего стола через libnotify</li>
+          <li xml:lang="ru">Автоматизированная проверка и установка системных зависимостей</li>
+          <li xml:lang="ru">Встроенная поддержка 8 языков (EN, ES, FR, PT, DE, IT, RO, RU)</li>
+          <li xml:lang="ru">Отслеживание истории установок</li>
+          <li xml:lang="ru">Поддержка удаления ядра для Debian, Fedora и Arch Linux</li>
+          <li xml:lang="ru">Улучшенный профиль "Минимальный" с оптимизированной конфигурацией ядра</li>
+          <li xml:lang="ru">100% покрытие переводов для всех 8 поддерживаемых языков</li>
+        </ul>
+      </description>
+    </release>
+  </releases>
+  
+  <content_rating type="oars-1.1" />
+  
+</component>
